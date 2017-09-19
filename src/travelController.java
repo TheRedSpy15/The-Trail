@@ -61,7 +61,7 @@ public class travelController extends Main {
                     distanceLabel.setText("Distance: "+Distance);
                     daysLabel.setText("Days: "+Days);
                     statusLabel.setText("Status: Moving");
-                    conditionsLabel.setText("Health Condition: "+HealthConditions);
+                    conditionsLabel.setText("Condition: "+HealthConditions);
                     setOutBtn.setText("Speed up");
 
                     // Settlement countdown
