@@ -101,6 +101,7 @@ public class HealthClass extends Main {
                 default:
                     SickEventLbl.setText(PlayersArray.get(PlayerSelectForEvent)+" Is sick");
                     HealthConditions+=10;
+                    break;
             }
         }
     }
