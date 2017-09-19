@@ -7,7 +7,6 @@ import javafx.scene.layout.VBox;
 
 public class AlertBox extends Main {
 
-    private Store str = new Store();
     private HealthClass hlt = new HealthClass();
     private Scene SettlementScene;
     private Scene notEnoughMoneyScene;

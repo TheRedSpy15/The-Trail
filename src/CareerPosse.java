@@ -4,8 +4,6 @@ import java.io.IOException;
 
 public class CareerPosse extends Main {
 
-    private Store str = new Store();
-
     void posseSetupMethod(){
 
         // Posse scene
