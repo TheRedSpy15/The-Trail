@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CareerController">
+   <children>
+      <Button fx:id="carpenterBtn" layoutX="216.0" layoutY="72.0" mnemonicParsing="false" onAction="#carpenterHandle" prefHeight="99.0" prefWidth="168.0" text="Carpenter">
+         <font>
+            <Font name="DejaVu Sans Bold" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="minerBtn" layoutX="216.0" layoutY="200.0" mnemonicParsing="false" onAction="#minerHandle" prefHeight="99.0" prefWidth="168.0" text="Miner">
+         <font>
+            <Font name="DejaVu Serif Bold" size="20.0" />
+         </font>
+      </Button>
+      <Label layoutX="207.0" layoutY="14.0" prefHeight="46.0" prefWidth="187.0" text="Pick a career">
+         <font>
+            <Font name="DejaVu Sans Condensed Bold" size="27.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="278.0" fitWidth="187.0" layoutX="20.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@MinerImage.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

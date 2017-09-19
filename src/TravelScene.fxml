@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" snapToPixel="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="travelController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+         <children>
+            <Button id="menuBtn" fx:id="menuBtn" layoutX="37.0" layoutY="54.0" mnemonicParsing="false" onAction="#Menu" prefHeight="44.0" prefWidth="66.0" text="Menu">
+               <font>
+                  <Font name="DejaVu Serif Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button id="stopBtn" fx:id="stopBtn" layoutX="124.0" layoutY="54.0" mnemonicParsing="false" onAction="#Stop" prefHeight="44.0" prefWidth="66.0" text="Stop">
+               <font>
+                  <Font name="DejaVu Serif Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button id="setoutBtn" fx:id="setOutBtn" layoutX="211.0" layoutY="54.0" mnemonicParsing="false" onAction="#Setout" prefHeight="44.0" prefWidth="66.0" text="Set out">
+               <font>
+                  <Font name="DejaVu Serif Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <children>
+            <Pane layoutX="-4.0" layoutY="-39.0" prefHeight="175.0" prefWidth="306.0">
+               <children>
+                  <Label id="distanceLabel" fx:id="distanceLabel" layoutX="27.0" layoutY="50.0" text="Distance to go: ">
+                     <font>
+                        <Font name="DejaVu Sans Condensed Bold" size="26.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <Label id="conditionLabel" fx:id="conditionsLabel" layoutX="27.0" layoutY="93.0" text="Health Conditions: ">
+                     <font>
+                        <Font name="DejaVu Sans Condensed Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Label id="daysLabel" fx:id="daysLabel" layoutX="27.0" layoutY="25.0" text="Days: ">
+                     <font>
+                        <Font name="DejaVu Sans Condensed Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Label id="daysLabel" fx:id="statusLabel" layoutX="27.0" layoutY="124.0" text="Status: ">
+                     <font>
+                        <Font name="DejaVu Sans Condensed Bold" size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children></Pane>
+   </children>
+</GridPane>
