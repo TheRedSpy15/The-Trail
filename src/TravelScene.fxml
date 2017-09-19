@@ -19,21 +19,21 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+      <Pane prefHeight="133.0" prefWidth="314.0" GridPane.rowIndex="2">
          <children>
-            <Button id="menuBtn" fx:id="menuBtn" layoutX="37.0" layoutY="54.0" mnemonicParsing="false" onAction="#Menu" prefHeight="44.0" prefWidth="66.0" text="Menu">
+            <Button id="menuBtn" fx:id="menuBtn" layoutY="54.0" mnemonicParsing="false" onAction="#Menu" prefHeight="44.0" prefWidth="103.0" text="Menu">
                <font>
                   <Font name="DejaVu Serif Bold" size="14.0" />
                </font>
             </Button>
-            <Button id="stopBtn" fx:id="stopBtn" layoutX="124.0" layoutY="54.0" mnemonicParsing="false" onAction="#Stop" prefHeight="44.0" prefWidth="66.0" text="Stop">
+            <Button id="stopBtn" fx:id="stopBtn" layoutX="98.0" layoutY="54.0" mnemonicParsing="false" onAction="#Stop" prefHeight="44.0" prefWidth="92.0" text="Stop">
                <font>
                   <Font name="DejaVu Serif Bold" size="14.0" />
                </font>
             </Button>
-            <Button id="setoutBtn" fx:id="setOutBtn" layoutX="211.0" layoutY="54.0" mnemonicParsing="false" onAction="#Setout" prefHeight="44.0" prefWidth="66.0" text="Set out">
+            <Button id="setoutBtn" fx:id="setOutBtn" layoutX="189.0" layoutY="54.0" mnemonicParsing="false" onAction="#Setout" prefHeight="44.0" prefWidth="103.0" text="Speed up">
                <font>
-                  <Font name="DejaVu Serif Bold" size="12.0" />
+                  <Font name="DejaVu Serif Bold" size="14.0" />
                </font>
             </Button>
          </children>
@@ -41,9 +41,9 @@
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
-            <Pane layoutX="-4.0" layoutY="-39.0" prefHeight="175.0" prefWidth="306.0">
+            <Pane layoutX="2.0" layoutY="-27.0" prefHeight="163.0" prefWidth="300.0">
                <children>
-                  <Label id="distanceLabel" fx:id="distanceLabel" layoutX="27.0" layoutY="50.0" text="Distance to go: ">
+                  <Label id="distanceLabel" fx:id="distanceLabel" layoutX="27.0" layoutY="50.0" text="Distance: ">
                      <font>
                         <Font name="DejaVu Sans Condensed Bold" size="26.0" />
                      </font>
@@ -51,7 +51,7 @@
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
                   </Label>
-                  <Label id="conditionLabel" fx:id="conditionsLabel" layoutX="27.0" layoutY="93.0" text="Health Conditions: ">
+                  <Label id="conditionLabel" fx:id="conditionsLabel" layoutX="27.0" layoutY="93.0" text="Conditions: ">
                      <font>
                         <Font name="DejaVu Sans Condensed Bold" size="26.0" />
                      </font>
