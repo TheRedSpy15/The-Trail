@@ -25,9 +25,9 @@ public class Main extends Application{
     static Scene ThiefScene;
     private static Scene PaceScene;
     private static Label BountyLbl;
-    static Parent careerAnchor;
+    private static Parent careerAnchor;
     static Label EncounterLbl;
-    static Parent storePane;
+    private static Parent storePane;
     static Parent possePane;
     static Parent travelPane;
 
@@ -37,8 +37,6 @@ public class Main extends Application{
     static int Days = 0;
     static int Food = 0;
     static int ThiefMoney;
-    static int ArraySize = 6;
-    static int ArraySize2 = 6;
     static boolean ThiefIsAlive;
     static int TownSelector = 0;
     static int Ammo = 0;
@@ -92,6 +90,22 @@ public class Main extends Application{
 
     public static Label getBountyLbl() {
         return BountyLbl;
+    }
+
+    public static void setCareerAnchor(Parent careerAnchor) {
+        Main.careerAnchor = careerAnchor;
+    }
+
+    public static Parent getStorePane() {
+        return storePane;
+    }
+
+    public static void setStorePane(Parent storePane) {
+        Main.storePane = storePane;
+    }
+
+    public static Parent getCareerAnchor() {
+        return careerAnchor;
     }
 
     @Override

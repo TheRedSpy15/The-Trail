@@ -21,7 +21,7 @@ public class PosseController extends Main {
         if (!(membername1.getText().trim().equals("") || membername2.getText().trim().equals("") || membername3.getText().trim().equals("") || membername4.getText().trim().equals("") || membername5.getText().trim().equals("") || membername6.getText().trim().equals(""))){
 
             str.storeMethod();
-            Window.setScene(new Scene(storePane));
+            Window.setScene(new Scene(getStorePane()));
 
             PlayersArray.add(membername1.getText());
             PlayersArray.add(membername2.getText());

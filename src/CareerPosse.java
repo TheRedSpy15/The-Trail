@@ -17,6 +17,6 @@ public class CareerPosse extends Main {
     void careerPicker() throws IOException {
 
         // Career scene
-        careerAnchor = FXMLLoader.load(getClass().getResource("CareerScene.fxml"));
+        setCareerAnchor(FXMLLoader.load(getClass().getResource("CareerScene.fxml"))) ;
     }
 }

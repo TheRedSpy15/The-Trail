@@ -7,7 +7,7 @@ public class Store extends Main {
 
         // Store
         try {
-            storePane = FXMLLoader.load(Main.class.getResource("storeScene.fxml"));
+            setStorePane(FXMLLoader.load(Main.class.getResource("storeScene.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }

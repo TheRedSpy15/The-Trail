@@ -43,8 +43,6 @@ public class TravelController extends Main {
                 EncounterChance = rand.nextInt(100)+1;
 
                 ++Days;
-                ArraySize = PlayersArray.size();
-                ArraySize2 = ArraySize;
                 Distance-=Pace;
                 Food=Food-(PlayersArray.size()*FoodIntake);
                 Water=Water-(PlayersArray.size()*FoodIntake);
@@ -56,7 +54,7 @@ public class TravelController extends Main {
 
                 Platform.runLater(() -> {
                     // update the JavaFX UI Thread here when the task(s) above are done
-                    distanceLabel.setText("Distance: "+Distance);
+                    distanceLabel.setText("To go: "+Distance+"Mi");
                     daysLabel.setText("Days: "+Days);
                     statusLabel.setText("Status: Moving");
                     conditionsLabel.setText("Condition: "+HealthConditions);

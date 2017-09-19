@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 public class HealthClass extends Main {
 
     // Used to determine health condition based upon tiredness, pace, and intake
-    static void determineHealthCondition(){
+    protected static void determineHealthCondition(){
 
         switch (Pace){
 

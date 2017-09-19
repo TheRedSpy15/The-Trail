@@ -9,6 +9,6 @@ public class StartController extends Main{
     public void handleButtonClick() throws IOException {
 
         cp.careerPicker();
-        Window.setScene(new Scene(careerAnchor));
+        Window.setScene(new Scene(getCareerAnchor()));
     }
 }
