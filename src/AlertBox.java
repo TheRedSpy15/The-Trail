@@ -4,7 +4,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
 
 public class AlertBox extends Main {
 
@@ -14,7 +13,7 @@ public class AlertBox extends Main {
     private Scene notEnoughMoneyScene;
     private Scene EmptyNameScene;
 
-    void AlertMenu(int SceneSelect){
+    void alertMenu(int SceneSelect){
 
         IsMoving = false;
 
@@ -25,23 +24,23 @@ public class AlertBox extends Main {
         switch (SceneSelect){
 
             case 1:
-                TownEvent();
+                townEvent();
                 window.setScene(SettlementScene);
                 break;
             case 2:
-                hlt.PoorHealthEvent();
+                hlt.poorHealthEvent();
                 window.setScene(SickEventScene);
                 break;
             case 3:
-                ThiefEncounter();
+                thiefEncounter();
                 window.setScene(ThiefScene);
                 break;
             case 4:
-                NotEnoughMoney();
+                notEnoughMoney();
                 window.setScene(notEnoughMoneyScene);
                 break;
             case 5:
-                EmptyNames();
+                emptyNames();
                 window.setScene(EmptyNameScene);
                 break;
         }
@@ -49,19 +48,17 @@ public class AlertBox extends Main {
         window.show();
     }
 
-    private void TownEvent() {
+    private void townEvent() {
 
         // Settlement Scene
         VBox SettlementLayout = new VBox(10);
         Label SettlementLbl = new Label("You have come up to the town of "+TownList[TownSelector]);
         Label BountyLbl = new Label("");
         Button UseShop = new Button("Use shop");
-        UseShop.setOnAction(e -> {
-            window.setScene(new Scene(storePane));
-        });
+        UseShop.setOnAction(e -> window.setScene(new Scene(storePane)));
         Button KeepGoing = new Button("Keep going");
         Button ClaimRewardBtn = new Button("Claim Thief Bounty");
-        ClaimRewardBtn.setOnAction(e -> BountyMethod());
+        ClaimRewardBtn.setOnAction(e -> bountyMethod());
         KeepGoing.setOnAction(e -> window.close());
         SettlementLayout.setPadding(new Insets(20,20,20,20));
         SettlementLayout.getChildren().addAll(SettlementLbl,BountyLbl,UseShop,KeepGoing,ClaimRewardBtn);
@@ -69,7 +66,7 @@ public class AlertBox extends Main {
     }
 
     // Encounter events
-    static void ThiefEncounter(){
+    static void thiefEncounter(){
 
         VBox EncounterLayout = new VBox(10);
         EncounterLayout.setPadding(new Insets(40,20,20,20));
@@ -93,7 +90,7 @@ public class AlertBox extends Main {
             }
         });
 
-        Choice2.setOnAction(e -> ThiefShootout());
+        Choice2.setOnAction(e -> thiefShootout());
 
         Choice3.setOnAction(e -> {
 
@@ -107,7 +104,7 @@ public class AlertBox extends Main {
     }
 
     // Triggered with Choice2 Button
-    private static void ThiefShootout(){
+    private static void thiefShootout(){
 
         if (Ammo > 0){
 
@@ -153,7 +150,7 @@ public class AlertBox extends Main {
         }
     }
 
-    private void BountyMethod(){
+    private void bountyMethod(){
 
          int MoneyToClaim;
 
@@ -171,7 +168,7 @@ public class AlertBox extends Main {
         }
     }
 
-    private void NotEnoughMoney(){
+    private void notEnoughMoney(){
 
         StackPane ntEnoughMoneyLayout = new StackPane();
         Label label = new Label("Amount over: "+ (int) amountOver);
@@ -182,7 +179,7 @@ public class AlertBox extends Main {
         amountOver = 0;
     }
 
-    private void EmptyNames(){
+    private void emptyNames(){
 
         StackPane EmptyNameLayout = new StackPane();
         Label label = new Label("Text fields cannot be blank!");

@@ -6,7 +6,7 @@ import javafx.scene.control.Slider;
 
 import java.io.IOException;
 
-public class storeController extends Main {
+public class StoreController extends Main {
 
     public Slider waterSlider;
     public Slider foodSlider;
@@ -19,7 +19,7 @@ public class storeController extends Main {
     public Label currentFood;
     public Label currentAmmo;
 
-    public void Purchase(){
+    public void purchase(){
 
         purchaseBtn.setOnAction(e -> {
 
@@ -36,7 +36,7 @@ public class storeController extends Main {
                 Water += waterSlider.getValue();
 
                 try {
-                    trvl.TravelSetup();
+                    trvl.travelSetup();
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
@@ -45,7 +45,7 @@ public class storeController extends Main {
 
                 amountOver -= (Money - cartValue);
 
-                Alt.AlertMenu(4);
+                Alt.alertMenu(4);
 
                 initialize();
             }

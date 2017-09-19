@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class Store extends Main {
 
-    void StoreMethod() {
+    void storeMethod() {
 
         // Store
         try {

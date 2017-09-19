@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" snapToPixel="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="travelController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" snapToPixel="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TravelController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -21,17 +21,17 @@
    <children>
       <Pane prefHeight="133.0" prefWidth="314.0" GridPane.rowIndex="2">
          <children>
-            <Button id="menuBtn" fx:id="menuBtn" layoutY="54.0" mnemonicParsing="false" onAction="#Menu" prefHeight="44.0" prefWidth="103.0" text="Menu">
+            <Button id="menuBtn" fx:id="menuBtn" layoutY="54.0" mnemonicParsing="false" onAction="#menu" prefHeight="44.0" prefWidth="103.0" text="Menu">
                <font>
                   <Font name="DejaVu Serif Bold" size="14.0" />
                </font>
             </Button>
-            <Button id="stopBtn" fx:id="stopBtn" layoutX="98.0" layoutY="54.0" mnemonicParsing="false" onAction="#Stop" prefHeight="44.0" prefWidth="92.0" text="Stop">
+            <Button id="stopBtn" fx:id="stopBtn" layoutX="98.0" layoutY="54.0" mnemonicParsing="false" onAction="#stopMoving" prefHeight="44.0" prefWidth="92.0" text="Stop">
                <font>
                   <Font name="DejaVu Serif Bold" size="14.0" />
                </font>
             </Button>
-            <Button id="setoutBtn" fx:id="setOutBtn" layoutX="189.0" layoutY="54.0" mnemonicParsing="false" onAction="#Setout" prefHeight="44.0" prefWidth="103.0" text="Speed up">
+            <Button id="setoutBtn" fx:id="setOutBtn" layoutX="189.0" layoutY="54.0" mnemonicParsing="false" onAction="#setout" prefHeight="44.0" prefWidth="103.0" text="Set out">
                <font>
                   <Font name="DejaVu Serif Bold" size="14.0" />
                </font>

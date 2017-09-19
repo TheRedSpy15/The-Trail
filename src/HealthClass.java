@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 public class HealthClass extends Main {
 
     // Used to determine health condition based upon tiredness, pace, and intake
-    static void DetermineHealthCondition(){
+    static void determineHealthCondition(){
 
         switch (Pace){
 
@@ -49,7 +49,7 @@ public class HealthClass extends Main {
     }
 
     // Events to happen with poor health conditions
-    void PoorHealthEvent(){
+    void poorHealthEvent(){
 
         VBox PoorHealthLayout = new VBox(10);
         PoorHealthLayout.setPadding(new Insets(40,20,20,20));
