@@ -18,14 +18,10 @@ public class PosseController extends Main {
 
     public void confirmNamesMethod(){
 
-        // ERROR in condition, has to do with getting value like below
         if (!(membername1.getText().trim().equals("") || membername2.getText().trim().equals("") || membername3.getText().trim().equals("") || membername4.getText().trim().equals("") || membername5.getText().trim().equals("") || membername6.getText().trim().equals(""))){
 
             str.storeMethod();
             Window.setScene(new Scene(storePane));
-
-            // Adding entered names to Posse LinkedList
-            // ERROR in getting the values, string.value is null also, need to work on this
 
             PlayersArray.add(membername1.getText());
             PlayersArray.add(membername2.getText());
