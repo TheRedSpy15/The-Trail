@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 public class MidGameMenu extends Main {
 
-    static void MenuMethod(){
+    static void menuMethod(){
 
         // MENU
         MenuWindow = new Stage();
@@ -18,15 +18,15 @@ public class MidGameMenu extends Main {
         Button SetMealPortions = new Button("Set diet plan");
         Button ViewInventory = new Button("View Inventory");
         ViewInventory.setOnAction(e -> {
-            InventoryMethod();
+            inventoryMethod();
             MenuWindow.setScene(InventoryScene);
         });
         SetMealPortions.setOnAction(e -> {
-            FoodPortionSet();
+            foodPortionSet();
             MenuWindow.setScene(FoodPortionsScene);
         });
         SetPace.setOnAction(e -> {
-            PaceSetterMethod();
+            paceSetterMethod();
             MenuWindow.setScene(PaceScene);
         });
         Button Hunt = new Button("Go hunting");
@@ -37,7 +37,7 @@ public class MidGameMenu extends Main {
         MenuWindow.setScene(MenuScene);
     }
 
-    private static void InventoryMethod(){
+    private static void inventoryMethod(){
 
         VBox InventoryLayout = new VBox(5);
         Label Waterlbl = new Label("Water: "+Water);
@@ -51,7 +51,7 @@ public class MidGameMenu extends Main {
     }
 
     // Used to set food intake
-    private static void FoodPortionSet(){
+    private static void foodPortionSet(){
 
         VBox FoodPortionsLayout = new VBox(10);
         Button ExtremeDietbtn = new Button("Extreme");
@@ -75,7 +75,7 @@ public class MidGameMenu extends Main {
         FoodPortionsScene = new Scene(FoodPortionsLayout,320,200);
     }
 
-    private static void PaceSetterMethod(){
+    private static void paceSetterMethod(){
 
         VBox PaceLayout = new VBox(10);
         Label PaceLbl = new Label("Choose a speed");

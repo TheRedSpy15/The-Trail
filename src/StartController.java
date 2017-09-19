@@ -1,7 +1,5 @@
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-
-import java.awt.*;
 import java.io.IOException;
 
 public class StartController extends Main{
@@ -10,7 +8,7 @@ public class StartController extends Main{
 
     public void handleButtonClick() throws IOException {
 
-        cp.CareerPicker();
+        cp.careerPicker();
         Window.setScene(new Scene(careerAnchor));
     }
 }

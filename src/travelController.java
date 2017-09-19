@@ -2,9 +2,7 @@ import javafx.application.Platform;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-import java.awt.*;
-
-public class travelController extends Main {
+public class TravelController extends Main {
 
     public Button menuBtn;
     public Button stopBtn;
@@ -15,20 +13,20 @@ public class travelController extends Main {
     public Label statusLabel;
     private int HealthEventCooldown = 10;
 
-    public void Stop(){
+    public void stopMoving(){
 
         IsMoving = false;
     }
 
-    public void Setout(){
+    public void setout(){
 
         runBackgroundTask();
     }
 
-    public void Menu(){
+    public void menu(){
 
         IsMoving = false;
-        MidGameMenu.MenuMethod();
+        MidGameMenu.menuMethod();
         MenuWindow.showAndWait();
     }
 
@@ -54,7 +52,7 @@ public class travelController extends Main {
                 if (Food < 0) Food = 0;
                 if (Water < 0) Water = 0;
 
-                HealthClass.DetermineHealthCondition();
+                HealthClass.determineHealthCondition();
 
                 Platform.runLater(() -> {
                     // update the JavaFX UI Thread here when the task(s) above are done
@@ -67,7 +65,7 @@ public class travelController extends Main {
                     // Settlement countdown
                     if (Distance == 2500 || Distance == 2000 || Distance == 1500 || Distance == 1000 || Distance == 500){
 
-                        alt.AlertMenu(1);
+                        alt.alertMenu(1);
                         TownSelector++;
                     }
 
@@ -78,10 +76,10 @@ public class travelController extends Main {
                             System.out.println(SickEventChance);
                             PlayerSelectForEvent = PlayersArray.size();
                             PlayerSelectForEvent-=1;
-                            alt.AlertMenu(2);
+                            alt.alertMenu(2);
                         }else if (EncounterChance >= 78){
 
-                            AlertBox.ThiefEncounter();
+                            AlertBox.thiefEncounter();
                         }
 
                         HealthEventCooldown = 0;
