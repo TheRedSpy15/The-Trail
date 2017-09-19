@@ -1,5 +1,5 @@
 # The-Trail
-My first real project with JavaFX. This is more of a learning experience for me. NOTE: I'm new to this whole GitHub thing!
+My first real project with JavaFX. This is more of a learning experience for me.
 
 The project is a JavaFX version of the classic game knownas "Oregon Trail"
 
