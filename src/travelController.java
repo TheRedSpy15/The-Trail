@@ -62,6 +62,7 @@ public class travelController extends Main {
                     daysLabel.setText("Days: "+Days);
                     statusLabel.setText("Status: Moving");
                     conditionsLabel.setText("Health Condition: "+HealthConditions);
+                    setOutBtn.setText("Speed up");
 
                     // Settlement countdown
                     if (Distance == 2500 || Distance == 2000 || Distance == 1500 || Distance == 1000 || Distance == 500){
@@ -99,6 +100,7 @@ public class travelController extends Main {
             Platform.runLater(() -> {
 
                 statusLabel.setText("Status: Resting");
+                setOutBtn.setText("Set out");
             });
 
         }).start();
