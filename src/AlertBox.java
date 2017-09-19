@@ -11,6 +11,7 @@ public class AlertBox extends Main {
     private Scene SettlementScene;
     private Scene notEnoughMoneyScene;
     private Scene EmptyNameScene;
+    private Scene EmptyAlertScene;
 
     void alertMenu(int SceneSelect){
 
@@ -41,6 +42,10 @@ public class AlertBox extends Main {
             case 5:
                 emptyNames();
                 window.setScene(EmptyNameScene);
+                break;
+            default:
+                emptyAlert();
+                window.setScene(EmptyAlertScene);
                 break;
         }
 
@@ -185,5 +190,14 @@ public class AlertBox extends Main {
         EmptyNameLayout.setPadding(new Insets(20,20,20,20));
         EmptyNameLayout.getChildren().add(label);
         EmptyNameScene = new Scene(EmptyNameLayout,300,250);
+    }
+
+    private void emptyAlert(){
+
+        StackPane EmptyAlertLayout = new StackPane();
+        Label label = new Label("ERROR: No alertbox scene selected!");
+        EmptyAlertLayout.setPadding(new Insets(20,20,20,20));
+        EmptyAlertLayout.getChildren().add(label);
+        EmptyAlertScene = new Scene(EmptyAlertLayout,300,250);
     }
 }
