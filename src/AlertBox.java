@@ -162,13 +162,13 @@ public class AlertBox extends Main {
 
             MoneyToClaim = rand.nextInt(1000)+500;
 
-            BountyLbl.setText("You have Claimed: $"+MoneyToClaim);
+            getBountyLbl().setText("You have Claimed: $"+MoneyToClaim);
 
             Money+=MoneyToClaim;
 
         }else {
 
-            BountyLbl.setText("Sorry... you haven't caught anyone ( NO BOUNTY 4 U !! )");
+            getBountyLbl().setText("Sorry... you haven't caught anyone ( NO BOUNTY 4 U !! )");
         }
     }
 

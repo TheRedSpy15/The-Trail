@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class CareerPosse extends Main {
 
-    void posseSetupMethod(){
+    protected void posseSetupMethod(){
 
         // Posse scene
         try {

@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 public class MidGameMenu extends Main {
 
-    static void menuMethod(){
+    protected static void menuMethod(){
 
         // MENU
         MenuWindow = new Stage();
@@ -23,18 +23,18 @@ public class MidGameMenu extends Main {
         });
         SetMealPortions.setOnAction(e -> {
             foodPortionSet();
-            MenuWindow.setScene(FoodPortionsScene);
+            MenuWindow.setScene(getFoodPortionsScene());
         });
         SetPace.setOnAction(e -> {
             paceSetterMethod();
-            MenuWindow.setScene(PaceScene);
+            MenuWindow.setScene(getPaceScene());
         });
         Button Hunt = new Button("Go hunting");
         VBox MenuLayout = new VBox(10);
         MenuLayout.getChildren().addAll(SetPace,SetMealPortions,Hunt,ViewInventory);
         MenuLayout.setPadding(new Insets(20,20,20,20));
-        MenuScene = new Scene(MenuLayout,300,180);
-        MenuWindow.setScene(MenuScene);
+        setMenuScene(new Scene(MenuLayout,300,180));
+        MenuWindow.setScene(getMenuScene());
     }
 
     private static void inventoryMethod(){
@@ -44,7 +44,7 @@ public class MidGameMenu extends Main {
         Label Foodlbl = new Label("Food: "+Food);
         Label Ammolbl = new Label("Ammo: "+Ammo);
         Button Backbtn = new Button("Back");
-        Backbtn.setOnAction(e -> MenuWindow.setScene(MenuScene));
+        Backbtn.setOnAction(e -> MenuWindow.setScene(getMenuScene()));
         InventoryLayout.setPadding(new Insets(20,20,20,20));
         InventoryLayout.getChildren().addAll(Waterlbl,Foodlbl,Ammolbl,Backbtn);
         InventoryScene = new Scene(InventoryLayout, 320,200);
@@ -57,22 +57,22 @@ public class MidGameMenu extends Main {
         Button ExtremeDietbtn = new Button("Extreme");
         ExtremeDietbtn.setOnAction(e -> {
             FoodIntake = 1;
-            MenuWindow.setScene(MenuScene);
+            MenuWindow.setScene(getMenuScene());
         });
         Button ModerateDietbtn = new Button("Moderate");
         ModerateDietbtn.setOnAction(e -> {
             FoodIntake = 2;
-            MenuWindow.setScene(MenuScene);
+            MenuWindow.setScene(getMenuScene());
         });
         Button BuffetDietbtn = new Button("Buffet");
         BuffetDietbtn.setOnAction(e -> {
             FoodIntake = 3;
-            MenuWindow.setScene(MenuScene);
+            MenuWindow.setScene(getMenuScene());
         });
         Label FoodListlbl = new Label("Select your diet plan");
         FoodPortionsLayout.setPadding(new Insets(20,20,20,20));
         FoodPortionsLayout.getChildren().addAll(FoodListlbl,ExtremeDietbtn,ModerateDietbtn,BuffetDietbtn);
-        FoodPortionsScene = new Scene(FoodPortionsLayout,320,200);
+        setFoodPortionsScene(new Scene(FoodPortionsLayout,320,200));
     }
 
     private static void paceSetterMethod(){
@@ -85,20 +85,20 @@ public class MidGameMenu extends Main {
 
         Slowbtn.setOnAction(e -> {
             Pace = 5;
-            MenuWindow.setScene(MenuScene);
+            MenuWindow.setScene(getMenuScene());
         });
         ModerateSpeedbtn.setOnAction(e -> {
             Pace = 10;
-            MenuWindow.setScene(MenuScene);
+            MenuWindow.setScene(getMenuScene());
         });
         Fastbtn.setOnAction(e -> {
             Pace = 15;
-            MenuWindow.setScene(MenuScene);
+            MenuWindow.setScene(getMenuScene());
         });
 
         PaceLayout.setPadding(new Insets(20,20,20,20));
         PaceLayout.getChildren().addAll(PaceLbl,Slowbtn,ModerateSpeedbtn,Fastbtn);
 
-        PaceScene = new Scene(PaceLayout,320,200);
+        setPaceScene(new Scene(PaceLayout,320,200));
     }
 }

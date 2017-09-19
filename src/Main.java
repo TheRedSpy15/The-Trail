@@ -16,15 +16,15 @@ import static javafx.scene.media.AudioClip.INDEFINITE;
 public class Main extends Application{
 
     static Stage Window;
-    static Scene FoodPortionsScene;
+    private static Scene FoodPortionsScene;
     static Stage MenuWindow;
-    static Scene MenuScene;
+    private static Scene MenuScene;
     static Scene InventoryScene;
     static Scene SickEventScene;
     Stage window = new Stage();
     static Scene ThiefScene;
-    static Scene PaceScene;
-    static Label BountyLbl;
+    private static Scene PaceScene;
+    private static Label BountyLbl;
     static Parent careerAnchor;
     static Label EncounterLbl;
     static Parent storePane;
@@ -64,6 +64,34 @@ public class Main extends Application{
         Thread thread = new Thread(task);
         thread.start();
         launch(args);
+    }
+
+    public static Scene getFoodPortionsScene() {
+        return FoodPortionsScene;
+    }
+
+    public static void setFoodPortionsScene(Scene foodPortionsScene) {
+        FoodPortionsScene = foodPortionsScene;
+    }
+
+    public static Scene getMenuScene() {
+        return MenuScene;
+    }
+
+    public static void setMenuScene(Scene menuScene) {
+        MenuScene = menuScene;
+    }
+
+    public static Scene getPaceScene() {
+        return PaceScene;
+    }
+
+    public static void setPaceScene(Scene paceScene) {
+        PaceScene = paceScene;
+    }
+
+    public static Label getBountyLbl() {
+        return BountyLbl;
     }
 
     @Override
