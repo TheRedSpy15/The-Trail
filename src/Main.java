@@ -21,7 +21,7 @@ public class Main extends Application{
     private static Scene MenuScene;
     static Scene InventoryScene;
     static Scene SickEventScene;
-    Stage window = new Stage();
+    static Stage window = new Stage();
     static Scene ThiefScene;
     private static Scene PaceScene;
     private static Label BountyLbl;
@@ -43,7 +43,6 @@ public class Main extends Application{
     static int Water = 0;
     static double amountOver = 0;
     static double Money = 0;
-    static boolean BountyClaimable = false;
     static int Pace = 10;
     static int FoodIntake = 2;
     static Random rand = new Random();
@@ -64,47 +63,47 @@ public class Main extends Application{
         launch(args);
     }
 
-    public static Scene getFoodPortionsScene() {
+    static Scene getFoodPortionsScene() {
         return FoodPortionsScene;
     }
 
-    public static void setFoodPortionsScene(Scene foodPortionsScene) {
+    static void setFoodPortionsScene(Scene foodPortionsScene) {
         FoodPortionsScene = foodPortionsScene;
     }
 
-    public static Scene getMenuScene() {
+    static Scene getMenuScene() {
         return MenuScene;
     }
 
-    public static void setMenuScene(Scene menuScene) {
+    static void setMenuScene(Scene menuScene) {
         MenuScene = menuScene;
     }
 
-    public static Scene getPaceScene() {
+    static Scene getPaceScene() {
         return PaceScene;
     }
 
-    public static void setPaceScene(Scene paceScene) {
+    static void setPaceScene(Scene paceScene) {
         PaceScene = paceScene;
     }
 
-    public static Label getBountyLbl() {
+    static Label getBountyLbl() {
         return BountyLbl;
     }
 
-    public static void setCareerAnchor(Parent careerAnchor) {
+    static void setCareerAnchor(Parent careerAnchor) {
         Main.careerAnchor = careerAnchor;
     }
 
-    public static Parent getStorePane() {
+    static Parent getStorePane() {
         return storePane;
     }
 
-    public static void setStorePane(Parent storePane) {
+    static void setStorePane(Parent storePane) {
         Main.storePane = storePane;
     }
 
-    public static Parent getCareerAnchor() {
+    static Parent getCareerAnchor() {
         return careerAnchor;
     }
 

@@ -4,14 +4,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+// import javafx.stage.Modality;
 
 public class AlertBox extends Main {
 
     private HealthClass hlt = new HealthClass();
-    private Scene SettlementScene;
     private Scene notEnoughMoneyScene;
     private Scene EmptyNameScene;
     private Scene EmptyAlertScene;
+    private Scene SettlementScene;
 
     void alertMenu(int SceneSelect){
 
@@ -52,25 +53,7 @@ public class AlertBox extends Main {
         window.show();
     }
 
-    private void townEvent() {
-
-        // Settlement Scene
-        VBox SettlementLayout = new VBox(10);
-        Label SettlementLbl = new Label("You have come up to the town of "+TownList[TownSelector]);
-        Label BountyLbl = new Label("");
-        Button UseShop = new Button("Use shop");
-        UseShop.setOnAction(e -> window.setScene(new Scene(getStorePane())));
-        Button KeepGoing = new Button("Keep going");
-        Button ClaimRewardBtn = new Button("Claim Thief Bounty");
-        ClaimRewardBtn.setOnAction(e -> bountyMethod());
-        KeepGoing.setOnAction(e -> window.close());
-        SettlementLayout.setPadding(new Insets(20,20,20,20));
-        SettlementLayout.getChildren().addAll(SettlementLbl,BountyLbl,UseShop,KeepGoing,ClaimRewardBtn);
-        SettlementScene = new Scene(SettlementLayout,320,300);
-    }
-
-    // Encounter events
-    static void thiefEncounter(){
+    void thiefEncounter(){
 
         VBox EncounterLayout = new VBox(10);
         EncounterLayout.setPadding(new Insets(40,20,20,20));
@@ -105,10 +88,35 @@ public class AlertBox extends Main {
 
         EncounterLayout.getChildren().addAll(EncounterLbl,Choice1,Choice2,Choice3);
         ThiefScene = new Scene(EncounterLayout, 320,300);
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        window.close();
+    }
+
+    private void townEvent() {
+
+        // Settlement Scene
+        VBox SettlementLayout = new VBox(10);
+        Label SettlementLbl = new Label("You have come up to the town of "+TownList[TownSelector]);
+        Label BountyLbl = new Label("");
+        Button UseShop = new Button("Use shop");
+        UseShop.setOnAction(e -> window.setScene(new Scene(getStorePane())));
+        Button KeepGoing = new Button("Keep going");
+        Button ClaimRewardBtn = new Button("Claim Thief Bounty");
+        ClaimRewardBtn.setOnAction(e -> alt.bountyMethod());
+        KeepGoing.setOnAction(e -> window.close());
+        SettlementLayout.setPadding(new Insets(20,20,20,20));
+        SettlementLayout.getChildren().addAll(SettlementLbl,BountyLbl,UseShop,KeepGoing,ClaimRewardBtn);
+        SettlementScene = new Scene(SettlementLayout,320,300);
     }
 
     // Triggered with Choice2 Button
-    private static void thiefShootout(){
+    private void thiefShootout(){
 
         if (Ammo > 0){
 
@@ -151,14 +159,29 @@ public class AlertBox extends Main {
             } catch (InterruptedException e1) {
                 e1.printStackTrace();
             }
+
+            window.close();
+
+        }else{
+
+            EncounterLbl.setText("The thief got away with $"+ThiefMoney);
+            Money-=ThiefMoney;
+
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
+
+            window.close();
         }
     }
 
-    private void bountyMethod(){
+    protected void bountyMethod(){
 
-         int MoneyToClaim;
+        int MoneyToClaim;
 
-        if (BountyClaimable){
+        if (TurnInThief){
 
             MoneyToClaim = rand.nextInt(1000)+500;
 

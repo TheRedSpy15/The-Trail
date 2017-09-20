@@ -12,6 +12,7 @@ public class TravelController extends Main {
     public Label daysLabel;
     public Label statusLabel;
     private int HealthEventCooldown = 10;
+    private AlertBox alt = new AlertBox();
 
     public void stopMoving(){
 
@@ -61,11 +62,7 @@ public class TravelController extends Main {
                     setOutBtn.setText("Speed up");
 
                     // Settlement countdown
-                    if (Distance == 2500 || Distance == 2000 || Distance == 1500 || Distance == 1000 || Distance == 500){
-
-                        alt.alertMenu(1);
-                        TownSelector++;
-                    }
+                    townCountDown();
 
                     if (HealthEventCooldown >= 10){
 
@@ -77,7 +74,7 @@ public class TravelController extends Main {
                             alt.alertMenu(2);
                         }else if (EncounterChance >= 78){
 
-                            AlertBox.thiefEncounter();
+                            alt.thiefEncounter();
                         }
 
                         HealthEventCooldown = 0;
@@ -100,5 +97,17 @@ public class TravelController extends Main {
             });
 
         }).start();
+    }
+
+    private void townCountDown(){
+
+        if (Distance - 500 <= 15 || Distance - 1000 <= 15 || Distance - 1500 <= 15|| Distance - 2000 <= 15 || Distance - 2500 <= 15){
+
+            int addedDistance = 500;
+            Distance = addedDistance;
+            addedDistance += 500;
+            alt.alertMenu(1);
+            TownSelector++;
+        }
     }
 }
