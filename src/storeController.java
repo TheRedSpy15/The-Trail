@@ -1,4 +1,5 @@
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -31,7 +32,7 @@ public class StoreController extends Main {
 
                 Money -= cartValue;
 
-                Food += foodSlider.getValue();
+                setFood((int) foodSlider.getValue());
                 Ammo += ammoSlider.getValue();
                 Water += waterSlider.getValue();
 
@@ -56,7 +57,7 @@ public class StoreController extends Main {
 
         moneyLabel.setText("Money: $"+(int) Money);
         currentAmmo.setText("AMMO: "+Ammo);
-        currentFood.setText("FOOD: "+Food);
+        currentFood.setText("FOOD: "+getFood());
         currentWater.setText("WATER: "+Water);
     }
 }

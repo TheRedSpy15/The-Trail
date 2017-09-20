@@ -14,7 +14,7 @@ public class AlertBox extends Main {
     private Scene EmptyAlertScene;
     private Scene SettlementScene;
 
-    void alertMenu(int SceneSelect){
+    protected void alertMenu(int SceneSelect){
 
         IsMoving = false;
 
@@ -53,7 +53,7 @@ public class AlertBox extends Main {
         window.show();
     }
 
-    void thiefEncounter(){
+    protected void thiefEncounter(){
 
         VBox EncounterLayout = new VBox(10);
         EncounterLayout.setPadding(new Insets(40,20,20,20));

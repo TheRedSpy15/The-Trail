@@ -8,7 +8,7 @@ public class CareerPosse extends Main {
 
         // Posse scene
         try {
-            possePane = FXMLLoader.load(getClass().getResource("posseScene.fxml"));
+            setPossePane(FXMLLoader.load(getClass().getResource("posseScene.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }

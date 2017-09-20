@@ -29,14 +29,14 @@ public class Main extends Application{
     static Parent midStorePane;
     static Label EncounterLbl;
     private static Parent storePane;
-    static Parent possePane;
+    private static Parent possePane;
     static Parent travelPane;
 
     static LinkedList <String> PlayersArray = new LinkedList<>();
     static int HealthConditions = 100;
     static int Distance = 3000;
     static int Days = 0;
-    static int Food = 0;
+    private static int Food = 0;
     static int ThiefMoney;
     static boolean ThiefIsAlive;
     static int TownSelector = 0;
@@ -106,6 +106,22 @@ public class Main extends Application{
 
     static Parent getCareerAnchor() {
         return careerAnchor;
+    }
+
+    static Parent getPossePane() {
+        return possePane;
+    }
+
+    static void setPossePane(Parent possePane) {
+        Main.possePane = possePane;
+    }
+
+    static int getFood() {
+        return Food;
+    }
+
+    static void setFood(int food) {
+        Food = food;
     }
 
     @Override

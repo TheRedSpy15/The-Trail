@@ -46,10 +46,10 @@ public class TravelController extends Main {
 
                 ++Days;
                 Distance-=Pace;
-                Food=Food-(PlayersArray.size()*FoodIntake);
+                setFood(-(PlayersArray.size()*FoodIntake));
                 Water=Water-(PlayersArray.size()*FoodIntake);
 
-                if (Food < 0) Food = 0;
+                if (getFood() < 0) setFood(0);
                 if (Water < 0) Water = 0;
 
                 HealthClass.determineHealthCondition();

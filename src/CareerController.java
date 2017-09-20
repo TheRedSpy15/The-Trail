@@ -10,13 +10,13 @@ public class CareerController extends Main {
 
         Money = 7500;
         cp.posseSetupMethod();
-        Window.setScene(new Scene(possePane));
+        Window.setScene(new Scene(getPossePane()));
     }
 
     public void minerHandle() {
 
         Money = 5000;
         cp.posseSetupMethod();
-        Window.setScene(new Scene(possePane));
+        Window.setScene(new Scene(getPossePane()));
     }
 }

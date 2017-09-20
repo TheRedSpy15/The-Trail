@@ -41,7 +41,7 @@ public class MidGameMenu extends Main {
 
         VBox InventoryLayout = new VBox(5);
         Label Waterlbl = new Label("Water: "+Water);
-        Label Foodlbl = new Label("Food: "+Food);
+        Label Foodlbl = new Label("Food: "+getFood());
         Label Ammolbl = new Label("Ammo: "+Ammo);
         Label Moneylbl = new Label("Money: "+Money);
         Button Backbtn = new Button("Back");

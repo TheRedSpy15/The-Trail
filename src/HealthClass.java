@@ -24,17 +24,17 @@ public class HealthClass extends Main {
         switch (FoodIntake){
 
             case 1:
-                if (Food != 0) HealthConditions -= 5;
+                if (getFood() != 0) HealthConditions -= 5;
                 break;
             case 2:
-                if (Food != 0) HealthConditions+=1;
+                if (getFood() != 0) HealthConditions+=1;
                 break;
             case 3:
-                if (Food != 0) HealthConditions += 5;
+                if (getFood() != 0) HealthConditions += 5;
                 break;
         }
 
-        if (Food == 0){
+        if (getFood() == 0){
 
             if (Water == 0){
 
