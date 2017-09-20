@@ -105,7 +105,7 @@ public class AlertBox extends Main {
         Label SettlementLbl = new Label("You have come up to the town of "+TownList[TownSelector]);
         Label BountyLbl = new Label("");
         Button UseShop = new Button("Use shop");
-        UseShop.setOnAction(e -> window.setScene(new Scene(getStorePane())));
+        UseShop.setOnAction(e -> window.setScene(new Scene(midStorePane)));
         Button KeepGoing = new Button("Keep going");
         Button ClaimRewardBtn = new Button("Claim Thief Bounty");
         ClaimRewardBtn.setOnAction(e -> alt.bountyMethod());

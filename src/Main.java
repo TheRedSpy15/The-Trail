@@ -26,6 +26,7 @@ public class Main extends Application{
     private static Scene PaceScene;
     private static Label BountyLbl;
     private static Parent careerAnchor;
+    static Parent midStorePane;
     static Label EncounterLbl;
     private static Parent storePane;
     static Parent possePane;

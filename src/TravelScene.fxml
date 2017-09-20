@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -40,7 +41,7 @@
          <children>
             <Pane layoutX="2.0" layoutY="-27.0" prefHeight="163.0" prefWidth="300.0">
                <children>
-                  <Label id="distanceLabel" fx:id="distanceLabel" layoutX="27.0" layoutY="50.0" text="To go:  0Mi">
+                  <Label id="distanceLabel" fx:id="distanceLabel" layoutX="27.0" layoutY="50.0" text="To go:  3000Mi">
                      <font>
                         <Font name="DejaVu Sans Condensed Bold" size="26.0" />
                      </font>
