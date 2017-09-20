@@ -48,8 +48,6 @@ public class StoreController extends Main {
                 amountOver -= (Money - cartValue);
 
                 Alt.alertMenu(4);
-
-                initialize();
             }
         });
     }
@@ -57,6 +55,9 @@ public class StoreController extends Main {
     @FXML
     public void initialize(){
 
-        moneyLabel.setText("Money: $"+Money);
+        moneyLabel.setText("Money: $"+(int) Money);
+        currentAmmo.setText("AMMO: "+Ammo);
+        currentFood.setText("FOOD: "+Food);
+        currentWater.setText("WATER: "+Water);
     }
 }

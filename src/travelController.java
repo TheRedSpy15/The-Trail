@@ -1,4 +1,5 @@
 import javafx.application.Platform;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
@@ -101,13 +102,53 @@ public class TravelController extends Main {
 
     private void townCountDown(){
 
-        if (Distance - 500 <= 15 || Distance - 1000 <= 15 || Distance - 1500 <= 15|| Distance - 2000 <= 15 || Distance - 2500 <= 15){
+        if (Distance - 2500 <= 15){
 
-            int addedDistance = 500;
-            Distance = addedDistance;
-            addedDistance += 500;
+            Distance = 2485;
+            distanceLabel.setText("To go: "+Distance+"Mi");
             alt.alertMenu(1);
             TownSelector++;
         }
+
+        if (Distance - 2000 <= 15){
+
+            Distance = 1945;
+            distanceLabel.setText("To go: "+Distance+"Mi");
+            alt.alertMenu(1);
+            TownSelector++;
+        }
+
+        if (Distance - 1500 <= 15){
+
+            Distance = 1485;
+            distanceLabel.setText("To go: "+Distance+"Mi");
+            alt.alertMenu(1);
+            TownSelector++;
+        }
+
+        if (Distance - 1000 <= 15){
+
+            Distance = 985;
+            distanceLabel.setText("To go: "+Distance+"Mi");
+            alt.alertMenu(1);
+            TownSelector++;
+        }
+
+        if (Distance - 500 <= 15){
+
+            Distance = 485;
+            distanceLabel.setText("To go: "+Distance+"Mi");
+            alt.alertMenu(1);
+            TownSelector++;
+        }
+    }
+
+    @FXML
+    public void initialize(){
+
+        distanceLabel.setText("To go: "+Distance+"Mi");
+        conditionsLabel.setText("Condition: "+HealthConditions);
+        daysLabel.setText("Days: "+Days);
+        statusLabel.setText("Status: Resting");
     }
 }

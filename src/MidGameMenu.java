@@ -43,10 +43,11 @@ public class MidGameMenu extends Main {
         Label Waterlbl = new Label("Water: "+Water);
         Label Foodlbl = new Label("Food: "+Food);
         Label Ammolbl = new Label("Ammo: "+Ammo);
+        Label Moneylbl = new Label("Money: "+Money);
         Button Backbtn = new Button("Back");
         Backbtn.setOnAction(e -> MenuWindow.setScene(getMenuScene()));
         InventoryLayout.setPadding(new Insets(20,20,20,20));
-        InventoryLayout.getChildren().addAll(Waterlbl,Foodlbl,Ammolbl,Backbtn);
+        InventoryLayout.getChildren().addAll(Waterlbl,Foodlbl,Ammolbl,Moneylbl,Backbtn);
         InventoryScene = new Scene(InventoryLayout, 320,200);
     }
 
