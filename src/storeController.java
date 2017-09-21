@@ -1,5 +1,4 @@
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -42,6 +41,11 @@ public class StoreController extends Main {
                     e1.printStackTrace();
                 }
                 Window.setScene(new Scene(travelPane));
+
+                if (window.isShowing()){
+
+                    window.close();
+                }
 
             }else{
 

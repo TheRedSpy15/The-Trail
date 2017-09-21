@@ -62,6 +62,9 @@ public class TravelController extends Main {
                     conditionsLabel.setText("Condition: "+HealthConditions);
                     setOutBtn.setText("Speed up");
 
+                    //Thief encounter
+                    if (extremeLowChance()) alt.alertMenu(3);
+
                     // Settlement countdown
                     townCountDown();
 

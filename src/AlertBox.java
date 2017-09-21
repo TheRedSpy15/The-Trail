@@ -1,10 +1,11 @@
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-// import javafx.stage.Modality;
+import java.awt.event.ActionEvent;
 
 public class AlertBox extends Main {
 
@@ -53,12 +54,76 @@ public class AlertBox extends Main {
         window.show();
     }
 
+    private void runBackgroundTask(ActionEvent event){
+
+        new Thread(() -> Platform.runLater(() -> {
+
+            if (Ammo > 0){
+
+                EncounterLbl.setText("You shot a round!");
+
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                while (Ammo > 0 && ThiefIsAlive) for (int i = 0; i < 5; i++) {
+
+                    if (rand.nextBoolean()) {
+
+                        EncounterLbl.setText("You killed the thief!");
+                        ThiefIsAlive = false;
+
+                    }else{
+
+                        EncounterLbl.setText("You missed! Firing again!");
+                    }
+
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+
+            if (Ammo <= 0){
+
+                EncounterLbl.setText("You have no bullets and the thief got away with $"+ThiefMoney);
+                Money-=ThiefMoney;
+
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+
+                window.close();
+
+            }else{
+
+                EncounterLbl.setText("The thief got away with $"+ThiefMoney);
+                Money-=ThiefMoney;
+
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+
+                window.close();
+            }
+        })).start();
+    }
+
     protected void thiefEncounter(){
 
         VBox EncounterLayout = new VBox(10);
         EncounterLayout.setPadding(new Insets(40,20,20,20));
 
-        EncounterLbl = new Label("");
+        EncounterLbl = new Label("You have encountered a thief!");
         Button Choice1 = new Button("Let them go");
         Button Choice2 = new Button("Shoot them");
         Button Choice3 = new Button("Turn them in for a reward");
@@ -77,7 +142,7 @@ public class AlertBox extends Main {
             }
         });
 
-        Choice2.setOnAction(e -> thiefShootout());
+        Choice2.setOnAction(this::runBackgroundTask);
 
         Choice3.setOnAction(e -> {
 
@@ -108,91 +173,31 @@ public class AlertBox extends Main {
         UseShop.setOnAction(e -> window.setScene(new Scene(midStorePane)));
         Button KeepGoing = new Button("Keep going");
         Button ClaimRewardBtn = new Button("Claim Thief Bounty");
-        ClaimRewardBtn.setOnAction(e -> alt.bountyMethod());
+        ClaimRewardBtn.setOnAction(e -> {
+
+            if (TurnInThief){
+
+                bountyMethod();
+            }else{
+
+                getBountyLbl().setText("Sorry... you haven't caught anyone ( NO BOUNTY 4 U !! )");
+            }
+        });
         KeepGoing.setOnAction(e -> window.close());
         SettlementLayout.setPadding(new Insets(20,20,20,20));
         SettlementLayout.getChildren().addAll(SettlementLbl,BountyLbl,UseShop,KeepGoing,ClaimRewardBtn);
         SettlementScene = new Scene(SettlementLayout,320,300);
     }
 
-    // Triggered with Choice2 Button
-    private void thiefShootout(){
-
-        if (Ammo > 0){
-
-            EncounterLbl.setText("You shot a round!");
-
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            while (Ammo > 0 && ThiefIsAlive) for (int i = 0; i < 5; i++) {
-
-                if (rand.nextBoolean()) {
-
-                    EncounterLbl.setText("You killed the thief!");
-                    ThiefIsAlive = false;
-
-                }else{
-
-                    EncounterLbl.setText("You missed! Firing again!");
-                }
-
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-
-        }
-
-        if (Ammo <= 0){
-
-            EncounterLbl.setText("You have no bullets and the thief got away with $"+ThiefMoney);
-            Money-=ThiefMoney;
-
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-
-            window.close();
-
-        }else{
-
-            EncounterLbl.setText("The thief got away with $"+ThiefMoney);
-            Money-=ThiefMoney;
-
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-
-            window.close();
-        }
-    }
-
     protected void bountyMethod(){
 
         int MoneyToClaim;
 
-        if (TurnInThief){
+        MoneyToClaim = rand.nextInt(1000)+500;
 
-            MoneyToClaim = rand.nextInt(1000)+500;
+        getBountyLbl().setText("You have Claimed: $"+MoneyToClaim);
 
-            getBountyLbl().setText("You have Claimed: $"+MoneyToClaim);
-
-            Money+=MoneyToClaim;
-
-        }else {
-
-            getBountyLbl().setText("Sorry... you haven't caught anyone ( NO BOUNTY 4 U !! )");
-        }
+        Money+=MoneyToClaim;
     }
 
     private void notEnoughMoney(){

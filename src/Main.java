@@ -24,7 +24,7 @@ public class Main extends Application{
     static Stage window = new Stage();
     static Scene ThiefScene;
     private static Scene PaceScene;
-    private static Label BountyLbl;
+    private Label BountyLbl;
     private static Parent careerAnchor;
     static Parent midStorePane;
     static Label EncounterLbl;
@@ -88,7 +88,7 @@ public class Main extends Application{
         PaceScene = paceScene;
     }
 
-    static Label getBountyLbl() {
+    Label getBountyLbl() {
         return BountyLbl;
     }
 
@@ -122,6 +122,18 @@ public class Main extends Application{
 
     static void setFood(int food) {
         Food = food;
+    }
+
+    static boolean extremeLowChance(){
+
+        int Chance = rand.nextInt(1)+100;
+
+        if (Chance == 100){
+
+            return true;
+        }
+
+        return false;
     }
 
     @Override
