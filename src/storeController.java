@@ -31,7 +31,7 @@ public class StoreController extends Main {
 
                 Money -= cartValue;
 
-                Food += foodSlider.getValue();
+                setFood((int) foodSlider.getValue());
                 Ammo += ammoSlider.getValue();
                 Water += waterSlider.getValue();
 
@@ -41,13 +41,17 @@ public class StoreController extends Main {
                     e1.printStackTrace();
                 }
                 Window.setScene(new Scene(travelPane));
+
+                if (window.isShowing()){
+
+                    window.close();
+                }
+
             }else{
 
                 amountOver -= (Money - cartValue);
 
                 Alt.alertMenu(4);
-
-                initialize();
             }
         });
     }
@@ -55,6 +59,9 @@ public class StoreController extends Main {
     @FXML
     public void initialize(){
 
-        moneyLabel.setText("Money: $"+Money);
+        moneyLabel.setText("Money: $"+(int) Money);
+        currentAmmo.setText("AMMO: "+Ammo);
+        currentFood.setText("FOOD: "+getFood());
+        currentWater.setText("WATER: "+Water);
     }
 }

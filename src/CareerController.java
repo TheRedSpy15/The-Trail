@@ -8,15 +8,15 @@ public class CareerController extends Main {
 
     public void carpenterHandle() {
 
-        Money = 5000;
+        Money = 7500;
         cp.posseSetupMethod();
-        Window.setScene(new Scene(possePane));
+        Window.setScene(new Scene(getPossePane()));
     }
 
     public void minerHandle() {
 
-        Money = 2500;
+        Money = 5000;
         cp.posseSetupMethod();
-        Window.setScene(new Scene(possePane));
+        Window.setScene(new Scene(getPossePane()));
     }
 }

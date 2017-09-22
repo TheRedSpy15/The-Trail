@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -43,7 +41,7 @@
          <children>
             <Pane layoutX="2.0" layoutY="-27.0" prefHeight="163.0" prefWidth="300.0">
                <children>
-                  <Label id="distanceLabel" fx:id="distanceLabel" layoutX="27.0" layoutY="50.0" text="Distance: ">
+                  <Label id="distanceLabel" fx:id="distanceLabel" layoutX="27.0" layoutY="50.0" text="To go:  3000Mi">
                      <font>
                         <Font name="DejaVu Sans Condensed Bold" size="26.0" />
                      </font>
@@ -51,17 +49,17 @@
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
                   </Label>
-                  <Label id="conditionLabel" fx:id="conditionsLabel" layoutX="27.0" layoutY="93.0" text="Conditions: ">
+                  <Label id="conditionLabel" fx:id="conditionsLabel" layoutX="27.0" layoutY="93.0" text="Conditions: 100">
                      <font>
                         <Font name="DejaVu Sans Condensed Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label id="daysLabel" fx:id="daysLabel" layoutX="27.0" layoutY="25.0" text="Days: ">
+                  <Label id="daysLabel" fx:id="daysLabel" layoutX="27.0" layoutY="25.0" text="Days: 0">
                      <font>
                         <Font name="DejaVu Sans Condensed Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label id="daysLabel" fx:id="statusLabel" layoutX="27.0" layoutY="124.0" text="Status: ">
+                  <Label id="daysLabel" fx:id="statusLabel" layoutX="27.0" layoutY="124.0" text="Status: Resting">
                      <font>
                         <Font name="DejaVu Sans Condensed Bold" size="26.0" />
                      </font>

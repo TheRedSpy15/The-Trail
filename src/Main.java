@@ -16,36 +16,34 @@ import static javafx.scene.media.AudioClip.INDEFINITE;
 public class Main extends Application{
 
     static Stage Window;
-    static Scene FoodPortionsScene;
+    private static Scene FoodPortionsScene;
     static Stage MenuWindow;
-    static Scene MenuScene;
+    private static Scene MenuScene;
     static Scene InventoryScene;
     static Scene SickEventScene;
-    Stage window = new Stage();
+    static Stage window = new Stage();
     static Scene ThiefScene;
-    static Scene PaceScene;
-    static Label BountyLbl;
-    static Parent careerAnchor;
+    private static Scene PaceScene;
+    private final ThreadLocal<Label> BountyLbl = new ThreadLocal<>();
+    private static Parent careerAnchor;
+    static Parent midStorePane;
     static Label EncounterLbl;
-    static Parent storePane;
-    static Parent possePane;
+    private static Parent storePane;
+    private static Parent possePane;
     static Parent travelPane;
 
     static LinkedList <String> PlayersArray = new LinkedList<>();
     static int HealthConditions = 100;
     static int Distance = 3000;
     static int Days = 0;
-    static int Food = 0;
+    private static int Food = 0;
     static int ThiefMoney;
-    static int ArraySize = 6;
-    static int ArraySize2 = 6;
     static boolean ThiefIsAlive;
     static int TownSelector = 0;
     static int Ammo = 0;
     static int Water = 0;
     static double amountOver = 0;
     static double Money = 0;
-    static boolean BountyClaimable = false;
     static int Pace = 10;
     static int FoodIntake = 2;
     static Random rand = new Random();
@@ -55,7 +53,6 @@ public class Main extends Application{
     static TravelClass trvl = new TravelClass();
     static boolean IsMoving = false;
     static boolean TurnInThief = false;
-    static AlertBox alt = new AlertBox();
     static CareerPosse cp = new CareerPosse();
     static String TownList[]={"Cape Cod", "Fort Myers", "ST. Augustine", "Jacksonville", "Tallahassee"};
 
@@ -64,6 +61,75 @@ public class Main extends Application{
         Thread thread = new Thread(task);
         thread.start();
         launch(args);
+    }
+
+    static Scene getFoodPortionsScene() {
+        return FoodPortionsScene;
+    }
+
+    static void setFoodPortionsScene(Scene foodPortionsScene) {
+        FoodPortionsScene = foodPortionsScene;
+    }
+
+    static Scene getMenuScene() {
+        return MenuScene;
+    }
+
+    static void setMenuScene(Scene menuScene) {
+        MenuScene = menuScene;
+    }
+
+    static Scene getPaceScene() {
+        return PaceScene;
+    }
+
+    static void setPaceScene(Scene paceScene) {
+        PaceScene = paceScene;
+    }
+
+    Label getBountyLbl() {
+        return BountyLbl.get();
+    }
+
+    static void setCareerAnchor(Parent careerAnchor) {
+        Main.careerAnchor = careerAnchor;
+    }
+
+    static Parent getStorePane() {
+        return storePane;
+    }
+
+    static void setStorePane(Parent storePane) {
+        Main.storePane = storePane;
+    }
+
+    static Parent getCareerAnchor() {
+        return careerAnchor;
+    }
+
+    static Parent getPossePane() {
+        return possePane;
+    }
+
+    static void setPossePane(Parent possePane) {
+        Main.possePane = possePane;
+    }
+
+    static int getFood() {
+        return Food;
+    }
+
+    static void setFood(int food) {
+        Food = food;
+    }
+
+    static boolean extremeLowChance(){
+
+        int Chance = (int)(Math.random()*110+1);
+        System.out.println("Thief chance: "+Chance);
+
+        return Chance == 100;
+
     }
 
     @Override

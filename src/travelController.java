@@ -1,4 +1,5 @@
 import javafx.application.Platform;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
@@ -12,6 +13,7 @@ public class TravelController extends Main {
     public Label daysLabel;
     public Label statusLabel;
     private int HealthEventCooldown = 10;
+    private AlertBox alt = new AlertBox();
 
     public void stopMoving(){
 
@@ -43,31 +45,28 @@ public class TravelController extends Main {
                 EncounterChance = rand.nextInt(100)+1;
 
                 ++Days;
-                ArraySize = PlayersArray.size();
-                ArraySize2 = ArraySize;
                 Distance-=Pace;
-                Food=Food-(PlayersArray.size()*FoodIntake);
+                setFood(-(PlayersArray.size()*FoodIntake));
                 Water=Water-(PlayersArray.size()*FoodIntake);
 
-                if (Food < 0) Food = 0;
+                if (getFood() < 0) setFood(0);
                 if (Water < 0) Water = 0;
 
                 HealthClass.determineHealthCondition();
 
                 Platform.runLater(() -> {
                     // update the JavaFX UI Thread here when the task(s) above are done
-                    distanceLabel.setText("Distance: "+Distance);
+                    distanceLabel.setText("To go: "+Distance+"Mi");
                     daysLabel.setText("Days: "+Days);
                     statusLabel.setText("Status: Moving");
                     conditionsLabel.setText("Condition: "+HealthConditions);
                     setOutBtn.setText("Speed up");
 
-                    // Settlement countdown
-                    if (Distance == 2500 || Distance == 2000 || Distance == 1500 || Distance == 1000 || Distance == 500){
+                    //Thief encounter
+                    if (extremeLowChance()) alt.alertMenu(3);
 
-                        alt.alertMenu(1);
-                        TownSelector++;
-                    }
+                    // Settlement countdown
+                    townCountDown();
 
                     if (HealthEventCooldown >= 10){
 
@@ -79,7 +78,7 @@ public class TravelController extends Main {
                             alt.alertMenu(2);
                         }else if (EncounterChance >= 78){
 
-                            AlertBox.thiefEncounter();
+                            alt.thiefEncounter();
                         }
 
                         HealthEventCooldown = 0;
@@ -102,5 +101,57 @@ public class TravelController extends Main {
             });
 
         }).start();
+    }
+
+    private void townCountDown(){
+
+        if (Distance - 2500 <= 15){
+
+            Distance = 2485;
+            distanceLabel.setText("To go: "+Distance+"Mi");
+            alt.alertMenu(1);
+            TownSelector++;
+        }
+
+        if (Distance - 2000 <= 15){
+
+            Distance = 1945;
+            distanceLabel.setText("To go: "+Distance+"Mi");
+            alt.alertMenu(1);
+            TownSelector++;
+        }
+
+        if (Distance - 1500 <= 15){
+
+            Distance = 1485;
+            distanceLabel.setText("To go: "+Distance+"Mi");
+            alt.alertMenu(1);
+            TownSelector++;
+        }
+
+        if (Distance - 1000 <= 15){
+
+            Distance = 985;
+            distanceLabel.setText("To go: "+Distance+"Mi");
+            alt.alertMenu(1);
+            TownSelector++;
+        }
+
+        if (Distance - 500 <= 15){
+
+            Distance = 485;
+            distanceLabel.setText("To go: "+Distance+"Mi");
+            alt.alertMenu(1);
+            TownSelector++;
+        }
+    }
+
+    @FXML
+    public void initialize(){
+
+        distanceLabel.setText("To go: "+Distance+"Mi");
+        conditionsLabel.setText("Condition: "+HealthConditions);
+        daysLabel.setText("Days: "+Days);
+        statusLabel.setText("Status: Resting");
     }
 }
