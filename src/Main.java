@@ -24,7 +24,7 @@ public class Main extends Application{
     static Stage window = new Stage();
     static Scene ThiefScene;
     private static Scene PaceScene;
-    private Label BountyLbl;
+    private final ThreadLocal<Label> BountyLbl = new ThreadLocal<>();
     private static Parent careerAnchor;
     static Parent midStorePane;
     static Label EncounterLbl;
@@ -53,7 +53,6 @@ public class Main extends Application{
     static TravelClass trvl = new TravelClass();
     static boolean IsMoving = false;
     static boolean TurnInThief = false;
-    static AlertBox alt = new AlertBox();
     static CareerPosse cp = new CareerPosse();
     static String TownList[]={"Cape Cod", "Fort Myers", "ST. Augustine", "Jacksonville", "Tallahassee"};
 
@@ -89,7 +88,7 @@ public class Main extends Application{
     }
 
     Label getBountyLbl() {
-        return BountyLbl;
+        return BountyLbl.get();
     }
 
     static void setCareerAnchor(Parent careerAnchor) {
@@ -126,14 +125,11 @@ public class Main extends Application{
 
     static boolean extremeLowChance(){
 
-        int Chance = rand.nextInt(1)+100;
+        int Chance = (int)(Math.random()*110+1);
+        System.out.println("Thief chance: "+Chance);
 
-        if (Chance == 100){
+        return Chance == 100;
 
-            return true;
-        }
-
-        return false;
     }
 
     @Override

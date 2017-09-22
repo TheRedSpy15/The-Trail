@@ -5,7 +5,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import java.awt.event.ActionEvent;
 
 public class AlertBox extends Main {
 
@@ -54,7 +53,7 @@ public class AlertBox extends Main {
         window.show();
     }
 
-    private void runBackgroundTask(ActionEvent event){
+    private void runBackgroundTask2(){
 
         new Thread(() -> Platform.runLater(() -> {
 
@@ -142,7 +141,7 @@ public class AlertBox extends Main {
             }
         });
 
-        Choice2.setOnAction(this::runBackgroundTask);
+        Choice2.setOnAction(event -> runBackgroundTask2());
 
         Choice3.setOnAction(e -> {
 
