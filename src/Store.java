@@ -7,9 +7,10 @@ public class Store extends Main {
 
         // Store
         try {
-            setStorePane(FXMLLoader.load(Main.class.getResource("storeScene.fxml")));
+            storePane = FXMLLoader.load(Main.class.getResource("storeScene.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
+        storePane.setStyle("-fx-background-color: #36454f");
     }
 }

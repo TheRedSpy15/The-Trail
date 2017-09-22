@@ -25,11 +25,11 @@ public class Main extends Application{
     static Scene ThiefScene;
     private static Scene PaceScene;
     private final ThreadLocal<Label> BountyLbl = new ThreadLocal<>();
-    private static Parent careerAnchor;
+    static Parent careerAnchor;
     static Parent midStorePane;
     static Label EncounterLbl;
-    private static Parent storePane;
-    private static Parent possePane;
+    static Parent storePane;
+    static Parent possePane;
     static Parent travelPane;
 
     static LinkedList <String> PlayersArray = new LinkedList<>();
@@ -91,30 +91,6 @@ public class Main extends Application{
         return BountyLbl.get();
     }
 
-    static void setCareerAnchor(Parent careerAnchor) {
-        Main.careerAnchor = careerAnchor;
-    }
-
-    static Parent getStorePane() {
-        return storePane;
-    }
-
-    static void setStorePane(Parent storePane) {
-        Main.storePane = storePane;
-    }
-
-    static Parent getCareerAnchor() {
-        return careerAnchor;
-    }
-
-    static Parent getPossePane() {
-        return possePane;
-    }
-
-    static void setPossePane(Parent possePane) {
-        Main.possePane = possePane;
-    }
-
     static int getFood() {
         return Food;
     }
@@ -126,7 +102,6 @@ public class Main extends Application{
     static boolean extremeLowChance(){
 
         int Chance = (int)(Math.random()*110+1);
-        System.out.println("Thief chance: "+Chance);
 
         return Chance == 100;
 
@@ -140,6 +115,7 @@ public class Main extends Application{
         // Start
         Window = primaryStage;
         Window.setTitle("The Trail");
+        mainAnchor.setStyle("-fx-background-color: #36454f");
         Window.setScene(new Scene(mainAnchor));
         Window.show();
     }

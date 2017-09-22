@@ -5,27 +5,28 @@ import javafx.scene.control.Label;
 
 public class TravelController extends Main {
 
-    public Button menuBtn;
-    public Button stopBtn;
-    public Button setOutBtn;
-    public Label distanceLabel;
-    public Label conditionsLabel;
-    public Label daysLabel;
-    public Label statusLabel;
+    @FXML private Button setOutBtn;
+    @FXML private Label distanceLabel;
+    @FXML private Label conditionsLabel;
+    @FXML private Label daysLabel;
+    @FXML private Label statusLabel;
     private int HealthEventCooldown = 10;
     private AlertBox alt = new AlertBox();
 
-    public void stopMoving(){
+    @FXML
+    private void stopMoving(){
 
         IsMoving = false;
     }
 
-    public void setout(){
+    @FXML
+    private void setout(){
 
         runBackgroundTask();
     }
 
-    public void menu(){
+    @FXML
+    private void menu(){
 
         IsMoving = false;
         MidGameMenu.menuMethod();

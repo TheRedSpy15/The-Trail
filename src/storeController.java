@@ -3,29 +3,28 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
-
 import java.io.IOException;
 
 public class StoreController extends Main {
 
-    public Slider waterSlider;
-    public Slider foodSlider;
-    public Slider ammoSlider;
-    public Button purchaseBtn;
-    public Label moneyLabel;
-
+    @FXML private Slider waterSlider;
+    @FXML private Slider foodSlider;
+    @FXML private Slider ammoSlider;
+    @FXML private Button purchaseBtn;
+    @FXML private Label moneyLabel;
+    @FXML private Label currentWater;
+    @FXML private Label currentFood;
+    @FXML private Label currentAmmo;
     private static AlertBox Alt = new AlertBox();
-    public Label currentWater;
-    public Label currentFood;
-    public Label currentAmmo;
 
-    public void purchase(){
+    @FXML
+    private void purchase(){
 
         purchaseBtn.setOnAction(e -> {
 
             double cartValue;
 
-            cartValue = (waterSlider.getValue() * 5) + (foodSlider.getValue() * 10) + (ammoSlider.getValue() * 25);
+            cartValue = (waterSlider.getValue() * 0.10) + (foodSlider.getValue() * 0.20) + (ammoSlider.getValue() * 5);
 
             if (Money >= cartValue){
 
@@ -63,5 +62,8 @@ public class StoreController extends Main {
         currentAmmo.setText("AMMO: "+Ammo);
         currentFood.setText("FOOD: "+getFood());
         currentWater.setText("WATER: "+Water);
+        waterSlider.setMax((int) (Math.random() * 500) + 250);
+        ammoSlider.setMax((int) (Math.random() * 500) + 250);
+        foodSlider.setMax((int) (Math.random() * 100));
     }
 }

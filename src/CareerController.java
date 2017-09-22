@@ -1,22 +1,29 @@
+import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 
 public class CareerController extends Main {
 
-    public Button carpenterBtn;
-    public Button minerBtn;
+    @FXML
+    private void carpenterHandle() {
 
-    public void carpenterHandle() {
-
-        Money = 7500;
+        Money = 3000;
         cp.posseSetupMethod();
-        Window.setScene(new Scene(getPossePane()));
+        Window.setScene(new Scene(possePane));
     }
 
-    public void minerHandle() {
+    @FXML
+    private void minerHandle() {
 
-        Money = 5000;
+        Money = 1500;
         cp.posseSetupMethod();
-        Window.setScene(new Scene(getPossePane()));
+        Window.setScene(new Scene(possePane));
+    }
+
+    @FXML
+    private void farmerHandle() {
+
+        Money = 1000;
+        cp.posseSetupMethod();
+        Window.setScene(new Scene(possePane));
     }
 }

@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="250.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StartController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3c1a01" height="277.0" stroke="BLACK" strokeType="INSIDE" width="306.0" />
    
-       <Label layoutX="88.0" layoutY="14.0" prefHeight="49.0" prefWidth="125.0" text="The Trail" textFill="#9e5c1f">
+       <Label layoutX="59.0" layoutY="14.0" prefHeight="49.0" prefWidth="182.0" text="The Trail" textFill="WHITE">
          <font>
-            <Font name="DejaVu Sans Condensed Bold" size="26.0" />
+            <Font name="Comic Sans MS Bold" size="38.0" />
          </font>
       </Label>
-       <Button fx:id="button" layoutX="73.0" layoutY="75.0" onAction="#handleButtonClick" prefHeight="100.0" prefWidth="154.0" text="Start" textFill="#a46021">
+       <Button fx:id="button" layoutX="73.0" layoutY="75.0" onAction="#handleButtonClick" prefHeight="100.0" prefWidth="154.0" text="Start">
          <font>
             <Font name="DejaVu Sans Condensed Bold" size="22.0" />
          </font>

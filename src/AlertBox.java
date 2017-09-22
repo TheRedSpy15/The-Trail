@@ -213,6 +213,7 @@ public class AlertBox extends Main {
     private void emptyNames(){
 
         StackPane EmptyNameLayout = new StackPane();
+        EmptyNameLayout.setStyle("-fx-background-color: #cf1020");
         Label label = new Label("Text fields cannot be blank!");
         EmptyNameLayout.setPadding(new Insets(20,20,20,20));
         EmptyNameLayout.getChildren().add(label);

@@ -31,6 +31,7 @@ public class MidGameMenu extends Main {
         });
         Button Hunt = new Button("Go hunting");
         VBox MenuLayout = new VBox(10);
+        MenuLayout.setStyle("-fx-background-color: #36454f");
         MenuLayout.getChildren().addAll(SetPace,SetMealPortions,Hunt,ViewInventory);
         MenuLayout.setPadding(new Insets(20,20,20,20));
         setMenuScene(new Scene(MenuLayout,300,180));
@@ -40,6 +41,7 @@ public class MidGameMenu extends Main {
     private static void inventoryMethod(){
 
         VBox InventoryLayout = new VBox(5);
+        InventoryLayout.setStyle("-fx-background-color: #36454f");
         Label Waterlbl = new Label("Water: "+Water);
         Label Foodlbl = new Label("Food: "+getFood());
         Label Ammolbl = new Label("Ammo: "+Ammo);
@@ -55,6 +57,7 @@ public class MidGameMenu extends Main {
     private static void foodPortionSet(){
 
         VBox FoodPortionsLayout = new VBox(10);
+        FoodPortionsLayout.setStyle("-fx-background-color: #36454f");
         Button ExtremeDietbtn = new Button("Extreme");
         ExtremeDietbtn.setOnAction(e -> {
             FoodIntake = 1;
@@ -79,6 +82,7 @@ public class MidGameMenu extends Main {
     private static void paceSetterMethod(){
 
         VBox PaceLayout = new VBox(10);
+        PaceLayout.setStyle("-fx-background-color: #36454f");
         Label PaceLbl = new Label("Choose a speed");
         Button Slowbtn = new Button("Slow pace");
         Button ModerateSpeedbtn = new Button("Moderate pace");

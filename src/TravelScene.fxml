@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -19,17 +17,17 @@
    <children>
       <Pane prefHeight="133.0" prefWidth="314.0" GridPane.rowIndex="2">
          <children>
-            <Button id="menuBtn" fx:id="menuBtn" layoutY="54.0" mnemonicParsing="false" onAction="#menu" prefHeight="44.0" prefWidth="103.0" text="Menu">
+            <Button id="menuBtn" fx:id="menuBtn" layoutX="5.0" layoutY="54.0" mnemonicParsing="false" onAction="#menu" prefHeight="44.0" prefWidth="98.0" text="Menu">
                <font>
                   <Font name="DejaVu Serif Bold" size="14.0" />
                </font>
             </Button>
-            <Button id="stopBtn" fx:id="stopBtn" layoutX="98.0" layoutY="54.0" mnemonicParsing="false" onAction="#stopMoving" prefHeight="44.0" prefWidth="92.0" text="Stop">
+            <Button id="stopBtn" fx:id="stopBtn" layoutX="108.0" layoutY="54.0" mnemonicParsing="false" onAction="#stopMoving" prefHeight="44.0" prefWidth="76.0" text="Stop">
                <font>
                   <Font name="DejaVu Serif Bold" size="14.0" />
                </font>
             </Button>
-            <Button id="setoutBtn" fx:id="setOutBtn" layoutX="189.0" layoutY="54.0" mnemonicParsing="false" onAction="#setout" prefHeight="44.0" prefWidth="103.0" text="Set out">
+            <Button id="setoutBtn" fx:id="setOutBtn" layoutX="189.0" layoutY="54.0" mnemonicParsing="false" onAction="#setout" prefHeight="44.0" prefWidth="98.0" text="Set out">
                <font>
                   <Font name="DejaVu Serif Bold" size="14.0" />
                </font>
@@ -41,7 +39,7 @@
          <children>
             <Pane layoutX="2.0" layoutY="-27.0" prefHeight="163.0" prefWidth="300.0">
                <children>
-                  <Label id="distanceLabel" fx:id="distanceLabel" layoutX="27.0" layoutY="50.0" text="To go:  3000Mi">
+                  <Label id="distanceLabel" fx:id="distanceLabel" layoutX="27.0" layoutY="50.0" text="To go:  3000Mi" textFill="WHITE">
                      <font>
                         <Font name="DejaVu Sans Condensed Bold" size="26.0" />
                      </font>
@@ -49,17 +47,17 @@
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
                   </Label>
-                  <Label id="conditionLabel" fx:id="conditionsLabel" layoutX="27.0" layoutY="93.0" text="Conditions: 100">
+                  <Label id="conditionLabel" fx:id="conditionsLabel" layoutX="27.0" layoutY="93.0" text="Conditions: 100" textFill="WHITE">
                      <font>
                         <Font name="DejaVu Sans Condensed Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label id="daysLabel" fx:id="daysLabel" layoutX="27.0" layoutY="25.0" text="Days: 0">
+                  <Label id="daysLabel" fx:id="daysLabel" layoutX="27.0" layoutY="25.0" text="Days: 0" textFill="WHITE">
                      <font>
                         <Font name="DejaVu Sans Condensed Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label id="daysLabel" fx:id="statusLabel" layoutX="27.0" layoutY="124.0" text="Status: Resting">
+                  <Label id="daysLabel" fx:id="statusLabel" layoutX="27.0" layoutY="124.0" text="Status: Resting" textFill="WHITE">
                      <font>
                         <Font name="DejaVu Sans Condensed Bold" size="26.0" />
                      </font>

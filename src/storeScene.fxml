@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
@@ -10,7 +9,7 @@
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Region prefHeight="100.0" prefWidth="438.0" HBox.hgrow="ALWAYS" />
-            <Label fx:id="moneyLabel" prefHeight="80.0" prefWidth="449.0" text="Money: ">
+            <Label fx:id="moneyLabel" prefHeight="80.0" prefWidth="449.0" text="Money: " textFill="WHITE">
                <font>
                   <Font name="DejaVu Sans Condensed Bold" size="27.0" />
                </font>
@@ -24,7 +23,7 @@
    <left>
       <VBox prefHeight="300.0" prefWidth="182.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="PURCHASE">
+            <Label text="PURCHASE" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -66,7 +65,7 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="5.0" prefWidth="146.0" text="Water $5">
+            <Label prefHeight="5.0" prefWidth="146.0" text="Water $0.10" textFill="WHITE">
                <padding>
                   <Insets left="10.0" top="30.0" />
                </padding>
@@ -77,7 +76,7 @@
                   <Insets />
                </VBox.margin>
             </Label>
-            <Label prefHeight="38.0" prefWidth="134.0" text="Food $10">
+            <Label prefHeight="38.0" prefWidth="134.0" text="Food $0.20" textFill="WHITE">
                <padding>
                   <Insets left="10.0" top="15.0" />
                </padding>
@@ -85,7 +84,7 @@
                   <Font name="DejaVu Sans Bold" size="18.0" />
                </font>
             </Label>
-            <Label prefHeight="18.0" prefWidth="148.0" text="Ammo $25">
+            <Label prefHeight="18.0" prefWidth="148.0" text="Ammo $5" textFill="WHITE">
                <padding>
                   <Insets left="10.0" top="15.0" />
                </padding>
@@ -99,14 +98,14 @@
    <right>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="17.0" prefWidth="91.0" text="INVENTORY">
+            <Label prefHeight="17.0" prefWidth="91.0" text="INVENTORY" textFill="WHITE">
                <font>
                   <Font name="DejaVu Sans Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="currentWater" text="WATER: 0" />
-            <Label fx:id="currentFood" text="FOOD: 0" />
-            <Label fx:id="currentAmmo" text="AMMO: 0" />
+            <Label fx:id="currentWater" text="WATER: 0" textFill="WHITE" />
+            <Label fx:id="currentFood" text="FOOD: 0" textFill="WHITE" />
+            <Label fx:id="currentAmmo" text="AMMO: 0" textFill="WHITE" />
          </children>
       </VBox>
    </right>

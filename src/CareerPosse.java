@@ -1,5 +1,4 @@
 import javafx.fxml.FXMLLoader;
-
 import java.io.IOException;
 
 public class CareerPosse extends Main {
@@ -8,15 +7,17 @@ public class CareerPosse extends Main {
 
         // Posse scene
         try {
-            setPossePane(FXMLLoader.load(getClass().getResource("posseScene.fxml")));
+            possePane = FXMLLoader.load(getClass().getResource("posseScene.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
+        possePane.setStyle("-fx-background-color: #36454f");
     }
 
-    void careerPicker() throws IOException {
+    protected void careerPicker() throws IOException {
 
         // Career scene
-        setCareerAnchor(FXMLLoader.load(getClass().getResource("CareerScene.fxml"))) ;
+        careerAnchor = FXMLLoader.load(getClass().getResource("CareerScene.fxml"));
+        careerAnchor.setStyle("-fx-background-color: #36454f");
     }
 }
