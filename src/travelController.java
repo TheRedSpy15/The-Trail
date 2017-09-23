@@ -20,7 +20,7 @@ public class TravelController extends Main {
     }
 
     @FXML
-    private void setout(){
+    private void setOut(){
 
         runBackgroundTask();
     }
@@ -47,10 +47,10 @@ public class TravelController extends Main {
 
                 ++Days;
                 Distance-=Pace;
-                setFood(-(PlayersArray.size()*FoodIntake));
+                Food -= (PlayersArray.size()*FoodIntake);
                 Water=Water-(PlayersArray.size()*FoodIntake);
 
-                if (getFood() < 0) setFood(0);
+                if (Food < 0) Food = 0;
                 if (Water < 0) Water = 0;
 
                 HealthClass.determineHealthCondition();
@@ -64,7 +64,7 @@ public class TravelController extends Main {
                     setOutBtn.setText("Speed up");
 
                     //Thief encounter
-                    if (extremeLowChance()) alt.alertMenu(3);
+                    if (extremeLowChance()) alt.thiefEncounter();
 
                     // Settlement countdown
                     townCountDown();
@@ -76,7 +76,7 @@ public class TravelController extends Main {
                             System.out.println(SickEventChance);
                             PlayerSelectForEvent = PlayersArray.size();
                             PlayerSelectForEvent-=1;
-                            alt.alertMenu(2);
+                            HealthClass.poorHealthEvent();
                         }else if (EncounterChance >= 78){
 
                             alt.thiefEncounter();
@@ -87,6 +87,8 @@ public class TravelController extends Main {
                 });
 
                 HealthEventCooldown++;
+
+                if (!IsMoving) break;
 
                 try {
                     Thread.sleep(2400);
@@ -110,7 +112,7 @@ public class TravelController extends Main {
 
             Distance = 2485;
             distanceLabel.setText("To go: "+Distance+"Mi");
-            alt.alertMenu(1);
+            alt.townEvent();
             TownSelector++;
         }
 
@@ -118,7 +120,7 @@ public class TravelController extends Main {
 
             Distance = 1945;
             distanceLabel.setText("To go: "+Distance+"Mi");
-            alt.alertMenu(1);
+            alt.townEvent();
             TownSelector++;
         }
 
@@ -126,7 +128,7 @@ public class TravelController extends Main {
 
             Distance = 1485;
             distanceLabel.setText("To go: "+Distance+"Mi");
-            alt.alertMenu(1);
+            alt.townEvent();
             TownSelector++;
         }
 
@@ -134,7 +136,7 @@ public class TravelController extends Main {
 
             Distance = 985;
             distanceLabel.setText("To go: "+Distance+"Mi");
-            alt.alertMenu(1);
+            alt.townEvent();
             TownSelector++;
         }
 
@@ -142,8 +144,7 @@ public class TravelController extends Main {
 
             Distance = 485;
             distanceLabel.setText("To go: "+Distance+"Mi");
-            alt.alertMenu(1);
-            TownSelector++;
+            alt.townEvent();
         }
     }
 

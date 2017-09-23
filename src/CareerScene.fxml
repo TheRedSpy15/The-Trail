@@ -5,9 +5,9 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CareerController">
    <children>
-      <Label layoutX="207.0" layoutY="14.0" prefHeight="46.0" prefWidth="187.0" text="Pick a career" textFill="WHITE">
+      <Label layoutX="147.0" layoutY="14.0" prefHeight="57.0" prefWidth="306.0" text="Pick a career" textFill="WHITE">
          <font>
-            <Font name="DejaVu Sans Condensed Bold" size="27.0" />
+            <Font name="DejaVu Sans Condensed Bold" size="45.0" />
          </font>
       </Label>
       <HBox layoutX="47.0" layoutY="150.0" prefHeight="149.0" prefWidth="528.0">
@@ -22,7 +22,7 @@
                   <Font name="DejaVu Serif Bold" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="farmerBtn" onAction="#farmerHandle" mnemonicParsing="false" prefHeight="99.0" prefWidth="168.0" text="Farmer">
+            <Button fx:id="farmerBtn" mnemonicParsing="false" onAction="#farmerHandle" prefHeight="99.0" prefWidth="168.0" text="Farmer">
                <font>
                   <Font name="DejaVu Sans Condensed Bold" size="20.0" />
                </font>

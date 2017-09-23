@@ -31,7 +31,7 @@ public class PosseController extends Main {
         }
         else {
 
-            alt.alertMenu(5);
+            alt.emptyNames();
         }
     }
 }

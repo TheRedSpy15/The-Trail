@@ -24,13 +24,13 @@ public class StoreController extends Main {
 
             double cartValue;
 
-            cartValue = (waterSlider.getValue() * 0.10) + (foodSlider.getValue() * 0.20) + (ammoSlider.getValue() * 5);
+            cartValue = (waterSlider.getValue() * 0.25) + (foodSlider.getValue() * 0.50) + (ammoSlider.getValue() * 5);
 
             if (Money >= cartValue){
 
                 Money -= cartValue;
 
-                setFood((int) foodSlider.getValue());
+                Food = (int) foodSlider.getValue();
                 Ammo += ammoSlider.getValue();
                 Water += waterSlider.getValue();
 
@@ -50,7 +50,7 @@ public class StoreController extends Main {
 
                 amountOver -= (Money - cartValue);
 
-                Alt.alertMenu(4);
+                Alt.notEnoughMoney();
             }
         });
     }
@@ -60,10 +60,10 @@ public class StoreController extends Main {
 
         moneyLabel.setText("Money: $"+(int) Money);
         currentAmmo.setText("AMMO: "+Ammo);
-        currentFood.setText("FOOD: "+getFood());
+        currentFood.setText("FOOD: "+Food);
         currentWater.setText("WATER: "+Water);
-        waterSlider.setMax((int) (Math.random() * 500) + 250);
-        ammoSlider.setMax((int) (Math.random() * 500) + 250);
-        foodSlider.setMax((int) (Math.random() * 100));
+        waterSlider.setMax((int) (Math.random() * 1000) + 250);
+        foodSlider.setMax((int) (Math.random() * 1000) + 250);
+        ammoSlider.setMax((int) (Math.random() * 100));
     }
 }

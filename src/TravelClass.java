@@ -8,7 +8,5 @@ public class TravelClass extends Main {
 
         travelPane = FXMLLoader.load(Main.class.getResource("TravelScene.fxml"));
         travelPane.setStyle("-fx-background-color: #36454f");
-
-        midStorePane = FXMLLoader.load(Main.class.getResource("storeScene.fxml"));
     }
 }

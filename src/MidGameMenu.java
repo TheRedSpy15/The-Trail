@@ -43,9 +43,9 @@ public class MidGameMenu extends Main {
         VBox InventoryLayout = new VBox(5);
         InventoryLayout.setStyle("-fx-background-color: #36454f");
         Label Waterlbl = new Label("Water: "+Water);
-        Label Foodlbl = new Label("Food: "+getFood());
+        Label Foodlbl = new Label("Food: "+Food);
         Label Ammolbl = new Label("Ammo: "+Ammo);
-        Label Moneylbl = new Label("Money: "+Money);
+        Label Moneylbl = new Label("Money: "+(int)Money);
         Button Backbtn = new Button("Back");
         Backbtn.setOnAction(e -> MenuWindow.setScene(getMenuScene()));
         InventoryLayout.setPadding(new Insets(20,20,20,20));

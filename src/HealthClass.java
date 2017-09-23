@@ -24,17 +24,17 @@ public class HealthClass extends Main {
         switch (FoodIntake){
 
             case 1:
-                if (getFood() != 0) HealthConditions -= 5;
+                if (Food != 0) HealthConditions -= 5;
                 break;
             case 2:
-                if (getFood() != 0) HealthConditions+=1;
+                if (Food != 0) HealthConditions+=1;
                 break;
             case 3:
-                if (getFood() != 0) HealthConditions += 5;
+                if (Food != 0) HealthConditions += 5;
                 break;
         }
 
-        if (getFood() == 0){
+        if (Food == 0){
 
             if (Water == 0){
 
@@ -49,7 +49,7 @@ public class HealthClass extends Main {
     }
 
     // Events to happen with poor health conditions
-    void poorHealthEvent(){
+    protected static void poorHealthEvent(){
 
         VBox PoorHealthLayout = new VBox(10);
         PoorHealthLayout.setPadding(new Insets(40,20,20,20));
@@ -58,10 +58,11 @@ public class HealthClass extends Main {
 
         PoorHealthLayout.getChildren().add(SickEventLbl);
         SickEventScene = new Scene(PoorHealthLayout,320,200);
+        window.setScene(SickEventScene);
 
         if (SickEventChance <= 10){
 
-            SickEventLbl.setText(PlayersArray.get(PlayerSelectForEvent)+" did not wake up...");
+            SickEventLbl.setText(PlayersArray.get(PlayerSelectForEvent)+" Passed away...");
 
             HealthConditions+=60;
 
@@ -103,6 +104,11 @@ public class HealthClass extends Main {
                     HealthConditions+=10;
                     break;
             }
+        }
+
+        if (PlayersArray.size() <= 0){
+
+            AlertBox.gameOver();
         }
     }
 }

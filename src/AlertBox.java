@@ -5,52 +5,23 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 
 public class AlertBox extends Main {
 
     private HealthClass hlt = new HealthClass();
-    private Scene notEnoughMoneyScene;
-    private Scene EmptyNameScene;
-    private Scene EmptyAlertScene;
-    private Scene SettlementScene;
+    protected Scene notEnoughMoneyScene;
+    protected Scene EmptyNameScene;
+    protected Scene SettlementScene;
+    private Label bountyLbl;
 
-    protected void alertMenu(int SceneSelect){
+    protected static void alertMenuStart(){
 
         IsMoving = false;
 
         //Block events to other windows
-        //window.initModality(Modality.APPLICATION_MODAL);
+        window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Event");
-
-        switch (SceneSelect){
-
-            case 1:
-                townEvent();
-                window.setScene(SettlementScene);
-                break;
-            case 2:
-                hlt.poorHealthEvent();
-                window.setScene(SickEventScene);
-                break;
-            case 3:
-                thiefEncounter();
-                window.setScene(ThiefScene);
-                break;
-            case 4:
-                notEnoughMoney();
-                window.setScene(notEnoughMoneyScene);
-                break;
-            case 5:
-                emptyNames();
-                window.setScene(EmptyNameScene);
-                break;
-            default:
-                emptyAlert();
-                window.setScene(EmptyAlertScene);
-                break;
-        }
-
-        window.show();
     }
 
     private void runBackgroundTask2(){
@@ -139,6 +110,8 @@ public class AlertBox extends Main {
             } catch (InterruptedException e1) {
                 e1.printStackTrace();
             }
+
+            window.close();
         });
 
         Choice2.setOnAction(event -> runBackgroundTask2());
@@ -148,26 +121,34 @@ public class AlertBox extends Main {
             TurnInThief = true;
 
             EncounterLbl.setText("At the next settlement you will receive the reward");
+
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
+
+            window.close();
         });
 
         EncounterLayout.getChildren().addAll(EncounterLbl,Choice1,Choice2,Choice3);
         ThiefScene = new Scene(EncounterLayout, 320,300);
+        window.setScene(ThiefScene);
+        window.show();
 
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        window.close();
     }
 
-    private void townEvent() {
+    protected void townEvent() {
 
         // Settlement Scene
         VBox SettlementLayout = new VBox(10);
         Label SettlementLbl = new Label("You have come up to the town of "+TownList[TownSelector]);
-        Label BountyLbl = new Label("");
+        bountyLbl = new Label("");
         Button UseShop = new Button("Use shop");
         UseShop.setOnAction(e -> window.setScene(new Scene(midStorePane)));
         Button KeepGoing = new Button("Keep going");
@@ -179,13 +160,19 @@ public class AlertBox extends Main {
                 bountyMethod();
             }else{
 
-                getBountyLbl().setText("Sorry... you haven't caught anyone ( NO BOUNTY 4 U !! )");
+                bountyLbl.setText("Sorry... you haven't caught anyone ( NO BOUNTY 4 U !! )");
             }
         });
-        KeepGoing.setOnAction(e -> window.close());
+        KeepGoing.setOnAction(e -> {
+
+            Distance -= 16;
+            window.close();
+        });
         SettlementLayout.setPadding(new Insets(20,20,20,20));
-        SettlementLayout.getChildren().addAll(SettlementLbl,BountyLbl,UseShop,KeepGoing,ClaimRewardBtn);
+        SettlementLayout.getChildren().addAll(SettlementLbl,bountyLbl,UseShop,KeepGoing,ClaimRewardBtn);
         SettlementScene = new Scene(SettlementLayout,320,300);
+        window.setScene(SettlementScene);
+        window.show();
     }
 
     protected void bountyMethod(){
@@ -194,23 +181,25 @@ public class AlertBox extends Main {
 
         MoneyToClaim = rand.nextInt(1000)+500;
 
-        getBountyLbl().setText("You have Claimed: $"+MoneyToClaim);
+        bountyLbl.setText("You have Claimed: $"+MoneyToClaim);
 
         Money+=MoneyToClaim;
     }
 
-    private void notEnoughMoney(){
+    protected void notEnoughMoney(){
 
         StackPane ntEnoughMoneyLayout = new StackPane();
         Label label = new Label("Amount over: "+ (int) amountOver);
         ntEnoughMoneyLayout.setPadding(new Insets(20,20,20,20));
         ntEnoughMoneyLayout.getChildren().add(label);
         notEnoughMoneyScene = new Scene(ntEnoughMoneyLayout,300,250);
+        window.setScene(notEnoughMoneyScene);
+        window.show();
 
         amountOver = 0;
     }
 
-    private void emptyNames(){
+    protected void emptyNames(){
 
         StackPane EmptyNameLayout = new StackPane();
         EmptyNameLayout.setStyle("-fx-background-color: #cf1020");
@@ -218,14 +207,22 @@ public class AlertBox extends Main {
         EmptyNameLayout.setPadding(new Insets(20,20,20,20));
         EmptyNameLayout.getChildren().add(label);
         EmptyNameScene = new Scene(EmptyNameLayout,300,250);
+        window.setScene(EmptyNameScene);
+        window.show();
     }
 
-    private void emptyAlert(){
+    protected static void gameOver(){
 
-        StackPane EmptyAlertLayout = new StackPane();
-        Label label = new Label("ERROR: No alertbox scene selected!");
-        EmptyAlertLayout.setPadding(new Insets(20,20,20,20));
-        EmptyAlertLayout.getChildren().add(label);
-        EmptyAlertScene = new Scene(EmptyAlertLayout,300,250);
+        // Need a button that closes the whole program
+        // and on x-ing out, close whole program
+
+        StackPane GameOverSP = new StackPane();
+        GameOverSP.setStyle("-fx-background-color: #cf1020");
+        GameOverSP.setPadding(new Insets(20,20,20,20));
+        Label label = new Label("Your whole posse has died. GAME OVER");
+        GameOverSP.getChildren().add(label);
+        Scene GameOverSC = new Scene(GameOverSP,300,250);
+        window.setScene(GameOverSC);
+        window.show();
     }
 }

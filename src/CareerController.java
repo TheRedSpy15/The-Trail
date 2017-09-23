@@ -6,7 +6,7 @@ public class CareerController extends Main {
     @FXML
     private void carpenterHandle() {
 
-        Money = 3000;
+        Money = 1500;
         cp.posseSetupMethod();
         Window.setScene(new Scene(possePane));
     }
@@ -14,7 +14,7 @@ public class CareerController extends Main {
     @FXML
     private void minerHandle() {
 
-        Money = 1500;
+        Money = 1000;
         cp.posseSetupMethod();
         Window.setScene(new Scene(possePane));
     }
@@ -22,7 +22,7 @@ public class CareerController extends Main {
     @FXML
     private void farmerHandle() {
 
-        Money = 1000;
+        Money = 500;
         cp.posseSetupMethod();
         Window.setScene(new Scene(possePane));
     }

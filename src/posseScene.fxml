@@ -8,9 +8,9 @@
    <center>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="56.0" prefWidth="338.0" text="Name your posse members" textFill="WHITE" VBox.vgrow="ALWAYS">
+            <Label prefHeight="66.0" prefWidth="390.0" text="Name your posse members" textFill="WHITE" VBox.vgrow="ALWAYS">
                <font>
-                  <Font name="DejaVu Sans Condensed Bold" size="24.0" />
+                  <Font name="DejaVu Sans Condensed Bold" size="27.0" />
                </font>
             </Label>
             <TextField fx:id="membername1" promptText="Bill" VBox.vgrow="ALWAYS">

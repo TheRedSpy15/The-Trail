@@ -36,7 +36,7 @@ public class Main extends Application{
     static int HealthConditions = 100;
     static int Distance = 3000;
     static int Days = 0;
-    private static int Food = 0;
+    static int Food = 0;
     static int ThiefMoney;
     static boolean ThiefIsAlive;
     static int TownSelector = 0;
@@ -87,18 +87,6 @@ public class Main extends Application{
         PaceScene = paceScene;
     }
 
-    Label getBountyLbl() {
-        return BountyLbl.get();
-    }
-
-    static int getFood() {
-        return Food;
-    }
-
-    static void setFood(int food) {
-        Food = food;
-    }
-
     static boolean extremeLowChance(){
 
         int Chance = (int)(Math.random()*110+1);
@@ -111,6 +99,7 @@ public class Main extends Application{
     public void start(Stage primaryStage) throws Exception {
 
         AnchorPane mainAnchor = FXMLLoader.load(Main.class.getResource("StartScene.fxml"));
+        AlertBox.alertMenuStart();
 
         // Start
         Window = primaryStage;

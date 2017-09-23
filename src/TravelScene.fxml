@@ -27,7 +27,7 @@
                   <Font name="DejaVu Serif Bold" size="14.0" />
                </font>
             </Button>
-            <Button id="setoutBtn" fx:id="setOutBtn" layoutX="189.0" layoutY="54.0" mnemonicParsing="false" onAction="#setout" prefHeight="44.0" prefWidth="98.0" text="Set out">
+            <Button id="setoutBtn" fx:id="setOutBtn" layoutX="189.0" layoutY="54.0" mnemonicParsing="false" onAction="#setOut" prefHeight="44.0" prefWidth="98.0" text="Set out">
                <font>
                   <Font name="DejaVu Serif Bold" size="14.0" />
                </font>
