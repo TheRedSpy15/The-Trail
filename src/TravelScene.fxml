@@ -17,17 +17,17 @@
    <children>
       <Pane prefHeight="133.0" prefWidth="314.0" GridPane.rowIndex="2">
          <children>
-            <Button id="menuBtn" fx:id="menuBtn" layoutX="5.0" layoutY="54.0" mnemonicParsing="false" onAction="#menu" prefHeight="44.0" prefWidth="98.0" text="Menu">
+            <Button id="menuBtn" fx:id="menuBtn" layoutX="112.0" layoutY="54.0" mnemonicParsing="false" onAction="#menu" prefHeight="44.0" prefWidth="76.0" text="Menu">
                <font>
                   <Font name="DejaVu Serif Bold" size="14.0" />
                </font>
             </Button>
-            <Button id="stopBtn" fx:id="stopBtn" layoutX="108.0" layoutY="54.0" mnemonicParsing="false" onAction="#stopMoving" prefHeight="44.0" prefWidth="76.0" text="Stop">
+            <Button id="stopBtn" fx:id="stopBtn" layoutX="6.0" layoutY="54.0" mnemonicParsing="false" onAction="#stopMoving" prefHeight="44.0" prefWidth="98.0" text="Stop">
                <font>
                   <Font name="DejaVu Serif Bold" size="14.0" />
                </font>
             </Button>
-            <Button id="setoutBtn" fx:id="setOutBtn" layoutX="189.0" layoutY="54.0" mnemonicParsing="false" onAction="#setOut" prefHeight="44.0" prefWidth="98.0" text="Set out">
+            <Button id="setoutBtn" fx:id="setOutBtn" layoutX="196.0" layoutY="54.0" mnemonicParsing="false" onAction="#setOut" prefHeight="44.0" prefWidth="98.0" text="Set out">
                <font>
                   <Font name="DejaVu Serif Bold" size="14.0" />
                </font>

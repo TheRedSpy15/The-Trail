@@ -108,43 +108,49 @@ public class TravelController extends Main {
 
     private void townCountDown(){
 
-        if (Distance - 2500 <= 15){
+        if (Distance - 2500 <= 15 && Distance - 2500 >= -15){
 
             Distance = 2485;
             distanceLabel.setText("To go: "+Distance+"Mi");
             alt.townEvent();
-            TownSelector++;
+            distanceLabel.setText("To go: "+Distance+"Mi");
+            TownSelector = 4;
         }
 
-        if (Distance - 2000 <= 15){
+        if (Distance - 2000 <= 15 && Distance - 2000 >= -15){
 
             Distance = 1945;
             distanceLabel.setText("To go: "+Distance+"Mi");
             alt.townEvent();
-            TownSelector++;
+            distanceLabel.setText("To go: "+Distance+"Mi");
+            TownSelector = 3;
         }
 
-        if (Distance - 1500 <= 15){
+        if (Distance - 1500 <= 15 && Distance - 1500 >= -15){
 
             Distance = 1485;
             distanceLabel.setText("To go: "+Distance+"Mi");
             alt.townEvent();
-            TownSelector++;
+            distanceLabel.setText("To go: "+Distance+"Mi");
+            TownSelector = 2;
         }
 
-        if (Distance - 1000 <= 15){
+        if (Distance - 1000 <= 15 && Distance - 1000 >= -15){
 
             Distance = 985;
             distanceLabel.setText("To go: "+Distance+"Mi");
             alt.townEvent();
-            TownSelector++;
+            distanceLabel.setText("To go: "+Distance+"Mi");
+            TownSelector = 1;
         }
 
-        if (Distance - 500 <= 15){
+        if (Distance - 500 <= 15 && Distance - 500 >= -15){
 
+            TownSelector = 0;
             Distance = 485;
             distanceLabel.setText("To go: "+Distance+"Mi");
             alt.townEvent();
+            distanceLabel.setText("To go: "+Distance+"Mi");
         }
     }
 

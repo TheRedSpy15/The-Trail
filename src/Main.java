@@ -39,7 +39,7 @@ public class Main extends Application{
     static int Food = 0;
     static int ThiefMoney;
     static boolean ThiefIsAlive;
-    static int TownSelector = 0;
+    static int TownSelector = 4;
     static int Ammo = 0;
     static int Water = 0;
     static double amountOver = 0;

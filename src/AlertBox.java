@@ -9,7 +9,6 @@ import javafx.stage.Modality;
 
 public class AlertBox extends Main {
 
-    private HealthClass hlt = new HealthClass();
     protected Scene notEnoughMoneyScene;
     protected Scene EmptyNameScene;
     protected Scene SettlementScene;
@@ -26,11 +25,18 @@ public class AlertBox extends Main {
 
     private void runBackgroundTask2(){
 
+        StackPane pane = new StackPane();
+        Label label = new Label("");
+        pane.setPadding(new Insets(20,20,20,20));
+        pane.getChildren().add(label);
+        Scene scene = new Scene(pane,300,250);
+        window.setScene(scene);
+
         new Thread(() -> Platform.runLater(() -> {
 
             if (Ammo > 0){
 
-                EncounterLbl.setText("You shot a round!");
+                label.setText("You shot a round!");
 
                 try {
                     Thread.sleep(2000);
@@ -42,12 +48,12 @@ public class AlertBox extends Main {
 
                     if (rand.nextBoolean()) {
 
-                        EncounterLbl.setText("You killed the thief!");
+                        label.setText("You killed the thief!");
                         ThiefIsAlive = false;
 
                     }else{
 
-                        EncounterLbl.setText("You missed! Firing again!");
+                        label.setText("You missed! Firing again!");
                     }
 
                     try {
@@ -61,7 +67,7 @@ public class AlertBox extends Main {
 
             if (Ammo <= 0){
 
-                EncounterLbl.setText("You have no bullets and the thief got away with $"+ThiefMoney);
+                label.setText("You have no bullets and the thief got away with $"+ThiefMoney);
                 Money-=ThiefMoney;
 
                 try {
@@ -74,7 +80,7 @@ public class AlertBox extends Main {
 
             }else{
 
-                EncounterLbl.setText("The thief got away with $"+ThiefMoney);
+                label.setText("The thief got away with $"+ThiefMoney);
                 Money-=ThiefMoney;
 
                 try {
@@ -134,16 +140,13 @@ public class AlertBox extends Main {
         EncounterLayout.getChildren().addAll(EncounterLbl,Choice1,Choice2,Choice3);
         ThiefScene = new Scene(EncounterLayout, 320,300);
         window.setScene(ThiefScene);
-        window.show();
-
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        window.showAndWait();
     }
 
     protected void townEvent() {
+
+        //Stop moving
+        IsMoving = false;
 
         // Settlement Scene
         VBox SettlementLayout = new VBox(10);
@@ -165,14 +168,14 @@ public class AlertBox extends Main {
         });
         KeepGoing.setOnAction(e -> {
 
-            Distance -= 16;
+            Distance -= 25;
             window.close();
         });
         SettlementLayout.setPadding(new Insets(20,20,20,20));
         SettlementLayout.getChildren().addAll(SettlementLbl,bountyLbl,UseShop,KeepGoing,ClaimRewardBtn);
         SettlementScene = new Scene(SettlementLayout,320,300);
         window.setScene(SettlementScene);
-        window.show();
+        window.showAndWait();
     }
 
     protected void bountyMethod(){
@@ -213,9 +216,11 @@ public class AlertBox extends Main {
 
     protected static void gameOver(){
 
-        // Need a button that closes the whole program
-        // and on x-ing out, close whole program
-
+        // On closure of window, closes main Window
+        window.setOnCloseRequest(e -> {
+            Window.close();
+            window.close();
+        });
         StackPane GameOverSP = new StackPane();
         GameOverSP.setStyle("-fx-background-color: #cf1020");
         GameOverSP.setPadding(new Insets(20,20,20,20));
