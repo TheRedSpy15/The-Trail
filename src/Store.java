@@ -20,5 +20,13 @@ public class Store extends Main {
             e.printStackTrace();
         }
         midStorePane.setStyle("-fx-background-color: #36454f");
+
+        // Sell scene for Alert box stage
+        try {
+            midSellStorePane = FXMLLoader.load(Main.class.getResource("SellScene.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        midSellStorePane.setStyle("-fx-background-color: #36454f");
     }
 }

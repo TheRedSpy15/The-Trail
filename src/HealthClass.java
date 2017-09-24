@@ -58,7 +58,7 @@ public class HealthClass extends Main {
 
         PoorHealthLayout.getChildren().add(SickEventLbl);
         SickEventScene = new Scene(PoorHealthLayout,320,200);
-        window.setScene(SickEventScene);
+        AlertWindow.setScene(SickEventScene);
 
         if (SickEventChance <= 10){
 

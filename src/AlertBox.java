@@ -19,8 +19,8 @@ public class AlertBox extends Main {
         IsMoving = false;
 
         //Block events to other windows
-        window.initModality(Modality.APPLICATION_MODAL);
-        window.setTitle("Event");
+        AlertWindow.initModality(Modality.APPLICATION_MODAL);
+        AlertWindow.setTitle("Alert");
     }
 
     private void runBackgroundTask2(){
@@ -30,7 +30,7 @@ public class AlertBox extends Main {
         pane.setPadding(new Insets(20,20,20,20));
         pane.getChildren().add(label);
         Scene scene = new Scene(pane,300,250);
-        window.setScene(scene);
+        AlertWindow.setScene(scene);
 
         new Thread(() -> Platform.runLater(() -> {
 
@@ -76,7 +76,7 @@ public class AlertBox extends Main {
                     e1.printStackTrace();
                 }
 
-                window.close();
+                AlertWindow.close();
 
             }else{
 
@@ -89,12 +89,14 @@ public class AlertBox extends Main {
                     e1.printStackTrace();
                 }
 
-                window.close();
+                AlertWindow.close();
             }
         })).start();
     }
 
     protected void thiefEncounter(){
+
+        IsMoving = false;
 
         VBox EncounterLayout = new VBox(10);
         EncounterLayout.setPadding(new Insets(40,20,20,20));
@@ -117,7 +119,7 @@ public class AlertBox extends Main {
                 e1.printStackTrace();
             }
 
-            window.close();
+            AlertWindow.close();
         });
 
         Choice2.setOnAction(event -> runBackgroundTask2());
@@ -134,13 +136,14 @@ public class AlertBox extends Main {
                 e1.printStackTrace();
             }
 
-            window.close();
+            AlertWindow.close();
         });
 
         EncounterLayout.getChildren().addAll(EncounterLbl,Choice1,Choice2,Choice3);
         ThiefScene = new Scene(EncounterLayout, 320,300);
-        window.setScene(ThiefScene);
-        window.showAndWait();
+        AlertWindow.setScene(ThiefScene);
+        AlertWindow.setTitle("Thief encounter");
+        AlertWindow.showAndWait();
     }
 
     protected void townEvent() {
@@ -153,7 +156,8 @@ public class AlertBox extends Main {
         Label SettlementLbl = new Label("You have come up to the town of "+TownList[TownSelector]);
         bountyLbl = new Label("");
         Button UseShop = new Button("Use shop");
-        UseShop.setOnAction(e -> window.setScene(new Scene(midStorePane)));
+        Button SellItems = new Button("Sell items");
+        UseShop.setOnAction(e -> AlertWindow.setScene(new Scene(midStorePane)));
         Button KeepGoing = new Button("Keep going");
         Button ClaimRewardBtn = new Button("Claim Thief Bounty");
         ClaimRewardBtn.setOnAction(e -> {
@@ -169,13 +173,15 @@ public class AlertBox extends Main {
         KeepGoing.setOnAction(e -> {
 
             Distance -= 25;
-            window.close();
+            AlertWindow.close();
         });
+        SellItems.setOnAction(e -> AlertWindow.setScene(new Scene(midSellStorePane)));
         SettlementLayout.setPadding(new Insets(20,20,20,20));
         SettlementLayout.getChildren().addAll(SettlementLbl,bountyLbl,UseShop,KeepGoing,ClaimRewardBtn);
         SettlementScene = new Scene(SettlementLayout,320,300);
-        window.setScene(SettlementScene);
-        window.showAndWait();
+        AlertWindow.setScene(SettlementScene);
+        AlertWindow.setTitle("Settlement");
+        AlertWindow.showAndWait();
     }
 
     protected void bountyMethod(){
@@ -187,6 +193,8 @@ public class AlertBox extends Main {
         bountyLbl.setText("You have Claimed: $"+MoneyToClaim);
 
         Money+=MoneyToClaim;
+
+        TurnInThief = false;
     }
 
     protected void notEnoughMoney(){
@@ -196,8 +204,9 @@ public class AlertBox extends Main {
         ntEnoughMoneyLayout.setPadding(new Insets(20,20,20,20));
         ntEnoughMoneyLayout.getChildren().add(label);
         notEnoughMoneyScene = new Scene(ntEnoughMoneyLayout,300,250);
-        window.setScene(notEnoughMoneyScene);
-        window.show();
+        AlertWindow.setScene(notEnoughMoneyScene);
+        AlertWindow.setTitle("Not enough money");
+        AlertWindow.show();
 
         amountOver = 0;
     }
@@ -210,16 +219,17 @@ public class AlertBox extends Main {
         EmptyNameLayout.setPadding(new Insets(20,20,20,20));
         EmptyNameLayout.getChildren().add(label);
         EmptyNameScene = new Scene(EmptyNameLayout,300,250);
-        window.setScene(EmptyNameScene);
-        window.show();
+        AlertWindow.setScene(EmptyNameScene);
+        AlertWindow.setTitle("empty name(s)");
+        AlertWindow.show();
     }
 
     protected static void gameOver(){
 
         // On closure of window, closes main Window
-        window.setOnCloseRequest(e -> {
-            Window.close();
-            window.close();
+        AlertWindow.setOnCloseRequest(e -> {
+            AlertWindow.close();
+            AlertWindow.close();
         });
         StackPane GameOverSP = new StackPane();
         GameOverSP.setStyle("-fx-background-color: #cf1020");
@@ -227,7 +237,8 @@ public class AlertBox extends Main {
         Label label = new Label("Your whole posse has died. GAME OVER");
         GameOverSP.getChildren().add(label);
         Scene GameOverSC = new Scene(GameOverSP,300,250);
-        window.setScene(GameOverSC);
-        window.show();
+        AlertWindow.setScene(GameOverSC);
+        AlertWindow.setTitle("GAME-OVER");
+        AlertWindow.show();
     }
 }

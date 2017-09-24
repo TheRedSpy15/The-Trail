@@ -6,6 +6,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
+import java.util.Formatter;
+
 public class MidGameMenu extends Main {
 
     protected static void menuMethod(){
@@ -17,6 +20,7 @@ public class MidGameMenu extends Main {
         Button SetPace = new Button("Set pace");
         Button SetMealPortions = new Button("Set diet plan");
         Button ViewInventory = new Button("View Inventory");
+        Button SaveGame = new Button("Save game progress");
         ViewInventory.setOnAction(e -> {
             inventoryMethod();
             MenuWindow.setScene(InventoryScene);
@@ -29,10 +33,17 @@ public class MidGameMenu extends Main {
             paceSetterMethod();
             MenuWindow.setScene(getPaceScene());
         });
+        SaveGame.setOnAction(e -> {
+            try {
+                saveGame();
+            } catch (FileNotFoundException e1) {
+                e1.printStackTrace();
+            }
+        });
         Button Hunt = new Button("Go hunting");
         VBox MenuLayout = new VBox(10);
         MenuLayout.setStyle("-fx-background-color: #36454f");
-        MenuLayout.getChildren().addAll(SetPace,SetMealPortions,Hunt,ViewInventory);
+        MenuLayout.getChildren().addAll(SetPace,SetMealPortions,Hunt,ViewInventory,SaveGame);
         MenuLayout.setPadding(new Insets(20,20,20,20));
         setMenuScene(new Scene(MenuLayout,300,180));
         MenuWindow.setScene(getMenuScene());
@@ -105,5 +116,10 @@ public class MidGameMenu extends Main {
         PaceLayout.getChildren().addAll(PaceLbl,Slowbtn,ModerateSpeedbtn,Fastbtn);
 
         setPaceScene(new Scene(PaceLayout,320,200));
+    }
+
+    private static void saveGame() throws FileNotFoundException {
+
+        Formatter format = new Formatter("C:\\Users\\Hunter\\IdeaProjects\\The Trail JAVAFX VER\\src\\SaveFile");
     }
 }

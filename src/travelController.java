@@ -77,9 +77,6 @@ public class TravelController extends Main {
                             PlayerSelectForEvent = PlayersArray.size();
                             PlayerSelectForEvent-=1;
                             HealthClass.poorHealthEvent();
-                        }else if (EncounterChance >= 78){
-
-                            alt.thiefEncounter();
                         }
 
                         HealthEventCooldown = 0;
@@ -108,46 +105,46 @@ public class TravelController extends Main {
 
     private void townCountDown(){
 
-        if (Distance - 2500 <= 15 && Distance - 2500 >= -15){
+        if (Distance - 29000 <= 15 && Distance - 2500 >= -15){
 
-            Distance = 2485;
+            Distance = 28984;
             distanceLabel.setText("To go: "+Distance+"Mi");
             alt.townEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");
             TownSelector = 4;
         }
 
-        if (Distance - 2000 <= 15 && Distance - 2000 >= -15){
+        if (Distance - 25000 <= 15 && Distance - 2000 >= -15){
 
-            Distance = 1945;
+            Distance = 24984;
             distanceLabel.setText("To go: "+Distance+"Mi");
             alt.townEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");
             TownSelector = 3;
         }
 
-        if (Distance - 1500 <= 15 && Distance - 1500 >= -15){
+        if (Distance - 20000 <= 15 && Distance - 1500 >= -15){
 
-            Distance = 1485;
+            Distance = 19984;
             distanceLabel.setText("To go: "+Distance+"Mi");
             alt.townEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");
             TownSelector = 2;
         }
 
-        if (Distance - 1000 <= 15 && Distance - 1000 >= -15){
+        if (Distance - 10000 <= 15 && Distance - 1000 >= -15){
 
-            Distance = 985;
+            Distance = 9984;
             distanceLabel.setText("To go: "+Distance+"Mi");
             alt.townEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");
             TownSelector = 1;
         }
 
-        if (Distance - 500 <= 15 && Distance - 500 >= -15){
+        if (Distance - 3500 <= 15 && Distance - 500 >= -15){
 
             TownSelector = 0;
-            Distance = 485;
+            Distance = 3484;
             distanceLabel.setText("To go: "+Distance+"Mi");
             alt.townEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");

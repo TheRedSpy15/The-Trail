@@ -16,6 +16,11 @@
             <Font name="DejaVu Sans Condensed Bold" size="22.0" />
          </font>
       </Button>
+      <Button layoutX="81.0" fx:id="loadBtn" onAction="#loadGame" layoutY="196.0" mnemonicParsing="false" text="Load recent game">
+         <font>
+            <Font name="DejaVu Sans Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 
 </AnchorPane>

@@ -21,20 +21,20 @@ public class Main extends Application{
     private static Scene MenuScene;
     static Scene InventoryScene;
     static Scene SickEventScene;
-    static Stage window = new Stage();
+    static Stage AlertWindow = new Stage();
     static Scene ThiefScene;
     private static Scene PaceScene;
-    private final ThreadLocal<Label> BountyLbl = new ThreadLocal<>();
     static Parent careerAnchor;
     static Parent midStorePane;
     static Label EncounterLbl;
     static Parent storePane;
     static Parent possePane;
     static Parent travelPane;
+    static Parent midSellStorePane;
 
     static LinkedList <String> PlayersArray = new LinkedList<>();
     static int HealthConditions = 100;
-    static int Distance = 3000;
+    static int Distance = 30000;
     static int Days = 0;
     static int Food = 0;
     static int ThiefMoney;

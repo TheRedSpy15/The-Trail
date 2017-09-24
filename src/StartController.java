@@ -10,4 +10,10 @@ public class StartController extends Main{
         cp.careerPicker();
         Window.setScene(new Scene(careerAnchor));
     }
+
+    @FXML
+    private void loadGame(){
+
+
+    }
 }

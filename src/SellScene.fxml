@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SellController">
+   <children>
+      <VBox layoutX="14.0" layoutY="14.0" prefHeight="104.0" prefWidth="140.0">
+         <children>
+            <Label text="INVENTORY" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="foodLbl" text="Food: 0 ($0.25)" textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="waterLbl" text="Water:  0 ($0.10)" textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="ammoLbl" text="Ammo: 0 ($4)" textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Label layoutX="238.0" layoutY="14.0" prefHeight="52.0" prefWidth="212.0" text="Sell menu" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Sans Condensed Bold" size="41.0" />
+         </font>
+      </Label>
+      <Slider fx:id="waterSlider" layoutX="215.0" layoutY="130.0" majorTickUnit="50.0" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" />
+      <Slider fx:id="foodSlider" layoutX="336.0" layoutY="130.0" majorTickUnit="50.0" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" />
+      <Slider fx:id="ammoSlider" layoutX="442.0" layoutY="130.0" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" />
+      <Label layoutX="198.0" layoutY="75.0" text="Water" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="323.0" layoutY="75.0" text="Food" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="422.0" layoutY="75.0" text="Ammo" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="sellBtn" layoutX="265.0" layoutY="287.0" mnemonicParsing="false" onAction="#sell" prefHeight="85.0" prefWidth="157.0" text="Sell">
+         <font>
+            <Font name="DejaVu Sans Condensed Bold" size="45.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>

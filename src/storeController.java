@@ -41,9 +41,9 @@ public class StoreController extends Main {
                 }
                 Window.setScene(new Scene(travelPane));
 
-                if (window.isShowing()){
+                if (AlertWindow.isShowing()){
 
-                    window.close();
+                    AlertWindow.close();
                 }
 
             }else{
@@ -62,6 +62,7 @@ public class StoreController extends Main {
         currentAmmo.setText("AMMO: "+Ammo);
         currentFood.setText("FOOD: "+Food);
         currentWater.setText("WATER: "+Water);
+        moneyLabel.setText("Money: "+Money);
         waterSlider.setMax((int) (Math.random() * 1000) + 250);
         foodSlider.setMax((int) (Math.random() * 1000) + 250);
         ammoSlider.setMax((int) (Math.random() * 100));
