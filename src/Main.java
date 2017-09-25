@@ -58,11 +58,15 @@ public class Main extends Application{
 
     public static void main(String args[]) {
 
+        // Starting music task thread
         Thread thread = new Thread(task);
         thread.start();
+
+        // Launching Javafx thread
         launch(args);
     }
 
+    // Getters and Setters
     static Scene getFoodPortionsScene() {
         return FoodPortionsScene;
     }
@@ -109,7 +113,7 @@ public class Main extends Application{
         Window.show();
     }
 
-    // Music
+    // Music task
     private static final Task task = new Task() {
 
         @Nullable
