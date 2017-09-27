@@ -26,25 +26,35 @@ public class StoreController extends Main {
         // if statement if money is greater or equal to cart value, then add slider values
         if (Money >= cartValue){
 
+            // Subtracting money by cart value
             Money -= cartValue;
 
-            Food = (int) foodSlider.getValue();
-            Ammo += ammoSlider.getValue();
-            Water += waterSlider.getValue();
+            // adding a int casted value of food slider to food
+            Food += (int) foodSlider.getValue();
 
-            // Run travel setup
+            // adding a int casted value of ammo slider to ammo
+            Ammo += (int) ammoSlider.getValue();
+
+            // adding a int casted value of water slider to water
+            Water += (int) waterSlider.getValue();
+
+            // Run travel setup with a try/catch
             try {
                 trvl.travelSetup();
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
+
+            // setting window scene to travel pane
             Window.setScene(new Scene(travelPane));
 
+            // closes the alert window if it is open
             if (AlertWindow.isShowing()){
 
                 AlertWindow.close();
             }
 
+        // show not enough money scene in alert window with the amount over
         }else{
 
             amountOver -= (Money - cartValue);
@@ -53,6 +63,7 @@ public class StoreController extends Main {
         }
     }
 
+    // code run on initialization of scene
     @FXML
     public void initialize(){
 

@@ -3,6 +3,7 @@ import javafx.scene.Scene;
 
 public class CareerController extends Main {
 
+    // runs posse setup method, sets money to 1500, and sets scene to posse pane
     @FXML
     private void carpenterHandle() {
 
@@ -11,6 +12,7 @@ public class CareerController extends Main {
         Window.setScene(new Scene(possePane));
     }
 
+    // runs posse setup method, sets money to 1000, and sets scene to posse pane
     @FXML
     private void minerHandle() {
 
@@ -19,6 +21,7 @@ public class CareerController extends Main {
         Window.setScene(new Scene(possePane));
     }
 
+    // runs posse setup method, sets money to 500, and sets scene to posse pane
     @FXML
     private void farmerHandle() {
 

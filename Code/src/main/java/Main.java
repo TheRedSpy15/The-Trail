@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import org.jetbrains.annotations.Contract;
@@ -55,13 +54,15 @@ public class Main extends Application{
     static boolean IsMoving = false;
     static boolean TurnInThief = false;
     static CareerPosse cp = new CareerPosse();
-    static String TownList[]={"Cape Cod", "Fort Myers", "ST. Augustine", "Jacksonville", "Tallahassee"};
+    static String TownList[]={"Salem, Oregon", "Denver, Colorado", "Frankfort, Kentucky", "Atlanta, Georgia", "Tallahassee, Florida"};
 
     public static void main(String args[]) {
 
-        // Starting music task thread
-        Thread thread = new Thread(task);
-        thread.start();
+        // Making audio thread object
+        Thread audioThread = new Thread(musicTask);
+
+        // Starting the audio thread
+        audioThread.start();
 
         // Launching Javafx thread
         launch(args);
@@ -97,35 +98,56 @@ public class Main extends Application{
 
     static boolean extremeLowChance(){
 
+        // adds a random value to chance between 110 and 1
         int Chance = (int)(Math.random()*110+1);
 
+        // returns true if chance is equal to 100
         return Chance == 100;
-
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        AnchorPane mainAnchor = FXMLLoader.load(Main.class.getResource("StartScene.fxml"));
+        // assigns main anchor object to start scene fxml file
+        Parent mainAnchor = FXMLLoader.load(getClass().getResource("StartScene.fxml"));
+
+        // runs the alert menu start method via alert box object
         AlertBox.alertMenuStart();
 
         // Start
+        // Initializing Window as primaryStage object;
         Window = primaryStage;
+
+        // Setting title of Window
         Window.setTitle("The Trail");
+
+        // Setting background color of Start scene
         mainAnchor.setStyle("-fx-background-color: #36454f");
+
+        // Setting the scene as the start scene via mainAnchor object
         Window.setScene(new Scene(mainAnchor));
+
+        // Showing the window
         Window.show();
     }
 
     // Music task
-    private static final Task task = new Task() {
+    private static final Task musicTask = new Task() {
 
         @Nullable
         @Override
         protected Object call() throws Exception {
+
+            // making object for specified .wav file
             AudioClip audio = new AudioClip(getClass().getResource("Wild_Western_Music_-_Tumbleweed_Town.wav").toExternalForm());
+
+            // Setting volume
             audio.setVolume(0.5f);
+
+            // Setting loop
             audio.setCycleCount(INDEFINITE);
+
+            // Starting audio
             audio.play();
             return null;
         }

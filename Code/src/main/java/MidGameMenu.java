@@ -14,7 +14,7 @@ public class MidGameMenu extends Main {
 
     static {
         try {
-            formatter = new Formatter("SaveGame.txt");
+            formatter = new Formatter("C:\\Users\\Hunter\\IdeaProjects\\The Trail JAVAFX VER\\SaveGame.txt");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
