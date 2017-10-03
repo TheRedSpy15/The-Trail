@@ -10,12 +10,11 @@ import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.Nullable;
-
 import static javafx.scene.media.AudioClip.INDEFINITE;
 
 public class Main extends Application{
 
-    static Stage Window;
+    static Stage MainWindow;
     private static Scene FoodPortionsScene;
     static Stage MenuWindow;
     private static Scene MenuScene;
@@ -30,9 +29,11 @@ public class Main extends Application{
     static Parent storePane;
     static Parent possePane;
     static Parent travelPane;
+    static Parent gameOverPane;
+    static Parent gameWonPane;
     static Parent midSellStorePane;
 
-    static LinkedList <String> PlayersArray = new LinkedList<>();
+    static LinkedList <String> PosseLinkedList = new LinkedList<>();
     static int HealthConditions = 100;
     static int Distance = 30000;
     static int Days = 0;
@@ -98,8 +99,8 @@ public class Main extends Application{
 
     static boolean extremeLowChance(){
 
-        // adds a random value to chance between 110 and 1
-        int Chance = (int)(Math.random()*110+1);
+        // adds a random value to chance between 200 and 1
+        int Chance = (int)(Math.random()*200+1);
 
         // returns true if chance is equal to 100
         return Chance == 100;
@@ -115,20 +116,20 @@ public class Main extends Application{
         AlertBox.alertMenuStart();
 
         // Start
-        // Initializing Window as primaryStage object;
-        Window = primaryStage;
+        // Initializing MainWindow as primaryStage object;
+        MainWindow = primaryStage;
 
-        // Setting title of Window
-        Window.setTitle("The Trail");
+        // Setting title of MainWindow
+        MainWindow.setTitle("The Trail");
 
         // Setting background color of Start scene
         mainAnchor.setStyle("-fx-background-color: #36454f");
 
         // Setting the scene as the start scene via mainAnchor object
-        Window.setScene(new Scene(mainAnchor));
+        MainWindow.setScene(new Scene(mainAnchor));
 
         // Showing the window
-        Window.show();
+        MainWindow.show();
     }
 
     // Music task

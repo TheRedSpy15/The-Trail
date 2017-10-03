@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <Label layoutX="205.0" layoutY="180.0" text="YOU WIN!!!" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Serif Condensed Bold" size="32.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -24,15 +24,15 @@ public class PosseController extends Main {
             str.storeMethod();
 
             // Sets the scene to store pane
-            Window.setScene(new Scene(storePane));
+            MainWindow.setScene(new Scene(storePane));
 
             // adds the value of the text fields to the linked list
-            PlayersArray.add(membername1.getText());
-            PlayersArray.add(membername2.getText());
-            PlayersArray.add(membername3.getText());
-            PlayersArray.add(membername4.getText());
-            PlayersArray.add(membername5.getText());
-            PlayersArray.add(membername6.getText());
+            PosseLinkedList.add(membername1.getText());
+            PosseLinkedList.add(membername2.getText());
+            PosseLinkedList.add(membername3.getText());
+            PosseLinkedList.add(membername4.getText());
+            PosseLinkedList.add(membername5.getText());
+            PosseLinkedList.add(membername6.getText());
         }
         else {
 

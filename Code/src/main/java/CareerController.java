@@ -9,7 +9,7 @@ public class CareerController extends Main {
 
         Money = 1500;
         cp.posseSetupMethod();
-        Window.setScene(new Scene(possePane));
+        MainWindow.setScene(new Scene(possePane));
     }
 
     // runs posse setup method, sets money to 1000, and sets scene to posse pane
@@ -18,7 +18,7 @@ public class CareerController extends Main {
 
         Money = 1000;
         cp.posseSetupMethod();
-        Window.setScene(new Scene(possePane));
+        MainWindow.setScene(new Scene(possePane));
     }
 
     // runs posse setup method, sets money to 500, and sets scene to posse pane
@@ -27,6 +27,6 @@ public class CareerController extends Main {
 
         Money = 500;
         cp.posseSetupMethod();
-        Window.setScene(new Scene(possePane));
+        MainWindow.setScene(new Scene(possePane));
     }
 }

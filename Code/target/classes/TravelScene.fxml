@@ -34,7 +34,7 @@
             </Button>
          </children>
       </Pane>
-      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+      <Pane prefHeight="134.0" prefWidth="370.0" GridPane.columnIndex="1" />
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
             <Pane layoutX="2.0" layoutY="-27.0" prefHeight="163.0" prefWidth="300.0">

@@ -46,7 +46,7 @@ public class StoreController extends Main {
             }
 
             // setting window scene to travel pane
-            Window.setScene(new Scene(travelPane));
+            MainWindow.setScene(new Scene(travelPane));
 
             // closes the alert window if it is open
             if (AlertWindow.isShowing()){

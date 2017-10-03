@@ -9,7 +9,7 @@ public class StartController extends Main{
     private void handleButtonClick() throws IOException {
 
         cp.careerPicker();
-        Window.setScene(new Scene(careerAnchor));
+        MainWindow.setScene(new Scene(careerAnchor));
     }
 
     @FXML

@@ -3,6 +3,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.FileNotFoundException;
@@ -61,7 +62,7 @@ public class MidGameMenu extends Main {
 
         // Save progress
         // ERROR: output to file is blank
-        SaveGame.setOnAction(e -> formatter.format("%s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s", Money," ",Distance," ",Food," ",Water," ",Ammo," ",FoodIntake," ",Pace," ",PlayersArray.get(0)," ",PlayersArray.get(1)," ",PlayersArray.get(2)," ",PlayersArray.get(3)," ",PlayersArray.get(4)," ",PlayersArray.get(5)));
+        SaveGame.setOnAction(e -> formatter.format("%s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s", Money," ",Distance," ",Food," ",Water," ",Ammo," ",FoodIntake," ",Pace," ", PosseLinkedList.get(0)," ", PosseLinkedList.get(1)," ", PosseLinkedList.get(2)," ", PosseLinkedList.get(3)," ", PosseLinkedList.get(4)," ", PosseLinkedList.get(5)));
 
         // Set background color and font color
         MenuLayout.setStyle("-fx-background-color: #36454f;" + "-fx-text-fill: white;");
@@ -89,6 +90,12 @@ public class MidGameMenu extends Main {
         Label Moneylbl = new Label("Money: "+(int)Money);
         Button Backbtn = new Button("Back");
 
+        // Setting the font size of labels
+        Waterlbl.setFont(new Font(20));
+        Foodlbl.setFont(new Font(20));
+        Ammolbl.setFont(new Font(20));
+        Moneylbl.setFont(new Font(20));
+
         // Set background color
         InventoryLayout.setStyle("-fx-background-color: #36454f;" + "-fx-text-fill: white;");
 
@@ -112,8 +119,11 @@ public class MidGameMenu extends Main {
         Button BuffetDietbtn = new Button("Buffet");
         VBox FoodPortionsLayout = new VBox(10);
         Button ExtremeDietbtn = new Button("Extreme");
-        Label FoodListlbl = new Label("Select your diet plan");
+        Label label = new Label("Select your diet plan");
         Button ModerateDietbtn = new Button("Moderate");
+
+        // Setting font size of Label
+        label.setFont(new Font(20));
 
         // Setting background color and font color
         FoodPortionsLayout.setStyle("-fx-background-color: #36454f;" + "-fx-text-fill: white;");
@@ -140,7 +150,7 @@ public class MidGameMenu extends Main {
         FoodPortionsLayout.setPadding(new Insets(20,20,20,20));
 
         // adding objects to layout
-        FoodPortionsLayout.getChildren().addAll(FoodListlbl,ExtremeDietbtn,ModerateDietbtn,BuffetDietbtn);
+        FoodPortionsLayout.getChildren().addAll(label,ExtremeDietbtn,ModerateDietbtn,BuffetDietbtn);
 
         // initializing scene
         setFoodPortionsScene(new Scene(FoodPortionsLayout,320,200));
@@ -151,10 +161,13 @@ public class MidGameMenu extends Main {
         // Object declaration
         VBox PaceLayout = new VBox(10);
         PaceLayout.setStyle("-fx-background-color: #36454f");
-        Label PaceLbl = new Label("Choose a speed");
+        Label label = new Label("Choose a speed");
         Button Slowbtn = new Button("Slow pace");
         Button ModerateSpeedbtn = new Button("Moderate pace");
         Button Fastbtn = new Button("Fast pace");
+
+        // Setting font size of label
+        label.setFont(new Font(20));
 
         // Setting pace value and going back to menu scene
         Slowbtn.setOnAction(e -> {
@@ -178,7 +191,7 @@ public class MidGameMenu extends Main {
         PaceLayout.setPadding(new Insets(20,20,20,20));
 
         // Adding padding to layout
-        PaceLayout.getChildren().addAll(PaceLbl,Slowbtn,ModerateSpeedbtn,Fastbtn);
+        PaceLayout.getChildren().addAll(label,Slowbtn,ModerateSpeedbtn,Fastbtn);
 
         // Initializing scene
         setPaceScene(new Scene(PaceLayout,320,200));

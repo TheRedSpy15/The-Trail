@@ -1,11 +1,15 @@
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Modality;
+
+import java.io.IOException;
 
 public class AlertBox extends Main {
 
@@ -16,7 +20,22 @@ public class AlertBox extends Main {
 
     protected static void alertMenuStart(){
 
-        IsMoving = false;
+        // Creating fxml scene objects
+        // Game over pane
+        try {
+            gameOverPane = FXMLLoader.load(Main.class.getResource("GameOver.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        gameOverPane.setStyle("-fx-background-color: #cf1020");
+
+        // Game won pane
+        try {
+            gameWonPane = FXMLLoader.load(Main.class.getResource("GameWon.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        gameWonPane.setStyle("-fx-background-color: #cf1020");
 
         //Block events to other windows
         AlertWindow.initModality(Modality.APPLICATION_MODAL);
@@ -102,6 +121,7 @@ public class AlertBox extends Main {
         EncounterLayout.setPadding(new Insets(40,20,20,20));
 
         EncounterLbl = new Label("You have encountered a thief!");
+        EncounterLbl.setFont(new Font(20));
         Button Choice1 = new Button("Let them go");
         Button Choice2 = new Button("Shoot them");
         Button Choice3 = new Button("Turn them in for a reward");
@@ -201,6 +221,7 @@ public class AlertBox extends Main {
 
         StackPane ntEnoughMoneyLayout = new StackPane();
         Label label = new Label("Amount over: "+ (int) amountOver);
+        label.setFont(new Font(20));
         ntEnoughMoneyLayout.setPadding(new Insets(20,20,20,20));
         ntEnoughMoneyLayout.getChildren().add(label);
         notEnoughMoneyScene = new Scene(ntEnoughMoneyLayout,300,250);
@@ -216,6 +237,7 @@ public class AlertBox extends Main {
         StackPane EmptyNameLayout = new StackPane();
         EmptyNameLayout.setStyle("-fx-background-color: #cf1020");
         Label label = new Label("Text fields cannot be blank!");
+        label.setFont(new Font(20));
         EmptyNameLayout.setPadding(new Insets(20,20,20,20));
         EmptyNameLayout.getChildren().add(label);
         EmptyNameScene = new Scene(EmptyNameLayout,300,250);
@@ -226,19 +248,36 @@ public class AlertBox extends Main {
 
     protected static void gameOver(){
 
-        // On closure of window, closes main Window
-        AlertWindow.setOnCloseRequest(e -> {
-            AlertWindow.close();
-            AlertWindow.close();
-        });
-        StackPane GameOverSP = new StackPane();
-        GameOverSP.setStyle("-fx-background-color: #cf1020");
-        GameOverSP.setPadding(new Insets(20,20,20,20));
-        Label label = new Label("Your whole posse has died. GAME OVER");
-        GameOverSP.getChildren().add(label);
-        Scene GameOverSC = new Scene(GameOverSP,300,250);
-        AlertWindow.setScene(GameOverSC);
+        // On closure of window, closes main MainWindow also
+        AlertWindow.setOnCloseRequest(e -> MainWindow.close());
+
+        // makes game over pane a scene and sets the alert window scene to it
+        AlertWindow.setScene(new Scene(gameOverPane));
+
+        // sets alert window title to game over
         AlertWindow.setTitle("GAME-OVER");
+
+        // shows alert window
         AlertWindow.show();
+    }
+
+    protected static void gameWon(){
+
+        // On closure of window, closes main MainWindow also
+        AlertWindow.setOnCloseRequest(e -> MainWindow.close());
+
+        // makes game over pane a scene and sets the alert window scene to it
+        AlertWindow.setScene(new Scene(gameWonPane));
+
+        // sets alert window title to game over
+        AlertWindow.setTitle("You win!!!");
+
+        // shows alert window
+        AlertWindow.show();
+    }
+
+    protected void ifWon(){
+
+        if (Distance <= 0 ) gameWon();
     }
 }

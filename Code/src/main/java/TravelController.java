@@ -13,18 +13,21 @@ public class TravelController extends Main {
     private int HealthEventCooldown = 10;
     private AlertBox alt = new AlertBox();
 
+    // when stop button is pressed
     @FXML
     private void stopMoving(){
 
         IsMoving = false;
     }
 
+    // when set out button is pressed
     @FXML
     private void setOut(){
 
         runBackgroundTask();
     }
 
+    // when menu button is pressed
     @FXML
     private void menu(){
 
@@ -47,8 +50,8 @@ public class TravelController extends Main {
 
                 ++Days;
                 Distance-=Pace;
-                Food -= (PlayersArray.size()*FoodIntake);
-                Water=Water-(PlayersArray.size()*FoodIntake);
+                Food -= (PosseLinkedList.size()*FoodIntake);
+                Water=Water-(PosseLinkedList.size()*FoodIntake);
 
                 if (Food < 0) Food = 0;
                 if (Water < 0) Water = 0;
@@ -57,6 +60,8 @@ public class TravelController extends Main {
 
                 Platform.runLater(() -> {
                     // update the JavaFX UI Thread here when the task(s) above are done
+
+                    // updating labels
                     distanceLabel.setText("To go: "+Distance+"Mi");
                     daysLabel.setText("Days: "+Days);
                     statusLabel.setText("Status: Moving");
@@ -69,12 +74,15 @@ public class TravelController extends Main {
                     // Settlement countdown
                     townCountDown();
 
+                    // check if won
+                    alt.ifWon();
+
                     if (HealthEventCooldown >= 10){
 
                         if (SickEventChance > HealthConditions){
 
                             System.out.println(SickEventChance);
-                            PlayerSelectForEvent = PlayersArray.size();
+                            PlayerSelectForEvent = PosseLinkedList.size();
                             PlayerSelectForEvent-=1;
                             HealthClass.poorHealthEvent();
                         }
@@ -106,55 +114,57 @@ public class TravelController extends Main {
     private void townCountDown(){
 
         // if statements for how close the new settlement distance is to player distance (triggers within 15 distance)
-        if (Distance - 29000 <= 15 && Distance - 2500 >= -15){
+        if (Distance - 29000 <= 15 && Distance - 29000 >= -15){
 
-            Distance = 28984;
+            Distance = 28980;
             distanceLabel.setText("To go: "+Distance+"Mi");
             alt.townEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");
             TownSelector = 4;
         }
 
-        if (Distance - 25000 <= 15 && Distance - 2000 >= -15){
+        if (Distance - 25000 <= 15 && Distance - 25000 >= -15){
 
-            Distance = 24984;
+            Distance = 24900;
             distanceLabel.setText("To go: "+Distance+"Mi");
             alt.townEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");
             TownSelector = 3;
         }
 
-        if (Distance - 20000 <= 15 && Distance - 1500 >= -15){
+        if (Distance - 20000 <= 15 && Distance - 20000 >= -15){
 
-            Distance = 19984;
+            Distance = 19980;
             distanceLabel.setText("To go: "+Distance+"Mi");
             alt.townEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");
             TownSelector = 2;
         }
 
-        if (Distance - 10000 <= 15 && Distance - 1000 >= -15){
+        if (Distance - 10000 <= 15 && Distance - 10000 >= -15){
 
-            Distance = 9984;
+            Distance = 9980;
             distanceLabel.setText("To go: "+Distance+"Mi");
             alt.townEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");
             TownSelector = 1;
         }
 
-        if (Distance - 3500 <= 15 && Distance - 500 >= -15){
+        if (Distance - 3500 <= 15 && Distance - 3500 >= -15){
 
             TownSelector = 0;
-            Distance = 3484;
+            Distance = 3480;
             distanceLabel.setText("To go: "+Distance+"Mi");
             alt.townEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");
         }
     }
 
+    // on initialization of scene
     @FXML
     public void initialize(){
 
+        // updating labels
         distanceLabel.setText("To go: "+Distance+"Mi");
         conditionsLabel.setText("Condition: "+HealthConditions);
         daysLabel.setText("Days: "+Days);
