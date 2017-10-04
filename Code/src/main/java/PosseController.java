@@ -4,8 +4,8 @@ import javafx.scene.control.TextField;
 
 public class PosseController extends Main {
 
-    private Store str = new Store();
-    private AlertBox alt = new AlertBox();
+    private Store store = new Store();
+    private AlertBox alert = new AlertBox();
     
     @FXML  private TextField membername1;
     @FXML  private TextField membername2;
@@ -21,7 +21,7 @@ public class PosseController extends Main {
         if (!(membername1.getText().trim().equals("") || membername2.getText().trim().equals("") || membername3.getText().trim().equals("") || membername4.getText().trim().equals("") || membername5.getText().trim().equals("") || membername6.getText().trim().equals(""))){
 
             // Runs store method
-            str.storeMethod();
+            store.storeMethod();
 
             // Sets the scene to store pane
             MainWindow.setScene(new Scene(storePane));
@@ -37,7 +37,7 @@ public class PosseController extends Main {
         else {
 
             // when the if statement is false, run the empty name alert
-            alt.emptyNames();
+            alert.emptyNames();
         }
     }
 }

@@ -40,7 +40,7 @@ public class StoreController extends Main {
 
             // Run travel setup with a try/catch
             try {
-                trvl.travelSetup();
+                travel.travelSetup();
             } catch (IOException e1) {
                 e1.printStackTrace();
             }

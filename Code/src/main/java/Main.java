@@ -51,7 +51,7 @@ public class Main extends Application{
     static int SickEventChance;
     static int PlayerSelectForEvent;
     static int EncounterChance;
-    static TravelClass trvl = new TravelClass();
+    static TravelClass travel = new TravelClass();
     static boolean IsMoving = false;
     static boolean TurnInThief = false;
     static CareerPosse cp = new CareerPosse();
