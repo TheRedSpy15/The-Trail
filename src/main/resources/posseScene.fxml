@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #36454f;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PosseController">
+   <center>
+      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <Label prefHeight="66.0" prefWidth="390.0" text="Name your posse members" textFill="WHITE" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font name="DejaVu Sans Condensed Bold" size="27.0" />
+               </font>
+            </Label>
+            <TextField fx:id="membername1" promptText="Bill" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="membername2" promptText="Bob" VBox.vgrow="ALWAYS" />
+            <TextField fx:id="membername3" promptText="Mark" VBox.vgrow="ALWAYS" />
+            <TextField fx:id="membername4" promptText="Matt" VBox.vgrow="ALWAYS" />
+            <TextField fx:id="membername5" promptText="Hunter" VBox.vgrow="ALWAYS" />
+            <TextField fx:id="membername6" promptText="Mathew" VBox.vgrow="ALWAYS" />
+            <Button fx:id="confirmNames" mnemonicParsing="false" onAction="#confirmNamesMethod" prefHeight="44.0" prefWidth="163.0" text="Continue">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="DejaVu Sans Condensed Bold" size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </center>
+   <left>
+      <Region prefHeight="400.0" prefWidth="90.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Region prefHeight="400.0" prefWidth="90.0" BorderPane.alignment="CENTER" />
+   </right>
+</BorderPane>

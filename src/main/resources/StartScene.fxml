@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="250.0" prefWidth="300.0" style="-fx-background-color: #36454f;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StartController">
+   <children>
+   
+       <Label layoutX="59.0" layoutY="14.0" prefHeight="49.0" prefWidth="182.0" text="The Trail" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS Bold" size="38.0" />
+         </font>
+      </Label>
+       <Button fx:id="button" layoutX="73.0" layoutY="75.0" onAction="#handleButtonClick" prefHeight="100.0" prefWidth="154.0" text="Start">
+         <font>
+            <Font name="DejaVu Sans Condensed Bold" size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="loadBtn" layoutX="81.0" layoutY="196.0" mnemonicParsing="false" onAction="#loadGame" text="Load recent game">
+         <font>
+            <Font name="DejaVu Sans Bold" size="12.0" />
+         </font>
+      </Button>
+   </children>
+
+</AnchorPane>
