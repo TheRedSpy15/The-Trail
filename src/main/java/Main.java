@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import org.jetbrains.annotations.Contract;
@@ -17,7 +18,6 @@ public class Main extends Application{
     static Stage MainWindow;
     private static Scene FoodPortionsScene;
     static Stage MenuWindow;
-    private static Scene MenuScene;
     static Scene InventoryScene;
     static Scene SickEventScene;
     static Stage AlertWindow = new Stage();
@@ -52,6 +52,8 @@ public class Main extends Application{
     static int PlayerSelectForEvent;
     static int EncounterChance;
     static TravelClass travel = new TravelClass();
+    static AlertBox alert = new AlertBox();
+    static Store store = new Store();
     static boolean IsMoving = false;
     static boolean TurnInThief = false;
     static CareerPosse cp = new CareerPosse();
@@ -77,15 +79,6 @@ public class Main extends Application{
 
     static void setFoodPortionsScene(Scene foodPortionsScene) {
         FoodPortionsScene = foodPortionsScene;
-    }
-
-    @Contract(pure = true)
-    static Scene getMenuScene() {
-        return MenuScene;
-    }
-
-    static void setMenuScene(Scene menuScene) {
-        MenuScene = menuScene;
     }
 
     @Contract(pure = true)

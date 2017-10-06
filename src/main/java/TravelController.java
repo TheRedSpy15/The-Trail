@@ -31,8 +31,10 @@ public class TravelController extends Main {
     @FXML
     private void menu(){
 
-        IsMoving = false;
+        // Runs mid menu
         MidGameMenu.menuMethod();
+
+        IsMoving = false;
         MenuWindow.showAndWait();
     }
 
@@ -56,6 +58,7 @@ public class TravelController extends Main {
                 if (Food < 0) Food = 0;
                 if (Water < 0) Water = 0;
 
+                // health conditions
                 HealthClass.determineHealthCondition();
 
                 Platform.runLater(() -> {

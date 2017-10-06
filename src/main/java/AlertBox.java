@@ -40,10 +40,11 @@ public class AlertBox extends Main {
         AlertWindow.setTitle("Alert");
     }
 
-    private void runBackgroundTask2(){
+    private void shootoutThread(){
 
         StackPane pane = new StackPane();
         Label label = new Label("");
+        label.setStyle("-fx-text-fill: white;");
         pane.setPadding(new Insets(20,20,20,20));
         pane.getChildren().add(label);
         Scene scene = new Scene(pane,300,250);
@@ -120,6 +121,7 @@ public class AlertBox extends Main {
 
         EncounterLbl = new Label("You have encountered a thief!");
         EncounterLbl.setFont(new Font(20));
+        EncounterLbl.setStyle("-fx-text-fill: white;");
         Button Choice1 = new Button("Let them go");
         Button Choice2 = new Button("Shoot them");
         Button Choice3 = new Button("Turn them in for a reward");
@@ -140,7 +142,7 @@ public class AlertBox extends Main {
             AlertWindow.close();
         });
 
-        Choice2.setOnAction(event -> runBackgroundTask2());
+        Choice2.setOnAction(event -> shootoutThread());
 
         Choice3.setOnAction(e -> {
 
@@ -175,7 +177,11 @@ public class AlertBox extends Main {
         bountyLbl = new Label("");
         Button UseShop = new Button("Use shop");
         Button SellItems = new Button("Sell items");
-        UseShop.setOnAction(e -> AlertWindow.setScene(new Scene(midStorePane)));
+        UseShop.setOnAction(e -> {
+
+            store.storeMethod();
+            AlertWindow.setScene(new Scene(midStorePane));
+        });
         Button KeepGoing = new Button("Keep going");
         Button ClaimRewardBtn = new Button("Claim Thief Bounty");
         ClaimRewardBtn.setOnAction(e -> {
@@ -219,6 +225,7 @@ public class AlertBox extends Main {
 
         StackPane ntEnoughMoneyLayout = new StackPane();
         Label label = new Label("Amount over: "+ (int) amountOver);
+        label.setStyle("-fx-text-fill: white;");
         label.setFont(new Font(20));
         ntEnoughMoneyLayout.setPadding(new Insets(20,20,20,20));
         ntEnoughMoneyLayout.getChildren().add(label);
@@ -235,6 +242,7 @@ public class AlertBox extends Main {
         StackPane EmptyNameLayout = new StackPane();
         EmptyNameLayout.setStyle("-fx-background-color: #cf1020");
         Label label = new Label("Text fields cannot be blank!");
+        label.setStyle("-fx-text-fill: white;");
         label.setFont(new Font(20));
         EmptyNameLayout.setPadding(new Insets(20,20,20,20));
         EmptyNameLayout.getChildren().add(label);

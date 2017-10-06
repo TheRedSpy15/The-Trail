@@ -3,9 +3,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 
 public class PosseController extends Main {
-
-    private Store store = new Store();
-    private AlertBox alert = new AlertBox();
     
     @FXML  private TextField membername1;
     @FXML  private TextField membername2;

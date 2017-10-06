@@ -51,6 +51,8 @@ public class HealthClass extends Main {
     // Events to happen with poor health conditions
     protected static void poorHealthEvent(){
 
+        IsMoving = false;
+
         VBox PoorHealthLayout = new VBox(10);
         PoorHealthLayout.setPadding(new Insets(40,20,20,20));
 
@@ -73,41 +75,51 @@ public class HealthClass extends Main {
 
                 case 11:
                     SickEventLbl.setText(PosseLinkedList.get(PlayerSelectForEvent)+" Got a cold");
-                    HealthConditions+=5;
+                    HealthConditions-=5;
+                    AlertWindow.showAndWait();
                     break;
                 case 12:
                     SickEventLbl.setText(PosseLinkedList.get(PlayerSelectForEvent)+" Has a Fever");
-                    HealthConditions+=10;
+                    HealthConditions-=10;
+                    AlertWindow.showAndWait();
                     break;
                 case 13:
                     SickEventLbl.setText(PosseLinkedList.get(PlayerSelectForEvent)+" Broke a leg");
-                    HealthConditions+=10;
+                    HealthConditions-=10;
+                    AlertWindow.showAndWait();
                     break;
                 case 14:
                     SickEventLbl.setText(PosseLinkedList.get(PlayerSelectForEvent)+" Broke an arm");
-                    HealthConditions+=10;
+                    HealthConditions-=10;
+                    AlertWindow.showAndWait();
                     break;
                 case 15:
                     SickEventLbl.setText(PosseLinkedList.get(PlayerSelectForEvent)+" Threw up");
-                    HealthConditions+=10;
+                    HealthConditions-=10;
+                    AlertWindow.showAndWait();
                     break;
                 case 16:
                     SickEventLbl.setText(PosseLinkedList.get(PlayerSelectForEvent)+" Has an infection");
-                    HealthConditions+=15;
+                    HealthConditions-=15;
+                    AlertWindow.showAndWait();
                     break;
                 case 17:
                     SickEventLbl.setText(PosseLinkedList.get(PlayerSelectForEvent)+" Has the flu");
-                    HealthConditions+=15;
+                    HealthConditions-=15;
+                    AlertWindow.showAndWait();
                     break;
                 default:
                     SickEventLbl.setText(PosseLinkedList.get(PlayerSelectForEvent)+" Is sick");
-                    HealthConditions+=10;
+                    HealthConditions-=10;
+                    AlertWindow.showAndWait();
                     break;
             }
         }
 
         // Game over condition
         if (PosseLinkedList.size() <= 0){
+
+            IsMoving = false;
 
             AlertBox.gameOver();
         }
