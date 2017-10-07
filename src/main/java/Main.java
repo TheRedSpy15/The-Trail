@@ -1,12 +1,12 @@
 import java.util.LinkedList;
 import java.util.Random;
+import io.sentry.Sentry;
 import javafx.application.Application;
 import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import org.jetbrains.annotations.Contract;
@@ -15,6 +15,7 @@ import static javafx.scene.media.AudioClip.INDEFINITE;
 
 public class Main extends Application{
 
+    // Javafx
     static Stage MainWindow;
     private static Scene FoodPortionsScene;
     static Stage MenuWindow;
@@ -33,6 +34,10 @@ public class Main extends Application{
     static Parent gameWonPane;
     static Parent midSellStorePane;
 
+    // Sentry
+    private static final String dsn = "https://6db11d4c3f864632aa5b1932f6c80c82:6349615319974befbcb63a2459b5fc26@sentry.io/220483";
+
+    // Core Java
     static LinkedList <String> PosseLinkedList = new LinkedList<>();
     static int HealthConditions = 100;
     static int Distance = 30000;
@@ -60,6 +65,17 @@ public class Main extends Application{
     static String TownList[]={"Salem, Oregon", "Denver, Colorado", "Frankfort, Kentucky", "Atlanta, Georgia", "Tallahassee, Florida"};
 
     public static void main(String args[]) {
+
+        // Launches sentry with the dsn in the parameters
+        Sentry.init(dsn);
+
+        /*
+        sends a message to the sentry dsn server
+        logger.error("test error");
+
+        works with other methods like: logger.fatal , logger.debug
+        of which change the tag on the sentry dsn server
+        */
 
         // Making audio thread object
         Thread audioThread = new Thread(musicTask);

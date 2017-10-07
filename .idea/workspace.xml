@@ -71,11 +71,23 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="727">
-              <caret line="30" column="29" lean-forward="false" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+            <state relative-caret-position="-1749">
+              <caret line="40" column="68" lean-forward="true" selection-start-line="40" selection-start-column="68" selection-end-line="40" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#4269#4791#0" expanded="true" />
+                <element signature="e#4790#4791#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Log.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/Log.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="16" lean-forward="false" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -93,8 +105,8 @@
       <file leaf-file-name="AlertBox.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/AlertBox.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1462">
-              <caret line="42" column="18" lean-forward="false" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="18" />
+            <state relative-caret-position="731">
+              <caret line="54" column="19" lean-forward="false" selection-start-line="54" selection-start-column="19" selection-end-line="54" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -113,8 +125,8 @@
       <file leaf-file-name="HealthClass.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/HealthClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1870">
-              <caret line="113" column="46" lean-forward="false" selection-start-line="113" selection-start-column="46" selection-end-line="113" selection-end-column="46" />
+            <state relative-caret-position="612">
+              <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -125,33 +137,19 @@
       <file leaf-file-name="MidGameMenu.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/MidGameMenu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="924">
-              <caret line="34" column="52" lean-forward="true" selection-start-line="34" selection-start-column="52" selection-end-line="34" selection-end-column="52" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Store.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Store.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="12" column="9" lean-forward="false" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+            <state relative-caret-position="-456">
+              <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TravelClass.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/TravelClass.java">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="9" column="81" lean-forward="false" selection-start-line="9" selection-start-column="81" selection-end-line="9" selection-end-column="81" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="1682">
+              <caret line="58" column="12" lean-forward="true" selection-start-line="58" selection-start-column="12" selection-end-line="58" selection-end-column="12" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -205,9 +203,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/CareerScene.java" />
-        <option value="$PROJECT_DIR$/src/StartScene.java" />
-        <option value="$PROJECT_DIR$/src/posseController.java" />
         <option value="$PROJECT_DIR$/src/travelController.java" />
         <option value="$PROJECT_DIR$/src/storeController.java" />
         <option value="$PROJECT_DIR$/src/ShootoutThread.java" />
@@ -236,7 +231,6 @@
         <option value="$PROJECT_DIR$/src/main/java/StartController.java" />
         <option value="$PROJECT_DIR$/src/main/java/CareerController.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameOverController.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/Store.java" />
         <option value="$PROJECT_DIR$/src/main/resources/StartScene.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/CareerPosse.java" />
@@ -254,6 +248,10 @@
         <option value="$PROJECT_DIR$/src/main/resources/MidMenu.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/TravelClass.java" />
         <option value="$PROJECT_DIR$/src/main/java/TravelController.java" />
+        <option value="$PROJECT_DIR$/Log.properties" />
+        <option value="$PROJECT_DIR$/Log.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/Log.xml" />
         <option value="$PROJECT_DIR$/src/main/java/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/MidGameMenu.java" />
       </list>
@@ -283,7 +281,7 @@
     </treeState>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="width" value="3855" />
     <option name="height" value="2136" />
@@ -306,6 +304,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -348,6 +347,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -359,8 +359,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -376,7 +374,7 @@
     <property name="dynamic.classpath" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -707,7 +705,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="3856" height="2136" extended-state="6" />
+    <frame x="-8" y="-8" width="3856" height="2136" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -723,7 +721,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962587" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18335089" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18835616" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -816,13 +814,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_131/src.zip!/java/lang/Class.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="1824" column="0" lean-forward="false" selection-start-line="1824" selection-start-column="0" selection-end-line="1824" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_131/javafx-src.zip!/com/sun/javafx/application/LauncherImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="388">
@@ -908,25 +899,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SaveGame.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
     <entry file="file://$PROJECT_DIR$/src/main/java/MidGameMenu.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Main.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/GameOverController.java" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="24" lean-forward="false" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/SellController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1058,7 +1034,7 @@
         <state relative-caret-position="136">
           <caret line="4" column="43" lean-forward="false" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1079,26 +1055,33 @@
         <state relative-caret-position="34">
           <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/HealthClass.java">
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_131/javafx-src.zip!/com/sun/javafx/event/CompositeEventDispatcher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1870">
-          <caret line="113" column="46" lean-forward="false" selection-start-line="113" selection-start-column="46" selection-end-line="113" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="595">
+          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/MidMenuController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Store.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="25" lean-forward="false" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+        <state relative-caret-position="187">
+          <caret line="12" column="9" lean-forward="false" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/TravelClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" column="81" lean-forward="false" selection-start-line="9" selection-start-column="81" selection-end-line="9" selection-end-column="81" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1110,10 +1093,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/TravelClass.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/HealthClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="9" column="81" lean-forward="false" selection-start-line="9" selection-start-column="81" selection-end-line="9" selection-end-column="81" />
+        <state relative-caret-position="612">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1128,47 +1111,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/MidMenuController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="727">
-          <caret line="30" column="29" lean-forward="false" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Store.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="12" column="9" lean-forward="false" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+        <state relative-caret-position="357">
+          <caret line="21" column="25" lean-forward="false" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/AlertBox.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1462">
-          <caret line="42" column="18" lean-forward="false" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="18" />
+        <state relative-caret-position="731">
+          <caret line="54" column="19" lean-forward="false" selection-start-line="54" selection-start-column="19" selection-end-line="54" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_131/javafx-src.zip!/com/sun/javafx/event/CompositeEventDispatcher.java">
+    <entry file="file://$PROJECT_DIR$/SaveGame.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1682">
+          <caret line="58" column="12" lean-forward="true" selection-start-line="58" selection-start-column="12" selection-end-line="58" selection-end-column="12" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/Log.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="16" lean-forward="false" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1749">
+          <caret line="40" column="68" lean-forward="true" selection-start-line="40" selection-start-column="68" selection-end-line="40" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4269#4791#0" expanded="true" />
+            <element signature="e#4790#4791#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/MidGameMenu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="924">
-          <caret line="34" column="52" lean-forward="true" selection-start-line="34" selection-start-column="52" selection-end-line="34" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="-456">
+          <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1231,7 +1229,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -1239,6 +1236,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
+          <last-edited>Maven: com.fasterxml.jackson.core:jackson-core:2.8.7</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

@@ -8,12 +8,12 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class MidGameMenu extends Main {
 
     private static Parent menuPane;
+    private static Scene menuScene;
 
     protected static void menuMethod(){
 
@@ -25,6 +25,7 @@ public class MidGameMenu extends Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        menuScene = new Scene(menuPane);
 
         // Creating new Stage
         MenuWindow = new Stage();
@@ -36,7 +37,7 @@ public class MidGameMenu extends Main {
         MenuWindow.initModality(Modality.APPLICATION_MODAL);
 
         // Set MenuWindow's scene
-        MenuWindow.setScene(new Scene(menuPane));
+        MenuWindow.setScene(menuScene);
     }
 
     protected static void inventoryMethod(){
@@ -63,7 +64,7 @@ public class MidGameMenu extends Main {
         InventoryLayout.setStyle("-fx-background-color: #36454f");
 
         // changing scene back to menu scene
-        Backbtn.setOnAction(e -> MenuWindow.setScene(new Scene(menuPane)));
+        Backbtn.setOnAction(e -> MenuWindow.setScene(menuScene));
 
         // Adding padding to layout
         InventoryLayout.setPadding(new Insets(20,20,20,20));
@@ -95,19 +96,19 @@ public class MidGameMenu extends Main {
         // Setting food intake value and going back to menu scene
         ExtremeDietbtn.setOnAction(e -> {
             FoodIntake = 1;
-            MenuWindow.setScene(new Scene(menuPane));
+            MenuWindow.setScene(menuScene);
         });
 
         // Setting food intake value and going back to menu scene
         ModerateDietbtn.setOnAction(e -> {
             FoodIntake = 2;
-            MenuWindow.setScene(new Scene(menuPane));
+            MenuWindow.setScene(menuScene);
         });
 
         // Setting food intake value and going back to menu scene
         BuffetDietbtn.setOnAction(e -> {
             FoodIntake = 3;
-            MenuWindow.setScene(new Scene(menuPane));
+            MenuWindow.setScene(menuScene);
         });
 
         // Setting padding to layout
@@ -139,19 +140,19 @@ public class MidGameMenu extends Main {
         // Setting pace value and going back to menu scene
         Slowbtn.setOnAction(e -> {
             Pace = 5;
-            MenuWindow.setScene(new Scene(menuPane));
+            MenuWindow.setScene(menuScene);
         });
 
         // Setting pace value and going back to menu scene
         ModerateSpeedbtn.setOnAction(e -> {
             Pace = 10;
-            MenuWindow.setScene(new Scene(menuPane));
+            MenuWindow.setScene(menuScene);
         });
 
         // Setting pace value and going back to menu scene
         Fastbtn.setOnAction(e -> {
             Pace = 15;
-            MenuWindow.setScene(new Scene(menuPane));
+            MenuWindow.setScene(menuScene);
         });
 
         // Setting padding to layout
