@@ -38,7 +38,7 @@ public class Main extends Application{
 
     // Sentry
     private static final String dsn = "https://6db11d4c3f864632aa5b1932f6c80c82:6349615319974befbcb63a2459b5fc26@sentry.io/220483";
-    private static Logger logger = LogManager.getLogger(Main.class);
+    // private static Logger logger = LogManager.getLogger(Main.class);
 
     // Core Java
     static LinkedList <String> PosseLinkedList = new LinkedList<>();
@@ -71,8 +71,6 @@ public class Main extends Application{
 
         // Launches sentry with the dsn in the parameters
         Sentry.init(dsn);
-
-        logger.info("Test 155");
 
         /*
         sends a message to the sentry dsn server
