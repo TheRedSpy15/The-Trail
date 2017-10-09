@@ -47,7 +47,7 @@ public class TravelController extends Main {
 
             while (IsMoving) {
 
-                SickEventChance = rand.nextInt(30)+1;
+                SickEventChance = rand.nextInt(20)+1;
                 EncounterChance = rand.nextInt(100)+1;
 
                 ++Days;
@@ -84,7 +84,6 @@ public class TravelController extends Main {
 
                         if (SickEventChance > HealthConditions){
 
-                            System.out.println(SickEventChance);
                             PlayerSelectForEvent = PosseLinkedList.size();
                             PlayerSelectForEvent-=1;
                             HealthClass.poorHealthEvent();

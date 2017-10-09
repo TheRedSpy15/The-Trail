@@ -72,7 +72,6 @@ public class StoreController extends Main {
         currentAmmo.setText("AMMO: "+Ammo);
         currentFood.setText("FOOD: "+Food);
         currentWater.setText("WATER: "+Water);
-        moneyLabel.setText("Money: "+Money);
 
         // random store inventory
         waterSlider.setMax((int) (Math.random() * 1000) + 250);

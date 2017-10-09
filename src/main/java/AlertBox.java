@@ -15,12 +15,12 @@ public class AlertBox extends Main {
 
     protected Scene notEnoughMoneyScene;
     protected Scene EmptyNameScene;
-    protected Scene SettlementScene;
-    private Label bountyLbl;
+    protected static Scene SettlementScene;
 
     protected static void alertMenuStart(){
 
         // Creating fxml scene objects
+
         // Game over pane
         try {
             gameOverPane = FXMLLoader.load(Main.class.getResource("GameOver.fxml"));
@@ -34,6 +34,14 @@ public class AlertBox extends Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        // Settlement menu pane
+        try {
+            settlementPane = FXMLLoader.load(Main.class.getResource("SettlementMenu.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        SettlementScene = new Scene(settlementPane);
 
         //Block events to other windows
         AlertWindow.initModality(Modality.APPLICATION_MODAL);
@@ -171,54 +179,8 @@ public class AlertBox extends Main {
         //Stop moving
         IsMoving = false;
 
-        // Settlement Scene
-        VBox SettlementLayout = new VBox(10);
-        Label SettlementLbl = new Label("You have come up to the town of "+TownList[TownSelector]);
-        bountyLbl = new Label("");
-        Button UseShop = new Button("Use shop");
-        Button SellItems = new Button("Sell items");
-        UseShop.setOnAction(e -> {
-
-            store.storeMethod();
-            AlertWindow.setScene(new Scene(midStorePane));
-        });
-        Button KeepGoing = new Button("Keep going");
-        Button ClaimRewardBtn = new Button("Claim Thief Bounty");
-        ClaimRewardBtn.setOnAction(e -> {
-
-            if (TurnInThief){
-
-                bountyMethod();
-            }else{
-
-                bountyLbl.setText("Sorry... you haven't caught anyone ( NO BOUNTY 4 U !! )");
-            }
-        });
-        KeepGoing.setOnAction(e -> {
-
-            Distance -= 25;
-            AlertWindow.close();
-        });
-        SellItems.setOnAction(e -> AlertWindow.setScene(new Scene(midSellStorePane)));
-        SettlementLayout.setPadding(new Insets(20,20,20,20));
-        SettlementLayout.getChildren().addAll(SettlementLbl,bountyLbl,UseShop,KeepGoing,ClaimRewardBtn);
-        SettlementScene = new Scene(SettlementLayout,320,300);
         AlertWindow.setScene(SettlementScene);
-        AlertWindow.setTitle("Settlement");
-        AlertWindow.showAndWait();
-    }
-
-    protected void bountyMethod(){
-
-        int MoneyToClaim;
-
-        MoneyToClaim = rand.nextInt(1000)+500;
-
-        bountyLbl.setText("You have Claimed: $"+MoneyToClaim);
-
-        Money+=MoneyToClaim;
-
-        TurnInThief = false;
+        AlertWindow.show();
     }
 
     protected void notEnoughMoney(){

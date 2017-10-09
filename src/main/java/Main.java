@@ -1,6 +1,7 @@
 import java.util.LinkedList;
 import java.util.Random;
-import io.sentry.Sentry;
+import org.apache.logging.log4j.*;
+import io.sentry.*;
 import javafx.application.Application;
 import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
@@ -32,10 +33,12 @@ public class Main extends Application{
     static Parent travelPane;
     static Parent gameOverPane;
     static Parent gameWonPane;
+    static Parent settlementPane;
     static Parent midSellStorePane;
 
     // Sentry
     private static final String dsn = "https://6db11d4c3f864632aa5b1932f6c80c82:6349615319974befbcb63a2459b5fc26@sentry.io/220483";
+    private static Logger logger = LogManager.getLogger(Main.class);
 
     // Core Java
     static LinkedList <String> PosseLinkedList = new LinkedList<>();
@@ -69,9 +72,11 @@ public class Main extends Application{
         // Launches sentry with the dsn in the parameters
         Sentry.init(dsn);
 
+        logger.info("Test 155");
+
         /*
         sends a message to the sentry dsn server
-        logger.error("test error");
+        logger.error("test ");
 
         works with other methods like: logger.fatal , logger.debug
         of which change the tag on the sentry dsn server
