@@ -69,6 +69,8 @@ public class HealthClass extends Main {
             HealthConditions+=60;
 
             PosseLinkedList.remove(PlayerSelectForEvent);
+
+            AlertWindow.showAndWait();
         }else{
 
             switch (SickEventChance){

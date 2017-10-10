@@ -1,6 +1,6 @@
 import java.util.LinkedList;
 import java.util.Random;
-import org.apache.logging.log4j.*;
+// import org.apache.logging.log4j.*;
 import io.sentry.*;
 import javafx.application.Application;
 import javafx.concurrent.Task;
@@ -66,6 +66,12 @@ public class Main extends Application{
     static boolean TurnInThief = false;
     static CareerPosse cp = new CareerPosse();
     static String TownList[]={"Salem, Oregon", "Denver, Colorado", "Frankfort, Kentucky", "Atlanta, Georgia", "Tallahassee, Florida"};
+
+    /* BUG LIST
+
+    * Jar file won't run
+
+     */
 
     public static void main(String args[]) {
 

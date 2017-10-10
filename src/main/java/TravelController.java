@@ -1,15 +1,22 @@
+import javafx.animation.Animation;
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.shape.Circle;
+import javafx.util.Duration;
 
 public class TravelController extends Main {
 
+    protected static int animationSpeed = 15;
+    private TranslateTransition transition;
     @FXML private Button setOutBtn;
     @FXML private Label distanceLabel;
     @FXML private Label conditionsLabel;
     @FXML private Label daysLabel;
     @FXML private Label statusLabel;
+    @FXML private Circle sprite;
     private int HealthEventCooldown = 10;
     private AlertBox alt = new AlertBox();
 
@@ -17,6 +24,7 @@ public class TravelController extends Main {
     @FXML
     private void stopMoving(){
 
+        transition.pause();
         IsMoving = false;
     }
 
@@ -24,6 +32,7 @@ public class TravelController extends Main {
     @FXML
     private void setOut(){
 
+        transition.play();
         runBackgroundTask();
     }
 
@@ -108,6 +117,7 @@ public class TravelController extends Main {
 
                 statusLabel.setText("Status: Resting");
                 setOutBtn.setText("Set out");
+                transition.pause();
             });
 
         }).start();
@@ -171,5 +181,12 @@ public class TravelController extends Main {
         conditionsLabel.setText("Condition: "+HealthConditions);
         daysLabel.setText("Days: "+Days);
         statusLabel.setText("Status: Resting");
+
+        // setting up how the animation will work
+        transition = new TranslateTransition();
+        transition.setDuration(Duration.seconds(animationSpeed));
+        transition.setToX(-750);
+        transition.setNode(sprite);
+        transition.setCycleCount(Animation.INDEFINITE);
     }
 }
