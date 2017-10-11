@@ -4,12 +4,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #36454f;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StoreController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StoreController">
    <top>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Region prefHeight="100.0" prefWidth="438.0" HBox.hgrow="ALWAYS" />
-            <Label fx:id="moneyLabel" prefHeight="80.0" prefWidth="449.0" text="Money: " textFill="WHITE">
+            <Label fx:id="moneyLabel" prefHeight="80.0" prefWidth="449.0" text="Money: " textFill="GREEN">
                <font>
                   <Font name="DejaVu Sans Condensed Bold" size="27.0" />
                </font>
@@ -23,7 +23,7 @@
    <left>
       <VBox prefHeight="300.0" prefWidth="182.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="PURCHASE" textFill="WHITE">
+            <Label text="PURCHASE" textFill="PURPLE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -55,7 +55,7 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="5.0" prefWidth="146.0" text="Water $0.25" textFill="WHITE">
+            <Label prefHeight="5.0" prefWidth="146.0" text="Water $0.25" textFill="PURPLE">
                <padding>
                   <Insets left="10.0" top="30.0" />
                </padding>
@@ -66,7 +66,7 @@
                   <Insets />
                </VBox.margin>
             </Label>
-            <Label prefHeight="51.0" prefWidth="134.0" text="Food $0.50" textFill="WHITE">
+            <Label prefHeight="51.0" prefWidth="134.0" text="Food $0.50" textFill="PURPLE">
                <padding>
                   <Insets left="10.0" top="15.0" />
                </padding>
@@ -74,7 +74,7 @@
                   <Font name="DejaVu Sans Bold" size="18.0" />
                </font>
             </Label>
-            <Label prefHeight="18.0" prefWidth="148.0" text="Ammo $5" textFill="WHITE">
+            <Label prefHeight="18.0" prefWidth="148.0" text="Ammo $5" textFill="PURPLE">
                <padding>
                   <Insets left="10.0" top="15.0" />
                </padding>
@@ -88,14 +88,14 @@
    <right>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="17.0" prefWidth="91.0" text="INVENTORY" textFill="WHITE">
+            <Label prefHeight="17.0" prefWidth="91.0" text="INVENTORY" textFill="PURPLE">
                <font>
                   <Font name="DejaVu Sans Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="currentWater" text="WATER: 0" textFill="WHITE" />
-            <Label fx:id="currentFood" text="FOOD: 0" textFill="WHITE" />
-            <Label fx:id="currentAmmo" text="AMMO: 0" textFill="WHITE" />
+            <Label fx:id="currentWater" text="WATER: 0" textFill="PURPLE" />
+            <Label fx:id="currentFood" text="FOOD: 0" textFill="PURPLE" />
+            <Label fx:id="currentAmmo" text="AMMO: 0" textFill="PURPLE" />
          </children>
       </VBox>
    </right>

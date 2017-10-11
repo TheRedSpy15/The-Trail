@@ -42,8 +42,8 @@ public class SettlementMenuController extends Main {
     @FXML
     private void initialize(){
 
-        AlertWindow.setTitle("Settlement");
-        townLbl.setText("You have come up to the town of "+TownList[TownSelector]);
+        AlertWindow.setTitle("City");
+        townLbl.setText("You have come up to "+ CityList[CitySelector]);
     }
 
     protected static void bountyMethod(){

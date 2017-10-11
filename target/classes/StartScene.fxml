@@ -3,10 +3,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="250.0" prefWidth="300.0" style="-fx-background-color: #36454f;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StartController">
+<AnchorPane prefHeight="250.0" prefWidth="300.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StartController">
    <children>
    
-       <Label layoutX="59.0" layoutY="14.0" prefHeight="49.0" prefWidth="182.0" text="The Trail" textFill="WHITE">
+       <Label layoutX="59.0" layoutY="14.0" prefHeight="49.0" prefWidth="182.0" text="The Trail" textFill="PURPLE">
          <font>
             <Font name="Comic Sans MS Bold" size="38.0" />
          </font>

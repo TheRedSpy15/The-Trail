@@ -19,7 +19,7 @@ public class SellController extends AlertBox {
         Water-=waterSlider.getValue();
         Ammo-=ammoSlider.getValue();
 
-        MainWindow.setScene(SettlementScene);
+        AlertWindow.close();
     }
 
     @FXML

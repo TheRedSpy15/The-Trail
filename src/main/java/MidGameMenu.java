@@ -52,16 +52,16 @@ public class MidGameMenu extends Main {
 
         // Setting the font size and color of labels
         Waterlbl.setFont(new Font(20));
-        Waterlbl.setStyle("-fx-text-fill: white;");
+        Waterlbl.setStyle("-fx-text-fill: purple;");
         Foodlbl.setFont(new Font(20));
-        Foodlbl.setStyle("-fx-text-fill: white;");
+        Foodlbl.setStyle("-fx-text-fill: purple;");
         Ammolbl.setFont(new Font(20));
-        Ammolbl.setStyle("-fx-text-fill: white;");
+        Ammolbl.setStyle("-fx-text-fill: purple;");
         Moneylbl.setFont(new Font(20));
-        Moneylbl.setStyle("-fx-text-fill: white;");
+        Moneylbl.setStyle("-fx-text-fill: purple;");
 
         // Set background color
-        InventoryLayout.setStyle("-fx-background-color: #36454f");
+        InventoryLayout.setStyle("-fx-background-color: black");
 
         // changing scene back to menu scene
         Backbtn.setOnAction(e -> MenuWindow.setScene(menuScene));
@@ -88,10 +88,10 @@ public class MidGameMenu extends Main {
 
         // Setting font size of Label and color
         label.setFont(new Font(20));
-        label.setStyle("-fx-text-fill: white;");
+        label.setStyle("-fx-text-fill: purple;");
 
         // Setting background color
-        FoodPortionsLayout.setStyle("-fx-background-color: #36454f;");
+        FoodPortionsLayout.setStyle("-fx-background-color: black;");
 
         // Setting food intake value and going back to menu scene
         ExtremeDietbtn.setOnAction(e -> {
@@ -131,11 +131,11 @@ public class MidGameMenu extends Main {
         Button Fastbtn = new Button("Fast pace");
 
         // Setting font size of label and color
-        label.setStyle("-fx-text-fill: white;");
+        label.setStyle("-fx-text-fill: purple;");
         label.setFont(new Font(20));
 
         // setting background color
-        PaceLayout.setStyle("-fx-background-color: #36454f");
+        PaceLayout.setStyle("-fx-background-color: black");
 
         // Setting pace value and going back to menu scene
         Slowbtn.setOnAction(e -> {

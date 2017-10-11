@@ -1,9 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="The Trail:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/The_Trail_jar</output-path>
-    <root id="archive" name="The Trail JAVAFX VER.jar">
-      <element id="module-output" name="The Trail JAVAFX VER" />
-      <element id="extracted-dir" path="$APPLICATION_HOME_DIR$/redist/annotations-java8.jar" path-in-jar="/" />
-    </root>
-  </artifact>
-</component>

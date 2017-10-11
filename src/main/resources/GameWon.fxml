@@ -3,9 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #36454f;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="205.0" layoutY="180.0" text="YOU WIN!!!" textFill="WHITE">
+      <Label layoutX="205.0" layoutY="180.0" text="YOU WIN!!!" textFill="PURPLE">
          <font>
             <Font name="DejaVu Serif Condensed Bold" size="32.0" />
          </font>

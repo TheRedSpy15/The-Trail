@@ -5,7 +5,7 @@ public class CareerController extends Main {
 
     // runs posse setup method, sets money to 1500, and sets scene to posse pane
     @FXML
-    private void carpenterHandle() {
+    private void hitman() {
 
         Money = 1500;
         cp.posseSetupMethod();
@@ -14,7 +14,7 @@ public class CareerController extends Main {
 
     // runs posse setup method, sets money to 1000, and sets scene to posse pane
     @FXML
-    private void minerHandle() {
+    private void drugDealer() {
 
         Money = 1000;
         cp.posseSetupMethod();
@@ -23,7 +23,7 @@ public class CareerController extends Main {
 
     // runs posse setup method, sets money to 500, and sets scene to posse pane
     @FXML
-    private void farmerHandle() {
+    private void thief() {
 
         Money = 500;
         cp.posseSetupMethod();

@@ -41,14 +41,14 @@ public class Main extends Application{
     // private static Logger logger = LogManager.getLogger(Main.class);
 
     // Core Java
-    static LinkedList <String> PosseLinkedList = new LinkedList<>();
+    static LinkedList <String> gangLinkedList = new LinkedList<>();
     static int HealthConditions = 100;
     static int Distance = 30000;
     static int Days = 0;
     static int Food = 0;
     static int ThiefMoney;
     static boolean ThiefIsAlive;
-    static int TownSelector = 4;
+    static int CitySelector = 4;
     static int Ammo = 0;
     static int Water = 0;
     static double amountOver = 0;
@@ -64,12 +64,12 @@ public class Main extends Application{
     static Store store = new Store();
     static boolean IsMoving = false;
     static boolean TurnInThief = false;
-    static CareerPosse cp = new CareerPosse();
-    static String TownList[]={"Salem, Oregon", "Denver, Colorado", "Frankfort, Kentucky", "Atlanta, Georgia", "Tallahassee, Florida"};
+    static CareerGang cp = new CareerGang();
+    static String CityList[]={"Salem, Oregon", "Denver, Colorado", "Frankfort, Kentucky", "Atlanta, Georgia", "Tallahassee, Florida"};
 
     /* BUG LIST
 
-    * Jar file won't run
+    *
 
      */
 
@@ -137,6 +137,9 @@ public class Main extends Application{
         // Initializing MainWindow as primaryStage object;
         MainWindow = primaryStage;
 
+        // prevents resizing of stage
+        MainWindow.setResizable(false);
+
         // Setting title of MainWindow
         MainWindow.setTitle("The Trail");
 
@@ -155,10 +158,10 @@ public class Main extends Application{
         protected Object call() throws Exception {
 
             // making object for specified .wav file
-            AudioClip audio = new AudioClip(getClass().getResource("Wild_Western_Music_-_Tumbleweed_Town.wav").toExternalForm());
+            AudioClip audio = new AudioClip(getClass().getResource("In_Seoul_Retro_80.wav").toExternalForm());
 
             // Setting volume
-            audio.setVolume(0.5f);
+            audio.setVolume(0.3f);
 
             // Setting loop
             audio.setCycleCount(INDEFINITE);

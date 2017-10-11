@@ -4,7 +4,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.shape.Circle;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
 public class TravelController extends Main {
@@ -16,7 +16,7 @@ public class TravelController extends Main {
     @FXML private Label conditionsLabel;
     @FXML private Label daysLabel;
     @FXML private Label statusLabel;
-    @FXML private Circle sprite;
+    @FXML private AnchorPane sprite;
     private int HealthEventCooldown = 10;
     private AlertBox alt = new AlertBox();
 
@@ -61,8 +61,8 @@ public class TravelController extends Main {
 
                 ++Days;
                 Distance-=Pace;
-                Food -= (PosseLinkedList.size()*FoodIntake);
-                Water=Water-(PosseLinkedList.size()*FoodIntake);
+                Food -= (gangLinkedList.size()*FoodIntake);
+                Water=Water-(gangLinkedList.size()*FoodIntake);
 
                 if (Food < 0) Food = 0;
                 if (Water < 0) Water = 0;
@@ -78,7 +78,7 @@ public class TravelController extends Main {
                     daysLabel.setText("Days: "+Days);
                     statusLabel.setText("Status: Moving");
                     conditionsLabel.setText("Condition: "+HealthConditions);
-                    setOutBtn.setText("Speed up");
+                    setOutBtn.setText("Speedup");
 
                     //Thief encounter
                     if (extremeLowChance()) alt.thiefEncounter();
@@ -93,7 +93,7 @@ public class TravelController extends Main {
 
                         if (SickEventChance > HealthConditions){
 
-                            PlayerSelectForEvent = PosseLinkedList.size();
+                            PlayerSelectForEvent = gangLinkedList.size();
                             PlayerSelectForEvent-=1;
                             HealthClass.poorHealthEvent();
                         }
@@ -132,7 +132,7 @@ public class TravelController extends Main {
             distanceLabel.setText("To go: "+Distance+"Mi");
             alt.townEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");
-            TownSelector = 4;
+            CitySelector = 4;
         }
 
         if (Distance - 25000 <= 15 && Distance - 25000 >= -15){
@@ -141,7 +141,7 @@ public class TravelController extends Main {
             distanceLabel.setText("To go: "+Distance+"Mi");
             alt.townEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");
-            TownSelector = 3;
+            CitySelector = 3;
         }
 
         if (Distance - 20000 <= 15 && Distance - 20000 >= -15){
@@ -150,7 +150,7 @@ public class TravelController extends Main {
             distanceLabel.setText("To go: "+Distance+"Mi");
             alt.townEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");
-            TownSelector = 2;
+            CitySelector = 2;
         }
 
         if (Distance - 10000 <= 15 && Distance - 10000 >= -15){
@@ -159,12 +159,12 @@ public class TravelController extends Main {
             distanceLabel.setText("To go: "+Distance+"Mi");
             alt.townEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");
-            TownSelector = 1;
+            CitySelector = 1;
         }
 
         if (Distance - 3500 <= 15 && Distance - 3500 >= -15){
 
-            TownSelector = 0;
+            CitySelector = 0;
             Distance = 3480;
             distanceLabel.setText("To go: "+Distance+"Mi");
             alt.townEvent();
@@ -185,7 +185,7 @@ public class TravelController extends Main {
         // setting up how the animation will work
         transition = new TranslateTransition();
         transition.setDuration(Duration.seconds(animationSpeed));
-        transition.setToX(-750);
+        transition.setToX(-850);
         transition.setNode(sprite);
         transition.setCycleCount(Animation.INDEFINITE);
     }

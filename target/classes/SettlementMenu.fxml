@@ -3,9 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="319.0" prefWidth="600.0" style="-fx-background-color: #36454f;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SettlementMenuController">
+<AnchorPane prefHeight="319.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SettlementMenuController">
    <children>
-      <Label fx:id="townLbl" layoutX="56.0" layoutY="36.0" prefHeight="45.0" prefWidth="489.0" text="You have come up to the town of: " textFill="WHITE">
+      <Label fx:id="townLbl" layoutX="56.0" layoutY="36.0" prefHeight="45.0" prefWidth="489.0" text="You have come up to the town of: " textFill="PURPLE">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
@@ -31,7 +31,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Label fx:id="bountyLbl" layoutX="81.0" layoutY="268.0" prefHeight="30.0" prefWidth="442.0" textFill="WHITE">
+      <Label fx:id="bountyLbl" layoutX="81.0" layoutY="268.0" prefHeight="30.0" prefWidth="442.0" textFill="PURPLE">
          <font>
             <Font size="17.0" />
          </font>

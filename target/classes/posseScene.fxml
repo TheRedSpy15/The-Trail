@@ -4,11 +4,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #36454f;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PosseController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PosseController">
    <center>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="66.0" prefWidth="390.0" text="Name your posse members" textFill="WHITE" VBox.vgrow="ALWAYS">
+            <Label prefHeight="66.0" prefWidth="390.0" text="Name your gang members" textFill="PURPLE" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="DejaVu Sans Condensed Bold" size="27.0" />
                </font>

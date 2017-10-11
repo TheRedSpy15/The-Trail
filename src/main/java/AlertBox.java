@@ -52,7 +52,7 @@ public class AlertBox extends Main {
 
         StackPane pane = new StackPane();
         Label label = new Label("");
-        label.setStyle("-fx-text-fill: white;");
+        label.setStyle("-fx-text-fill: purple;");
         pane.setPadding(new Insets(20,20,20,20));
         pane.getChildren().add(label);
         Scene scene = new Scene(pane,300,250);
@@ -125,11 +125,12 @@ public class AlertBox extends Main {
         IsMoving = false;
 
         VBox EncounterLayout = new VBox(10);
+        EncounterLayout.setStyle("-fx-background-color: black");
         EncounterLayout.setPadding(new Insets(40,20,20,20));
 
         EncounterLbl = new Label("You have encountered a thief!");
         EncounterLbl.setFont(new Font(20));
-        EncounterLbl.setStyle("-fx-text-fill: white;");
+        EncounterLbl.setStyle("-fx-text-fill: purple;");
         Button Choice1 = new Button("Let them go");
         Button Choice2 = new Button("Shoot them");
         Button Choice3 = new Button("Turn them in for a reward");
@@ -186,6 +187,7 @@ public class AlertBox extends Main {
     protected void notEnoughMoney(){
 
         StackPane ntEnoughMoneyLayout = new StackPane();
+        ntEnoughMoneyLayout.setStyle("-fx-background-color: #cf1020");
         Label label = new Label("Amount over: "+ (int) amountOver);
         label.setStyle("-fx-text-fill: white;");
         label.setFont(new Font(20));
