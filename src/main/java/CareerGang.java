@@ -8,7 +8,7 @@ public class CareerGang extends Main {
         // Posse scene
         try {
             // assigns posse scene fxml file to posse pane object
-            possePane = FXMLLoader.load(getClass().getResource("posseScene.fxml"));
+            possePane = FXMLLoader.load(getClass().getResource("GangScene.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }

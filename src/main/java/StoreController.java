@@ -13,7 +13,7 @@ public class StoreController extends Main {
     @FXML private Label currentWater;
     @FXML private Label currentFood;
     @FXML private Label currentAmmo;
-    private static AlertBox Alt = new AlertBox();
+    private static int amountOver = 0;
 
     @FXML
     private void purchase(){
@@ -45,21 +45,23 @@ public class StoreController extends Main {
                 e1.printStackTrace();
             }
 
-            // setting window scene to travel pane
-            MainWindow.setScene(new Scene(travelPane));
+            // determines if the scene is being used in alert window or main window and changes depending on that
+            if (MainWindow.getScene().equals(storeScene)){
 
-            // closes the alert window if it is open
-            if (AlertWindow.isShowing()){
+                // setting window scene to travel pane
+                MainWindow.setScene(new Scene(travelPane));
+            }else{
 
-                AlertWindow.close();
+                // Changing alert window scene to settlement scene
+                AlertWindow.setScene(CityScene);
             }
 
         // show not enough money scene in alert window with the amount over
         }else{
 
-            amountOver -= (Money - cartValue);
+            amountOver = (int) (Money - cartValue);
 
-            Alt.notEnoughMoney();
+            alert.notEnoughMoney(amountOver);
         }
     }
 

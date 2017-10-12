@@ -9,22 +9,22 @@
          <children>
             <Label text="INVENTORY" textFill="PURPLE">
                <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font name="Impact" size="24.0" />
                </font>
             </Label>
             <Label fx:id="foodLbl" text="Food: 0 ($0.25)" textFill="PURPLE">
                <font>
-                  <Font size="17.0" />
+                  <Font name="Impact" size="17.0" />
                </font>
             </Label>
             <Label fx:id="waterLbl" text="Water:  0 ($0.10)" textFill="PURPLE">
                <font>
-                  <Font size="17.0" />
+                  <Font name="Impact" size="17.0" />
                </font>
             </Label>
             <Label fx:id="ammoLbl" text="Ammo: 0 ($4)" textFill="PURPLE">
                <font>
-                  <Font size="17.0" />
+                  <Font name="Impact" size="17.0" />
                </font>
             </Label>
          </children>
@@ -39,22 +39,22 @@
       <Slider fx:id="ammoSlider" layoutX="442.0" layoutY="130.0" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" />
       <Label layoutX="198.0" layoutY="75.0" text="Water" textFill="PURPLE">
          <font>
-            <Font size="18.0" />
+            <Font name="Impact" size="18.0" />
          </font>
       </Label>
       <Label layoutX="323.0" layoutY="75.0" text="Food" textFill="PURPLE">
          <font>
-            <Font size="18.0" />
+            <Font name="Impact" size="18.0" />
          </font>
       </Label>
       <Label layoutX="422.0" layoutY="75.0" text="Ammo" textFill="PURPLE">
          <font>
-            <Font size="18.0" />
+            <Font name="Impact" size="18.0" />
          </font>
       </Label>
       <Button fx:id="sellBtn" layoutX="265.0" layoutY="287.0" mnemonicParsing="false" onAction="#sell" prefHeight="85.0" prefWidth="157.0" text="Sell">
          <font>
-            <Font name="DejaVu Sans Condensed Bold" size="45.0" />
+            <Font name="Impact" size="45.0" />
          </font>
       </Button>
    </children>

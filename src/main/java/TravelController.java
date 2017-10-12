@@ -4,12 +4,15 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
 public class TravelController extends Main {
 
-    protected static int animationSpeed = 15;
+    private static int payDayCountdown = 0;
+    private static int townCountDown = 0;
+    static int animationSpeed = 15;
     private TranslateTransition transition;
     @FXML private Button setOutBtn;
     @FXML private Label distanceLabel;
@@ -17,8 +20,8 @@ public class TravelController extends Main {
     @FXML private Label daysLabel;
     @FXML private Label statusLabel;
     @FXML private AnchorPane sprite;
-    private int HealthEventCooldown = 10;
-    private AlertBox alt = new AlertBox();
+    @FXML private ImageView spriteImage;
+    private int healthEventCooldown = 10;
 
     // when stop button is pressed
     @FXML
@@ -59,6 +62,8 @@ public class TravelController extends Main {
                 SickEventChance = rand.nextInt(20)+1;
                 EncounterChance = rand.nextInt(100)+1;
 
+                Score += 25;
+
                 ++Days;
                 Distance-=Pace;
                 Food -= (gangLinkedList.size()*FoodIntake);
@@ -66,6 +71,7 @@ public class TravelController extends Main {
 
                 if (Food < 0) Food = 0;
                 if (Water < 0) Water = 0;
+                if (Money > 10000) Money = 10000;
 
                 // health conditions
                 HealthClass.determineHealthCondition();
@@ -81,15 +87,18 @@ public class TravelController extends Main {
                     setOutBtn.setText("Speedup");
 
                     //Thief encounter
-                    if (extremeLowChance()) alt.thiefEncounter();
+                    if (extremeLowChance()) alert.thiefEncounter();
 
-                    // Settlement countdown
-                    townCountDown();
+                    // Payday countdown
+                    payDay();
+
+                    // Settlement countdowns
+                    CityCountDown();
 
                     // check if won
-                    alt.ifWon();
+                    alert.ifWon();
 
-                    if (HealthEventCooldown >= 10){
+                    if (healthEventCooldown >= 10){
 
                         if (SickEventChance > HealthConditions){
 
@@ -98,11 +107,11 @@ public class TravelController extends Main {
                             HealthClass.poorHealthEvent();
                         }
 
-                        HealthEventCooldown = 0;
+                        healthEventCooldown = 0;
                     }
                 });
 
-                HealthEventCooldown++;
+                healthEventCooldown++;
 
                 if (!IsMoving) break;
 
@@ -123,51 +132,51 @@ public class TravelController extends Main {
         }).start();
     }
 
-    private void townCountDown(){
+    private void CityCountDown(){
 
         // if statements for how close the new settlement distance is to player distance (triggers within 15 distance)
-        if (Distance - 29000 <= 15 && Distance - 29000 >= -15){
+        if (Distance - 2900 <= 15 && Distance - 2900 >= -15){
 
-            Distance = 28980;
+            Distance = 2880;
             distanceLabel.setText("To go: "+Distance+"Mi");
-            alt.townEvent();
+            alert.cityEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");
             CitySelector = 4;
         }
 
-        if (Distance - 25000 <= 15 && Distance - 25000 >= -15){
+        if (Distance - 2500 <= 15 && Distance - 2500 >= -15){
 
-            Distance = 24900;
+            Distance = 2480;
             distanceLabel.setText("To go: "+Distance+"Mi");
-            alt.townEvent();
+            alert.cityEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");
             CitySelector = 3;
         }
 
-        if (Distance - 20000 <= 15 && Distance - 20000 >= -15){
+        if (Distance - 2000 <= 15 && Distance - 2000 >= -15){
 
-            Distance = 19980;
+            Distance = 1980;
             distanceLabel.setText("To go: "+Distance+"Mi");
-            alt.townEvent();
+            alert.cityEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");
             CitySelector = 2;
         }
 
-        if (Distance - 10000 <= 15 && Distance - 10000 >= -15){
+        if (Distance - 1000 <= 15 && Distance - 1000 >= -15){
 
-            Distance = 9980;
+            Distance = 980;
             distanceLabel.setText("To go: "+Distance+"Mi");
-            alt.townEvent();
+            alert.cityEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");
             CitySelector = 1;
         }
 
-        if (Distance - 3500 <= 15 && Distance - 3500 >= -15){
+        if (Distance - 350 <= 15 && Distance - 350 >= -15){
 
             CitySelector = 0;
-            Distance = 3480;
+            Distance = 380;
             distanceLabel.setText("To go: "+Distance+"Mi");
-            alt.townEvent();
+            alert.cityEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");
         }
     }
@@ -175,6 +184,9 @@ public class TravelController extends Main {
     // on initialization of scene
     @FXML
     public void initialize(){
+
+        // On exit of car dealer stage, update sprite image
+        AlertWindow.setOnCloseRequest(e -> spriteImage.setId(spriteURL));
 
         // updating labels
         distanceLabel.setText("To go: "+Distance+"Mi");
@@ -188,5 +200,20 @@ public class TravelController extends Main {
         transition.setToX(-850);
         transition.setNode(sprite);
         transition.setCycleCount(Animation.INDEFINITE);
+
+        // fixes the bug with thread not ending when stage was closed
+        MainWindow.setOnCloseRequest(e -> IsMoving = false);
+    }
+
+    private void payDay(){
+
+        ++payDayCountdown;
+
+        if (payDayCountdown == 30){
+
+            Money += wage;
+
+            payDayCountdown = 0;
+        }
     }
 }

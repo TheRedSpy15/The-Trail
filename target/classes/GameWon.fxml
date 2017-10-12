@@ -3,11 +3,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameWonController">
    <children>
-      <Label layoutX="205.0" layoutY="180.0" text="YOU WIN!!!" textFill="PURPLE">
+      <Label layoutX="182.0" layoutY="169.0" prefHeight="63.0" prefWidth="236.0" text="YOU WIN!!!" textFill="PURPLE">
          <font>
-            <Font name="DejaVu Serif Condensed Bold" size="32.0" />
+            <Font name="Impact" size="52.0" />
+         </font>
+      </Label>
+      <Label fx:id="scoreLbl" layoutX="255.0" layoutY="241.0" text="Score: 0" textFill="WHITE">
+         <font>
+            <Font name="Impact" size="27.0" />
          </font>
       </Label>
    </children>

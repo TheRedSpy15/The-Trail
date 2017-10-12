@@ -6,14 +6,14 @@
 <AnchorPane prefHeight="250.0" prefWidth="300.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StartController">
    <children>
    
-       <Label layoutX="59.0" layoutY="14.0" prefHeight="49.0" prefWidth="182.0" text="The Trail" textFill="PURPLE">
+       <Label layoutX="73.0" layoutY="14.0" prefHeight="49.0" prefWidth="182.0" text="The Trail" textFill="PURPLE">
          <font>
-            <Font name="Comic Sans MS Bold" size="38.0" />
+            <Font name="Impact" size="45.0" />
          </font>
       </Label>
        <Button fx:id="button" layoutX="73.0" layoutY="75.0" onAction="#handleButtonClick" prefHeight="100.0" prefWidth="154.0" text="Start">
          <font>
-            <Font name="DejaVu Sans Condensed Bold" size="22.0" />
+            <Font name="Impact" size="22.0" />
          </font>
       </Button>
       <Button fx:id="loadBtn" layoutX="81.0" layoutY="196.0" mnemonicParsing="false" onAction="#loadGame" text="Load recent game">

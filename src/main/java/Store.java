@@ -1,4 +1,6 @@
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+
 import java.io.IOException;
 
 public class Store extends Main {
@@ -11,6 +13,7 @@ public class Store extends Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        storeScene = new Scene(storePane);
 
         // Store for Alert box stage
         try {

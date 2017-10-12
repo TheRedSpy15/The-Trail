@@ -2,7 +2,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 
-public class SettlementMenuController extends Main {
+public class CityMenuController extends Main {
 
     @FXML private Label townLbl;
     @FXML private static Label bountyLbl;
@@ -11,7 +11,7 @@ public class SettlementMenuController extends Main {
     private void store(){
 
         store.storeMethod();
-        AlertWindow.setScene(new Scene(midStorePane));
+        AlertWindow.setScene(storeScene);
     }
 
     @FXML
@@ -37,6 +37,12 @@ public class SettlementMenuController extends Main {
 
             bountyLbl.setText("Sorry... you haven't caught anyone ( NO BOUNTY 4 U !! )");
         }
+    }
+
+    @FXML
+    private void dealerShip(){
+
+
     }
 
     @FXML

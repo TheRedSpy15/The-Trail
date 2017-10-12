@@ -1,8 +1,7 @@
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 
-public class PosseController extends Main {
+public class GangController extends Main {
     
     @FXML  private TextField membername1;
     @FXML  private TextField membername2;
@@ -21,7 +20,7 @@ public class PosseController extends Main {
             store.storeMethod();
 
             // Sets the scene to store pane
-            MainWindow.setScene(new Scene(storePane));
+            MainWindow.setScene(storeScene);
 
             // adds the value of the text fields to the linked list
             gangLinkedList.add(membername1.getText());

@@ -15,7 +15,6 @@ public class AlertBox extends Main {
 
     protected Scene notEnoughMoneyScene;
     protected Scene EmptyNameScene;
-    protected static Scene SettlementScene;
 
     protected static void alertMenuStart(){
 
@@ -34,14 +33,6 @@ public class AlertBox extends Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        // Settlement menu pane
-        try {
-            settlementPane = FXMLLoader.load(Main.class.getResource("SettlementMenu.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        SettlementScene = new Scene(settlementPane);
 
         //Block events to other windows
         AlertWindow.initModality(Modality.APPLICATION_MODAL);
@@ -175,20 +166,28 @@ public class AlertBox extends Main {
         AlertWindow.showAndWait();
     }
 
-    protected void townEvent() {
+    protected void cityEvent() {
+
+        // Settlement menu pane
+        try {
+            cityPane = FXMLLoader.load(Main.class.getResource("CityMenu.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        CityScene = new Scene(cityPane);
 
         //Stop moving
         IsMoving = false;
 
-        AlertWindow.setScene(SettlementScene);
+        AlertWindow.setScene(CityScene);
         AlertWindow.show();
     }
 
-    protected void notEnoughMoney(){
+    protected void notEnoughMoney(int amountOver){
 
         StackPane ntEnoughMoneyLayout = new StackPane();
         ntEnoughMoneyLayout.setStyle("-fx-background-color: #cf1020");
-        Label label = new Label("Amount over: "+ (int) amountOver);
+        Label label = new Label("Amount over: "+ amountOver);
         label.setStyle("-fx-text-fill: white;");
         label.setFont(new Font(20));
         ntEnoughMoneyLayout.setPadding(new Insets(20,20,20,20));
@@ -197,8 +196,6 @@ public class AlertBox extends Main {
         AlertWindow.setScene(notEnoughMoneyScene);
         AlertWindow.setTitle("Not enough money");
         AlertWindow.show();
-
-        amountOver = 0;
     }
 
     protected void emptyNames(){

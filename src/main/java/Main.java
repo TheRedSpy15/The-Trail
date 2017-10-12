@@ -33,8 +33,10 @@ public class Main extends Application{
     static Parent travelPane;
     static Parent gameOverPane;
     static Parent gameWonPane;
-    static Parent settlementPane;
+    static Parent cityPane;
     static Parent midSellStorePane;
+    static Scene CityScene;
+    static Scene storeScene;
 
     // Sentry
     private static final String dsn = "https://6db11d4c3f864632aa5b1932f6c80c82:6349615319974befbcb63a2459b5fc26@sentry.io/220483";
@@ -43,15 +45,17 @@ public class Main extends Application{
     // Core Java
     static LinkedList <String> gangLinkedList = new LinkedList<>();
     static int HealthConditions = 100;
-    static int Distance = 30000;
+    static int Distance = 3000;
+    static int Score = 0;
+    static String spriteURL;
     static int Days = 0;
+    static int wage = 0;
     static int Food = 0;
     static int ThiefMoney;
     static boolean ThiefIsAlive;
     static int CitySelector = 4;
     static int Ammo = 0;
     static int Water = 0;
-    static double amountOver = 0;
     static double Money = 0;
     static int Pace = 10;
     static int FoodIntake = 2;
@@ -67,9 +71,26 @@ public class Main extends Application{
     static CareerGang cp = new CareerGang();
     static String CityList[]={"Salem, Oregon", "Denver, Colorado", "Frankfort, Kentucky", "Atlanta, Georgia", "Tallahassee, Florida"};
 
-    /* BUG LIST
+    /*
 
-    *
+    BUG LIST
+
+    * Thief shootout doesn't work/start
+
+
+    NEEDED FEATURES
+
+    * Total distance increased to 5,000
+    * Balancing - WORKING ON
+    * Code clean up
+
+
+    NICE TO HAVES
+
+    * Car dealer ships - WORKING ON
+    * Option to name gang
+    * Support for resizing stage
+    * More comments
 
      */
 

@@ -11,33 +11,33 @@
    <children>
       <Label layoutX="147.0" layoutY="14.0" prefHeight="57.0" prefWidth="306.0" text="Pick a career" textFill="PURPLE">
          <font>
-            <Font name="DejaVu Sans Condensed Bold" size="45.0" />
+            <Font name="Impact" size="45.0" />
          </font>
       </Label>
       <HBox layoutX="47.0" layoutY="150.0" prefHeight="149.0" prefWidth="528.0">
          <children>
             <Button fx:id="hitmanBtn" mnemonicParsing="false" onAction="#hitman" prefHeight="99.0" prefWidth="168.0" text="Hitman">
                <font>
-                  <Font name="DejaVu Sans Bold" size="20.0" />
+                  <Font name="Impact" size="20.0" />
                </font>
                <tooltip>
-                  <Tooltip text="Start money: $1500" />
+                  <Tooltip text="Start money: $1500 | Wage: $1000" />
                </tooltip>
             </Button>
             <Button fx:id="drugDealerBtn" mnemonicParsing="false" onAction="#drugDealer" prefHeight="99.0" prefWidth="168.0" text="Drug Dealer">
                <font>
-                  <Font name="DejaVu Serif Bold" size="20.0" />
+                  <Font name="Impact" size="20.0" />
                </font>
                <tooltip>
-                  <Tooltip text="Start money: $1000" />
+                  <Tooltip text="Start money: $1000 | Wage: " />
                </tooltip>
             </Button>
             <Button fx:id="thiefBtn" mnemonicParsing="false" onAction="#thief" prefHeight="99.0" prefWidth="168.0" text="Thief">
                <font>
-                  <Font name="DejaVu Sans Condensed Bold" size="20.0" />
+                  <Font name="Impact" size="20.0" />
                </font>
                <tooltip>
-                  <Tooltip text="Start money: $500" />
+                  <Tooltip text="Start money: $500 | Wage: RANDOM" />
                </tooltip>
             </Button>
          </children>
