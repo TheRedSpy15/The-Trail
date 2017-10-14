@@ -1,1 +1,4 @@
-language: java
+"language": "java",
+  "group": "stable",
+  "dist": "trusty",
+  "os": "windows"
