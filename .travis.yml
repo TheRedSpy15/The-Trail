@@ -1,4 +1,5 @@
-"language": "java",
-  "group": "stable",
-  "dist": "trusty",
-  "os": "windows"
+language: java
+rvm:
+ - 2.2
+ - jruby
+ - rbx-2
