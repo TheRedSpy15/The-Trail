@@ -10,6 +10,7 @@ public class CityMenuController extends Main {
     @FXML
     private void store(){
 
+        AlertWindow.setTitle("Store");
         store.storeMethod();
         AlertWindow.setScene(storeScene);
     }
@@ -17,6 +18,7 @@ public class CityMenuController extends Main {
     @FXML
     private void sell(){
 
+        AlertWindow.setTitle("Sell");
         AlertWindow.setScene(new Scene(midSellStorePane));
     }
 
@@ -42,7 +44,8 @@ public class CityMenuController extends Main {
     @FXML
     private void dealerShip(){
 
-
+        AlertWindow.setTitle("Dealer Ship");
+        AlertWindow.setScene(dealerScene);
     }
 
     @FXML

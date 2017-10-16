@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ShootOutController">
+   <children>
+      <HBox layoutX="46.0" layoutY="264.0" prefHeight="100.0" prefWidth="510.0">
+         <children>
+            <Button fx:id="shoot" mnemonicParsing="false" prefHeight="101.0" prefWidth="160.0" text="Shoot" textFill="RED">
+               <font>
+                  <Font name="Impact" size="30.0" />
+               </font>
+            </Button>
+            <Button fx:id="letGo" mnemonicParsing="false" prefHeight="114.0" prefWidth="217.0" text="Let them go">
+               <font>
+                  <Font name="Impact" size="34.0" />
+               </font>
+            </Button>
+            <Button fx:id="grenade" mnemonicParsing="false" prefHeight="108.0" prefWidth="160.0" text="Grenade" textFill="RED">
+               <font>
+                  <Font name="Impact" size="30.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <Label fx:id="eventLbl" layoutX="170.0" layoutY="95.0" prefHeight="84.0" prefWidth="260.0" textFill="PURPLE">
+         <font>
+            <Font name="Impact" size="31.0" />
+         </font>
+      </Label>
+      <Label fx:id="thiefHealthLbl" layoutX="197.0" layoutY="30.0" prefHeight="47.0" prefWidth="208.0" text="THIEF HEALTH: 100" textFill="RED">
+         <font>
+            <Font name="Impact" size="28.0" />
+         </font>
+      </Label>
+      <Label fx:id="ammoLbl" layoutX="46.0" layoutY="232.0" prefHeight="32.0" prefWidth="113.0" text="Ammo: 0" textFill="RED">
+         <font>
+            <Font name="Impact" size="23.0" />
+         </font>
+      </Label>
+      <Label fx:id="grenadeLbl" layoutX="405.0" layoutY="234.0" text="Grenades: 0" textFill="RED">
+         <font>
+            <Font name="Impact" size="23.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

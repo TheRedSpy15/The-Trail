@@ -7,7 +7,7 @@ public class CareerController extends Main {
     @FXML
     private void hitman() {
 
-        Money = 1500;
+        Money = 50000;
         wage = 1000;
         cp.posseSetupMethod();
         MainWindow.setScene(new Scene(possePane));

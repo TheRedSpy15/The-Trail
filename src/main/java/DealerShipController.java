@@ -1,10 +1,14 @@
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 
 public class DealerShipController extends Main {
 
     private static int amountOver = 0;
+    @FXML private Label moneyLbl;
 
-    @FXML private void greenSportsCar(){
+    public void blueTruck(){
+
+        System.out.println("CLICKED");
 
         if (Money >= 5000){
 
@@ -12,16 +16,25 @@ public class DealerShipController extends Main {
 
             Score += 50000;
 
-            spriteURL = "@spr_car4_0.png";
-        }else {
+            carSpriteURL = "sprite6_0.png";
+
+            System.out.println("Purchased blue Truck");
+            alert.purchased("BLUE TRUCK");
+
+            moneyLbl.setText("Money: $"+Money);
+        }else if (Money < 5000){
 
             amountOver = (int) (Money - 5000);
 
             alert.notEnoughMoney(amountOver);
+
+            System.out.println("Not enough money");
         }
     }
 
-    @FXML private void rallyCar(){
+    public void rallyCar(){
+
+        System.out.println("CLICKED");
 
         if (Money >= 3500){
 
@@ -29,12 +42,24 @@ public class DealerShipController extends Main {
 
             Score += 35000;
 
-            spriteURL = "@spr_rally_0.png";
-        }else {
+            carSpriteURL = "spr_rally_0.png";
+
+            System.out.println("Purchased rally car");
+            alert.purchased("RALLY CAR");
+
+            moneyLbl.setText("Money: $"+Money);
+        }else if (Money < 3500){
 
             amountOver = (int) (Money - 3500);
 
             alert.notEnoughMoney(amountOver);
+
+            System.out.println("Not enough money");
         }
+    }
+
+    @FXML private void initialize(){
+
+        moneyLbl.setText("Your money: $"+(int)Money);
     }
 }

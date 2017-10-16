@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
@@ -11,7 +12,6 @@ import javafx.util.Duration;
 public class TravelController extends Main {
 
     private static int payDayCountdown = 0;
-    private static int townCountDown = 0;
     static int animationSpeed = 15;
     private TranslateTransition transition;
     @FXML private Button setOutBtn;
@@ -87,12 +87,12 @@ public class TravelController extends Main {
                     setOutBtn.setText("Speedup");
 
                     //Thief encounter
-                    if (extremeLowChance()) alert.thiefEncounter();
+                    // if (extremeLowChance()) alert.thiefEncounter();
 
                     // Payday countdown
                     payDay();
 
-                    // Settlement countdowns
+                    // City countdown
                     CityCountDown();
 
                     // check if won
@@ -135,27 +135,27 @@ public class TravelController extends Main {
     private void CityCountDown(){
 
         // if statements for how close the new settlement distance is to player distance (triggers within 15 distance)
-        if (Distance - 2900 <= 15 && Distance - 2900 >= -15){
+        if (Distance - 4900 <= 15 && Distance - 4900 >= -15){
 
-            Distance = 2880;
+            Distance = 4880;
             distanceLabel.setText("To go: "+Distance+"Mi");
             alert.cityEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");
             CitySelector = 4;
         }
 
-        if (Distance - 2500 <= 15 && Distance - 2500 >= -15){
+        if (Distance - 3500 <= 15 && Distance - 3500 >= -15){
 
-            Distance = 2480;
+            Distance = 3480;
             distanceLabel.setText("To go: "+Distance+"Mi");
             alert.cityEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");
             CitySelector = 3;
         }
 
-        if (Distance - 2000 <= 15 && Distance - 2000 >= -15){
+        if (Distance - 2500 <= 15 && Distance - 2500 >= -15){
 
-            Distance = 1980;
+            Distance = 2480;
             distanceLabel.setText("To go: "+Distance+"Mi");
             alert.cityEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");
@@ -174,7 +174,7 @@ public class TravelController extends Main {
         if (Distance - 350 <= 15 && Distance - 350 >= -15){
 
             CitySelector = 0;
-            Distance = 380;
+            Distance = 330;
             distanceLabel.setText("To go: "+Distance+"Mi");
             alert.cityEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");
@@ -186,7 +186,7 @@ public class TravelController extends Main {
     public void initialize(){
 
         // On exit of car dealer stage, update sprite image
-        AlertWindow.setOnCloseRequest(e -> spriteImage.setId(spriteURL));
+        AlertWindow.setOnCloseRequest(e -> spriteImage.setImage(new Image(carSpriteURL)));
 
         // updating labels
         distanceLabel.setText("To go: "+Distance+"Mi");

@@ -20,7 +20,6 @@ public class Main extends Application{
     static Stage MainWindow;
     private static Scene FoodPortionsScene;
     static Stage MenuWindow;
-    static Scene InventoryScene;
     static Scene SickEventScene;
     static Stage AlertWindow = new Stage();
     static Scene ThiefScene;
@@ -37,6 +36,12 @@ public class Main extends Application{
     static Parent midSellStorePane;
     static Scene CityScene;
     static Scene storeScene;
+    static Parent dealerPane;
+    static Scene dealerScene;
+    static Parent gunStorePane;
+    static Scene gunStoreScene;
+    static Parent inventoryPane;
+    static Scene inventoryScene;
 
     // Sentry
     private static final String dsn = "https://6db11d4c3f864632aa5b1932f6c80c82:6349615319974befbcb63a2459b5fc26@sentry.io/220483";
@@ -45,12 +50,16 @@ public class Main extends Application{
     // Core Java
     static LinkedList <String> gangLinkedList = new LinkedList<>();
     static int HealthConditions = 100;
-    static int Distance = 3000;
+    static int Distance = 5000;
+    static String gunSpriteURL = "piq_119368_400x400.png";
     static int Score = 0;
-    static String spriteURL;
+    static String carSpriteURL = "spr_car4_0.png";
     static int Days = 0;
     static int wage = 0;
     static int Food = 0;
+    static int Grenades = 0;
+    static String gunID = "Glock";
+    static int Attack = 15;
     static int ThiefMoney;
     static boolean ThiefIsAlive;
     static int CitySelector = 4;
@@ -75,24 +84,22 @@ public class Main extends Application{
 
     BUG LIST
 
-    * Thief shootout doesn't work/start
+    * Thief shoot out NEEDS COMPLETE make over - WORKING ON
 
 
     NEEDED FEATURES
 
-    * Total distance increased to 5,000
-    * Balancing - WORKING ON
-    * Code clean up
+    *
 
 
     NICE TO HAVES
 
-    * Car dealer ships - WORKING ON
+    * Code clean up
     * Option to name gang
     * Support for resizing stage
     * More comments
 
-     */
+    */
 
     public static void main(String args[]) {
 
@@ -103,7 +110,7 @@ public class Main extends Application{
         sends a message to the sentry dsn server
         logger.error("test ");
 
-        works with other methods like: logger.fatal , logger.debug
+        works with other methods like: logger.fatal / logger.debug
         of which change the tag on the sentry dsn server
         */
 
@@ -138,11 +145,11 @@ public class Main extends Application{
 
     static boolean extremeLowChance(){
 
-        // adds a random value to chance between 200 and 1
-        int Chance = (int)(Math.random()*200+1);
+        // adds a random value to chance between 100 and 1
+        int Chance = (int)(Math.random()*100+1);
 
         // returns true if chance is equal to 100
-        return Chance == 100;
+        return Chance == 90;
     }
 
     @Override

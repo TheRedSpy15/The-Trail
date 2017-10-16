@@ -13,7 +13,7 @@ import java.io.IOException;
 public class MidGameMenu extends Main {
 
     private static Parent menuPane;
-    private static Scene menuScene;
+    protected static Scene menuScene;
 
     protected static void menuMethod(){
 
@@ -26,6 +26,14 @@ public class MidGameMenu extends Main {
             e.printStackTrace();
         }
         menuScene = new Scene(menuPane);
+
+        // INVENTORY SCENE
+        try {
+            inventoryPane = FXMLLoader.load(Main.class.getResource("Inventory.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        inventoryScene = new Scene(inventoryPane);
 
         // Creating new Stage
         MenuWindow = new Stage();
@@ -42,38 +50,7 @@ public class MidGameMenu extends Main {
 
     protected static void inventoryMethod(){
 
-        // Object declaration
-        VBox InventoryLayout = new VBox(5);
-        Label Waterlbl = new Label("Water: "+Water);
-        Label Foodlbl = new Label("Food: "+Food);
-        Label Ammolbl = new Label("Ammo: "+Ammo);
-        Label Moneylbl = new Label("Money: "+(int)Money);
-        Button Backbtn = new Button("Back");
-
-        // Setting the font size and color of labels
-        Waterlbl.setFont(new Font(20));
-        Waterlbl.setStyle("-fx-text-fill: purple;");
-        Foodlbl.setFont(new Font(20));
-        Foodlbl.setStyle("-fx-text-fill: purple;");
-        Ammolbl.setFont(new Font(20));
-        Ammolbl.setStyle("-fx-text-fill: purple;");
-        Moneylbl.setFont(new Font(20));
-        Moneylbl.setStyle("-fx-text-fill: purple;");
-
-        // Set background color
-        InventoryLayout.setStyle("-fx-background-color: black");
-
-        // changing scene back to menu scene
-        Backbtn.setOnAction(e -> MenuWindow.setScene(menuScene));
-
-        // Adding padding to layout
-        InventoryLayout.setPadding(new Insets(20,20,20,20));
-
-        // Adding objects to layout
-        InventoryLayout.getChildren().addAll(Waterlbl,Foodlbl,Ammolbl,Moneylbl,Backbtn);
-
-        // Initializing scene
-        InventoryScene = new Scene(InventoryLayout, 320,200);
+        MenuWindow.setScene(inventoryScene);
     }
 
     // Used to set food intake

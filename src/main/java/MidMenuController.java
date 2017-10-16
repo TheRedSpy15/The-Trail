@@ -13,7 +13,7 @@ public class MidMenuController extends MidGameMenu {
     private void inventoryBtn(){
 
         inventoryMethod();
-        MenuWindow.setScene(InventoryScene);
+        MenuWindow.setScene(inventoryScene);
     }
 
     @FXML

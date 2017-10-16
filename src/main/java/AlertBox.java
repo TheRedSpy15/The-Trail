@@ -41,74 +41,7 @@ public class AlertBox extends Main {
 
     private void shootoutThread(){
 
-        StackPane pane = new StackPane();
-        Label label = new Label("");
-        label.setStyle("-fx-text-fill: purple;");
-        pane.setPadding(new Insets(20,20,20,20));
-        pane.getChildren().add(label);
-        Scene scene = new Scene(pane,300,250);
-        AlertWindow.setScene(scene);
 
-        new Thread(() -> Platform.runLater(() -> {
-
-            if (Ammo > 0){
-
-                label.setText("You shot a round!");
-
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-                while (Ammo > 0 && ThiefIsAlive) for (int i = 0; i < 5; i++) {
-
-                    if (rand.nextBoolean()) {
-
-                        label.setText("You killed the thief!");
-                        ThiefIsAlive = false;
-
-                    }else{
-
-                        label.setText("You missed! Firing again!");
-                    }
-
-                    try {
-                        Thread.sleep(2000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-            }
-
-            if (Ammo <= 0){
-
-                label.setText("You have no bullets and the thief got away with $"+ThiefMoney);
-                Money-=ThiefMoney;
-
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e1) {
-                    e1.printStackTrace();
-                }
-
-                AlertWindow.close();
-
-            }else{
-
-                label.setText("The thief got away with $"+ThiefMoney);
-                Money-=ThiefMoney;
-
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e1) {
-                    e1.printStackTrace();
-                }
-
-                AlertWindow.close();
-            }
-        })).start();
     }
 
     protected void thiefEncounter(){
@@ -121,7 +54,8 @@ public class AlertBox extends Main {
 
         EncounterLbl = new Label("You have encountered a thief!");
         EncounterLbl.setFont(new Font(20));
-        EncounterLbl.setStyle("-fx-text-fill: purple;");
+        EncounterLbl.setStyle("-fx-text-fill: red;");
+        EncounterLbl.setFont(new Font(20));
         Button Choice1 = new Button("Let them go");
         Button Choice2 = new Button("Shoot them");
         Button Choice3 = new Button("Turn them in for a reward");
@@ -129,18 +63,7 @@ public class AlertBox extends Main {
         ThiefMoney = rand.nextInt(500)+15;
         ThiefIsAlive = true;
 
-        Choice1.setOnAction(e -> {
-
-            EncounterLbl.setText("The thief gave you some money in return");
-            Money+=ThiefMoney;
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-
-            AlertWindow.close();
-        });
+        Choice1.setOnAction(e -> AlertWindow.close());
 
         Choice2.setOnAction(event -> shootoutThread());
 
@@ -148,22 +71,27 @@ public class AlertBox extends Main {
 
             TurnInThief = true;
 
-            EncounterLbl.setText("At the next settlement you will receive the reward");
-
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-
             AlertWindow.close();
         });
 
         EncounterLayout.getChildren().addAll(EncounterLbl,Choice1,Choice2,Choice3);
-        ThiefScene = new Scene(EncounterLayout, 320,300);
+        ThiefScene = new Scene(EncounterLayout, 320,320);
         AlertWindow.setScene(ThiefScene);
         AlertWindow.setTitle("Thief encounter");
         AlertWindow.showAndWait();
+    }
+
+    protected void purchased(String item){
+
+        StackPane stackPane = new StackPane();
+        stackPane.setStyle("-fx-background-color: #cf1020");
+        stackPane.setPadding(new Insets(20,20,20,20));
+        Label label = new Label("PURCHASED: "+item);
+        label.setStyle("-fx-text-fill: white;");
+        label.setFont(new Font(20));
+        stackPane.getChildren().add(label);
+        Scene scene = new Scene(stackPane);
+        AlertWindow.setScene(scene);
     }
 
     protected void cityEvent() {
@@ -174,11 +102,13 @@ public class AlertBox extends Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         CityScene = new Scene(cityPane);
 
         //Stop moving
         IsMoving = false;
 
+        AlertWindow.setTitle("City");
         AlertWindow.setScene(CityScene);
         AlertWindow.show();
     }

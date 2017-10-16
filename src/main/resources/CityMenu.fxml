@@ -31,12 +31,12 @@
             <Font name="Impact" size="17.0" />
          </font>
       </Button>
-      <Label fx:id="bountyLbl" layoutX="81.0" layoutY="268.0" prefHeight="30.0" prefWidth="442.0" textFill="PURPLE">
+      <Label fx:id="bountyLbl" layoutX="81.0" layoutY="268.0" prefHeight="30.0" prefWidth="442.0" textFill="RED">
          <font>
             <Font name="Impact" size="17.0" />
          </font>
       </Label>
-      <Button fx:id="dealerBtn" onAction="#dealerShip" layoutX="302.0" layoutY="212.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="120.0" text="Car Dealer">
+      <Button fx:id="dealerBtn" layoutX="302.0" layoutY="212.0" mnemonicParsing="false" onAction="#dealerShip" prefHeight="45.0" prefWidth="120.0" text="Car Dealer">
          <font>
             <Font name="Impact" size="17.0" />
          </font>

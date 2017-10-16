@@ -28,5 +28,13 @@ public class Store extends Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        // Gun store
+        try {
+            gunStorePane = FXMLLoader.load(Main.class.getResource("GunStore.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        gunStoreScene = new Scene(gunStorePane);
     }
 }
