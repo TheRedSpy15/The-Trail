@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InventoryController">
+   <children>
+      <ImageView fx:id="gunImage" fitHeight="150.0" fitWidth="200.0" layoutX="324.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@piq_119368_400x400.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="foodLbl" layoutX="14.0" layoutY="77.0" prefHeight="29.0" prefWidth="178.0" text="Food: 0" textFill="WHITE">
+         <font>
+            <Font name="Impact" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="waterLbl" layoutX="14.0" layoutY="106.0" prefHeight="29.0" prefWidth="178.0" text="Water: 0" textFill="WHITE">
+         <font>
+            <Font name="Impact" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="ammoLbl" layoutX="14.0" layoutY="135.0" prefHeight="29.0" prefWidth="178.0" text="Ammo: 0" textFill="WHITE">
+         <font>
+            <Font name="Impact" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="14.0" prefHeight="46.0" prefWidth="178.0" text="Inventory" textFill="PURPLE">
+         <font>
+            <Font name="Impact" size="40.0" />
+         </font>
+      </Label>
+      <Separator layoutX="3.0" layoutY="63.0" prefWidth="200.0" />
+      <Label fx:id="moneyLbl" layoutX="14.0" layoutY="336.0" prefHeight="50.0" prefWidth="178.0" text="Money: $0" textFill="GREEN">
+         <font>
+            <Font name="Impact" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="668.0" layoutY="14.0" prefHeight="50.0" prefWidth="61.0" text="Car" textFill="PURPLE">
+         <font>
+            <Font name="Impact" size="40.0" />
+         </font>
+      </Label>
+      <Separator layoutX="600.0" layoutY="65.0" prefHeight="3.0" prefWidth="200.0" />
+      <ImageView fx:id="carImage" fitHeight="150.0" fitWidth="200.0" layoutX="599.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@spr_car4_0.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="600.0" layoutY="164.0" prefHeight="50.0" prefWidth="178.0" text="Top Speed: 150 MPH" textFill="WHITE">
+         <font>
+            <Font name="Impact" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="scoreLbl" layoutX="17.0" layoutY="296.0" prefHeight="50.0" prefWidth="178.0" text="Score: 0" textFill="YELLOW">
+         <font>
+            <Font name="Impact" size="24.0" />
+         </font>
+      </Label>
+      <Separator layoutX="307.0" layoutY="67.0" prefWidth="200.0" />
+      <Label layoutX="362.0" layoutY="10.0" prefHeight="58.0" prefWidth="74.0" text="Gun" textFill="PURPLE">
+         <font>
+            <Font name="Impact" size="40.0" />
+         </font>
+      </Label>
+      <Label fx:id="gunModelLbl" layoutX="314.0" layoutY="264.0" prefHeight="29.0" prefWidth="120.0" text="Model: Glock" textFill="WHITE">
+         <font>
+            <Font name="Impact" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="damageLbl" layoutX="314.0" layoutY="296.0" prefHeight="30.0" prefWidth="120.0" text="Damage: 15" textFill="WHITE">
+         <font>
+            <Font name="Impact" size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="backBtn" layoutX="658.0" layoutY="321.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="50.0" prefWidth="120.0" text="Back" textFill="RED">
+         <font>
+            <Font name="Impact" size="27.0" />
+         </font>
+      </Button>
+      <Label fx:id="grenadeLbl" layoutX="14.0" layoutY="164.0" prefHeight="29.0" prefWidth="178.0" text="Grenades: 0" textFill="WHITE">
+         <font>
+            <Font name="Impact" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

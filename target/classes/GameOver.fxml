@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" fx:controller="GameOverController" prefWidth="600.0" style="-fx-background-color: black" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="209.0" layoutY="161.0" prefHeight="78.0" prefWidth="182.0" text="GAME OVER......." textFill="RED">
+         <font>
+            <Font name="Impact" size="32.0" />
+         </font>
+      </Label>
+      <Label fx:id="scoreLbl" layoutX="195.0" layoutY="231.0" text="Score: 0" textFill="WHITE">
+         <font>
+            <Font name="Impact" size="27.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
