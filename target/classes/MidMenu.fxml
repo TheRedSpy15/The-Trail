@@ -26,10 +26,5 @@
             <Font name="Impact" size="17.0" />
          </font>
       </Button>
-      <Button fx:id="saveBtn" layoutX="168.0" layoutY="188.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="95.0" text="Save">
-         <font>
-            <Font name="Impact" size="21.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>

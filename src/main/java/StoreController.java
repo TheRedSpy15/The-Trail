@@ -2,7 +2,6 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
-import java.io.IOException;
 
 public class StoreController extends Main {
 
@@ -11,7 +10,6 @@ public class StoreController extends Main {
     @FXML private Label moneyLabel;
     @FXML private Label currentWater;
     @FXML private Label currentFood;
-    private static int amountOver = 0;
 
     @FXML
     private void purchase(){
@@ -44,13 +42,13 @@ public class StoreController extends Main {
             }else{
 
                 // Changing alert window scene to settlement scene
-                AlertWindow.setScene(CityScene);
+                AlertWindow.setScene(cityScene);
             }
 
         // show not enough money scene in alert window with the amount over
         }else{
 
-            amountOver = (int) (Money - cartValue);
+            int amountOver = (int) (Money - cartValue);
 
             alert.notEnoughMoney(amountOver);
         }
@@ -72,7 +70,7 @@ public class StoreController extends Main {
         currentWater.setText("WATER: "+Water);
 
         // random store inventory
-        waterSlider.setMax((int) (Math.random() * 500) + 300);
-        foodSlider.setMax((int) (Math.random() * 500) + 300);
+        waterSlider.setMax((int) (Math.random() * 1000) + 300);
+        foodSlider.setMax((int) (Math.random() * 1000) + 300);
     }
 }

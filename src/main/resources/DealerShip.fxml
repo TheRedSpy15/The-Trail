@@ -39,11 +39,16 @@
                         <Font name="Impact" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="moneyLbl" layoutX="174.0" layoutY="25.0" prefHeight="33.0" prefWidth="256.0" text="Your money: $0" textFill="#f6ff00">
+                  <Label fx:id="moneyLbl1" layoutX="174.0" layoutY="25.0" prefHeight="33.0" prefWidth="256.0" text="Your money: $0" textFill="#f6ff00">
                      <font>
                         <Font name="Impact" size="20.0" />
                      </font>
                   </Label>
+                  <Button fx:id="backBtn2" onAction="#setBackBtn2" layoutX="479.0" layoutY="316.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="107.0" text="Back">
+                     <font>
+                        <Font name="Impact" size="21.0" />
+                     </font>
+                  </Button>
                </children></AnchorPane>
       </content>
     </Tab>
@@ -56,7 +61,7 @@
                         <Font name="Impact" size="36.0" />
                      </font>
                   </Button>
-                  <Label layoutX="14.0" layoutY="14.0" prefHeight="61.0" prefWidth="218.0" text="Price: $5000" textFill="#00ff2f">
+                  <Label layoutX="14.0" layoutY="14.0" prefHeight="61.0" prefWidth="218.0" text="Price: $5000" textFill="GREEN">
                      <font>
                         <Font name="Impact" size="30.0" />
                      </font>
@@ -76,11 +81,16 @@
                         <Font name="Impact" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="moneyLbl1" layoutX="172.0" layoutY="21.0" prefHeight="33.0" prefWidth="256.0" text="Your money: $0" textFill="#f6ff00">
+                  <Label fx:id="moneyLbl2" layoutX="172.0" layoutY="21.0" prefHeight="33.0" prefWidth="256.0" text="Your money: $0" textFill="#f6ff00">
                      <font>
                         <Font name="Impact" size="20.0" />
                      </font>
                   </Label>
+                  <Button fx:id="backBtn1" onAction="#setBackBtn1" layoutX="479.0" layoutY="317.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="107.0" text="Back">
+                     <font>
+                        <Font name="Impact" size="21.0" />
+                     </font>
+                  </Button>
                </children></AnchorPane>
       </content>
     </Tab>

@@ -5,7 +5,7 @@ import javafx.scene.control.Label;
 public class CityMenuController extends Main {
 
     @FXML private Label townLbl;
-    @FXML private static Label bountyLbl;
+    @FXML private Label bountyLbl;
 
     @FXML
     private void store(){
@@ -55,11 +55,13 @@ public class CityMenuController extends Main {
         townLbl.setText("You have come up to "+ CityList[CitySelector]);
     }
 
-    protected static void bountyMethod(){
+    protected void bountyMethod(){
 
         int MoneyToClaim;
 
-        MoneyToClaim = rand.nextInt(1000)+500;
+        MoneyToClaim = rand.nextInt(5000)+1000;
+
+        Score += 50000;
 
         bountyLbl.setText("You have Claimed: $"+MoneyToClaim);
 

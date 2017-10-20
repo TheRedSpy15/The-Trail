@@ -1,14 +1,16 @@
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class DealerShipController extends Main {
 
     private static int amountOver = 0;
-    @FXML private Label moneyLbl;
+    public Button backBtn2;
+    public Label moneyLbl2;
+    public Button backBtn1;
+    @FXML private Label moneyLbl1;
 
     public void blueTruck(){
-
-        System.out.println("CLICKED");
 
         if (Money >= 5000){
 
@@ -18,23 +20,28 @@ public class DealerShipController extends Main {
 
             carSpriteURL = "sprite6_0.png";
 
-            System.out.println("Purchased blue Truck");
-            alert.purchased("BLUE TRUCK");
+            alert.alert("Purchased: BLUE TRUCK");
 
-            moneyLbl.setText("Money: $"+Money);
+            moneyLbl1.setText("Money: $"+Money);
         }else if (Money < 5000){
 
             amountOver = (int) (Money - 5000);
 
             alert.notEnoughMoney(amountOver);
-
-            System.out.println("Not enough money");
         }
     }
 
-    public void rallyCar(){
+    @FXML private void setBackBtn1(){
 
-        System.out.println("CLICKED");
+        AlertWindow.setScene(cityScene);
+    }
+
+    @FXML private void setBackBtn2(){
+
+        AlertWindow.setScene(cityScene);
+    }
+
+    public void rallyCar(){
 
         if (Money >= 3500){
 
@@ -44,22 +51,20 @@ public class DealerShipController extends Main {
 
             carSpriteURL = "spr_rally_0.png";
 
-            System.out.println("Purchased rally car");
-            alert.purchased("RALLY CAR");
+            alert.alert("Purchased: RALLY CAR");
 
-            moneyLbl.setText("Money: $"+Money);
+            moneyLbl1.setText("Money: $"+Money);
         }else if (Money < 3500){
 
             amountOver = (int) (Money - 3500);
 
             alert.notEnoughMoney(amountOver);
-
-            System.out.println("Not enough money");
         }
     }
 
     @FXML private void initialize(){
 
-        moneyLbl.setText("Your money: $"+(int)Money);
+        moneyLbl1.setText("Your money: $"+(int)Money);
+        moneyLbl2.setText("Your money: $"+(int)Money);
     }
 }

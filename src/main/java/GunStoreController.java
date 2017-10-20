@@ -19,7 +19,7 @@ public class GunStoreController extends Main {
 
             Attack = 45;
 
-            alert.purchased("AK-47");
+            alert.alert("Purchased: AK-47");
             gunID = "AK-47";
             gunSpriteURL = "ff1fbae3c3282a772246605d08225293.png";
 
@@ -42,7 +42,7 @@ public class GunStoreController extends Main {
 
             Grenades += grenadeSlider.getValue();
 
-            alert.purchased("GRENADE ("+(int)grenadeSlider.getValue()+")");
+            alert.alert("Purchased: GRENADE ("+(int)grenadeSlider.getValue()+")");
 
             moneyLbl.setText("Money: $"+Money);
         }else if (Money < (1000 * grenadeSlider.getValue())){
@@ -63,7 +63,7 @@ public class GunStoreController extends Main {
 
             Ammo += ammoSlider.getValue();
 
-            alert.purchased("AMMO ("+(int)ammoSlider.getValue()+")");
+            alert.alert("Purchased: AMMO ("+(int)ammoSlider.getValue()+")");
 
             moneyLbl.setText("Money: $"+Money);
         }else if (Money < (25 * ammoSlider.getValue())){
@@ -76,6 +76,7 @@ public class GunStoreController extends Main {
 
     @FXML public void backBtn(){
 
+        store.storeMethod();
         MainWindow.setScene(storeScene);
     }
 

@@ -16,11 +16,6 @@
             <Font name="Impact" size="22.0" />
          </font>
       </Button>
-      <Button fx:id="loadBtn" layoutX="81.0" layoutY="196.0" mnemonicParsing="false" onAction="#loadGame" text="Load recent game">
-         <font>
-            <Font name="DejaVu Sans Bold" size="12.0" />
-         </font>
-      </Button>
    </children>
 
 </AnchorPane>

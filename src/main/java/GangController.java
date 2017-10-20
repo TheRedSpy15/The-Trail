@@ -23,17 +23,17 @@ public class GangController extends Main {
             MainWindow.setScene(storeScene);
 
             // adds the value of the text fields to the linked list
-            gangLinkedList.add(membername1.getText());
-            gangLinkedList.add(membername2.getText());
-            gangLinkedList.add(membername3.getText());
-            gangLinkedList.add(membername4.getText());
-            gangLinkedList.add(membername5.getText());
-            gangLinkedList.add(membername6.getText());
+            gang.add(membername1.getText());
+            gang.add(membername2.getText());
+            gang.add(membername3.getText());
+            gang.add(membername4.getText());
+            gang.add(membername5.getText());
+            gang.add(membername6.getText());
         }
         else {
 
             // when the if statement is false, run the empty name alert
-            alert.emptyNames();
+            alert.alert("Text fields cannot be empty");
         }
     }
 }

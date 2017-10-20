@@ -66,8 +66,8 @@ public class TravelController extends Main {
 
                 ++Days;
                 Distance-=Pace;
-                Food -= (gangLinkedList.size()*FoodIntake);
-                Water=Water-(gangLinkedList.size()*FoodIntake);
+                Food -= (gang.size()*FoodIntake);
+                Water=Water-(gang.size()*FoodIntake);
 
                 if (Food < 0) Food = 0;
                 if (Water < 0) Water = 0;
@@ -87,7 +87,7 @@ public class TravelController extends Main {
                     setOutBtn.setText("Speedup");
 
                     //Thief encounter
-                    // if (extremeLowChance()) alert.thiefEncounter();
+                    if (extremeLowChance()) alert.thiefEncounter();
 
                     // Payday countdown
                     payDay();
@@ -102,7 +102,7 @@ public class TravelController extends Main {
 
                         if (SickEventChance > HealthConditions){
 
-                            PlayerSelectForEvent = gangLinkedList.size();
+                            PlayerSelectForEvent = gang.size();
                             PlayerSelectForEvent-=1;
                             HealthClass.poorHealthEvent();
                         }

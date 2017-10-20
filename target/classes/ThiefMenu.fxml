@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ThiefMenuController">
+   <children>
+      <Label layoutX="123.0" layoutY="53.0" prefHeight="41.0" prefWidth="355.0" text="You have encountered a thief!" textFill="RED">
+         <font>
+            <Font name="Impact" size="29.0" />
+         </font>
+      </Label>
+      <Button fx:id="captureBtn" onAction="#setCaptureBtn" layoutX="49.0" layoutY="151.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="194.0" text="Atempt to capture" textFill="RED">
+         <font>
+            <Font name="Impact" size="21.0" />
+         </font>
+      </Button>
+      <Button fx:id="attackBtn" onAction="#setAttackBtn" layoutX="358.0" layoutY="151.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="194.0" text="Attack!" textFill="RED">
+         <font>
+            <Font name="Impact" size="21.0" />
+         </font>
+      </Button>
+      <Button fx:id="ignoreBtn" onAction="#setIgnoreBtn" layoutX="248.0" layoutY="324.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="105.0" text="Ignore" textFill="RED">
+         <font>
+            <Font name="Impact" size="21.0" />
+         </font>
+      </Button>
+      <Label fx:id="loseLbl" layoutX="221.0" layoutY="270.0" prefHeight="41.0" prefWidth="261.0" text="Would lose: $0" textFill="WHITE">
+         <font>
+            <Font name="Impact" size="25.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

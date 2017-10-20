@@ -1,4 +1,3 @@
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -12,9 +11,6 @@ import javafx.stage.Modality;
 import java.io.IOException;
 
 public class AlertBox extends Main {
-
-    protected Scene notEnoughMoneyScene;
-    protected Scene EmptyNameScene;
 
     protected static void alertMenuStart(){
 
@@ -39,59 +35,67 @@ public class AlertBox extends Main {
         AlertWindow.setTitle("Alert");
     }
 
-    private void shootoutThread(){
+    AlertBox() {
 
-
+        AlertWindow.setTitle("Alert");
     }
 
     protected void thiefEncounter(){
 
         IsMoving = false;
+        AlertWindow.setTitle("Thief");
 
-        VBox EncounterLayout = new VBox(10);
-        EncounterLayout.setStyle("-fx-background-color: black");
-        EncounterLayout.setPadding(new Insets(40,20,20,20));
+        // shoot out pane
+        try {
+            shootOutPane = FXMLLoader.load(Main.class.getResource("ShootOut.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        shootOutScene = new Scene(shootOutPane);
 
-        EncounterLbl = new Label("You have encountered a thief!");
-        EncounterLbl.setFont(new Font(20));
-        EncounterLbl.setStyle("-fx-text-fill: red;");
-        EncounterLbl.setFont(new Font(20));
-        Button Choice1 = new Button("Let them go");
-        Button Choice2 = new Button("Shoot them");
-        Button Choice3 = new Button("Turn them in for a reward");
+        // Thief menu pane
+        try {
+            thiefMenuPane = FXMLLoader.load(Main.class.getResource("ThiefMenu.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        thiefMenuScene = new Scene(thiefMenuPane);
 
-        ThiefMoney = rand.nextInt(500)+15;
-        ThiefIsAlive = true;
-
-        Choice1.setOnAction(e -> AlertWindow.close());
-
-        Choice2.setOnAction(event -> shootoutThread());
-
-        Choice3.setOnAction(e -> {
-
-            TurnInThief = true;
-
-            AlertWindow.close();
-        });
-
-        EncounterLayout.getChildren().addAll(EncounterLbl,Choice1,Choice2,Choice3);
-        ThiefScene = new Scene(EncounterLayout, 320,320);
-        AlertWindow.setScene(ThiefScene);
-        AlertWindow.setTitle("Thief encounter");
+        AlertWindow.setScene(thiefMenuScene);
         AlertWindow.showAndWait();
     }
 
-    protected void purchased(String item){
+    protected void alert(String alertMSG){
 
         StackPane stackPane = new StackPane();
         stackPane.setStyle("-fx-background-color: #cf1020");
         stackPane.setPadding(new Insets(20,20,20,20));
-        Label label = new Label("PURCHASED: "+item);
+        Label label = new Label(alertMSG);
+        label.setFont(new Font(20));
         label.setStyle("-fx-text-fill: white;");
         label.setFont(new Font(20));
         stackPane.getChildren().add(label);
         Scene scene = new Scene(stackPane);
         AlertWindow.setScene(scene);
+        if (!(AlertWindow.isShowing())) AlertWindow.showAndWait();
+    }
+
+    protected void notEnoughMoney(int amount){
+
+        VBox stackPane = new VBox();
+        Button button = new Button("Back");
+        Label label = new Label("Amount over: "+ amount);
+        label.setFont(new Font(20));
+        label.setStyle("-fx-text-fill: white;");
+        stackPane.setStyle("-fx-background-color: #cf1020");
+        stackPane.setPadding(new Insets(20,20,20,20));
+        stackPane.getChildren().addAll(label,button);
+        Scene scene = new Scene(stackPane);
+
+        if (AlertWindow.getScene() == dealerScene) button.setOnAction(e -> AlertWindow.setScene(dealerScene));
+
+        AlertWindow.setScene(scene);
+        if (!(AlertWindow.isShowing())) AlertWindow.showAndWait();
     }
 
     protected void cityEvent() {
@@ -103,43 +107,13 @@ public class AlertBox extends Main {
             e.printStackTrace();
         }
 
-        CityScene = new Scene(cityPane);
+        cityScene = new Scene(cityPane);
 
         //Stop moving
         IsMoving = false;
 
         AlertWindow.setTitle("City");
-        AlertWindow.setScene(CityScene);
-        AlertWindow.show();
-    }
-
-    protected void notEnoughMoney(int amountOver){
-
-        StackPane ntEnoughMoneyLayout = new StackPane();
-        ntEnoughMoneyLayout.setStyle("-fx-background-color: #cf1020");
-        Label label = new Label("Amount over: "+ amountOver);
-        label.setStyle("-fx-text-fill: white;");
-        label.setFont(new Font(20));
-        ntEnoughMoneyLayout.setPadding(new Insets(20,20,20,20));
-        ntEnoughMoneyLayout.getChildren().add(label);
-        notEnoughMoneyScene = new Scene(ntEnoughMoneyLayout,300,250);
-        AlertWindow.setScene(notEnoughMoneyScene);
-        AlertWindow.setTitle("Not enough money");
-        AlertWindow.show();
-    }
-
-    protected void emptyNames(){
-
-        StackPane EmptyNameLayout = new StackPane();
-        EmptyNameLayout.setStyle("-fx-background-color: #cf1020");
-        Label label = new Label("Text fields cannot be blank!");
-        label.setStyle("-fx-text-fill: white;");
-        label.setFont(new Font(20));
-        EmptyNameLayout.setPadding(new Insets(20,20,20,20));
-        EmptyNameLayout.getChildren().add(label);
-        EmptyNameScene = new Scene(EmptyNameLayout,300,250);
-        AlertWindow.setScene(EmptyNameScene);
-        AlertWindow.setTitle("empty name(s)");
+        AlertWindow.setScene(cityScene);
         AlertWindow.show();
     }
 

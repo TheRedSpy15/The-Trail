@@ -68,11 +68,11 @@ public class HealthClass extends Main {
 
         if (SickEventChance <= 10){
 
-            SickEventLbl.setText(gangLinkedList.get(PlayerSelectForEvent)+" Passed away...");
+            SickEventLbl.setText(gang.get(PlayerSelectForEvent)+" Passed away...");
 
             HealthConditions+=60;
 
-            gangLinkedList.remove(PlayerSelectForEvent);
+            gang.remove(PlayerSelectForEvent);
 
             AlertWindow.showAndWait();
         }else{
@@ -80,42 +80,42 @@ public class HealthClass extends Main {
             switch (SickEventChance){
 
                 case 11:
-                    SickEventLbl.setText(gangLinkedList.get(PlayerSelectForEvent)+" Got a cold");
+                    SickEventLbl.setText(gang.get(PlayerSelectForEvent)+" Got a cold");
                     HealthConditions-=5;
                     AlertWindow.showAndWait();
                     break;
                 case 12:
-                    SickEventLbl.setText(gangLinkedList.get(PlayerSelectForEvent)+" Has a Fever");
+                    SickEventLbl.setText(gang.get(PlayerSelectForEvent)+" Has a Fever");
                     HealthConditions-=10;
                     AlertWindow.showAndWait();
                     break;
                 case 13:
-                    SickEventLbl.setText(gangLinkedList.get(PlayerSelectForEvent)+" Broke a leg");
+                    SickEventLbl.setText(gang.get(PlayerSelectForEvent)+" Broke a leg");
                     HealthConditions-=10;
                     AlertWindow.showAndWait();
                     break;
                 case 14:
-                    SickEventLbl.setText(gangLinkedList.get(PlayerSelectForEvent)+" Broke an arm");
+                    SickEventLbl.setText(gang.get(PlayerSelectForEvent)+" Broke an arm");
                     HealthConditions-=10;
                     AlertWindow.showAndWait();
                     break;
                 case 15:
-                    SickEventLbl.setText(gangLinkedList.get(PlayerSelectForEvent)+" Threw up");
+                    SickEventLbl.setText(gang.get(PlayerSelectForEvent)+" Threw up");
                     HealthConditions-=10;
                     AlertWindow.showAndWait();
                     break;
                 case 16:
-                    SickEventLbl.setText(gangLinkedList.get(PlayerSelectForEvent)+" Has an infection");
+                    SickEventLbl.setText(gang.get(PlayerSelectForEvent)+" Has an infection");
                     HealthConditions-=15;
                     AlertWindow.showAndWait();
                     break;
                 case 17:
-                    SickEventLbl.setText(gangLinkedList.get(PlayerSelectForEvent)+" Has the flu");
+                    SickEventLbl.setText(gang.get(PlayerSelectForEvent)+" Has the flu");
                     HealthConditions-=15;
                     AlertWindow.showAndWait();
                     break;
                 default:
-                    SickEventLbl.setText(gangLinkedList.get(PlayerSelectForEvent)+" Is sick");
+                    SickEventLbl.setText(gang.get(PlayerSelectForEvent)+" Is sick");
                     HealthConditions-=10;
                     AlertWindow.showAndWait();
                     break;
@@ -123,7 +123,7 @@ public class HealthClass extends Main {
         }
 
         // Game over condition
-        if (gangLinkedList.size() <= 0){
+        if (gang.size() <= 0){
 
             IsMoving = false;
 
