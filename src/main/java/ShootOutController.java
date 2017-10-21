@@ -23,8 +23,8 @@ public class ShootOutController extends Main {
 
         thiefHealth = 100;
 
-        PlayerSelectForEvent = gang.size();
-        PlayerSelectForEvent-=1;
+        memberSelect = gang.size();
+        memberSelect -= 1;
     }
 
     @FXML private void setShootBtn(){
@@ -34,6 +34,7 @@ public class ShootOutController extends Main {
             eventText.appendText("you shot at them ("+Attack+" DMG) \n");
             thiefHealth -= Attack;
             thiefHealthLbl.setText("THIEF HEALTH: "+thiefHealth);
+            --Ammo;
             ammoLbl.setText("Ammo: "+Ammo);
 
             if (isThiefDead()){
@@ -59,7 +60,8 @@ public class ShootOutController extends Main {
             eventText.appendText("you threw a grenade ("+GrenadeDMG+" DMG) \n");
             thiefHealth -= GrenadeDMG;
             thiefHealthLbl.setText("THIEF HEALTH: "+thiefHealth);
-            ammoLbl.setText("Ammo: "+Ammo);
+            --Grenades;
+            grenadeLbl.setText("Grenades: "+Grenades);
 
             try {
                 Thread.sleep(3000);
@@ -91,7 +93,7 @@ public class ShootOutController extends Main {
         if (rand.nextBoolean()){
 
             eventText.appendText("They shot and killed "+gang.getLast() + "\n");
-            gang.remove(PlayerSelectForEvent);
+            gang.remove(memberSelect);
 
             if (gang.size() <= 0){
 
@@ -119,5 +121,7 @@ public class ShootOutController extends Main {
     private void deadThief(){
 
         alert.alert("You have killed the thief");
+
+        Score += 50000;
     }
 }

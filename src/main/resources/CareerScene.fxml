@@ -25,7 +25,7 @@
                   <Font name="Impact" size="20.0" />
                </font>
                <tooltip>
-                  <Tooltip text="Start money: $2000 | Wage: " />
+                  <Tooltip text="Start money: $2000 | Wage: $500" />
                </tooltip>
             </Button>
             <Button fx:id="thiefBtn" mnemonicParsing="false" onAction="#thief" prefHeight="99.0" prefWidth="168.0" text="Thief">

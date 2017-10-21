@@ -4,7 +4,6 @@ import javafx.scene.control.Slider;
 
 public class SellController extends AlertBox {
 
-
     @FXML private Label foodLbl;
     @FXML private Label waterLbl;
     @FXML private Label ammoLbl;
@@ -15,9 +14,11 @@ public class SellController extends AlertBox {
     @FXML
     private void sell(){
 
-        Food-=foodSlider.getValue();
-        Water-=waterSlider.getValue();
-        Ammo-=ammoSlider.getValue();
+        Food -= foodSlider.getValue();
+        Water -= waterSlider.getValue();
+        Ammo -= ammoSlider.getValue();
+
+        Money += (waterSlider.getValue() * 0.15) + (foodSlider.getValue() * 0.30) + (ammoSlider.getValue() * 20);
 
         AlertWindow.setScene(cityScene);
     }
@@ -28,8 +29,13 @@ public class SellController extends AlertBox {
         foodLbl.setText("Food: "+Food);
         waterLbl.setText("Water: "+Water);
         ammoLbl.setText("Ammo: "+Ammo);
+
         waterSlider.setMax(Water);
-        ammoSlider.setMax(Ammo);
         foodSlider.setMax(Food);
+        ammoSlider.setMax(Ammo);
+
+        waterSlider.setMin(0);
+        ammoSlider.setMin(0);
+        foodSlider.setMin(0);
     }
 }

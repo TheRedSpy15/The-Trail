@@ -67,32 +67,64 @@ public class AlertBox extends Main {
 
     protected void alert(String alertMSG){
 
-        StackPane stackPane = new StackPane();
-        stackPane.setStyle("-fx-background-color: #cf1020");
-        stackPane.setPadding(new Insets(20,20,20,20));
         Label label = new Label(alertMSG);
         label.setFont(new Font(20));
         label.setStyle("-fx-text-fill: white;");
         label.setFont(new Font(20));
+
+        StackPane stackPane = new StackPane();
+        stackPane.setStyle("-fx-background-color: #cf1020");
+        stackPane.setPadding(new Insets(20,20,20,20));
         stackPane.getChildren().add(label);
+
         Scene scene = new Scene(stackPane);
         AlertWindow.setScene(scene);
+
         if (!(AlertWindow.isShowing())) AlertWindow.showAndWait();
     }
 
     protected void notEnoughMoney(int amount){
 
-        VBox stackPane = new VBox();
         Button button = new Button("Back");
         Label label = new Label("Amount over: "+ amount);
         label.setFont(new Font(20));
         label.setStyle("-fx-text-fill: white;");
+
+        VBox stackPane = new VBox();
         stackPane.setStyle("-fx-background-color: #cf1020");
         stackPane.setPadding(new Insets(20,20,20,20));
         stackPane.getChildren().addAll(label,button);
+
         Scene scene = new Scene(stackPane);
 
+        // Determining what scene to go back too
         if (AlertWindow.getScene() == dealerScene) button.setOnAction(e -> AlertWindow.setScene(dealerScene));
+        if (AlertWindow.getScene() == gunStoreScene) button.setOnAction(e -> AlertWindow.setScene(gunStoreScene));
+        if (AlertWindow.getScene() == storeScene) button.setOnAction(e -> AlertWindow.setScene(storeScene));
+        if (!AlertWindow.isShowing()) button.setOnAction(e -> AlertWindow.close());
+
+        AlertWindow.setScene(scene);
+        if (!(AlertWindow.isShowing())) AlertWindow.showAndWait();
+    }
+
+    protected void specialPurchase(String item){
+
+        Button button = new Button("Back");
+        Label label = new Label("Purchased: " + item);
+        label.setFont(new Font(20));
+        label.setStyle("-fx-text-fill: white;");
+
+        VBox stackPane = new VBox();
+        stackPane.setStyle("-fx-background-color: #cf1020");
+        stackPane.setPadding(new Insets(20,20,20,20));
+        stackPane.getChildren().addAll(label,button);
+
+        Scene scene = new Scene(stackPane);
+
+        // Determining what scene to go back too
+        if (!(AlertWindow.isShowing())) button.setOnAction(e -> AlertWindow.close());
+        if (AlertWindow.getScene() == dealerScene) button.setOnAction(e -> AlertWindow.setScene(dealerScene));
+        if (AlertWindow.getScene() == gunStoreScene) button.setOnAction(e -> AlertWindow.setScene(gunStoreScene));
 
         AlertWindow.setScene(scene);
         if (!(AlertWindow.isShowing())) AlertWindow.showAndWait();

@@ -102,8 +102,8 @@ public class TravelController extends Main {
 
                         if (SickEventChance > HealthConditions){
 
-                            PlayerSelectForEvent = gang.size();
-                            PlayerSelectForEvent-=1;
+                            memberSelect = gang.size();
+                            memberSelect -=1;
                             HealthClass.poorHealthEvent();
                         }
 
@@ -141,51 +141,49 @@ public class TravelController extends Main {
             distanceLabel.setText("To go: "+Distance+"Mi");
             alert.cityEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");
-            CitySelector = 4;
+            citySelector = 3;
         }
 
-        if (Distance - 3500 <= 15 && Distance - 3500 >= -15){
+        if (Distance - 4000 <= 15 && Distance - 4000 >= -15){
 
-            Distance = 3480;
+            Distance = 3980;
             distanceLabel.setText("To go: "+Distance+"Mi");
             alert.cityEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");
-            CitySelector = 3;
+            citySelector = 2;
         }
 
-        if (Distance - 2500 <= 15 && Distance - 2500 >= -15){
+        if (Distance - 3000 <= 15 && Distance - 3000 >= -15){
 
-            Distance = 2480;
+            Distance = 2980;
             distanceLabel.setText("To go: "+Distance+"Mi");
             alert.cityEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");
-            CitySelector = 2;
+            citySelector = 1;
         }
 
-        if (Distance - 1000 <= 15 && Distance - 1000 >= -15){
+        if (Distance - 2000 <= 15 && Distance - 2000 >= -15){
 
-            Distance = 980;
+            Distance = 1980;
             distanceLabel.setText("To go: "+Distance+"Mi");
             alert.cityEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");
-            CitySelector = 1;
+            citySelector = 0;
         }
 
-        if (Distance - 350 <= 15 && Distance - 350 >= -15){
+        if (Distance - 1500 <= 15 && Distance - 1500 >= -15){
 
-            CitySelector = 0;
-            Distance = 330;
+            citySelector = 0;
+            Distance = 1480;
             distanceLabel.setText("To go: "+Distance+"Mi");
             alert.cityEvent();
             distanceLabel.setText("To go: "+Distance+"Mi");
         }
     }
 
-    // on initialization of scene
     @FXML
     public void initialize(){
 
-        // On exit of car dealer stage, update sprite image
         AlertWindow.setOnCloseRequest(e -> spriteImage.setImage(new Image(carSpriteURL)));
 
         // updating labels

@@ -16,22 +16,16 @@ public class StoreController extends Main {
 
         double cartValue;
 
-        // cart value is that of the values of water slider, food slider, and ammo slider combined
         cartValue = (waterSlider.getValue() * 0.25) + (foodSlider.getValue() * 0.50);
 
-        // if statement if money is greater or equal to cart value, then add slider values
         if (Money >= cartValue){
 
-            // Subtracting money by cart value
             Money -= cartValue;
 
-            // adding a int casted value of food slider to food
             Food += (int) foodSlider.getValue();
 
-            // adding a int casted value of water slider to water
             Water += (int) waterSlider.getValue();
 
-            // Run travel setup
             travel.travelSetup();
 
             // determines if the scene is being used in alert window or main window and changes depending on that
@@ -57,7 +51,16 @@ public class StoreController extends Main {
     @FXML
     private void gunStoreBtn(){
 
-        MainWindow.setScene(gunStoreScene);
+        // determines if the scene is being used in alert window or main window and changes depending on that
+        if (MainWindow.getScene().equals(storeScene)){
+
+            // setting window scene to travel pane
+            MainWindow.setScene(gunStoreScene);
+        }else{
+
+            // Changing alert window scene to settlement scene
+            AlertWindow.setScene(gunStoreScene);
+        }
     }
 
     // code run on initialization of scene
@@ -70,7 +73,7 @@ public class StoreController extends Main {
         currentWater.setText("WATER: "+Water);
 
         // random store inventory
-        waterSlider.setMax((int) (Math.random() * 1000) + 300);
-        foodSlider.setMax((int) (Math.random() * 1000) + 300);
+        waterSlider.setMax((int) (Math.random() * 1500) + 1000);
+        foodSlider.setMax((int) (Math.random() * 1500) + 1000);
     }
 }
