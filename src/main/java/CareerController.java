@@ -18,6 +18,7 @@ public class CareerController extends Main {
     private void drugDealer() {
 
         Money = 2000;
+        Score += 10000;
         wage = 500;
         cp.posseSetupMethod();
         MainWindow.setScene(new Scene(possePane));
@@ -28,6 +29,7 @@ public class CareerController extends Main {
     private void thief() {
 
         Money = 500;
+        Score += 15000;
         wage = (int) (Math.random() * 1000) + 250;
         cp.posseSetupMethod();
         MainWindow.setScene(new Scene(possePane));

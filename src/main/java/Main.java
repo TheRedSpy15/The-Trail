@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Random;
 // import org.apache.logging.log4j.*;
@@ -43,6 +44,7 @@ public class Main extends Application{
     static Scene shootOutScene;
     static Parent thiefMenuPane;
     static Scene thiefMenuScene;
+    static Parent descripitionPane;
 
     // Sentry
     private static final String dsn = "https://6db11d4c3f864632aa5b1932f6c80c82:6349615319974befbcb63a2459b5fc26@sentry.io/220483";
@@ -61,7 +63,7 @@ public class Main extends Application{
     static int Grenades = 0;
     static String gunID = "Glock";
     static int Attack = 15;
-    static int CitySelector = 4;
+    static int citySelector = 4;
     static int Ammo = 0;
     static int Water = 0;
     static double Money = 0;
@@ -69,15 +71,15 @@ public class Main extends Application{
     static int FoodIntake = 2;
     static Random rand = new Random();
     static int SickEventChance;
-    static int PlayerSelectForEvent;
+    static int memberSelect;
     static int EncounterChance;
     static TravelClass travel = new TravelClass();
     static AlertBox alert = new AlertBox();
     static Store store = new Store();
     static boolean IsMoving = false;
-    static boolean TurnInThief = false;
+    static int capturedThieves = 0;
     static CareerGang cp = new CareerGang();
-    static String CityList[]={"Salem, Oregon", "Denver, Colorado", "Frankfort, Kentucky", "Atlanta, Georgia", "Tallahassee, Florida"};
+    static String cityList[]={"Salem, Oregon", "Denver, Colorado", "Frankfort, Kentucky", "Atlanta, Georgia", "Tallahassee, Florida"};
 
     /*
 
@@ -88,20 +90,24 @@ public class Main extends Application{
 
     NEEDED FEATURES
 
-    *
+    * mid gun store purchase alert needs back button
+    * FXML object creation all in one method and class
 
 
     NICE TO HAVES
 
-    * Code clean up
     * Support for resizing stage
-    * More / better comments
-    * Renaming thief
-    * Gun / Job enums
 
     */
 
     public static void main(String args[]) {
+
+        // setting up description scene, needs to be moved
+        try {
+            descripitionPane = FXMLLoader.load(Main.class.getResource("DescripitonScene.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         // Launches sentry with the dsn in the parameters
         Sentry.init(dsn);
@@ -114,13 +120,10 @@ public class Main extends Application{
         of which change the tag on the sentry dsn server
         */
 
-        // Making audio thread object
+        // Music
         Thread audioThread = new Thread(musicTask);
-
-        // Starting the audio thread
         audioThread.start();
 
-        // Launching Javafx thread
         launch(args);
     }
 
@@ -145,7 +148,6 @@ public class Main extends Application{
 
     static boolean extremeLowChance(){
 
-        // adds a random value to chance between 100 and 1
         int Chance = (int)(Math.random()*100+1);
 
         // returns true if
@@ -156,26 +158,19 @@ public class Main extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        // assigns main anchor object to start scene fxml file
-        Parent mainAnchor = FXMLLoader.load(getClass().getResource("StartScene.fxml"));
-
-        // Start
-        // Initializing MainWindow as primaryStage object;
-        MainWindow = primaryStage;
-
-        // Alert box starting
         AlertBox.alertMenuStart();
 
-        // prevents resizing of stage
+        Parent mainAnchor = FXMLLoader.load(getClass().getResource("StartScene.fxml"));
+
+        // Start scene
+        MainWindow = primaryStage;
+
         MainWindow.setResizable(false);
 
-        // Setting title of MainWindow
         MainWindow.setTitle("The Trail");
 
-        // Setting the scene as the start scene via mainAnchor object
         MainWindow.setScene(new Scene(mainAnchor));
 
-        // Showing the window
         MainWindow.show();
     }
 
@@ -186,16 +181,13 @@ public class Main extends Application{
         @Override
         protected Object call() throws Exception {
 
-            // making object for specified .wav file
+            // audio file NEEDS to be .wav
             AudioClip audio = new AudioClip(getClass().getResource("In_Seoul_Retro_80.wav").toExternalForm());
 
-            // Setting volume
             audio.setVolume(0.3f);
 
-            // Setting loop
             audio.setCycleCount(INDEFINITE);
 
-            // Starting audio
             audio.play();
             return null;
         }

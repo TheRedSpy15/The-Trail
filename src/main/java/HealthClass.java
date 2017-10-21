@@ -68,11 +68,11 @@ public class HealthClass extends Main {
 
         if (SickEventChance <= 10){
 
-            SickEventLbl.setText(gang.get(PlayerSelectForEvent)+" Passed away...");
+            SickEventLbl.setText(gang.get(memberSelect)+" Passed away...");
 
             HealthConditions+=60;
 
-            gang.remove(PlayerSelectForEvent);
+            gang.remove(memberSelect);
 
             AlertWindow.showAndWait();
         }else{
@@ -80,42 +80,42 @@ public class HealthClass extends Main {
             switch (SickEventChance){
 
                 case 11:
-                    SickEventLbl.setText(gang.get(PlayerSelectForEvent)+" Got a cold");
+                    SickEventLbl.setText(gang.get(memberSelect)+" Got a cold");
                     HealthConditions-=5;
                     AlertWindow.showAndWait();
                     break;
                 case 12:
-                    SickEventLbl.setText(gang.get(PlayerSelectForEvent)+" Has a Fever");
+                    SickEventLbl.setText(gang.get(memberSelect)+" Has a Fever");
                     HealthConditions-=10;
                     AlertWindow.showAndWait();
                     break;
                 case 13:
-                    SickEventLbl.setText(gang.get(PlayerSelectForEvent)+" Broke a leg");
+                    SickEventLbl.setText(gang.get(memberSelect)+" Broke a leg");
                     HealthConditions-=10;
                     AlertWindow.showAndWait();
                     break;
                 case 14:
-                    SickEventLbl.setText(gang.get(PlayerSelectForEvent)+" Broke an arm");
+                    SickEventLbl.setText(gang.get(memberSelect)+" Broke an arm");
                     HealthConditions-=10;
                     AlertWindow.showAndWait();
                     break;
                 case 15:
-                    SickEventLbl.setText(gang.get(PlayerSelectForEvent)+" Threw up");
+                    SickEventLbl.setText(gang.get(memberSelect)+" Threw up");
                     HealthConditions-=10;
                     AlertWindow.showAndWait();
                     break;
                 case 16:
-                    SickEventLbl.setText(gang.get(PlayerSelectForEvent)+" Has an infection");
+                    SickEventLbl.setText(gang.get(memberSelect)+" Has an infection");
                     HealthConditions-=15;
                     AlertWindow.showAndWait();
                     break;
                 case 17:
-                    SickEventLbl.setText(gang.get(PlayerSelectForEvent)+" Has the flu");
+                    SickEventLbl.setText(gang.get(memberSelect)+" Has the flu");
                     HealthConditions-=15;
                     AlertWindow.showAndWait();
                     break;
                 default:
-                    SickEventLbl.setText(gang.get(PlayerSelectForEvent)+" Is sick");
+                    SickEventLbl.setText(gang.get(memberSelect)+" Is sick");
                     HealthConditions-=10;
                     AlertWindow.showAndWait();
                     break;

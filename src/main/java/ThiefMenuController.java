@@ -34,7 +34,7 @@ public class ThiefMenuController extends Main {
 
             alert.alert("You have capture the thief, turn them in for a reward");
 
-            TurnInThief = true;
+            capturedThieves += 1;
         }else {
 
             alert.alert("You failed catch them and they got away");

@@ -19,7 +19,7 @@ public class GunStoreController extends Main {
 
             Attack = 45;
 
-            alert.alert("Purchased: AK-47");
+            alert.specialPurchase("AK-47");
             gunID = "AK-47";
             gunSpriteURL = "ff1fbae3c3282a772246605d08225293.png";
 
@@ -42,7 +42,7 @@ public class GunStoreController extends Main {
 
             Grenades += grenadeSlider.getValue();
 
-            alert.alert("Purchased: GRENADE ("+(int)grenadeSlider.getValue()+")");
+            alert.specialPurchase("GRENADE ("+(int)grenadeSlider.getValue()+")");
 
             moneyLbl.setText("Money: $"+Money);
         }else if (Money < (1000 * grenadeSlider.getValue())){
@@ -63,7 +63,7 @@ public class GunStoreController extends Main {
 
             Ammo += ammoSlider.getValue();
 
-            alert.alert("Purchased: AMMO ("+(int)ammoSlider.getValue()+")");
+            alert.specialPurchase("AMMO ("+(int)ammoSlider.getValue()+")");
 
             moneyLbl.setText("Money: $"+Money);
         }else if (Money < (25 * ammoSlider.getValue())){
@@ -77,7 +77,17 @@ public class GunStoreController extends Main {
     @FXML public void backBtn(){
 
         store.storeMethod();
-        MainWindow.setScene(storeScene);
+
+        // determines if the scene is being used in alert window or main window and changes depending on that
+        if (MainWindow.getScene().equals(gunStoreScene)){
+
+            // setting window scene to travel pane
+            MainWindow.setScene(storeScene);
+        }else{
+
+            // Changing alert window scene to settlement scene
+            AlertWindow.setScene(storeScene);
+        }
     }
 
     @FXML private void initialize(){

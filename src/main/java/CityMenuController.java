@@ -19,6 +19,7 @@ public class CityMenuController extends Main {
     private void sell(){
 
         AlertWindow.setTitle("Sell");
+        store.storeMethod();
         AlertWindow.setScene(new Scene(midSellStorePane));
     }
 
@@ -32,7 +33,7 @@ public class CityMenuController extends Main {
     @FXML
     private void claim(){
 
-        if (TurnInThief){
+        if (capturedThieves > 0){
 
             bountyMethod();
         }else{
@@ -52,7 +53,7 @@ public class CityMenuController extends Main {
     private void initialize(){
 
         AlertWindow.setTitle("City");
-        townLbl.setText("You have come up to "+ CityList[CitySelector]);
+        townLbl.setText("You have come up to "+ cityList[citySelector]);
     }
 
     protected void bountyMethod(){
@@ -60,6 +61,7 @@ public class CityMenuController extends Main {
         int MoneyToClaim;
 
         MoneyToClaim = rand.nextInt(5000)+1000;
+        MoneyToClaim *= capturedThieves;
 
         Score += 50000;
 
@@ -67,6 +69,6 @@ public class CityMenuController extends Main {
 
         Money+=MoneyToClaim;
 
-        TurnInThief = false;
+        capturedThieves = 0;
     }
 }

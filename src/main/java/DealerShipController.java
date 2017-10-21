@@ -20,7 +20,7 @@ public class DealerShipController extends Main {
 
             carSpriteURL = "sprite6_0.png";
 
-            alert.alert("Purchased: BLUE TRUCK");
+            alert.specialPurchase("BLUE TRUCK");
 
             moneyLbl1.setText("Money: $"+Money);
         }else if (Money < 5000){
@@ -51,7 +51,7 @@ public class DealerShipController extends Main {
 
             carSpriteURL = "spr_rally_0.png";
 
-            alert.alert("Purchased: RALLY CAR");
+            alert.specialPurchase("RALLY CAR");
 
             moneyLbl1.setText("Money: $"+Money);
         }else if (Money < 3500){
