@@ -13,16 +13,16 @@
                   <Font name="Impact" size="27.0" />
                </font>
             </Label>
-            <TextField fx:id="membername1" promptText="Bill" VBox.vgrow="ALWAYS">
+            <TextField fx:id="membername1" promptText="Bob" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
             </TextField>
             <TextField fx:id="membername2" promptText="Bob" VBox.vgrow="ALWAYS" />
-            <TextField fx:id="membername3" promptText="Mark" VBox.vgrow="ALWAYS" />
-            <TextField fx:id="membername4" promptText="Matt" VBox.vgrow="ALWAYS" />
-            <TextField fx:id="membername5" promptText="Hunter" VBox.vgrow="ALWAYS" />
-            <TextField fx:id="membername6" promptText="Mathew" VBox.vgrow="ALWAYS" />
+            <TextField fx:id="membername3" promptText="Bob" VBox.vgrow="ALWAYS" />
+            <TextField fx:id="membername4" promptText="Bob" VBox.vgrow="ALWAYS" />
+            <TextField fx:id="membername5" promptText="Bob" VBox.vgrow="ALWAYS" />
+            <TextField fx:id="membername6" promptText="Bob" VBox.vgrow="ALWAYS" />
             <Button fx:id="confirmNames" mnemonicParsing="false" onAction="#confirmNamesMethod" prefHeight="44.0" prefWidth="163.0" text="Continue">
                <VBox.margin>
                   <Insets top="20.0" />

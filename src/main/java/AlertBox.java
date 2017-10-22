@@ -99,17 +99,18 @@ public class AlertBox extends Main {
 
         // Determining what scene to go back too
         if (AlertWindow.getScene() == dealerScene) button.setOnAction(e -> AlertWindow.setScene(dealerScene));
-        if (AlertWindow.getScene() == gunStoreScene) button.setOnAction(e -> AlertWindow.setScene(gunStoreScene));
-        if (AlertWindow.getScene() == storeScene) button.setOnAction(e -> AlertWindow.setScene(storeScene));
-        if (!AlertWindow.isShowing()) button.setOnAction(e -> AlertWindow.close());
+        else if (AlertWindow.getScene() == gunStoreScene) button.setOnAction(e -> AlertWindow.setScene(gunStoreScene));
+        else if (AlertWindow.getScene() == storeScene) button.setOnAction(e -> AlertWindow.setScene(storeScene));
+        else if (!AlertWindow.isShowing()) button.setOnAction(e -> AlertWindow.close());
 
         AlertWindow.setScene(scene);
+        AlertWindow.setTitle("Not enough money");
         if (!(AlertWindow.isShowing())) AlertWindow.showAndWait();
     }
 
     protected void specialPurchase(String item){
 
-        Button button = new Button("Back");
+        Button button = new Button("Ok");
         Label label = new Label("Purchased: " + item);
         label.setFont(new Font(20));
         label.setStyle("-fx-text-fill: white;");
@@ -123,10 +124,11 @@ public class AlertBox extends Main {
 
         // Determining what scene to go back too
         if (!(AlertWindow.isShowing())) button.setOnAction(e -> AlertWindow.close());
-        if (AlertWindow.getScene() == dealerScene) button.setOnAction(e -> AlertWindow.setScene(dealerScene));
-        if (AlertWindow.getScene() == gunStoreScene) button.setOnAction(e -> AlertWindow.setScene(gunStoreScene));
+        else if (AlertWindow.getScene() == dealerScene) button.setOnAction(e -> AlertWindow.setScene(dealerScene));
+        else if (AlertWindow.getScene() == gunStoreScene) button.setOnAction(e -> AlertWindow.setScene(gunStoreScene));
 
         AlertWindow.setScene(scene);
+        AlertWindow.setTitle("PURCHASED");
         if (!(AlertWindow.isShowing())) AlertWindow.showAndWait();
     }
 
