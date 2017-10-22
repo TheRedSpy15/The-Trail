@@ -16,7 +16,7 @@
             <Font name="Impact" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="passBtn" layoutX="216.0" layoutY="107.0" mnemonicParsing="false" onAction="#keepGoing" prefHeight="76.0" prefWidth="168.0" text="Keep going">
+      <Button fx:id="passBtn" layoutX="216.0" layoutY="107.0" mnemonicParsing="false" onAction="#keepGoing" prefHeight="76.0" prefWidth="168.0" text="Leave">
          <font>
             <Font name="Impact" size="24.0" />
          </font>

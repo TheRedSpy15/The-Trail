@@ -90,8 +90,7 @@ public class Main extends Application{
 
     NEEDED FEATURES
 
-    * mid gun store purchase alert needs back button
-    * FXML object creation all in one method and class
+    * different cars have different max storage ( eg: green car - 6000 storage [ storage = water + food ] )
 
 
     NICE TO HAVES

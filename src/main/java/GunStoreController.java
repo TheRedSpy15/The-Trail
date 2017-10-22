@@ -79,7 +79,7 @@ public class GunStoreController extends Main {
         store.storeMethod();
 
         // determines if the scene is being used in alert window or main window and changes depending on that
-        if (MainWindow.getScene().equals(gunStoreScene)){
+        if (!(AlertWindow.isShowing())){
 
             // setting window scene to travel pane
             MainWindow.setScene(storeScene);
