@@ -1,5 +1,5 @@
-## The-Trail
-#The remake of Oregon Trail in JavaFX
+# The-Trail
+The remake of Oregon Trail in JavaFX
 
 Description coming soon
 
