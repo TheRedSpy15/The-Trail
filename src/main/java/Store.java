@@ -1,9 +1,22 @@
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
+import java.io.File;
 import java.io.IOException;
 
 public class Store extends Main {
+
+    private Media purchaseSound = new Media(new File("C:\\Users\\Hunter\\IdeaProjects\\The Trail JAVAFX VER\\src\\main\\resources\\Cha_Ching_Register-Muska666-173262285.wav").toURI().toString());
+
+    void playPurchaseSound(){
+
+        MediaPlayer playPurchaseSound = new MediaPlayer(purchaseSound);
+
+        playPurchaseSound.setVolume(0.3f);
+        playPurchaseSound.play();
+    }
 
     void storeMethod() {
 

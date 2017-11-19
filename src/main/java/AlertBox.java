@@ -14,21 +14,7 @@ public class AlertBox extends Main {
 
     protected static void alertMenuStart(){
 
-        // Creating fxml scene objects
-
-        // Game over pane
-        try {
-            gameOverPane = FXMLLoader.load(Main.class.getResource("GameOver.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Game won pane
-        try {
-            gameWonPane = FXMLLoader.load(Main.class.getResource("GameWon.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        AlertWindow.setOnCloseRequest(e -> TravelClass.travelSetup());
 
         //Block events to other windows
         AlertWindow.initModality(Modality.APPLICATION_MODAL);
@@ -98,10 +84,10 @@ public class AlertBox extends Main {
         Scene scene = new Scene(stackPane);
 
         // Determining what scene to go back too
-        if (AlertWindow.getScene() == dealerScene) button.setOnAction(e -> AlertWindow.setScene(dealerScene));
+        if (!(AlertWindow.isShowing())) button.setOnAction(e -> AlertWindow.close());
+        else if (AlertWindow.getScene() == dealerScene) button.setOnAction(e -> AlertWindow.setScene(dealerScene));
         else if (AlertWindow.getScene() == gunStoreScene) button.setOnAction(e -> AlertWindow.setScene(gunStoreScene));
-        else if (AlertWindow.getScene() == storeScene) button.setOnAction(e -> AlertWindow.setScene(storeScene));
-        else if (!AlertWindow.isShowing()) button.setOnAction(e -> AlertWindow.close());
+        else if (AlertWindow.getScene() == hireScene) button.setOnAction(e -> AlertWindow.setScene(hireScene));
 
         AlertWindow.setScene(scene);
         AlertWindow.setTitle("Not enough money");
@@ -141,6 +127,15 @@ public class AlertBox extends Main {
             e.printStackTrace();
         }
 
+        try {
+            hirePane = FXMLLoader.load(Main.class.getResource("HireMenu.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        hireScene = new Scene(hirePane);
+
+        distanceSinceCity = 0;
+
         cityScene = new Scene(cityPane);
 
         //Stop moving
@@ -153,6 +148,13 @@ public class AlertBox extends Main {
 
     protected static void gameOver(){
 
+        // Game over pane
+        try {
+            gameOverPane = FXMLLoader.load(Main.class.getResource("GameOver.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         // On closure of window, closes main MainWindow also
         AlertWindow.setOnCloseRequest(e -> MainWindow.close());
 
@@ -163,26 +165,6 @@ public class AlertBox extends Main {
         AlertWindow.setTitle("GAME-OVER");
 
         // shows alert window
-        AlertWindow.show();
-    }
-
-    protected static void gameWon(){
-
-        // On closure of window, closes main MainWindow also
-        AlertWindow.setOnCloseRequest(e -> MainWindow.close());
-
-        // makes game over pane a scene and sets the alert window scene to it
-        AlertWindow.setScene(new Scene(gameWonPane));
-
-        // sets alert window title to game over
-        AlertWindow.setTitle("You win!!!");
-
-        // shows alert window
-        AlertWindow.show();
-    }
-
-    protected void ifWon(){
-
-        if (Distance <= 0 ) gameWon();
+        AlertWindow.showAndWait();
     }
 }

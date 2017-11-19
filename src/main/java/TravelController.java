@@ -29,12 +29,14 @@ public class TravelController extends Main {
 
         transition.pause();
         IsMoving = false;
+        transition.pause();
     }
 
     // when set out button is pressed
     @FXML
     private void setOut(){
 
+        updateTransition();
         transition.play();
         runBackgroundTask();
     }
@@ -64,14 +66,21 @@ public class TravelController extends Main {
 
                 Score += 25;
 
+                distanceSinceCity += Pace;
+
+                // Payday countdown
+                payDay();
+
+                // resource consumption
                 ++Days;
-                Distance-=Pace;
+                Distance += Pace;
                 Food -= (gang.size()*FoodIntake);
-                Water=Water-(gang.size()*FoodIntake);
+                Water -= (gang.size()*FoodIntake);
 
                 if (Food < 0) Food = 0;
                 if (Water < 0) Water = 0;
                 if (Money > 10000) Money = 10000;
+                if (Money < 0) Money = 0;
 
                 // health conditions
                 HealthClass.determineHealthCondition();
@@ -79,8 +88,11 @@ public class TravelController extends Main {
                 Platform.runLater(() -> {
                     // update the JavaFX UI Thread here when the task(s) above are done
 
+                    // city count down
+                    if (distanceSinceCity > 500) alert.cityEvent();
+
                     // updating labels
-                    distanceLabel.setText("To go: "+Distance+"Mi");
+                    distanceLabel.setText("Distance: "+Distance+"Mi");
                     daysLabel.setText("Days: "+Days);
                     statusLabel.setText("Status: Moving");
                     conditionsLabel.setText("Condition: "+HealthConditions);
@@ -89,15 +101,7 @@ public class TravelController extends Main {
                     //Thief encounter
                     if (extremeLowChance()) alert.thiefEncounter();
 
-                    // Payday countdown
-                    payDay();
-
-                    // City countdown
-                    CityCountDown();
-
-                    // check if won
-                    alert.ifWon();
-
+                    // health events
                     if (healthEventCooldown >= 10){
 
                         if (SickEventChance > HealthConditions){
@@ -132,55 +136,6 @@ public class TravelController extends Main {
         }).start();
     }
 
-    private void CityCountDown(){
-
-        // if statements for how close the new settlement distance is to player distance (triggers within 15 distance)
-        if (Distance - 4900 <= 15 && Distance - 4900 >= -15){
-
-            Distance = 4880;
-            distanceLabel.setText("To go: "+Distance+"Mi");
-            alert.cityEvent();
-            distanceLabel.setText("To go: "+Distance+"Mi");
-            citySelector = 3;
-        }
-
-        if (Distance - 4000 <= 15 && Distance - 4000 >= -15){
-
-            Distance = 3980;
-            distanceLabel.setText("To go: "+Distance+"Mi");
-            alert.cityEvent();
-            distanceLabel.setText("To go: "+Distance+"Mi");
-            citySelector = 2;
-        }
-
-        if (Distance - 3000 <= 15 && Distance - 3000 >= -15){
-
-            Distance = 2980;
-            distanceLabel.setText("To go: "+Distance+"Mi");
-            alert.cityEvent();
-            distanceLabel.setText("To go: "+Distance+"Mi");
-            citySelector = 1;
-        }
-
-        if (Distance - 2000 <= 15 && Distance - 2000 >= -15){
-
-            Distance = 1980;
-            distanceLabel.setText("To go: "+Distance+"Mi");
-            alert.cityEvent();
-            distanceLabel.setText("To go: "+Distance+"Mi");
-            citySelector = 0;
-        }
-
-        if (Distance - 1500 <= 15 && Distance - 1500 >= -15){
-
-            citySelector = 0;
-            Distance = 1480;
-            distanceLabel.setText("To go: "+Distance+"Mi");
-            alert.cityEvent();
-            distanceLabel.setText("To go: "+Distance+"Mi");
-        }
-    }
-
     @FXML
     public void initialize(){
 
@@ -213,5 +168,17 @@ public class TravelController extends Main {
 
             payDayCountdown = 0;
         }
+    }
+
+    private void updateTransition(){
+
+        spriteImage.setImage(new Image(carSpriteURL));
+
+        // setting up how the animation will work
+        transition = new TranslateTransition();
+        transition.setDuration(Duration.seconds(animationSpeed));
+        transition.setToX(-850);
+        transition.setNode(sprite);
+        transition.setCycleCount(Animation.INDEFINITE);
     }
 }

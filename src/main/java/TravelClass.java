@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class TravelClass extends Main {
 
-    void travelSetup() {
+    static void travelSetup() {
 
         // Links travel pane to FXML file
         try {

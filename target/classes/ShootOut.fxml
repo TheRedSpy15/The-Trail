@@ -12,7 +12,7 @@
                   <Font name="Impact" size="30.0" />
                </font>
             </Button>
-            <Button fx:id="letGoBtn" onAction="#setLetGoBtn" mnemonicParsing="false" prefHeight="114.0" prefWidth="217.0" text="Let them go">
+            <Button fx:id="letGoBtn" mnemonicParsing="false" onAction="#setLetGoBtn" prefHeight="114.0" prefWidth="217.0" text="Let them go">
                <font>
                   <Font name="Impact" size="34.0" />
                </font>
@@ -24,7 +24,7 @@
             </Button>
          </children>
       </HBox>
-      <Label fx:id="thiefHealthLbl" layoutX="197.0" layoutY="30.0" prefHeight="47.0" prefWidth="208.0" text="THIEF HEALTH: 100" textFill="RED">
+      <Label fx:id="thiefHealthLbl" layoutX="46.0" layoutY="32.0" prefHeight="47.0" prefWidth="208.0" text="THIEF HEALTH: 100" textFill="RED">
          <font>
             <Font name="Impact" size="28.0" />
          </font>
@@ -44,5 +44,10 @@
             <Font name="Impact" size="26.0" />
          </font>
       </TextArea>
+      <Label fx:id="gangAmountLbl" layoutX="348.0" layoutY="32.0" prefHeight="47.0" prefWidth="208.0" text="Gang members: 6" textFill="RED">
+         <font>
+            <Font name="Impact" size="28.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

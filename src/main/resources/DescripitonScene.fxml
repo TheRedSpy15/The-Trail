@@ -3,7 +3,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DescriptionSceneController">
    <children>
       <Label layoutX="218.0" layoutY="14.0" prefHeight="52.0" prefWidth="165.0" text="Brief overview" textFill="RED">
@@ -11,12 +10,12 @@
             <Font name="Impact" size="27.0" />
          </font>
       </Label>
-      <Button fx:id="continueBtn" onAction="#setContinueBtn" layoutX="477.0" layoutY="346.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="109.0" text="Continue" textFill="RED">
+      <Button fx:id="continueBtn" layoutX="477.0" layoutY="346.0" mnemonicParsing="false" onAction="#setContinueBtn" prefHeight="40.0" prefWidth="109.0" text="Continue" textFill="RED">
          <font>
             <Font name="Impact" size="21.0" />
          </font>
       </Button>
-      <TextArea editable="false" layoutX="49.0" layoutY="77.0" prefHeight="246.0" prefWidth="503.0" text="You and your gang have been chased off your turf by a group of turd throwing monkeys with shotguns. You have to escape from Florida, all the way to Oregon (because monkeys will follow you for 3,000 miles)" wrapText="true">
+      <TextArea editable="false" layoutX="49.0" layoutY="77.0" prefHeight="246.0" prefWidth="503.0" text="You and your gang have been chased off your turf by a group of turd throwing monkeys with shotguns. You have to escape from Florida, and drive for as long as you can!" wrapText="true">
          <font>
             <Font name="Impact" size="29.0" />
          </font>
