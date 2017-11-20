@@ -5,8 +5,9 @@ The remake of Oregon Trail in JavaFX
 
 
 This is my first Java project made in JavaFX to serve as a learning experience.
-
 The Trail is basically a sci-fi-ish themed version of Oregon Trail, and written in Java instead.
+
+# [Download](https://github.com/TheRedSpy15/The-Trail/releases)
 
 # Features
 
@@ -53,6 +54,7 @@ The game features many different things (with much more to come)
     * Individual member control menu
     * Score board
     * Save/load
+    
 # Contributing
 
 Just make a commit, and that's it!
