@@ -28,7 +28,7 @@
       </HBox>
       <VBox layoutX="301.0" layoutY="261.0" prefHeight="148.0" prefWidth="310.0" style="-fx-background-color: Black;">
          <children>
-            <Label fx:id="distanceLabel" text="To go: 30000 Mi" textFill="WHITE">
+            <Label fx:id="distanceLabel" text="Distance: 0 Mi" textFill="WHITE">
                <font>
                   <Font name="Impact" size="24.0" />
                </font>

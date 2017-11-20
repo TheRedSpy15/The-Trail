@@ -17,6 +17,7 @@ import static javafx.scene.media.AudioClip.INDEFINITE;
 public class Main extends Application{
 
     // Javafx
+    static int distanceSinceCity = 0;
     static Stage MainWindow;
     private static Scene FoodPortionsScene;
     static Stage MenuWindow;
@@ -29,7 +30,6 @@ public class Main extends Application{
     static Parent possePane;
     static Parent travelPane;
     static Parent gameOverPane;
-    static Parent gameWonPane;
     static Parent cityPane;
     static Parent midSellStorePane;
     static Scene cityScene;
@@ -45,25 +45,31 @@ public class Main extends Application{
     static Parent thiefMenuPane;
     static Scene thiefMenuScene;
     static Parent descripitionPane;
+    static Scene lootScene;
+    static Parent lootPane;
+    static Scene deadThiefScene;
+    static Parent deadThiefPane;
+    static Scene hireScene;
+    static Parent hirePane;
 
     // Sentry
     private static final String dsn = "https://6db11d4c3f864632aa5b1932f6c80c82:6349615319974befbcb63a2459b5fc26@sentry.io/220483";
     // private static Logger logger = LogManager.getLogger(Main.class);
 
     // Core Java
+    private static String trailVersion = "1.5.1";
     static LinkedList <String> gang = new LinkedList<>();
     static int HealthConditions = 100;
-    static int Distance = 5000;
+    static int Distance = 0;
     static String gunSpriteURL = "piq_119368_400x400.png";
-    static int Score = 0;
+    static long Score = 0;
     static String carSpriteURL = "spr_car4_0.png";
     static int Days = 0;
     static int wage = 0;
     static int Food = 0;
     static int Grenades = 0;
     static String gunID = "Glock";
-    static int Attack = 15;
-    static int citySelector = 4;
+    static int baseAttackDamage = 15;
     static int Ammo = 0;
     static int Water = 0;
     static double Money = 0;
@@ -79,7 +85,7 @@ public class Main extends Application{
     static boolean IsMoving = false;
     static int capturedThieves = 0;
     static CareerGang cp = new CareerGang();
-    static String cityList[]={"Salem, Oregon", "Denver, Colorado", "Frankfort, Kentucky", "Atlanta, Georgia", "Tallahassee, Florida"};
+    static LinkedList<String> cities = new LinkedList<>();
 
     /*
 
@@ -88,18 +94,50 @@ public class Main extends Application{
     *
 
 
-    NEEDED FEATURES
+    WORKING ON
 
-    * different cars have different max storage ( eg: green car - 6000 storage [ storage = water + food ] )
+    * Settings menu in mid game menu
+    * stop background music in shootout and play shootout music
+    * View gang member scene in mid game menu - IDEA: make a black text area (non-editable), in the middle of scene
+      and print to it in a for-each loop
+    * Abstraction
+    * Removing "GOD" class
 
 
-    NICE TO HAVES
+    NEEDED FEATURES (Coming)
+
+    * Different cars have different max storage ( eg: green car - 6000 storage [ storage = water + food ] )
+    * Body armour
+    * System time in mid game menu
+    * More cities
+    * Personal armoury (gun inventory for selecting different guns with different traits)
+    * More guns
+    * chance to miss shooting at thief
+
+
+    BIG FEATURES (updates)
+
+    * Bank heists
+    * Final battle against monkeys (END GAME)
+
+
+    NICE TO HAVES (not likely to be added)
 
     * Support for resizing stage
+    * Individual member control menu
+    * Score board
+    * Save/load
 
     */
 
     public static void main(String args[]) {
+
+        // setting up list of cities
+        cities.add("Tallahassee, Florida");
+        cities.add("Atlanta, Georgia");
+        cities.add("Frankfort, Kentucky");
+        cities.add("Denver, Colorado");
+        cities.add("Salem, Oregon");
 
         // setting up description scene, needs to be moved
         try {
@@ -120,8 +158,8 @@ public class Main extends Application{
         */
 
         // Music
-        Thread audioThread = new Thread(musicTask);
-        audioThread.start();
+        Thread backGroundMusicThread = new Thread(backGroundMusicTask);
+        backGroundMusicThread.start();
 
         launch(args);
     }
@@ -149,9 +187,11 @@ public class Main extends Application{
 
         int Chance = (int)(Math.random()*100+1);
 
-        // returns true if
-        // chance is equal to 100
+        // return true if chance is equal to 90
         return Chance == 90;
+
+        // Testing purposes
+        //return true;
     }
 
     @Override
@@ -166,7 +206,7 @@ public class Main extends Application{
 
         MainWindow.setResizable(false);
 
-        MainWindow.setTitle("The Trail");
+        MainWindow.setTitle("The Trail v1.5.1");
 
         MainWindow.setScene(new Scene(mainAnchor));
 
@@ -174,7 +214,7 @@ public class Main extends Application{
     }
 
     // Music task
-    private static final Task musicTask = new Task() {
+    private static final Task backGroundMusicTask = new Task() {
 
         @Nullable
         @Override

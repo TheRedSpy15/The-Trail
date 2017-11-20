@@ -26,7 +26,7 @@
             <Font name="Impact" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="bountyBtn" layoutX="180.0" layoutY="212.0" mnemonicParsing="false" onAction="#claim" prefHeight="45.0" prefWidth="120.0" text="Claim bounty">
+      <Button fx:id="bountyBtn" layoutX="78.0" layoutY="212.0" mnemonicParsing="false" onAction="#claim" prefHeight="45.0" prefWidth="120.0" text="Claim bounty">
          <font>
             <Font name="Impact" size="17.0" />
          </font>
@@ -36,7 +36,12 @@
             <Font name="Impact" size="17.0" />
          </font>
       </Label>
-      <Button fx:id="dealerBtn" layoutX="302.0" layoutY="212.0" mnemonicParsing="false" onAction="#dealerShip" prefHeight="45.0" prefWidth="120.0" text="Car Dealer">
+      <Button fx:id="dealerBtn" layoutX="403.0" layoutY="212.0" mnemonicParsing="false" onAction="#dealerShip" prefHeight="45.0" prefWidth="120.0" text="Car Dealer">
+         <font>
+            <Font name="Impact" size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="hireBtn" onAction="#setHireBtn" layoutX="216.0" layoutY="212.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="168.0" text="Hire gang members">
          <font>
             <Font name="Impact" size="17.0" />
          </font>

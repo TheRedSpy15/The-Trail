@@ -2,7 +2,11 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 
+import java.util.ListIterator;
+
 public class CityMenuController extends Main {
+
+    private static ListIterator<String> cityName = cities.listIterator();
 
     @FXML private Label townLbl;
     @FXML private Label bountyLbl;
@@ -50,10 +54,21 @@ public class CityMenuController extends Main {
     }
 
     @FXML
+    private void setHireBtn(){
+
+        AlertWindow.setScene(hireScene);
+    }
+
+    @FXML
     private void initialize(){
 
+        String cityNameLOCAL;
+
+        if (!cityName.hasNext()) cityNameLOCAL = cityName.previous();
+        else cityNameLOCAL = cityName.next();
+
         AlertWindow.setTitle("City");
-        townLbl.setText("You have come up to "+ cityList[citySelector]);
+        townLbl.setText("You have come up to "+ cityNameLOCAL);
     }
 
     protected void bountyMethod(){

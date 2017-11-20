@@ -2,14 +2,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 
-public class GunStoreController extends Main {
+public class GunStoreController extends Store {
 
     private static int amountOver = 0;
     @FXML private Label moneyLbl;
     @FXML private Slider grenadeSlider;
     @FXML private Slider ammoSlider;
 
-    @FXML public void ak47Btn(){
+    @FXML private void ak47Btn(){
 
         if (Money >= 500){
 
@@ -17,7 +17,9 @@ public class GunStoreController extends Main {
 
             Score += 5000;
 
-            Attack = 45;
+            baseAttackDamage = 45;
+
+            playPurchaseSound();
 
             alert.specialPurchase("AK-47");
             gunID = "AK-47";
@@ -32,7 +34,7 @@ public class GunStoreController extends Main {
         }
     }
 
-    @FXML public void grenadeBtn(){
+    @FXML private void grenadeBtn(){
 
         if (Money >= (1000 * grenadeSlider.getValue())){
 
@@ -41,6 +43,8 @@ public class GunStoreController extends Main {
             Score += (10000 * grenadeSlider.getValue());
 
             Grenades += grenadeSlider.getValue();
+
+            playPurchaseSound();
 
             alert.specialPurchase("GRENADE ("+(int)grenadeSlider.getValue()+")");
 
@@ -53,7 +57,7 @@ public class GunStoreController extends Main {
         }
     }
 
-    @FXML public void ammoBtn(){
+    @FXML private void ammoBtn(){
 
         if (Money >= (25 * ammoSlider.getValue())){
 
@@ -62,6 +66,8 @@ public class GunStoreController extends Main {
             Score += (10000 * ammoSlider.getValue());
 
             Ammo += ammoSlider.getValue();
+
+            playPurchaseSound();
 
             alert.specialPurchase("AMMO ("+(int)ammoSlider.getValue()+")");
 
@@ -74,7 +80,7 @@ public class GunStoreController extends Main {
         }
     }
 
-    @FXML public void backBtn(){
+    @FXML private void backBtn(){
 
         store.storeMethod();
 

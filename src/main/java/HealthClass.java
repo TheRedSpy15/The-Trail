@@ -58,12 +58,12 @@ public class HealthClass extends Main {
         PoorHealthLayout.setPadding(new Insets(40,20,20,20));
 
         Label SickEventLbl = new Label("");
-        SickEventLbl.setStyle("-fx-text-fill: purple;");
+        SickEventLbl.setStyle("-fx-text-fill: white;");
         SickEventLbl.setFont(new Font(20));
 
-        PoorHealthLayout.setStyle("-fx-background-color: BLACK;");
+        PoorHealthLayout.setStyle("-fx-background-color: RED;");
         PoorHealthLayout.getChildren().add(SickEventLbl);
-        SickEventScene = new Scene(PoorHealthLayout,320,200);
+        SickEventScene = new Scene(PoorHealthLayout);
         AlertWindow.setScene(SickEventScene);
 
         if (SickEventChance <= 10){
@@ -90,17 +90,17 @@ public class HealthClass extends Main {
                     AlertWindow.showAndWait();
                     break;
                 case 13:
-                    SickEventLbl.setText(gang.get(memberSelect)+" Broke a leg");
+                    SickEventLbl.setText(gang.get(memberSelect)+" Broke a leg.... at least they got two");
                     HealthConditions-=10;
                     AlertWindow.showAndWait();
                     break;
                 case 14:
-                    SickEventLbl.setText(gang.get(memberSelect)+" Broke an arm");
+                    SickEventLbl.setText(gang.get(memberSelect)+" Broke an arm... at least they got two");
                     HealthConditions-=10;
                     AlertWindow.showAndWait();
                     break;
                 case 15:
-                    SickEventLbl.setText(gang.get(memberSelect)+" Threw up");
+                    SickEventLbl.setText(gang.get(memberSelect)+" Threw up... there were some chunks in it too!");
                     HealthConditions-=10;
                     AlertWindow.showAndWait();
                     break;
@@ -115,7 +115,7 @@ public class HealthClass extends Main {
                     AlertWindow.showAndWait();
                     break;
                 default:
-                    SickEventLbl.setText(gang.get(memberSelect)+" Is sick");
+                    SickEventLbl.setText(gang.get(memberSelect)+" Is sick... of this game");
                     HealthConditions-=10;
                     AlertWindow.showAndWait();
                     break;

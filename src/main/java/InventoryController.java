@@ -25,7 +25,7 @@ public class InventoryController extends MidGameMenu {
         carImage.setImage(new Image(carSpriteURL));
         scoreLbl.setText("Score: "+Score);
         gunModelLbl.setText("Model: "+gunID);
-        damageLbl.setText("Damage: "+Attack);
+        damageLbl.setText("Damage: "+ baseAttackDamage);
         gunImage.setImage(new Image(gunSpriteURL));
         grenadeLbl.setText("Grenades: "+Grenades);
     }
