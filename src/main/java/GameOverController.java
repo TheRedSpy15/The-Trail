@@ -4,7 +4,7 @@ import javafx.scene.control.Label;
 public class GameOverController extends Main {
 
     @FXML
-    Label scoreLbl;
+    private Label scoreLbl;
 
     @FXML private void initialize(){
 
