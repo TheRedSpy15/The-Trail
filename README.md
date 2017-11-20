@@ -54,6 +54,7 @@ The game features many different things (with much more to come)
     * Individual member control menu
     * Score board
     * Save/load
+    
 # Contributing
 
 Just make a commit, and that's it!
