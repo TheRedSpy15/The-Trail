@@ -57,6 +57,7 @@ public class Main extends Application{
     // private static Logger logger = LogManager.getLogger(Main.class);
 
     // Core Java
+    private static String trailVersion = "1.5.1";
     static LinkedList <String> gang = new LinkedList<>();
     static int HealthConditions = 100;
     static int Distance = 0;
@@ -99,6 +100,8 @@ public class Main extends Application{
     * stop background music in shootout and play shootout music
     * View gang member scene in mid game menu - IDEA: make a black text area (non-editable), in the middle of scene
       and print to it in a for-each loop
+    * Abstraction
+    * Removing "GOD" class
 
 
     NEEDED FEATURES (Coming)
