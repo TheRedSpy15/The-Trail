@@ -1,14 +1,12 @@
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class LootMenuController extends Main {
 
-    public Button takeBtn;
-    public Label moneyLbl;
-    public Label foodLbl;
-    public Label waterLbl;
-    public Label ammoLbl;
+    @FXML private Label moneyLbl;
+    @FXML private Label foodLbl;
+    @FXML private Label waterLbl;
+    @FXML private Label ammoLbl;
 
     private int moneyLOOT;
     private int foodLOOT;

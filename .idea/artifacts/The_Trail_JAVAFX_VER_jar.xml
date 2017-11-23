@@ -5,14 +5,6 @@
       <element id="archive" name="The Trail JAVAFX VER.jar">
         <element id="module-output" name="The Trail JAVAFX VER" />
       </element>
-      <element id="library" level="project" name="Maven: org.slf4j:slf4j-simple:1.7.22" />
-      <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.22" />
-      <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.8.7" />
-      <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-api:2.8.1" />
-      <element id="file-copy" path="$APPLICATION_HOME_DIR$/redist/annotations-java8.jar" />
-      <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-core:2.8.1" />
-      <element id="library" level="project" name="Maven: io.sentry:sentry:1.5.4" />
-      <element id="library" level="project" name="Maven: io.sentry:sentry-log4j2:1.5.4" />
     </root>
   </artifact>
 </component>

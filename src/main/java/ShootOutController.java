@@ -1,12 +1,10 @@
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import org.jetbrains.annotations.Contract;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,14 +17,11 @@ public class ShootOutController extends Main {
 
     private int thiefHealth = 100;
 
-    public Button shootBtn;
-    public Button letGoBtn;
-    public Button grenadeBtn;
-    public TextArea eventText;
-    public Label thiefHealthLbl;
-    public Label ammoLbl;
-    public Label grenadeLbl;
-    public Label gangAmountLbl;
+    @FXML private TextArea eventText;
+    @FXML private Label thiefHealthLbl;
+    @FXML private Label ammoLbl;
+    @FXML private Label grenadeLbl;
+    @FXML private Label gangAmountLbl;
 
     @FXML private void initialize(){
 
@@ -124,7 +119,6 @@ public class ShootOutController extends Main {
         }
     }
 
-    @Contract(pure = true)
     private boolean isThiefDead(){
 
         return thiefHealth <= 0;

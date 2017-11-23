@@ -20,7 +20,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="The Trail JAVAFX VER" target="1.8" />
+      <module name="The Trail JAVAFX VER" target="1.9" />
     </bytecodeTargetLevel>
   </component>
 </project>

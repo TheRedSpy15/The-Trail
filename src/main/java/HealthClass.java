@@ -6,6 +6,8 @@ import javafx.scene.text.Font;
 
 public class HealthClass extends Main {
 
+    private static int healthEventCooldown = 10;
+
     // Used to determine health condition based upon tiredness, pace, and intake
     protected static void determineHealthCondition(){
 
@@ -47,6 +49,18 @@ public class HealthClass extends Main {
 
         if (HealthConditions > 100) HealthConditions = 100;
         if (HealthConditions < 0) HealthConditions = 0;
+
+        if (healthEventCooldown >= 10){
+
+            if (SickEventChance > HealthConditions){
+
+                memberSelect = gang.size();
+                memberSelect -=1;
+                HealthClass.poorHealthEvent();
+            }
+
+            healthEventCooldown = 0;
+        } healthEventCooldown++;
     }
 
     // Events to happen with poor health conditions

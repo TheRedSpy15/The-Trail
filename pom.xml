@@ -2,32 +2,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>groupId</groupId>
-    <artifactId>The Trail JAVAFX VER</artifactId>
-    <version>1.5.1</version>
+    <groupId>The_Trail_JAVAFX_VER</groupId>
+    <artifactId>The_Trail_JAVAFX_VER</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-
-    <name>sentry-java-log4j2-example</name>
-    <url>https://github.com/getsentry/examples</url>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <sentry.version>1.5.4</sentry.version>
-        <slf4j.version>1.7.22</slf4j.version>
-    </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>io.sentry</groupId>
-            <artifactId>sentry-log4j2</artifactId>
-            <version>${sentry.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-    </dependencies>
 
     <build>
         <plugins>
@@ -43,7 +21,6 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>io.sentry.example.Application</mainClass>
                     <cleanupDaemonThreads>false</cleanupDaemonThreads>
                 </configuration>
             </plugin>
@@ -51,8 +28,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>1.9</source>
+                    <target>1.9</target>
                 </configuration>
             </plugin>
         </plugins>

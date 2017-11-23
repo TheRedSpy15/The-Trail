@@ -21,7 +21,6 @@ public class TravelController extends Main {
     @FXML private Label statusLabel;
     @FXML private AnchorPane sprite;
     @FXML private ImageView spriteImage;
-    private int healthEventCooldown = 10;
 
     // when stop button is pressed
     @FXML
@@ -82,9 +81,6 @@ public class TravelController extends Main {
                 if (Money > 10000) Money = 10000;
                 if (Money < 0) Money = 0;
 
-                // health conditions
-                HealthClass.determineHealthCondition();
-
                 Platform.runLater(() -> {
                     // update the JavaFX UI Thread here when the task(s) above are done
 
@@ -102,20 +98,8 @@ public class TravelController extends Main {
                     if (extremeLowChance()) alert.thiefEncounter();
 
                     // health events
-                    if (healthEventCooldown >= 10){
-
-                        if (SickEventChance > HealthConditions){
-
-                            memberSelect = gang.size();
-                            memberSelect -=1;
-                            HealthClass.poorHealthEvent();
-                        }
-
-                        healthEventCooldown = 0;
-                    }
+                    HealthClass.determineHealthCondition();
                 });
-
-                healthEventCooldown++;
 
                 if (!IsMoving) break;
 

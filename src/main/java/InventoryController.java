@@ -5,16 +5,16 @@ import javafx.scene.image.ImageView;
 
 public class InventoryController extends MidGameMenu {
 
-    public Label foodLbl;
-    public Label waterLbl;
-    public Label ammoLbl;
-    public Label moneyLbl;
-    public ImageView carImage;
-    public Label scoreLbl;
-    public Label gunModelLbl;
-    public Label damageLbl;
-    public Label grenadeLbl;
-    public ImageView gunImage;
+    @FXML private Label foodLbl;
+    @FXML private Label waterLbl;
+    @FXML private Label ammoLbl;
+    @FXML private Label moneyLbl;
+    @FXML private ImageView carImage;
+    @FXML private Label scoreLbl;
+    @FXML private Label gunModelLbl;
+    @FXML private Label damageLbl;
+    @FXML private Label grenadeLbl;
+    @FXML private ImageView gunImage;
 
     @FXML private void initialize(){
 

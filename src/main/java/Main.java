@@ -1,8 +1,6 @@
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Random;
-// import org.apache.logging.log4j.*;
-import io.sentry.*;
 import javafx.application.Application;
 import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
@@ -10,8 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.Nullable;
 import static javafx.scene.media.AudioClip.INDEFINITE;
 
 public class Main extends Application{
@@ -52,10 +48,6 @@ public class Main extends Application{
     static Scene hireScene;
     static Parent hirePane;
 
-    // Sentry
-    private static final String dsn = "https://6db11d4c3f864632aa5b1932f6c80c82:6349615319974befbcb63a2459b5fc26@sentry.io/220483";
-    // private static Logger logger = LogManager.getLogger(Main.class);
-
     // Core Java
     private static String trailVersion = "1.5.1";
     static LinkedList <String> gang = new LinkedList<>();
@@ -89,9 +81,13 @@ public class Main extends Application{
 
     /*
 
+    DO NOT FORGET TO INCLUDE LICENSE IN NEXT COMMIT AND ADD IT TO THE RELEASE ON GITHUB!
+    DO NOT FORGET NOTICES EITHER!
+
+
     BUG LIST
 
-    *
+    * Transition on travel scene rarely stops
 
 
     WORKING ON
@@ -147,7 +143,7 @@ public class Main extends Application{
         }
 
         // Launches sentry with the dsn in the parameters
-        Sentry.init(dsn);
+        //Sentry.init(dsn);
 
         /*
         sends a error message to the sentry dsn server
@@ -165,7 +161,6 @@ public class Main extends Application{
     }
 
     // Getters and Setters
-    @Contract(pure = true)
     static Scene getFoodPortionsScene() {
         return FoodPortionsScene;
     }
@@ -174,7 +169,6 @@ public class Main extends Application{
         FoodPortionsScene = foodPortionsScene;
     }
 
-    @Contract(pure = true)
     static Scene getPaceScene() {
         return PaceScene;
     }
@@ -206,7 +200,7 @@ public class Main extends Application{
 
         MainWindow.setResizable(false);
 
-        MainWindow.setTitle("The Trail v1.5.1");
+        MainWindow.setTitle("The Trail "+trailVersion);
 
         MainWindow.setScene(new Scene(mainAnchor));
 
@@ -216,7 +210,6 @@ public class Main extends Application{
     // Music task
     private static final Task backGroundMusicTask = new Task() {
 
-        @Nullable
         @Override
         protected Object call() throws Exception {
 
