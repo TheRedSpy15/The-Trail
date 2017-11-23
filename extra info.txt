@@ -1,7 +1,0 @@
-There is no nead to report bug/errors, all of which are automatically sent to a sentry dsn server.
-
-DISCLAIMER! NO PERSONAL INFOMATION IS KEPT, ANYTHING SENT IS ONLY KEPT FOR A LIMITED TIME AND COMPLETELY SEVER SIDE SCRUBED (bleaching basically)
-
-To contact the developer:
-
-email hjadar15@gmail.com

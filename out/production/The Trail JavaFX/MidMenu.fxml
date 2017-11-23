@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="279.0" prefWidth="328.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MidMenuController">
+   <children>
+      <Label layoutX="20.0" layoutY="14.0" prefHeight="76.0" prefWidth="126.0" text="Menu" textFill="PURPLE">
+         <font>
+            <Font name="Impact" size="44.0" />
+         </font>
+      </Label>
+      <Separator layoutX="144.0" layoutY="14.0" orientation="VERTICAL" prefHeight="237.0" prefWidth="0.0" />
+      <Button fx:id="paceBtn" layoutX="168.0" layoutY="27.0" mnemonicParsing="false" onAction="#paceBtn" prefHeight="43.0" prefWidth="95.0" text="Pace">
+         <font>
+            <Font name="Impact" size="21.0" />
+         </font>
+      </Button>
+      <Button fx:id="dietBtn" layoutX="168.0" layoutY="81.0" mnemonicParsing="false" onAction="#dietBtn" prefHeight="43.0" prefWidth="95.0" text="Diet">
+         <font>
+            <Font name="Impact" size="21.0" />
+         </font>
+      </Button>
+      <Button fx:id="inventoryBtn" layoutX="168.0" layoutY="135.0" mnemonicParsing="false" onAction="#inventoryBtn" prefHeight="43.0" prefWidth="95.0" text="Inventory">
+         <font>
+            <Font name="Impact" size="17.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="The_Trail_JavaFX.jnlp">
+    <information>
+        <title>Main</title>
+        <vendor>Unknown</vendor>
+        <description>Main</description>
+        <offline-allowed/>
+    </information>
+    <update check="background"/>
+    <resources>
+        <j2se version="9.0.1+" href="http://java.sun.com/products/autodl/j2se"/>
+        <jar href="The_Trail_JavaFX.jar" size="47325117" download="eager"/>
+    </resources>
+    <jfx:javafx-desc width="600" height="400" main-class="Main" name="Main"/>
+</jnlp>
+

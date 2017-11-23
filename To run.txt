@@ -1,5 +1,0 @@
-Just double click the short cut
-
-NOTE: JAVA IS REQUIRED TO RUN THE .jar (java version) FILE, NOT FOR THE .EXE (windows version)
-
-The java version is so it runs on ANY computer with java installed on it
