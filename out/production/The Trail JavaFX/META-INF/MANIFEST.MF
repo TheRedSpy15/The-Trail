@@ -1,4 +1,3 @@
 Manifest-Version: 1.0
-Class-Path: C:\Program Files\Java\jre-9.0.1\lib
 Main-Class: Main
 
