@@ -20,6 +20,21 @@ The game features many different things (with much more to come)
 - shootout events
 - Much more
 
+# Screen-Shots
+
+## Intro
+
+![alt text](https://s8.postimg.org/k1hn7kbbp/startscene.jpg "Intro")
+
+## Picking a Career
+
+![alt text](https://s8.postimg.org/6xc2uv3ud/careerscene.jpg "Career")
+
+## Gun Store
+
+![alt text](https://s8.postimg.org/6kkoootad/gunstorescene.jpg "GunStore")
+
+
 # Road map
 
     WORKING ON
