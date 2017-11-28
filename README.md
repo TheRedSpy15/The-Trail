@@ -47,7 +47,7 @@ The game features many different things (with much more to come)
    - Removing "GOD" class
 
 
-## NEEDED FEATURES (Coming)
+## PLANNED
 
    - Different cars have different max storage
    - Body armour
@@ -58,7 +58,7 @@ The game features many different things (with much more to come)
    - chance to miss shooting at thief
 
 
-## BIG FEATURES (updates)
+## BIG UPDATES
 
    - Bank heists
    - Final battle against monkeys (END GAME)
