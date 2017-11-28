@@ -80,7 +80,7 @@ I make updates first to the "Pre-Update" branch and then to the Main branch when
 
 # NOTE
 
-Also, the .jar file REQUIRES Java to be installed. A .exe will come for Windows users without Java.
+The .jar file REQUIRES Java to be installed. A .exe will come for Windows users without Java.
 
 # **LICENSE NOTICE**
 
