@@ -37,7 +37,7 @@ The game features many different things (with much more to come)
 
 # Road map
 
-    WORKING ON
+## WORKING ON
 
     * Settings menu in mid game menu
     * stop background music in shootout and play shootout music
@@ -47,7 +47,7 @@ The game features many different things (with much more to come)
     * Removing "GOD" class
 
 
-    NEEDED FEATURES (Coming)
+## NEEDED FEATURES (Coming)
 
     * Different cars have different max storage ( eg: green car - 6000 storage [ storage = water + food ] )
     * Body armour
@@ -58,13 +58,13 @@ The game features many different things (with much more to come)
     * chance to miss shooting at thief
 
 
-    BIG FEATURES (updates)
+## BIG FEATURES (updates)
 
     * Bank heists
     * Final battle against monkeys (END GAME)
 
 
-    NICE TO HAVES (not likely to be added)
+## NICE TO HAVES (not likely to be added)
 
     * Support for resizing stage
     * Individual member control menu
