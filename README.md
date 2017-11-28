@@ -39,37 +39,37 @@ The game features many different things (with much more to come)
 
 ## WORKING ON
 
-    * Settings menu in mid game menu
-    * stop background music in shootout and play shootout music
-    * View gang member scene in mid game menu
+   - Settings menu in mid game menu
+   - stop background music in shootout and play shootout music
+   - View gang member scene in mid game menu
       and print to it in a for-each loop
-    * Abstraction
-    * Removing "GOD" class
+   - Abstraction
+   - Removing "GOD" class
 
 
 ## NEEDED FEATURES (Coming)
 
-    * Different cars have different max storage ( eg: green car - 6000 storage [ storage = water + food ] )
-    * Body armour
-    * System time in mid game menu
-    * More cities
-    * Personal armoury (gun inventory for selecting different guns with different traits)
-    * More guns
-    * chance to miss shooting at thief
+   - Different cars have different max storage ( eg: green car - 6000 storage [ storage = water + food ] )
+   - Body armour
+   - System time in mid game menu
+   - More cities
+   - Personal armoury (gun inventory for selecting different guns with different traits)
+   - More guns
+   - chance to miss shooting at thief
 
 
 ## BIG FEATURES (updates)
 
-    * Bank heists
-    * Final battle against monkeys (END GAME)
+   - Bank heists
+   - Final battle against monkeys (END GAME)
 
 
 ## NICE TO HAVES (not likely to be added)
 
-    * Support for resizing stage
-    * Individual member control menu
-    * Score board
-    * Save/load
+   - Support for resizing stage
+   - Individual member control menu
+   - Score board
+   - Save/load
     
 # Contributing
 
