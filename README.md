@@ -55,8 +55,7 @@ The game features many different things (with much more to come)
    - System time in mid game menu
    - More cities
    - Personal armoury
-   - More guns
-      With different sounds for each
+   - More guns (with different sounds for each)
    - chance to miss shooting at thief
 
 
