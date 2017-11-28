@@ -22,22 +22,22 @@ The game features many different things (with much more to come)
 
 # Screen-Shots
 
-## Intro
+### Intro
 
 ![alt text](https://s8.postimg.org/k1hn7kbbp/startscene.jpg "Intro")
 
-## Picking a Career
+### Picking a Career
 
 ![alt text](https://s8.postimg.org/6xc2uv3ud/careerscene.jpg "Career")
 
-## Gun Store
+### Gun Store
 
 ![alt text](https://s8.postimg.org/6kkoootad/gunstorescene.jpg "GunStore")
 
 
 # Road map
 
-## WORKING ON
+### WORKING ON
 
    - Settings menu in mid game menu
    - stop background music in shootout and play shootout music
@@ -47,7 +47,7 @@ The game features many different things (with much more to come)
    - Removing "GOD" class
 
 
-## PLANNED
+### PLANNED
 
    - Different cars have different max storage
    - Body armour
@@ -58,13 +58,13 @@ The game features many different things (with much more to come)
    - chance to miss shooting at thief
 
 
-## BIG UPDATES
+### BIG UPDATES
 
    - Bank heists
    - Final battle against monkeys (END GAME)
 
 
-## NICE TO HAVES (not likely to be added)
+### NICE TO HAVES (not likely to be added)
 
    - Support for resizing stage
    - Individual member control menu
@@ -81,7 +81,7 @@ I make updates first to the "Pre-Update" branch and then to the Main branch when
 
 Also, the .jar file REQUIRES Java to be installed. A .exe will come for Windows users without Java.
 
-# LICENSE NOTICE
+# **LICENSE NOTICE**
 
 Copyright [2017] [TheRedSpy15]
 
