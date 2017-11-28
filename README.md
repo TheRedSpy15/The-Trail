@@ -41,7 +41,7 @@ The game features many different things (with much more to come)
 
     * Settings menu in mid game menu
     * stop background music in shootout and play shootout music
-    * View gang member scene in mid game menu - IDEA: make a black text area (non-editable), in the middle of scene
+    * View gang member scene in mid game menu
       and print to it in a for-each loop
     * Abstraction
     * Removing "GOD" class
