@@ -49,11 +49,11 @@ The game features many different things (with much more to come)
 
 ## NEEDED FEATURES (Coming)
 
-   - Different cars have different max storage ( eg: green car - 6000 storage [ storage = water + food ] )
+   - Different cars have different max storage
    - Body armour
    - System time in mid game menu
    - More cities
-   - Personal armoury (gun inventory for selecting different guns with different traits)
+   - Personal armoury
    - More guns
    - chance to miss shooting at thief
 
