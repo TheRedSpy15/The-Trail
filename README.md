@@ -76,9 +76,9 @@ The game features many different things (with much more to come)
 
 Just make a commit, and that's it!
 
-# NOTE
-
 I make updates first to the "Pre-Update" branch and then to the Main branch when I feel the update is ready to go on the stable branch (Main)
+
+# NOTE
 
 Also, the .jar file REQUIRES Java to be installed. A .exe will come for Windows users without Java.
 
