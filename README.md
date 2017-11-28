@@ -42,9 +42,10 @@ The game features many different things (with much more to come)
    - Settings menu in mid game menu
    - stop background music in shootout and play shootout music
    - View gang member scene in mid game menu
-      and print to it in a for-each loop
    - Abstraction
    - Removing "GOD" class
+   - Rescentering text on certain scenes
+   - Bug fixes
 
 
 ### PLANNED
@@ -55,6 +56,7 @@ The game features many different things (with much more to come)
    - More cities
    - Personal armoury
    - More guns
+      With different sounds for each
    - chance to miss shooting at thief
 
 
