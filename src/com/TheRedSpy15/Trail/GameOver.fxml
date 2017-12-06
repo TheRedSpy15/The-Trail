@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--
+
+   Copyright [2017] [TheRedSpy15]
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+-->
+
+<AnchorPane prefHeight="400.0" fx:controller="com.TheRedSpy15.Trail.GameOverController" prefWidth="600.0" style="-fx-background-color: black" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="209.0" layoutY="161.0" prefHeight="78.0" prefWidth="182.0" text="GAME OVER......." textFill="RED">
+         <font>
+            <Font name="Impact" size="32.0" />
+         </font>
+      </Label>
+      <Label fx:id="scoreLbl" layoutX="195.0" layoutY="231.0" text="Score: 0" textFill="WHITE">
+         <font>
+            <Font name="Impact" size="27.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

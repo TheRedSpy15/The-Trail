@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--
+
+   Copyright [2017] [TheRedSpy15]
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+-->
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.Trail.ThiefKilledController">
+   <children>
+      <Label layoutX="202.0" layoutY="152.0" prefHeight="71.0" prefWidth="197.0" text="You Killed the thief!" textFill="GOLD">
+         <font>
+            <Font name="Gentium Basic" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="177.0" layoutY="55.0" prefHeight="97.0" prefWidth="247.0" text="VICTORY" textFill="GOLD">
+         <font>
+            <Font name="Gentium Basic" size="64.0" />
+         </font>
+      </Label>
+      <Button fx:id="lootBtn" onAction="#setLootBtn" layoutX="238.0" layoutY="259.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="124.0" text="Loot" textFill="RED">
+         <font>
+            <Font name="Impact" size="27.0" />
+         </font>
+      </Button>
+      <Label layoutX="249.0" layoutY="126.0" prefHeight="52.0" prefWidth="104.0" text="+5000 Score" textFill="GOLD">
+         <font>
+            <Font name="Gentium Basic" size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

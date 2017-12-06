@@ -8,8 +8,8 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="The_Trail_JavaFX.jar" size="47323800" download="eager" />
+    <jar href="The_Trail_JavaFX.jar" size="47336518" download="eager" />
   </resources>
-  <jfx:javafx-desc  width="600" height="400" main-class="Main"  name="The Trail JavaFX" />
+  <jfx:javafx-desc  width="600" height="400" main-class="com.TheRedSpy15.Trail.Main"  name="The Trail JavaFX" />
   <update check="background"/>
 </jnlp>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--
+
+   Copyright [2017] [TheRedSpy15]
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+-->
+
+<AnchorPane prefHeight="470.0" prefWidth="600.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.Trail.GunStoreController">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" prefHeight="45.0" prefWidth="216.0" text="BoomSticks  &amp; Beyond" textFill="RED">
+         <font>
+            <Font name="Impact" size="23.0" />
+         </font>
+      </Label>
+      <Separator layoutX="12.0" layoutY="400.0" prefHeight="9.0" prefWidth="577.0" style="-fx-background-color: red;" />
+      <TabPane layoutX="12.0" layoutY="66.0" prefHeight="320.0" prefWidth="577.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="AK47">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="292.0" prefWidth="577.0">
+                           <children>
+                              <ImageView fitHeight="181.0" fitWidth="247.0" layoutX="165.0" layoutY="41.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@ff1fbae3c3282a772246605d08225293.png" />
+                                 </image>
+                              </ImageView>
+                              <Button fx:id="ak47Btn" layoutX="235.0" layoutY="195.0" mnemonicParsing="false" onAction="#ak47Btn" prefHeight="55.0" prefWidth="108.0" text="BUY" textFill="RED">
+                                 <font>
+                                    <Font name="Impact" size="34.0" />
+                                 </font>
+                              </Button>
+                              <Label layoutX="244.0" layoutY="29.0" prefHeight="48.0" prefWidth="89.0" text="AK-47" textFill="RED">
+                                 <font>
+                                    <Font name="Impact" size="38.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="69.0" prefHeight="39.0" prefWidth="100.0" text="Damage: 45" textFill="WHITE">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="123.0" text="Price: $500" textFill="WHITE">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Grenade">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="292.0" prefWidth="577.0">
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="224.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@pixel_grenade_by_thedoctor33-d4vigez.png" />
+                                 </image>
+                              </ImageView>
+                              <Button fx:id="grenadeBtn" layoutX="354.0" layoutY="204.0" mnemonicParsing="false" onAction="#grenadeBtn" prefHeight="45.0" prefWidth="150.0" text="BUY" textFill="RED">
+                                 <font>
+                                    <Font name="Impact" size="25.0" />
+                                 </font>
+                              </Button>
+                              <Slider fx:id="grenadeSlider" blockIncrement="1.0" layoutX="48.0" layoutY="208.0" majorTickUnit="1.0" max="20.0" minorTickCount="1" prefHeight="45.0" prefWidth="267.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+                              <Label layoutX="20.0" layoutY="52.0" prefHeight="45.0" prefWidth="133.0" text="Price: $1000" textFill="WHITE">
+                                 <font>
+                                    <Font name="Impact" size="25.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Ammo">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane layoutX="7.0" layoutY="1.0" prefHeight="284.0" prefWidth="577.0">
+                           <children>
+                              <ImageView fitHeight="176.0" fitWidth="216.0" layoutX="188.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@2190e398f7e8554.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="240.0" layoutY="14.0" prefHeight="45.0" prefWidth="98.0" text="Ammo" textFill="RED">
+                                 <font>
+                                    <Font name="Impact" size="36.0" />
+                                 </font>
+                              </Label>
+                              <Slider fx:id="ammoSlider" layoutX="62.0" layoutY="233.0" prefHeight="45.0" prefWidth="216.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+                              <Button fx:id="ammoBtn" layoutX="297.0" layoutY="230.0" mnemonicParsing="false" onAction="#ammoBtn" prefHeight="45.0" prefWidth="124.0" text="BUY" textFill="RED">
+                                 <font>
+                                    <Font name="Impact" size="25.0" />
+                                 </font>
+                              </Button>
+                              <Label layoutX="14.0" layoutY="46.0" prefHeight="45.0" prefWidth="142.0" text="Price: $50 r/d" textFill="WHITE">
+                                 <font>
+                                    <Font name="Impact" size="25.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <Label fx:id="moneyLbl" layoutX="375.0" layoutY="14.0" prefHeight="45.0" prefWidth="216.0" text="Money: $0" textFill="GREEN">
+         <font>
+            <Font name="Impact" size="23.0" />
+         </font>
+      </Label>
+      <Separator layoutX="12.0" layoutY="55.0" prefHeight="9.0" prefWidth="577.0" style="-fx-background-color: red;" />
+      <Button fx:id="backBtn" layoutX="24.0" layoutY="417.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="45.0" prefWidth="120.0" text="&lt;-- Back" textFill="RED">
+         <font>
+            <Font name="Impact" size="23.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

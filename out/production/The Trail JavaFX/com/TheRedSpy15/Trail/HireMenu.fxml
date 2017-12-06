@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--
+
+   Copyright [2017] [TheRedSpy15]
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+-->
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.Trail.HireMenuController">
+   <children>
+      <Label layoutX="257.0" layoutY="24.0" prefHeight="59.0" prefWidth="87.0" text="HIRE" textFill="PURPLE">
+         <font>
+            <Font name="Impact" size="47.0" />
+         </font>
+      </Label>
+      <Separator layoutX="8.0" layoutY="81.0" prefHeight="11.0" prefWidth="580.0" />
+      <TextField fx:id="nameField" layoutX="207.0" layoutY="109.0" promptText="Name">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <Button fx:id="hireBtn" layoutX="224.0" layoutY="171.0" mnemonicParsing="false" onAction="#setHireBtn" prefHeight="59.0" prefWidth="152.0" text="Hire: $5000" textFill="RED">
+         <font>
+            <Font name="Impact" size="24.0" />
+         </font>
+      </Button>
+      <Label fx:id="emptyLbl" layoutX="157.0" layoutY="266.0" prefHeight="32.0" prefWidth="287.0" textFill="RED">
+         <font>
+            <Font name="Impact" size="25.0" />
+         </font>
+      </Label>
+      <Button fx:id="backBtn" layoutX="248.0" layoutY="312.0" mnemonicParsing="false" onAction="#setBackBtn" prefHeight="32.0" prefWidth="100.0" text="Back" textFill="RED">
+         <font>
+            <Font name="Impact" size="24.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

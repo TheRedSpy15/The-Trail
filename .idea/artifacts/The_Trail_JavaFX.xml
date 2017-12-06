@@ -3,7 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/The_Trail_JavaFX</output-path>
     <properties id="javafx-properties">
       <options>
-        <option name="appClass" value="Main" />
+        <option name="appClass" value="com.TheRedSpy15.Trail.Main" />
         <option name="description" value="" />
         <option name="htmlPlaceholderId" value="" />
         <option name="nativeBundle" value="all" />
@@ -15,6 +15,9 @@
     <root id="root">
       <element id="archive" name="The_Trail_JavaFX.jar">
         <element id="module-output" name="The Trail JavaFX" />
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/src/com/TheRedSpy15/Trail/META-INF/MANIFEST.MF" />
+        </element>
       </element>
     </root>
   </artifact>
