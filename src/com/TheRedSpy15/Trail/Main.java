@@ -110,9 +110,9 @@ public class Main extends Application{
     private static LinkedList <String> gang = new LinkedList<>();
     private static int HealthConditions = 100;
     private static int Distance = 0;
-    private static String gunSpriteURL = "piq_119368_400x400.png";
+    private static String gunSpriteURL = "com/TheRedSpy15/trail/piq_119368_400x400.png";
     private static long Score = 0;
-    private static String carSpriteURL = "spr_car4_0.png";
+    private static String carSpriteURL = "com/TheRedSpy15/trail/spr_car4_0.png";
     private static int Days = 0;
     private static int wage = 0;
     private static int Food = 0;
