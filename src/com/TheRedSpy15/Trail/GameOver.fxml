@@ -21,7 +21,7 @@
 
 -->
 
-<AnchorPane prefHeight="400.0" fx:controller="com.TheRedSpy15.Trail.GameOverController" prefWidth="600.0" style="-fx-background-color: black" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" fx:controller="com.TheRedSpy15.trail.GameOverController" prefWidth="600.0" style="-fx-background-color: black" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="209.0" layoutY="161.0" prefHeight="78.0" prefWidth="182.0" text="GAME OVER......." textFill="RED">
          <font>

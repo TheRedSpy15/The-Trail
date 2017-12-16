@@ -21,7 +21,7 @@
 
 -->
 
-<AnchorPane prefHeight="319.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.Trail.CityMenuController">
+<AnchorPane prefHeight="319.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.CityMenuController">
    <children>
       <Label fx:id="townLbl" layoutX="13.0" layoutY="28.0" prefHeight="58.0" prefWidth="552.0" text="You have come up to the town of: " textFill="PURPLE">
          <font>

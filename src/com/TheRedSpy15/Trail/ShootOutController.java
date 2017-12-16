@@ -1,4 +1,4 @@
-package com.TheRedSpy15.Trail;
+package com.TheRedSpy15.trail;
 
 /*
 
@@ -25,15 +25,21 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-
-import java.io.File;
 import java.io.IOException;
 
 public class ShootOutController extends Main {
 
-    private Media victorySound = new Media(new File("C:\\Users\\Hunter\\IdeaProjects\\The Trail JAVAFX VER\\src\\main\\resources\\Ta Da-SoundBible.com-1884170640.wav").toURI().toString());
-    private Media gunSound = new Media(new File("C:\\Users\\Hunter\\IdeaProjects\\The Trail JAVAFX VER\\src\\main\\resources\\Laser_Machine_Gun-Mike_Koenig-1194129298.wav").toURI().toString());
-    private Media grenadeSound = new Media(new File("C:\\Users\\Hunter\\IdeaProjects\\The Trail JAVAFX VER\\src\\main\\resources\\Molotov Cocktail Bomb-SoundBible.com-547160811.wav").toURI().toString());
+    private Media victorySound = new Media(ClassLoader.getSystemResource(
+            "com/TheRedSpy15/trail/Ta Da-SoundBible.com-1884170640.wav"
+    ).toExternalForm());
+
+    private Media gunSound = new Media(ClassLoader.getSystemResource(
+            "com/TheRedSpy15/trail/Laser_Machine_Gun-Mike_Koenig-1194129298.wav"
+    ).toExternalForm());
+
+    private Media grenadeSound = new Media(ClassLoader.getSystemResource(
+            "com/TheRedSpy15/trail/Molotov Cocktail Bomb-SoundBible.com-547160811.wav"
+    ).toExternalForm());
 
     private int thiefHealth = 100;
 

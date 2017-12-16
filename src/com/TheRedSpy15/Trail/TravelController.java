@@ -1,4 +1,4 @@
-package com.TheRedSpy15.Trail;
+package com.TheRedSpy15.trail;
 
 /*
 
@@ -84,7 +84,7 @@ public class TravelController extends Main {
 
                 setScore(getScore() + 25);
 
-                distanceSinceCity += getPace();
+                setDistanceSinceCity(getDistanceSinceCity() + getPace());
 
                 // Payday countdown
                 payDay();
@@ -104,7 +104,7 @@ public class TravelController extends Main {
                     // update the JavaFX UI Thread here when the task(s) above are done
 
                     // city count down
-                    if (distanceSinceCity > 500) alert.cityEvent();
+                    if (getDistanceSinceCity() > 500) alert.cityEvent();
 
                     // updating labels
                     distanceLabel.setText("Distance: "+ getDistance() +"Mi");

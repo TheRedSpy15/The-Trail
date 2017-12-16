@@ -21,7 +21,7 @@
 
 -->
 
-<AnchorPane prefHeight="279.0" prefWidth="328.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.Trail.MidMenuController">
+<AnchorPane prefHeight="279.0" prefWidth="328.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.MidMenuController">
    <children>
       <Label layoutX="20.0" layoutY="14.0" prefHeight="76.0" prefWidth="126.0" text="Menu" textFill="PURPLE">
          <font>

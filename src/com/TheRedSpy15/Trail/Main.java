@@ -1,4 +1,4 @@
-package com.TheRedSpy15.Trail;
+package com.TheRedSpy15.trail;
 
 /*
 
@@ -18,7 +18,7 @@ package com.TheRedSpy15.Trail;
 
     */
 
-/*
+/* - TODO
 
     BUG LIST
 
@@ -34,6 +34,7 @@ package com.TheRedSpy15.Trail;
     WORKING ON
 
     * Car interface
+    * Gang list changed to a stack
     * Settings menu in mid game menu
     * Getters / Setters need some more testing
     * stop background music in shootout and play shootout music
@@ -71,7 +72,6 @@ import static javafx.scene.media.AudioClip.INDEFINITE;
 public class Main extends Application{
 
     // Javafx - WAY too many variables here
-    static int distanceSinceCity = 0;
     private static Stage MainWindow;
     private static Scene FoodPortionsScene;
     static Stage MenuWindow;
@@ -96,7 +96,7 @@ public class Main extends Application{
     static Scene shootOutScene;
     static Parent thiefMenuPane;
     static Scene thiefMenuScene;
-    private static Parent descripitionPane;
+    private static Parent descriptionPane;
     static Scene lootScene;
     static Parent lootPane;
     static Scene deadThiefScene;
@@ -105,6 +105,7 @@ public class Main extends Application{
     static Parent hirePane;
 
     // Core Java - WAY too many variables here
+    private static int distanceSinceCity = 0;
     private static final String trailVersion = "1.5.1";
     private static LinkedList <String> gang = new LinkedList<>();
     private static int HealthConditions = 100;
@@ -126,7 +127,6 @@ public class Main extends Application{
     static Random rand = new Random();
     private static int SickEventChance;
     private static int memberSelect;
-    static TravelClass travel = new TravelClass();
     static AlertBox alert = new AlertBox();
     static Store store = new Store();
     private static boolean Moving = false;
@@ -145,7 +145,7 @@ public class Main extends Application{
 
         // setting up description scene, needs to be moved
         try {
-            setDescripitionPane(FXMLLoader.load(Main.class.getResource("DescriptionScene.fxml")));
+            setDescriptionPane(FXMLLoader.load(Main.class.getResource("DescriptionScene.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -169,7 +169,7 @@ public class Main extends Application{
 
         getMainWindow().setResizable(false);
 
-        getMainWindow().setTitle("The Trail "+trailVersion);
+        getMainWindow().setTitle("The trail "+trailVersion);
 
         getMainWindow().setScene(new Scene(mainAnchor));
 
@@ -207,7 +207,7 @@ public class Main extends Application{
 
     // Getters and Setters
 
-    // Setter in the need of testing before use
+    // Setter in the need of testing before use - assignment is also commented out in Store.java
     /*static void setMidStorePane(Parent midStorePane) {
         Main.midStorePane = midStorePane;
     }*/
@@ -226,6 +226,14 @@ public class Main extends Application{
 
     static void setPaceScene(Scene paceScene) {
         PaceScene = paceScene;
+    }
+
+    static int getDistanceSinceCity() {
+        return distanceSinceCity;
+    }
+
+    static void setDistanceSinceCity(int distanceSinceCity) {
+        Main.distanceSinceCity = distanceSinceCity;
     }
 
     static LinkedList<String> getGang() {
@@ -452,11 +460,11 @@ public class Main extends Application{
         Main.storePane = storePane;
     }
 
-    static Parent getDescripitionPane() {
-        return descripitionPane;
+    static Parent getDescriptionPane() {
+        return descriptionPane;
     }
 
-    private static void setDescripitionPane(Parent descripitionPane) {
-        Main.descripitionPane = descripitionPane;
+    private static void setDescriptionPane(Parent descriptionPane) {
+        Main.descriptionPane = descriptionPane;
     }
 }

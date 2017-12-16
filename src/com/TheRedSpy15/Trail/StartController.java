@@ -1,4 +1,4 @@
-package com.TheRedSpy15.Trail;
+package com.TheRedSpy15.trail;
 
 /*
 
@@ -28,6 +28,6 @@ public class StartController extends Main{
     private void handleButtonClick() throws IOException {
 
         cp.careerPicker();
-        getMainWindow().setScene(new Scene(getDescripitionPane()));
+        getMainWindow().setScene(new Scene(getDescriptionPane()));
     }
 }

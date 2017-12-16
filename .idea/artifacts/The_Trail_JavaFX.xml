@@ -16,7 +16,7 @@
       <element id="archive" name="The_Trail_JavaFX.jar">
         <element id="module-output" name="The Trail JavaFX" />
         <element id="directory" name="META-INF">
-          <element id="file-copy" path="$PROJECT_DIR$/src/com/TheRedSpy15/Trail/META-INF/MANIFEST.MF" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/com/TheRedSpy15/trail/META-INF/MANIFEST.MF" />
         </element>
       </element>
     </root>

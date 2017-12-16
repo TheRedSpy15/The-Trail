@@ -1,4 +1,4 @@
-package com.TheRedSpy15.Trail;
+package com.TheRedSpy15.trail;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

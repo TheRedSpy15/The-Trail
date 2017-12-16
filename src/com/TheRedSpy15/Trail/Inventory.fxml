@@ -22,7 +22,7 @@
 
 -->
 
-<AnchorPane prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.Trail.InventoryController">
+<AnchorPane prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.InventoryController">
    <children>
       <ImageView fx:id="gunImage" fitHeight="150.0" fitWidth="200.0" layoutX="324.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
          <image>

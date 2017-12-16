@@ -1,4 +1,4 @@
-package com.TheRedSpy15.Trail;
+package com.TheRedSpy15.trail;
 
 /*
 
@@ -37,6 +37,8 @@ public class SellController extends AlertBox {
         setFood(getFood() - (int) foodSlider.getValue());
         setWater(getWater() - (int) waterSlider.getValue());
         setAmmo(getAmmo() - (int) ammoSlider.getValue());
+
+        store.playPurchaseSound();
 
         setMoney(getMoney() + (waterSlider.getValue() * 0.15) + (foodSlider.getValue() * 0.30) + (ammoSlider.getValue() * 20));
 

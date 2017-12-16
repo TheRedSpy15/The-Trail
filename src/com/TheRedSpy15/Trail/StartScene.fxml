@@ -21,7 +21,7 @@
 
 -->
 
-<AnchorPane prefHeight="250.0" prefWidth="300.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.Trail.StartController">
+<AnchorPane prefHeight="250.0" prefWidth="300.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.StartController">
    <children>
    
        <Label fx:id="testLbl" layoutX="73.0" layoutY="14.0" prefHeight="49.0" prefWidth="182.0" text="The Trail" textFill="PURPLE">

@@ -21,7 +21,7 @@
 
 -->
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.Trail.ThiefMenuController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.ThiefMenuController">
    <children>
       <Label layoutX="123.0" layoutY="53.0" prefHeight="41.0" prefWidth="355.0" text="You have encountered a thief!" textFill="RED">
          <font>

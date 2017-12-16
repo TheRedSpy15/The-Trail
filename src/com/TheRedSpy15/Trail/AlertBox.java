@@ -1,4 +1,4 @@
-package com.TheRedSpy15.Trail;
+package com.TheRedSpy15.trail;
 
 /*
 
@@ -157,7 +157,7 @@ public class AlertBox extends Main {
         }
         hireScene = new Scene(hirePane);
 
-        distanceSinceCity = 0;
+        setDistanceSinceCity(0);
 
         cityScene = new Scene(cityPane);
 

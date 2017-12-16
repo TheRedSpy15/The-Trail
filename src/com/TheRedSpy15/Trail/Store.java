@@ -1,4 +1,4 @@
-package com.TheRedSpy15.Trail;
+package com.TheRedSpy15.trail;
 
 /*
 
@@ -22,13 +22,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-
-import java.io.File;
 import java.io.IOException;
 
 public class Store extends Main {
 
-    private Media purchaseSound = new Media(new File("C:\\Users\\Hunter\\IdeaProjects\\The Trail JAVAFX VER\\src\\main\\resources\\Cha_Ching_Register-Muska666-173262285.wav").toURI().toString());
+    private Media purchaseSound = new Media(ClassLoader.getSystemResource(
+            "com/TheRedSpy15/Trail/Cha_Ching_Register-Muska666-173262285.wav"
+    ).toExternalForm());
 
     void playPurchaseSound(){
 

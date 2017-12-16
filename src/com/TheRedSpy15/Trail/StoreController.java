@@ -1,4 +1,4 @@
-package com.TheRedSpy15.Trail;
+package com.TheRedSpy15.trail;
 
 /*
 
@@ -46,7 +46,7 @@ public class StoreController extends Main {
 
             setWater(getWater() + (int) waterSlider.getValue());
 
-            travel.travelSetup();
+            TravelClass.travelSetup();
 
             // determines if the scene is being used in alert window or main window and changes depending on that
             if (getMainWindow().getScene().equals(getStoreScene())){

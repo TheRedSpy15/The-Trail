@@ -23,7 +23,7 @@
 
 -->
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.Trail.CareerController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.CareerController">
    <children>
       <Label layoutX="188.0" layoutY="31.0" prefHeight="57.0" prefWidth="246.0" text="Pick a career" textFill="PURPLE">
          <font>
