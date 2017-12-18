@@ -22,27 +22,32 @@ package com.TheRedSpy15.trail;
 
     BUG LIST
 
-    * Transition on travel scene rarely stops
     * Jar file not working on other PCs
-    * Images breaking scenes and throwing exceptions
 
-        * Has to do with invalid URLs / not being able to find/load them
-
-        * started when maven was removed
+    Exception in thread "JavaFX Application Thread" java.lang.IllegalStateException: Stage already visible
+	at javafx.stage.Stage.showAndWait(Stage.java:460)
+	at com.TheRedSpy15.trail.HealthClass.poorHealthEvent(HealthClass.java:111)
+	at com.TheRedSpy15.trail.HealthClass.determineHealthCondition(HealthClass.java:79)
+	at com.TheRedSpy15.trail.TravelController.lambda$null$0(TravelController.java:119)
+	at com.sun.javafx.application.PlatformImpl.lambda$null$173(PlatformImpl.java:295)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$174(PlatformImpl.java:294)
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at com.sun.glass.ui.win.WinApplication.lambda$null$148(WinApplication.java:191)
+	at java.lang.Thread.run(Thread.java:748)
 
 
     WORKING ON
 
-    * Car interface
     * Gang list changed to a stack
     * Settings menu in mid game menu
-    * Getters / Setters need some more testing
+    * Preventing player from buying items already owned (i.e : car, gun)
+    * selling items (i.e : car, gun)
     * stop background music in shootout and play shootout music
     * View gang member scene in mid game menu
-    * Removing "GOD" class
     * Different cars have different specs
     * Pace refactored to breaking freq. (as cars will have fixed speeds)
-    * Reduce starting gang size to 5 (seats in starting car)
 
 
     Planned
@@ -58,7 +63,6 @@ package com.TheRedSpy15.trail;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Random;
 import javafx.application.Application;
 import javafx.concurrent.Task;
@@ -67,6 +71,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
+
+import static com.TheRedSpy15.trail.Gang.*;
 import static javafx.scene.media.AudioClip.INDEFINITE;
 
 public class Main extends Application{
@@ -74,64 +80,44 @@ public class Main extends Application{
     // Javafx - WAY too many variables here
     private static Stage MainWindow;
     private static Scene FoodPortionsScene;
-    static Stage MenuWindow;
-    static Scene SickEventScene;
+    private static Stage MenuWindow;
+    private static Scene SickEventScene;
     private static Stage AlertWindow = new Stage();
     private static Scene PaceScene;
     private static Parent careerAnchor;
     private static Parent storePane;
     private static Parent possePane;
-    static Parent travelPane;
-    static Parent cityPane;
-    static Parent midSellStorePane;
-    static Scene cityScene;
+    private static Parent travelPane;
+    private static Parent cityPane;
+    private static Parent midSellStorePane;
+    private static Scene cityScene;
     private static Scene storeScene;
-    static Parent dealerPane;
-    static Scene dealerScene;
+    private static Parent dealerPane;
+    private static Scene dealerScene;
     private static Parent gunStorePane;
     private static Scene gunStoreScene;
-    static Parent inventoryPane;
-    static Scene inventoryScene;
-    static Parent shootOutPane;
-    static Scene shootOutScene;
-    static Parent thiefMenuPane;
-    static Scene thiefMenuScene;
+    private static Parent inventoryPane;
+    private static Scene inventoryScene;
+    private static Parent shootOutPane;
+    private static Scene shootOutScene;
+    private static Parent thiefMenuPane;
+    private static Scene thiefMenuScene;
     private static Parent descriptionPane;
-    static Scene lootScene;
-    static Parent lootPane;
-    static Scene deadThiefScene;
-    static Parent deadThiefPane;
-    static Scene hireScene;
-    static Parent hirePane;
+    private static Scene lootScene;
+    private static Parent lootPane;
+    private static Scene deadThiefScene;
+    private static Parent deadThiefPane;
+    private static Scene hireScene;
+    private static Parent hirePane;
 
-    // Core Java - WAY too many variables here
-    private static int distanceSinceCity = 0;
+    // Core Java
     private static final String trailVersion = "1.5.1";
-    private static LinkedList <String> gang = new LinkedList<>();
-    private static int HealthConditions = 100;
-    private static int Distance = 0;
-    private static String gunSpriteURL = "com/TheRedSpy15/trail/piq_119368_400x400.png";
-    private static long Score = 0;
-    private static String carSpriteURL = "com/TheRedSpy15/trail/spr_car4_0.png";
-    private static int Days = 0;
-    private static int wage = 0;
-    private static int Food = 0;
-    private static int Grenades = 0;
-    private static String gunID = "Glock";
-    private static int baseAttackDamage = 15;
-    private static int Ammo = 0;
-    private static int Water = 0;
-    private static double Money = 0;
-    private static int Pace = 10;
-    private static int FoodIntake = 2;
+    private static byte SickEventChance;
     static Random rand = new Random();
-    private static int SickEventChance;
-    private static int memberSelect;
     static AlertBox alert = new AlertBox();
     static Store store = new Store();
-    private static boolean Moving = false;
-    private static int capturedThieves = 0;
-    static CareerGang cp = new CareerGang();
+    static Career career = new Career();
+    static Gang gang = new Gang();
     static ArrayList<String> cities = new ArrayList<>();
 
     public static void main(String args[]) {
@@ -176,6 +162,15 @@ public class Main extends Application{
         getMainWindow().show();
     }
 
+    static void checkValues(){
+
+        if (getFood() < 0) setFood(0);
+        if (getWater() < 0) setWater(0);
+        if (getMoney() > 10000) setMoney(10000);
+        if (getMoney() < 0) setMoney(0);
+        if (getHealthConditions() < 0) setHealthConditions(0);
+    }
+
     // Music task
     private static final Task backGroundMusicTask = new Task() {
 
@@ -194,276 +189,202 @@ public class Main extends Application{
         }
     };
 
-    static boolean extremeLowChance(){
+    static boolean Chance(byte max, byte min, byte target){
 
-        int Chance = (int)(Math.random()*100+1);
+        int Chance = (int)(Math.random()*max+min);
 
         // return true if chance is equal to 90
-        return Chance == 90;
-
-        // Testing purposes
-        //return true;
+        return Chance == target;
     }
 
     // Getters and Setters
 
-    // Setter in the need of testing before use - assignment is also commented out in Store.java
-    /*static void setMidStorePane(Parent midStorePane) {
-        Main.midStorePane = midStorePane;
-    }*/
-
+    static Scene getThiefMenuScene() {
+        return thiefMenuScene;
+    }
+    static void setThiefMenuScene(Scene thiefMenuScene) {
+        Main.thiefMenuScene = thiefMenuScene;
+    }
+    static Stage getMenuWindow() {
+        return MenuWindow;
+    }
+    static void setMenuWindow(Stage menuWindow) {
+        MenuWindow = menuWindow;
+    }
+    static Scene getSickEventScene() {
+        return SickEventScene;
+    }
+    static void setSickEventScene(Scene sickEventScene) {
+        SickEventScene = sickEventScene;
+    }
+    static Parent getTravelPane() {
+        return travelPane;
+    }
+    static void setTravelPane(Parent travelPane) {
+        Main.travelPane = travelPane;
+    }
+    static Parent getCityPane() {
+        return cityPane;
+    }
+    static void setCityPane(Parent cityPane) {
+        Main.cityPane = cityPane;
+    }
+    static Parent getMidSellStorePane() {
+        return midSellStorePane;
+    }
+    static void setMidSellStorePane(Parent midSellStorePane) {
+        Main.midSellStorePane = midSellStorePane;
+    }
+    static Scene getCityScene() {
+        return cityScene;
+    }
+    static void setCityScene(Scene cityScene) {
+        Main.cityScene = cityScene;
+    }
+    static Parent getDealerPane() {
+        return dealerPane;
+    }
+    static void setDealerPane(Parent dealerPane) {
+        Main.dealerPane = dealerPane;
+    }
+    static Scene getDealerScene() {
+        return dealerScene;
+    }
+    static void setDealerScene(Scene dealerScene) {
+        Main.dealerScene = dealerScene;
+    }
+    static Parent getInventoryPane() {
+        return inventoryPane;
+    }
+    static void setInventoryPane(Parent inventoryPane) {
+        Main.inventoryPane = inventoryPane;
+    }
+    static Scene getInventoryScene() {
+        return inventoryScene;
+    }
+    static void setInventoryScene(Scene inventoryScene) {
+        Main.inventoryScene = inventoryScene;
+    }
+    static Parent getShootOutPane() {
+        return shootOutPane;
+    }
+    static void setShootOutPane(Parent shootOutPane) {
+        Main.shootOutPane = shootOutPane;
+    }
+    static Scene getShootOutScene() {
+        return shootOutScene;
+    }
+    static void setShootOutScene(Scene shootOutScene) {
+        Main.shootOutScene = shootOutScene;
+    }
+    static Parent getThiefMenuPane() {
+        return thiefMenuPane;
+    }
+    static void setThiefMenuPane(Parent thiefMenuPane) {
+        Main.thiefMenuPane = thiefMenuPane;
+    }
+    static Scene getLootScene() {
+        return lootScene;
+    }
+    static void setLootScene(Scene lootScene) {
+        Main.lootScene = lootScene;
+    }
+    static Parent getLootPane() {
+        return lootPane;
+    }
+    static void setLootPane(Parent lootPane) {
+        Main.lootPane = lootPane;
+    }
+    static Scene getDeadThiefScene() {
+        return deadThiefScene;
+    }
+    static void setDeadThiefScene(Scene deadThiefScene) {
+        Main.deadThiefScene = deadThiefScene;
+    }
+    static Parent getDeadThiefPane() {
+        return deadThiefPane;
+    }
+    static void setDeadThiefPane(Parent deadThiefPane) {
+        Main.deadThiefPane = deadThiefPane;
+    }
+    static Scene getHireScene() {
+        return hireScene;
+    }
+    static void setHireScene(Scene hireScene) {
+        Main.hireScene = hireScene;
+    }
+    static Parent getHirePane() {
+        return hirePane;
+    }
+    static void setHirePane(Parent hirePane) {
+        Main.hirePane = hirePane;
+    }
     static Scene getFoodPortionsScene() {
         return FoodPortionsScene;
     }
-
     static void setFoodPortionsScene(Scene foodPortionsScene) {
         FoodPortionsScene = foodPortionsScene;
     }
-
     static Scene getPaceScene() {
         return PaceScene;
     }
-
     static void setPaceScene(Scene paceScene) {
         PaceScene = paceScene;
     }
-
-    static int getDistanceSinceCity() {
-        return distanceSinceCity;
-    }
-
-    static void setDistanceSinceCity(int distanceSinceCity) {
-        Main.distanceSinceCity = distanceSinceCity;
-    }
-
-    static LinkedList<String> getGang() {
-        return gang;
-    }
-
-    static int getDistance() {
-        return Distance;
-    }
-
-    static void setDistance(int distance) {
-        Distance = distance;
-    }
-
-    static long getScore() {
-        return Score;
-    }
-
-    static void setScore(long score) {
-        Score = score;
-    }
-
-    static int getDays() {
-        return Days;
-    }
-
-    static void setDays(int days) {
-        Days = days;
-    }
-
-    static int getWage() {
-        return wage;
-    }
-
-    static void setWage(int wage) {
-        Main.wage = wage;
-    }
-
-    public static int getFood() {
-        return Food;
-    }
-
-    public static void setFood(int food) {
-        Food = food;
-    }
-
-    static int getGrenades() {
-        return Grenades;
-    }
-
-    static void setGrenades(int grenades) {
-        Grenades = grenades;
-    }
-
-    public static int getAmmo() {
-        return Ammo;
-    }
-
-    public static void setAmmo(int ammo) {
-        Ammo = ammo;
-    }
-
-    static int getWater() {
-        return Water;
-    }
-
-    static void setWater(int water) {
-        Water = water;
-    }
-
-    public static double getMoney() {
-        return Money;
-    }
-
-    public static void setMoney(double money) {
-        Money = money;
-    }
-
-    static int getPace() {
-        return Pace;
-    }
-
-    static void setPace(int pace) {
-        Pace = pace;
-    }
-
-    static int getFoodIntake() {
-        return FoodIntake;
-    }
-
-    static void setFoodIntake(int foodIntake) {
-        FoodIntake = foodIntake;
-    }
-
-    static boolean isMoving() {
-        return Moving;
-    }
-
-    static void setMoving(boolean moving) {
-        Moving = moving;
-    }
-
-    static int getHealthConditions() {
-        return HealthConditions;
-    }
-
-    static void setHealthConditions(int healthConditions) {
-        HealthConditions = healthConditions;
-    }
-
-    static String getGunSpriteURL() {
-        return gunSpriteURL;
-    }
-
-    static void setGunSpriteURL(String gunSpriteURL) {
-        Main.gunSpriteURL = gunSpriteURL;
-    }
-
-    static String getCarSpriteURL() {
-        return carSpriteURL;
-    }
-
-    static void setCarSpriteURL(String carSpriteURL) {
-        Main.carSpriteURL = carSpriteURL;
-    }
-
-    static String getGunID() {
-        return gunID;
-    }
-
-    static void setGunID(String gunID) {
-        Main.gunID = gunID;
-    }
-
-    static int getCapturedThieves() {
-        return capturedThieves;
-    }
-
-    static void setCapturedThieves(int capturedThieves) {
-        Main.capturedThieves = capturedThieves;
-    }
-
-    static int getBaseAttackDamage() {
-        return baseAttackDamage;
-    }
-
-    static void setBaseAttackDamage(int baseAttackDamage) {
-        Main.baseAttackDamage = baseAttackDamage;
-    }
-
     static int getSickEventChance() {
         return SickEventChance;
     }
-
     static void setSickEventChance(int sickEventChance) {
-        SickEventChance = sickEventChance;
+        SickEventChance = (byte) sickEventChance;
     }
-
-    static int getMemberSelect() {
-        return memberSelect;
-    }
-
-    static void setMemberSelect(int memberSelect) {
-        Main.memberSelect = memberSelect;
-    }
-
     static Stage getMainWindow() {
         return MainWindow;
     }
-
     private static void setMainWindow(Stage mainWindow) {
         MainWindow = mainWindow;
     }
-
     static Parent getCareerAnchor() {
         return careerAnchor;
     }
-
     static void setCareerAnchor(Parent careerAnchor) {
         Main.careerAnchor = careerAnchor;
     }
-
     static Parent getPossePane() {
         return possePane;
     }
-
     static void setPossePane(Parent possePane) {
         Main.possePane = possePane;
     }
-
     static Scene getStoreScene() {
         return storeScene;
     }
-
     static void setStoreScene(Scene storeScene) {
         Main.storeScene = storeScene;
     }
-
     static Parent getGunStorePane() {
         return gunStorePane;
     }
-
     static void setGunStorePane(Parent gunStorePane) {
         Main.gunStorePane = gunStorePane;
     }
-
     static Scene getGunStoreScene() {
         return gunStoreScene;
     }
-
     static void setGunStoreScene(Scene gunStoreScene) {
         Main.gunStoreScene = gunStoreScene;
     }
-
     public static Stage getAlertWindow() {
         return AlertWindow;
     }
-
     static Parent getStorePane() {
         return storePane;
     }
-
     static void setStorePane(Parent storePane) {
         Main.storePane = storePane;
     }
-
     static Parent getDescriptionPane() {
         return descriptionPane;
     }
-
     private static void setDescriptionPane(Parent descriptionPane) {
         Main.descriptionPane = descriptionPane;
     }

@@ -36,16 +36,16 @@
                   <Insets />
                </opaqueInsets>
             </Label>
-            <TextField fx:id="membername1" promptText="Bob" VBox.vgrow="ALWAYS">
+            <TextField fx:id="memberName1" promptText="Bob" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="membername2" promptText="Bob" VBox.vgrow="ALWAYS" />
-            <TextField fx:id="membername3" promptText="Bob" VBox.vgrow="ALWAYS" />
-            <TextField fx:id="membername4" promptText="Bob" VBox.vgrow="ALWAYS" />
-            <TextField fx:id="membername5" promptText="Bob" VBox.vgrow="ALWAYS" />
-            <TextField fx:id="membername6" promptText="Bob" VBox.vgrow="ALWAYS" />
+            <TextField fx:id="memberName2" promptText="Bob" VBox.vgrow="ALWAYS" />
+            <TextField fx:id="memberName3" promptText="Bob" VBox.vgrow="ALWAYS" />
+            <TextField fx:id="memberName4" promptText="Bob" VBox.vgrow="ALWAYS" />
+            <TextField fx:id="memberName5" promptText="Bob" VBox.vgrow="ALWAYS" />
+            <TextField fx:id="memberName6" promptText="Bob" VBox.vgrow="ALWAYS" />
             <Button fx:id="confirmNames" mnemonicParsing="false" onAction="#confirmNamesMethod" prefHeight="44.0" prefWidth="163.0" text="Continue">
                <VBox.margin>
                   <Insets top="20.0" />

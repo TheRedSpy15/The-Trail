@@ -26,20 +26,20 @@ public class MidMenuController extends MidGameMenu {
     private void paceBtn(){
 
         paceSetterMethod();
-        MenuWindow.setScene(getPaceScene());
+        getMenuWindow().setScene(getPaceScene());
     }
 
     @FXML
     private void inventoryBtn(){
 
         inventoryMethod();
-        MenuWindow.setScene(inventoryScene);
+        getMenuWindow().setScene(getInventoryScene());
     }
 
     @FXML
     private void dietBtn(){
 
         foodPortionSet();
-        MenuWindow.setScene(getFoodPortionsScene());
+        getMenuWindow().setScene(getFoodPortionsScene());
     }
 }

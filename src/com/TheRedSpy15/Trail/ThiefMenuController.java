@@ -21,16 +21,19 @@ package com.TheRedSpy15.trail;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class ThiefMenuController extends Main {
+import static com.TheRedSpy15.trail.Gang.*;
+import static com.TheRedSpy15.trail.Main.*;
+
+public class ThiefMenuController {
 
     @FXML private Label loseLbl;
-    private int amount = 0;
+    private short amount = 0;
 
     @FXML private void initialize(){
 
-        amount = (int) (Math.random() * 500);
+        amount = (short) (Math.random() * 500);
 
-        if (amount > getMoney()) amount = (int) getMoney();
+        if (amount > getMoney()) amount = (short) getMoney();
 
         loseLbl.setText("Would lose: $"+amount);
     }
@@ -46,7 +49,7 @@ public class ThiefMenuController extends Main {
 
         int chance = (int) (Math.random() * 100);
 
-        if (chance >= 50) {
+        if (chance >= 50 && getCapturedThieves() == 0) {
 
             alert.alert("You have capture the thief, turn them in for a reward");
 
@@ -61,6 +64,6 @@ public class ThiefMenuController extends Main {
 
     @FXML public void setAttackBtn(){
 
-        getAlertWindow().setScene(shootOutScene);
+        getAlertWindow().setScene(getShootOutScene());
     }
 }

@@ -22,7 +22,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 
-public class SellController extends AlertBox {
+import static com.TheRedSpy15.trail.Main.*;
+
+public class SellController extends Gang {
 
     @FXML private Label foodLbl;
     @FXML private Label waterLbl;
@@ -42,7 +44,7 @@ public class SellController extends AlertBox {
 
         setMoney(getMoney() + (waterSlider.getValue() * 0.15) + (foodSlider.getValue() * 0.30) + (ammoSlider.getValue() * 20));
 
-        getAlertWindow().setScene(cityScene);
+        getAlertWindow().setScene(getCityScene());
     }
 
     @FXML

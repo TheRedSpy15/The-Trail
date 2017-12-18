@@ -23,7 +23,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 
-public class StoreController extends Main {
+import static com.TheRedSpy15.trail.Gang.*;
+import static com.TheRedSpy15.trail.Main.*;
+
+public class StoreController extends Store {
 
     @FXML private Slider waterSlider;
     @FXML private Slider foodSlider;
@@ -52,17 +55,17 @@ public class StoreController extends Main {
             if (getMainWindow().getScene().equals(getStoreScene())){
 
                 // setting window scene to travel pane
-                getMainWindow().setScene(new Scene(travelPane));
+                getMainWindow().setScene(new Scene(getTravelPane()));
             }else{
 
                 // Changing alert window scene to settlement scene
-                getAlertWindow().setScene(cityScene);
+                getAlertWindow().setScene(getCityScene());
             }
 
         // show not enough money scene in alert window with the amount over
         }else{
 
-            int amountOver = (int) (getMoney() - cartValue);
+            amountOver = (short) (getMoney() - cartValue);
 
             alert.notEnoughMoney(amountOver);
         }

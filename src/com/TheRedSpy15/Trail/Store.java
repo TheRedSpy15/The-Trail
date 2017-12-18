@@ -24,7 +24,11 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import java.io.IOException;
 
-public class Store extends Main {
+import static com.TheRedSpy15.trail.Main.*;
+
+public class Store {
+
+    protected short amountOver;
 
     private Media purchaseSound = new Media(ClassLoader.getSystemResource(
             "com/TheRedSpy15/Trail/Cha_Ching_Register-Muska666-173262285.wav"
@@ -38,7 +42,7 @@ public class Store extends Main {
         playPurchaseSound.play();
     }
 
-    void storeMethod() {
+    void updateStores() {
 
         // Store
         try {
@@ -48,16 +52,17 @@ public class Store extends Main {
         }
         setStoreScene(new Scene(getStorePane()));
 
-        /* Store for Alert box stage
+        // Dealer ship pane
         try {
-            setMidStorePane(FXMLLoader.load(Main.class.getResource("storeScene.fxml")));
+            setDealerPane(FXMLLoader.load(Main.class.getResource("DealerShip.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
+        setDealerScene(new Scene(getDealerPane()));
 
         // Sell scene for Alert box stage
         try {
-            midSellStorePane = FXMLLoader.load(Main.class.getResource("SellScene.fxml"));
+            setMidSellStorePane(FXMLLoader.load(Main.class.getResource("SellScene.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }

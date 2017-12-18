@@ -21,9 +21,11 @@ package com.TheRedSpy15.trail;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
+import static com.TheRedSpy15.trail.Gang.*;
+import static com.TheRedSpy15.trail.Main.*;
+
 public class DealerShipController extends Store {
 
-    @FXML private static int amountOver = 0;
     @FXML private Label moneyLbl2;
     @FXML private Label moneyLbl1;
 
@@ -35,7 +37,7 @@ public class DealerShipController extends Store {
 
             setScore(getScore() + 50000);
 
-            setCarSpriteURL("sprite6_0.png");
+            setCarSpriteURL("com/TheRedSpy15/trail/sprite6_0.png");
 
             alert.specialPurchase("BLUE TRUCK");
 
@@ -44,7 +46,7 @@ public class DealerShipController extends Store {
             moneyLbl1.setText("Money: $"+ getMoney());
         }else if (getMoney() < 5000){
 
-            amountOver = (int) (getMoney() - 5000);
+            amountOver = (short) (getMoney() - 5000);
 
             alert.notEnoughMoney(amountOver);
         }
@@ -52,12 +54,12 @@ public class DealerShipController extends Store {
 
     @FXML private void setBackBtn1(){
 
-        getAlertWindow().setScene(cityScene);
+        getAlertWindow().setScene(getCityScene());
     }
 
     @FXML private void setBackBtn2(){
 
-        getAlertWindow().setScene(cityScene);
+        getAlertWindow().setScene(getCityScene());
     }
 
     public void rallyCar(){
@@ -68,7 +70,7 @@ public class DealerShipController extends Store {
 
             setScore(getScore() + 35000);
 
-            setCarSpriteURL("spr_rally_0.png");
+            setCarSpriteURL("com/TheRedSpy15/trail/spr_rally_0.png");
 
             alert.specialPurchase("RALLY CAR");
 
@@ -77,7 +79,7 @@ public class DealerShipController extends Store {
             moneyLbl1.setText("Money: $"+ getMoney());
         }else if (getMoney() < 3500){
 
-            amountOver = (int) (getMoney() - 3500);
+            amountOver = (short) (getMoney() - 3500);
 
             alert.notEnoughMoney(amountOver);
         }

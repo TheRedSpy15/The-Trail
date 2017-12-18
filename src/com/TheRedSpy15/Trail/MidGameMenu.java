@@ -30,6 +30,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
 
+import static com.TheRedSpy15.trail.Gang.*;
+
 public class MidGameMenu extends Main {
 
     private static Parent menuPane;
@@ -49,28 +51,28 @@ public class MidGameMenu extends Main {
 
         // INVENTORY SCENE
         try {
-            inventoryPane = FXMLLoader.load(Main.class.getResource("Inventory.fxml"));
+            setInventoryPane(FXMLLoader.load(Main.class.getResource("Inventory.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        inventoryScene = new Scene(inventoryPane);
+        setInventoryScene(new Scene(getInventoryPane()));
 
         // Creating new Stage
-        MenuWindow = new Stage();
+        setMenuWindow(new Stage());
 
         // Setting title of stage
-        MenuWindow.setTitle("MENU");
+        getMenuWindow().setTitle("MENU");
 
         // preventing interaction with other windows
-        MenuWindow.initModality(Modality.APPLICATION_MODAL);
+        getMenuWindow().initModality(Modality.APPLICATION_MODAL);
 
         // Set MenuWindow's scene
-        MenuWindow.setScene(menuScene);
+        getMenuWindow().setScene(menuScene);
     }
 
     protected static void inventoryMethod(){
 
-        MenuWindow.setScene(inventoryScene);
+        getMenuWindow().setScene(getInventoryScene());
     }
 
     // Used to set food intake
@@ -93,19 +95,19 @@ public class MidGameMenu extends Main {
         // Setting food intake value and going back to menu scene
         ExtremeDietbtn.setOnAction(e -> {
             setFoodIntake(1);
-            MenuWindow.setScene(menuScene);
+            getMenuWindow().setScene(menuScene);
         });
 
         // Setting food intake value and going back to menu scene
         ModerateDietbtn.setOnAction(e -> {
             setFoodIntake(2);
-            MenuWindow.setScene(menuScene);
+            getMenuWindow().setScene(menuScene);
         });
 
         // Setting food intake value and going back to menu scene
         BuffetDietbtn.setOnAction(e -> {
             setFoodIntake(3);
-            MenuWindow.setScene(menuScene);
+            getMenuWindow().setScene(menuScene);
         });
 
         // Setting padding to layout
@@ -138,21 +140,21 @@ public class MidGameMenu extends Main {
         Slowbtn.setOnAction(e -> {
             setPace(5);
             TravelController.animationSpeed = 20;
-            MenuWindow.setScene(menuScene);
+            getMenuWindow().setScene(menuScene);
         });
 
         // Setting pace value and going back to menu scene
         ModerateSpeedbtn.setOnAction(e -> {
             setPace(10);
             TravelController.animationSpeed = 15;
-            MenuWindow.setScene(menuScene);
+            getMenuWindow().setScene(menuScene);
         });
 
         // Setting pace value and going back to menu scene
         Fastbtn.setOnAction(e -> {
             setPace(15);
             TravelController.animationSpeed = 10;
-            MenuWindow.setScene(menuScene);
+            getMenuWindow().setScene(menuScene);
         });
 
         // Setting padding to layout

@@ -27,7 +27,7 @@ public class DescriptionSceneController extends Main {
 
     @FXML private void setContinueBtn() throws IOException {
 
-        cp.careerPicker();
+        career.careerPicker();
         getMainWindow().setScene(new Scene(getCareerAnchor()));
     }
 }

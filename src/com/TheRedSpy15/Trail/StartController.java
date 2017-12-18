@@ -27,7 +27,7 @@ public class StartController extends Main{
     @FXML
     private void handleButtonClick() throws IOException {
 
-        cp.careerPicker();
+        career.careerPicker();
         getMainWindow().setScene(new Scene(getDescriptionPane()));
     }
 }

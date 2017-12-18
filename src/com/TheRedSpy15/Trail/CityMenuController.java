@@ -22,6 +22,8 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 
+import static com.TheRedSpy15.trail.Gang.*;
+
 import java.util.ListIterator;
 
 public class CityMenuController extends Main {
@@ -35,7 +37,7 @@ public class CityMenuController extends Main {
     private void store(){
 
         getAlertWindow().setTitle("Store");
-        store.storeMethod();
+        store.updateStores();
         getAlertWindow().setScene(getStoreScene());
     }
 
@@ -43,8 +45,8 @@ public class CityMenuController extends Main {
     private void sell(){
 
         getAlertWindow().setTitle("Sell");
-        store.storeMethod();
-        getAlertWindow().setScene(new Scene(midSellStorePane));
+        store.updateStores();
+        getAlertWindow().setScene(new Scene(getMidSellStorePane()));
     }
 
     @FXML
@@ -70,13 +72,14 @@ public class CityMenuController extends Main {
     private void dealerShip(){
 
         getAlertWindow().setTitle("Dealer Ship");
-        getAlertWindow().setScene(dealerScene);
+        store.updateStores();
+        getAlertWindow().setScene(getDealerScene());
     }
 
     @FXML
     private void setHireBtn(){
 
-        getAlertWindow().setScene(hireScene);
+        getAlertWindow().setScene(getHireScene());
     }
 
     @FXML
@@ -84,6 +87,7 @@ public class CityMenuController extends Main {
 
         String cityNameLOCAL;
 
+        // Some what circular linked list
         if (!cityName.hasNext()) cityNameLOCAL = cityName.previous();
         else cityNameLOCAL = cityName.next();
 

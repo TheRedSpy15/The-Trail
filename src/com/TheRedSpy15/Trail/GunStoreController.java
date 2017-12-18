@@ -22,9 +22,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 
+import static com.TheRedSpy15.trail.Gang.*;
+import static com.TheRedSpy15.trail.Main.*;
+
 public class GunStoreController extends Store {
 
-    private static int amountOver = 0;
+    private static short amountOver = 0;
     @FXML private Label moneyLbl;
     @FXML private Slider grenadeSlider;
     @FXML private Slider ammoSlider;
@@ -43,12 +46,12 @@ public class GunStoreController extends Store {
 
             alert.specialPurchase("AK-47");
             setGunID("AK-47");
-            setGunSpriteURL("ff1fbae3c3282a772246605d08225293.png");
+            setGunSpriteURL("com/TheRedSpy15/trail/ff1fbae3c3282a772246605d08225293.png");
 
             moneyLbl.setText("Money: $"+ getMoney());
         }else if (getMoney() < 500){
 
-            amountOver = (int) (getMoney() - 500);
+            amountOver = (short) (getMoney() - 500);
 
             alert.notEnoughMoney(amountOver);
         }
@@ -71,7 +74,7 @@ public class GunStoreController extends Store {
             moneyLbl.setText("Money: $"+ getMoney());
         }else if (getMoney() < (1000 * grenadeSlider.getValue())){
 
-            amountOver = (int) (getMoney() - (1000 * grenadeSlider.getValue()));
+            amountOver = (short) (getMoney() - (1000 * grenadeSlider.getValue()));
 
             alert.notEnoughMoney(amountOver);
         }
@@ -94,7 +97,7 @@ public class GunStoreController extends Store {
             moneyLbl.setText("Money: $"+ getMoney());
         }else if (getMoney() < (25 * ammoSlider.getValue())){
 
-            amountOver = (int) (getMoney() - (25 * ammoSlider.getValue()));
+            amountOver = (short) (getMoney() - (25 * ammoSlider.getValue()));
 
             alert.notEnoughMoney(amountOver);
         }
@@ -102,7 +105,7 @@ public class GunStoreController extends Store {
 
     @FXML private void backBtn(){
 
-        store.storeMethod();
+        store.updateStores();
 
         // determines if the scene is being used in alert window or main window and changes depending on that
         if (!(getAlertWindow().isShowing())){

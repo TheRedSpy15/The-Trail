@@ -31,23 +31,23 @@ import javafx.stage.Modality;
 
 import java.io.IOException;
 
-public class AlertBox extends Main {
+import static com.TheRedSpy15.trail.Gang.*;
+import static com.TheRedSpy15.trail.Main.*;
+
+public class AlertBox {
 
     private static Parent gameOverPane;
 
     protected static void alertMenuStart(){
 
-        //AlertWindow.setOnCloseRequest(e -> TravelClass.travelSetup());
+        getAlertWindow().setOnCloseRequest(e -> TravelClass.travelSetup());
 
         //Block events to other windows
         getAlertWindow().initModality(Modality.APPLICATION_MODAL);
         getAlertWindow().setTitle("Alert");
     }
 
-    AlertBox() {
-
-        getAlertWindow().setTitle("Alert");
-    }
+    AlertBox() { getAlertWindow().setTitle("Alert"); }
 
     protected void thiefEncounter(){
 
@@ -56,21 +56,21 @@ public class AlertBox extends Main {
 
         // shoot out pane
         try {
-            shootOutPane = FXMLLoader.load(Main.class.getResource("ShootOut.fxml"));
+            setShootOutPane(FXMLLoader.load(Main.class.getResource("ShootOut.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        shootOutScene = new Scene(shootOutPane);
+        setShootOutScene(new Scene(getShootOutPane()));
 
         // Thief menu pane
         try {
-            thiefMenuPane = FXMLLoader.load(Main.class.getResource("ThiefMenu.fxml"));
+            setThiefMenuPane(FXMLLoader.load(Main.class.getResource("ThiefMenu.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        thiefMenuScene = new Scene(thiefMenuPane);
+        setThiefMenuScene(new Scene(getThiefMenuPane()));
 
-        getAlertWindow().setScene(thiefMenuScene);
+        getAlertWindow().setScene(getThiefMenuScene());
         getAlertWindow().showAndWait();
     }
 
@@ -108,9 +108,9 @@ public class AlertBox extends Main {
 
         // Determining what scene to go back too
         if (!(getAlertWindow().isShowing())) button.setOnAction(e -> getAlertWindow().close());
-        else if (getAlertWindow().getScene() == dealerScene) button.setOnAction(e -> getAlertWindow().setScene(dealerScene));
+        else if (getAlertWindow().getScene() == getDealerScene()) button.setOnAction(e -> getAlertWindow().setScene(getDealerScene()));
         else if (getAlertWindow().getScene() == getGunStoreScene()) button.setOnAction(e -> getAlertWindow().setScene(getGunStoreScene()));
-        else if (getAlertWindow().getScene() == hireScene) button.setOnAction(e -> getAlertWindow().setScene(hireScene));
+        else if (getAlertWindow().getScene() == getHireScene()) button.setOnAction(e -> getAlertWindow().setScene(getHireScene()));
 
         getAlertWindow().setScene(scene);
         getAlertWindow().setTitle("Not enough money");
@@ -133,7 +133,7 @@ public class AlertBox extends Main {
 
         // Determining what scene to go back too
         if (!(getAlertWindow().isShowing())) button.setOnAction(e -> getAlertWindow().close());
-        else if (getAlertWindow().getScene() == dealerScene) button.setOnAction(e -> getAlertWindow().setScene(dealerScene));
+        else if (getAlertWindow().getScene() == getDealerScene()) button.setOnAction(e -> getAlertWindow().setScene(getDealerScene()));
         else if (getAlertWindow().getScene() == getGunStoreScene()) button.setOnAction(e -> getAlertWindow().setScene(getGunStoreScene()));
 
         getAlertWindow().setScene(scene);
@@ -145,27 +145,27 @@ public class AlertBox extends Main {
 
         // Settlement menu pane
         try {
-            cityPane = FXMLLoader.load(Main.class.getResource("CityMenu.fxml"));
+            setCityPane(FXMLLoader.load(Main.class.getResource("CityMenu.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         try {
-            hirePane = FXMLLoader.load(Main.class.getResource("HireMenu.fxml"));
+            setHirePane(FXMLLoader.load(Main.class.getResource("HireMenu.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        hireScene = new Scene(hirePane);
+        setHireScene(new Scene(getHirePane()));
 
-        setDistanceSinceCity(0);
+        TravelController.distanceSinceCity = 8;
 
-        cityScene = new Scene(cityPane);
+        setCityScene(new Scene(getCityPane()));
 
         //Stop moving
         setMoving(false);
 
         getAlertWindow().setTitle("City");
-        getAlertWindow().setScene(cityScene);
+        getAlertWindow().setScene(getCityScene());
         getAlertWindow().show();
     }
 

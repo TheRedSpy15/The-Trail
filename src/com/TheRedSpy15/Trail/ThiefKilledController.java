@@ -24,18 +24,20 @@ import javafx.scene.Scene;
 
 import java.io.IOException;
 
-public class ThiefKilledController extends Main {
+import static com.TheRedSpy15.trail.Main.*;
+
+public class ThiefKilledController extends ShootOutController {
 
     @FXML
     private void setLootBtn(){
 
         try {
-            lootPane = FXMLLoader.load(Main.class.getResource("LootMenu.fxml"));
+            setLootPane(FXMLLoader.load(Main.class.getResource("LootMenu.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        lootScene = new Scene(lootPane);
+        setLootScene(new Scene(getLootPane()));
 
-        getAlertWindow().setScene(lootScene);
+        getAlertWindow().setScene(getLootScene());
     }
 }

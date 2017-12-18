@@ -21,6 +21,8 @@ package com.TheRedSpy15.trail;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
+import static com.TheRedSpy15.trail.Gang.*;
+
 public class GameOverController extends Main {
 
     @FXML

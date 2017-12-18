@@ -22,7 +22,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class HireMenuController extends Main {
+import static com.TheRedSpy15.trail.Gang.*;
+import static com.TheRedSpy15.trail.Main.*;
+
+public class HireMenuController extends Store {
 
     @FXML private TextField nameField;
     @FXML private Label emptyLbl;
@@ -31,7 +34,7 @@ public class HireMenuController extends Main {
 
         if (getMoney() < 5000){
 
-            int amountOver = (int) (getMoney() - 5000);
+            amountOver = (short) (getMoney() - 5000);
 
             alert.notEnoughMoney(amountOver); // Back button support in alert box class needs added
         }else if (nameField.getText().trim().equals("")){
@@ -39,14 +42,14 @@ public class HireMenuController extends Main {
             emptyLbl.setText("Text field CANNOT be empty!");
         }else {
 
-            getGang().add(nameField.getText());
-            getAlertWindow().setScene(cityScene);
+            getGangMembers().add(nameField.getText());
+            getAlertWindow().setScene(getCityScene());
         }
     }
 
     @FXML private void setBackBtn(){
 
-        getAlertWindow().setScene(cityScene);
+        getAlertWindow().setScene(getCityScene());
     }
 
     @FXML private void initialize(){

@@ -24,9 +24,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
 import javafx.scene.text.Font;
 
-public class HealthClass extends Main {
+import static com.TheRedSpy15.trail.Gang.*;
 
-    private static int healthEventCooldown = 10;
+public class HealthClass {
+
+    private static byte healthEventCoolDown = 10;
 
     // Used to determine health condition based upon tiredness, pace, and intake
     protected static void determineHealthCondition(){
@@ -70,23 +72,24 @@ public class HealthClass extends Main {
         if (getHealthConditions() > 100) setHealthConditions(100);
         if (getHealthConditions() < 0) setHealthConditions(0);
 
-        if (healthEventCooldown >= 10){
+        if (healthEventCoolDown >= 10){
 
-            if (getSickEventChance() > getHealthConditions()){
+            if (Main.getSickEventChance() > getHealthConditions()){
 
-                setMemberSelect(getGang().size());
+                setMemberSelect(getGangMembers().size());
                 setMemberSelect(getMemberSelect() - 1);
                 HealthClass.poorHealthEvent();
             }
 
-            healthEventCooldown = 0;
-        } healthEventCooldown++;
+            healthEventCoolDown = 0;
+        } healthEventCoolDown++;
     }
 
     // Events to happen with poor health conditions
     protected static void poorHealthEvent(){
 
         setMoving(false);
+        TravelController.transition.pause();
 
         VBox PoorHealthLayout = new VBox(10);
         PoorHealthLayout.setPadding(new Insets(40,20,20,20));
@@ -97,67 +100,70 @@ public class HealthClass extends Main {
 
         PoorHealthLayout.setStyle("-fx-background-color: RED;");
         PoorHealthLayout.getChildren().add(SickEventLbl);
-        SickEventScene = new Scene(PoorHealthLayout);
-        getAlertWindow().setScene(SickEventScene);
+        Main.setSickEventScene(new Scene(PoorHealthLayout));
+        Main.getAlertWindow().setScene(Main.getSickEventScene());
 
-        if (getSickEventChance() <= 10){
+        if (Main.getSickEventChance() <= 10){
 
-            SickEventLbl.setText(getGang().get(getMemberSelect())+" Passed away...");
+            SickEventLbl.setText(getGangMembers().get(getMemberSelect())+" Passed away...");
 
             setHealthConditions(getHealthConditions() + 60);
 
-            getGang().remove(getMemberSelect());
+            getGangMembers().remove(getMemberSelect());
 
-            getAlertWindow().showAndWait();
+            Main.getAlertWindow().showAndWait();
         }else{
 
-            switch (getSickEventChance()){
+            switch (Main.getSickEventChance()){
 
                 case 11:
-                    SickEventLbl.setText(getGang().get(getMemberSelect())+" Got a cold");
+                    SickEventLbl.setText(getGangMembers().get(getMemberSelect())+" Got a cold");
                     setHealthConditions(getHealthConditions() - 5);
-                    getAlertWindow().showAndWait();
+                    Main.getAlertWindow().showAndWait();
                     break;
                 case 12:
-                    SickEventLbl.setText(getGang().get(getMemberSelect())+" Has a Fever");
+                    SickEventLbl.setText(getGangMembers().get(getMemberSelect())+" Has a Fever");
                     setHealthConditions(getHealthConditions() - 10);
-                    getAlertWindow().showAndWait();
+                    Main.getAlertWindow().showAndWait();
                     break;
                 case 13:
-                    SickEventLbl.setText(getGang().get(getMemberSelect())+" Broke a leg.... at least they got two");
+                    SickEventLbl.setText(getGangMembers().get(getMemberSelect())+" Broke a leg.... at least they got two");
                     setHealthConditions(getHealthConditions() - 10);
-                    getAlertWindow().showAndWait();
+                    Main.getAlertWindow().showAndWait();
                     break;
                 case 14:
-                    SickEventLbl.setText(getGang().get(getMemberSelect())+" Broke an arm... at least they got two");
+                    SickEventLbl.setText(getGangMembers().get(getMemberSelect())+" Broke an arm... at least they got two");
                     setHealthConditions(getHealthConditions() - 10);
-                    getAlertWindow().showAndWait();
+                    Main.getAlertWindow().showAndWait();
                     break;
                 case 15:
-                    SickEventLbl.setText(getGang().get(getMemberSelect())+" Threw up... there were some chunks in it too!");
+                    SickEventLbl.setText(getGangMembers().get(getMemberSelect())+" Threw up... there were some chunks in it too!");
                     setHealthConditions(getHealthConditions() - 10);
-                    getAlertWindow().showAndWait();
+                    Main.getAlertWindow().showAndWait();
                     break;
                 case 16:
-                    SickEventLbl.setText(getGang().get(getMemberSelect())+" Has an infection");
+                    SickEventLbl.setText(getGangMembers().get(getMemberSelect())+" Has an infection");
                     setHealthConditions(getHealthConditions() - 15);
-                    getAlertWindow().showAndWait();
+                    Main.getAlertWindow().showAndWait();
                     break;
                 case 17:
-                    SickEventLbl.setText(getGang().get(getMemberSelect())+" Has the flu");
+                    SickEventLbl.setText(getGangMembers().get(getMemberSelect())+" Has the flu");
                     setHealthConditions(getHealthConditions() - 15);
-                    getAlertWindow().showAndWait();
+                    Main.getAlertWindow().showAndWait();
                     break;
                 default:
-                    SickEventLbl.setText(getGang().get(getMemberSelect())+" Is sick... of this game");
+                    SickEventLbl.setText(getGangMembers().get(getMemberSelect())+" Is sick... of this game");
                     setHealthConditions(getHealthConditions() - 10);
-                    getAlertWindow().showAndWait();
+                    Main.getAlertWindow().showAndWait();
                     break;
             }
         }
 
+        // making sure values are not negative
+        Main.checkValues();
+
         // Game over condition
-        if (getGang().size() <= 0){
+        if (getGangMembers().size() <= 0){
 
             setMoving(false);
 

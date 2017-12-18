@@ -29,11 +29,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
-public class TravelController extends Main {
+import static com.TheRedSpy15.trail.Gang.*;
+
+public class TravelController {
 
     private static int payDayCountdown = 0;
     static int animationSpeed = 15;
-    private TranslateTransition transition;
+    public static TranslateTransition transition;
     @FXML private Button setOutBtn;
     @FXML private Label distanceLabel;
     @FXML private Label conditionsLabel;
@@ -41,12 +43,12 @@ public class TravelController extends Main {
     @FXML private Label statusLabel;
     @FXML private AnchorPane sprite;
     @FXML private ImageView spriteImage;
+    public static short distanceSinceCity = 0;
 
     // when stop button is pressed
     @FXML
     private void stopMoving(){
 
-        transition.pause();
         setMoving(false);
         transition.pause();
     }
@@ -68,7 +70,7 @@ public class TravelController extends Main {
         MidGameMenu.menuMethod();
 
         setMoving(false);
-        MenuWindow.showAndWait();
+        Main.getMenuWindow().showAndWait();
     }
 
     private void runBackgroundTask() {
@@ -80,11 +82,11 @@ public class TravelController extends Main {
 
             while (isMoving()) {
 
-                setSickEventChance(rand.nextInt(20)+1);
+                Main.setSickEventChance(Main.rand.nextInt(20)+1);
 
                 setScore(getScore() + 25);
 
-                setDistanceSinceCity(getDistanceSinceCity() + getPace());
+                distanceSinceCity = (short) (distanceSinceCity + getPace());
 
                 // Payday countdown
                 payDay();
@@ -92,19 +94,17 @@ public class TravelController extends Main {
                 // resource consumption
                 setDays(getDays() + 1);
                 setDistance(getDistance() + getPace());
-                setFood(getFood() - (getGang().size()* getFoodIntake()));
-                setWater(getWater() - (getGang().size()* getFoodIntake()));
+                setFood(getFood() - (getGangMembers().size()* getFoodIntake()));
+                setWater(getWater() - (getGangMembers().size()* getFoodIntake()));
 
-                if (getFood() < 0) setFood(0);
-                if (getWater() < 0) setWater(0);
-                if (getMoney() > 10000) setMoney(10000);
-                if (getMoney() < 0) setMoney(0);
+                // checking values, so they aren't negative
+                Main.checkValues();
 
                 Platform.runLater(() -> {
                     // update the JavaFX UI Thread here when the task(s) above are done
 
                     // city count down
-                    if (getDistanceSinceCity() > 500) alert.cityEvent();
+                    if (distanceSinceCity > 500) Main.alert.cityEvent();
 
                     // updating labels
                     distanceLabel.setText("Distance: "+ getDistance() +"Mi");
@@ -114,7 +114,7 @@ public class TravelController extends Main {
                     setOutBtn.setText("Speedup");
 
                     //Thief encounter
-                    if (extremeLowChance()) alert.thiefEncounter();
+                    if (Main.Chance((byte)100,(byte)1,(byte)90)) Main.alert.thiefEncounter();
 
                     // health events
                     HealthClass.determineHealthCondition();
@@ -142,7 +142,7 @@ public class TravelController extends Main {
     @FXML
     public void initialize(){
 
-        getAlertWindow().setOnCloseRequest(e -> spriteImage.setImage(new Image(getCarSpriteURL())));
+        Main.getAlertWindow().setOnCloseRequest(e -> spriteImage.setImage(new Image(getCarSpriteURL())));
 
         // updating labels
         distanceLabel.setText("To go: "+ getDistance() +"Mi");
@@ -158,7 +158,7 @@ public class TravelController extends Main {
         transition.setCycleCount(Animation.INDEFINITE);
 
         // fixes the bug with thread not ending when stage was closed
-        getMainWindow().setOnCloseRequest(e -> setMoving(false));
+        Main.getMainWindow().setOnCloseRequest(e -> setMoving(false));
     }
 
     private void payDay(){

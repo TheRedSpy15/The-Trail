@@ -27,7 +27,10 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import java.io.IOException;
 
-public class ShootOutController extends Main {
+import static com.TheRedSpy15.trail.Gang.*;
+import static com.TheRedSpy15.trail.Main.*;
+
+public class ShootOutController extends ThiefMenuController {
 
     private Media victorySound = new Media(ClassLoader.getSystemResource(
             "com/TheRedSpy15/trail/Ta Da-SoundBible.com-1884170640.wav"
@@ -54,11 +57,11 @@ public class ShootOutController extends Main {
         ammoLbl.setText("Ammo: "+ getAmmo());
         grenadeLbl.setText("Grenades: "+ getGrenades());
         thiefHealthLbl.setText("THIEF HEALTH: "+thiefHealth);
-        gangAmountLbl.setText("Gang members: "+ getGang().size());
+        gangAmountLbl.setText("Gang members: "+ getGangMembers().size());
 
         thiefHealth = 100;
 
-        setMemberSelect(getGang().size());
+        setMemberSelect(getGangMembers().size());
         setMemberSelect(getMemberSelect() - 1);
     }
 
@@ -127,17 +130,17 @@ public class ShootOutController extends Main {
 
         if (rand.nextBoolean()){
 
-            eventText.appendText("They shot and killed "+ getGang().getLast() + "\n");
-            getGang().remove(getMemberSelect());
-            gangAmountLbl.setText("Gang members: "+ getGang().size());
+            eventText.appendText("They shot and killed "+ getGangMembers().getLast() + "\n");
+            getGangMembers().remove(getMemberSelect());
+            gangAmountLbl.setText("Gang members: "+ getGangMembers().size());
 
-            if (getGang().size() <= 0){
+            if (getGangMembers().size() <= 0){
 
                 AlertBox.gameOver();
             }
         }else if (rand.nextBoolean()){
 
-            eventText.appendText("They shot "+ getGang().getLast() + "\n");
+            eventText.appendText("They shot "+ getGangMembers().getLast() + "\n");
             setHealthConditions(getHealthConditions() + 50);
         }else {
 
@@ -155,13 +158,13 @@ public class ShootOutController extends Main {
         playVictorySound();
 
         try {
-            deadThiefPane = FXMLLoader.load(Main.class.getResource("ThiefKilled.fxml"));
+            setDeadThiefPane(FXMLLoader.load(Main.class.getResource("ThiefKilled.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        deadThiefScene = new Scene(deadThiefPane);
+        setDeadThiefScene(new Scene(getDeadThiefPane()));
 
-        getAlertWindow().setScene(deadThiefScene);
+        getAlertWindow().setScene(getDeadThiefScene());
 
         setScore(getScore() + 5000);
     }

@@ -5,6 +5,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import static com.TheRedSpy15.trail.Gang.*;
+
 public class InventoryController extends MidGameMenu {
 
     @FXML private Label foodLbl;
@@ -34,6 +36,6 @@ public class InventoryController extends MidGameMenu {
 
     @FXML private void backBtn(){
 
-        MenuWindow.setScene(menuScene);
+        getMenuWindow().setScene(menuScene);
     }
 }
