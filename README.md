@@ -20,6 +20,7 @@ The game features many different things (with much more to come)
 - endless game play (never ends, unlike Oregon Trail)
 - awesome HD sound effects
 - shootout events
+- open source!
 - Much more
 
 # Screen-Shots
@@ -36,43 +37,6 @@ The game features many different things (with much more to come)
 
 ![alt text](https://s8.postimg.org/6kkoootad/gunstorescene.jpg "GunStore")
 
-
-# Road map
-
-### WORKING ON
-
-   - Settings menu in mid game menu
-   - stop background music in shootout and play shootout music
-   - View gang member scene in mid game menu
-   - Abstraction
-   - Removing "GOD" class
-   - Rescentering text on certain scenes
-   - Bug fixes
-
-
-### PLANNED
-
-   - Different cars have different max storage
-   - Body armour
-   - System time in mid game menu
-   - More cities
-   - Personal armoury
-   - More guns (with different sounds for each)
-   - chance to miss shooting at thief
-
-
-### BIG UPDATES
-
-   - Bank heists
-   - Final battle against monkeys (END GAME)
-
-
-### NICE TO HAVES (not likely to be added)
-
-   - Support for resizing stage
-   - Individual member control menu
-   - Score board
-   - Save/load
     
 # Contributing
 
