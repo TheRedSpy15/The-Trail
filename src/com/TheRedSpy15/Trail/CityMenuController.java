@@ -19,7 +19,6 @@ package com.TheRedSpy15.trail;
  */
 
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 
 import static com.TheRedSpy15.trail.Gang.*;
@@ -46,7 +45,7 @@ public class CityMenuController extends Main {
 
         getAlertWindow().setTitle("Sell");
         store.updateStores();
-        getAlertWindow().setScene(new Scene(getMidSellStorePane()));
+        getAlertWindow().setScene(getSellScene());
     }
 
     @FXML

@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -106,7 +108,7 @@
    <bottom>
       <HBox>
          <children>
-            <Button fx:id="purchaseBtn" mnemonicParsing="false" onAction="#purchase" prefHeight="78.0" prefWidth="303.0" text="Purchase &amp; Leave" textFill="RED" BorderPane.alignment="CENTER">
+            <Button fx:id="purchaseBtn" mnemonicParsing="false" onAction="#purchase" prefHeight="78.0" prefWidth="303.0" text="Purchase / Leave" textFill="RED" BorderPane.alignment="CENTER">
                <font>
                   <Font name="Impact" size="26.0" />
                </font>

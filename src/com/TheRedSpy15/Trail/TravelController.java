@@ -30,11 +30,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
 import static com.TheRedSpy15.trail.Gang.*;
+import static com.TheRedSpy15.trail.Main.checkFullScreen;
+import static com.TheRedSpy15.trail.Main.getMainWindow;
 
 public class TravelController {
 
     private static int payDayCountdown = 0;
-    static int animationSpeed = 15;
+    static int animationDuration = 15;
     public static TranslateTransition transition;
     @FXML private Button setOutBtn;
     @FXML private Label distanceLabel;
@@ -142,6 +144,8 @@ public class TravelController {
     @FXML
     public void initialize(){
 
+        checkFullScreen();
+
         Main.getAlertWindow().setOnCloseRequest(e -> spriteImage.setImage(new Image(getCarSpriteURL())));
 
         // updating labels
@@ -152,8 +156,8 @@ public class TravelController {
 
         // setting up how the animation will work
         transition = new TranslateTransition();
-        transition.setDuration(Duration.seconds(animationSpeed));
-        transition.setToX(-850);
+        transition.setDuration(Duration.seconds(animationDuration));
+        transition.setToX(Main.getMainWindow().getWidth() - 850);
         transition.setNode(sprite);
         transition.setCycleCount(Animation.INDEFINITE);
 
@@ -180,8 +184,8 @@ public class TravelController {
 
         // updating transition
         transition = new TranslateTransition();
-        transition.setDuration(Duration.seconds(animationSpeed));
-        transition.setToX(-850);
+        transition.setDuration(Duration.seconds(animationDuration));
+        transition.setToX((getMainWindow().getWidth() / -1) - 400);
         transition.setNode(sprite);
         transition.setCycleCount(Animation.INDEFINITE);
 

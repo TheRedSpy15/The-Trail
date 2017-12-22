@@ -139,21 +139,21 @@ public class MidGameMenu extends Main {
         // Setting pace value and going back to menu scene
         Slowbtn.setOnAction(e -> {
             setPace(5);
-            TravelController.animationSpeed = 20;
+            TravelController.animationDuration = 30;
             getMenuWindow().setScene(menuScene);
         });
 
         // Setting pace value and going back to menu scene
         ModerateSpeedbtn.setOnAction(e -> {
             setPace(10);
-            TravelController.animationSpeed = 15;
+            TravelController.animationDuration = 15;
             getMenuWindow().setScene(menuScene);
         });
 
         // Setting pace value and going back to menu scene
         Fastbtn.setOnAction(e -> {
             setPace(15);
-            TravelController.animationSpeed = 10;
+            TravelController.animationDuration = 10;
             getMenuWindow().setScene(menuScene);
         });
 

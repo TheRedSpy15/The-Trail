@@ -29,5 +29,7 @@ public class DescriptionSceneController extends Main {
 
         career.careerPicker();
         getMainWindow().setScene(new Scene(getCareerAnchor()));
+
+        checkFullScreen();
     }
 }

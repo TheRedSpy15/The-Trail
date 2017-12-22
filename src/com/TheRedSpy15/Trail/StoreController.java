@@ -46,7 +46,6 @@ public class StoreController extends Store {
             setMoney(getMoney() - cartValue);
 
             setFood(getFood() + (int) foodSlider.getValue());
-
             setWater(getWater() + (int) waterSlider.getValue());
 
             TravelClass.travelSetup();
@@ -56,6 +55,7 @@ public class StoreController extends Store {
 
                 // setting window scene to travel pane
                 getMainWindow().setScene(new Scene(getTravelPane()));
+                checkFullScreen();
             }else{
 
                 // Changing alert window scene to settlement scene
@@ -79,6 +79,7 @@ public class StoreController extends Store {
 
             // setting window scene to travel pane
             getMainWindow().setScene(getGunStoreScene());
+            checkFullScreen();
         }else{
 
             // Changing alert window scene to settlement scene

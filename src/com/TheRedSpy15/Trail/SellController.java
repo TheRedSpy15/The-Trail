@@ -26,6 +26,9 @@ import static com.TheRedSpy15.trail.Main.*;
 
 public class SellController extends Gang {
 
+    @FXML private Label moneyLbl;
+    @FXML private Label grenadeLbl;
+    @FXML private Slider grenadeSlider;
     @FXML private Label foodLbl;
     @FXML private Label waterLbl;
     @FXML private Label ammoLbl;
@@ -36,15 +39,69 @@ public class SellController extends Gang {
     @FXML
     private void sell(){
 
-        setFood(getFood() - (int) foodSlider.getValue());
-        setWater(getWater() - (int) waterSlider.getValue());
-        setAmmo(getAmmo() - (int) ammoSlider.getValue());
+        setFood(getFood() - (short) foodSlider.getValue());
+        setWater(getWater() - (short) waterSlider.getValue());
+        setAmmo(getAmmo() - (short) ammoSlider.getValue());
+        setGrenades(getGrenades() - (byte) grenadeSlider.getValue());
 
         store.playPurchaseSound();
 
-        setMoney(getMoney() + (waterSlider.getValue() * 0.15) + (foodSlider.getValue() * 0.30) + (ammoSlider.getValue() * 20));
+        setMoney(getMoney() +
+                (waterSlider.getValue() * 0.15) +
+                (foodSlider.getValue() * 0.30) +
+                (ammoSlider.getValue() * 20) +
+                (grenadeSlider.getValue() * 50)
+        );
 
         getAlertWindow().setScene(getCityScene());
+    }
+
+    @FXML
+    private void setSellCarBtn(){ // sell car
+
+        switch (getCarSpriteURL()) {
+            case "com/TheRedSpy15/trail/bluetruck.png":  // Blue truck
+
+                alert.sold("Blue truck", (short) 1, (short) 2500);
+
+                setCarSpriteURL(getDefaultCarURL());
+
+                moneyLbl.setText("Money: $" + getMoney());
+                break;
+            case "com/TheRedSpy15/trail/rallycar.png":  // Rally car
+
+                alert.sold("Rally car", (short) 1, (short) 1500);
+
+                setCarSpriteURL(getDefaultCarURL());
+
+                moneyLbl.setText("Money: $" + getMoney());
+                break;
+            default:
+
+                alert.cannotSell("car");
+                break;
+        }
+    }
+
+    @FXML
+    private void setSellGunBtn(){ // sell gun
+
+        if (getGunSpriteURL().equals("com/TheRedSpy15/trail/ak47.png")){ // AK-47
+
+            store.playPurchaseSound();
+
+            setMoney(getMoney() + 350);
+            setBaseAttackDamage(getDefaultAttackDMG());
+            setGunID(getDefaultGunID());
+            setGunSpriteURL(getDefaultGunSpriteURL());
+
+            alert.sold("AK-47", (short) 1, (short) 350);
+
+            moneyLbl.setText("Money: $"+getMoney());
+        }else{
+
+            alert.alert("gun");
+        }
     }
 
     @FXML
@@ -53,13 +110,17 @@ public class SellController extends Gang {
         foodLbl.setText("Food: "+ getFood());
         waterLbl.setText("Water: "+ getWater());
         ammoLbl.setText("Ammo: "+ getAmmo());
+        grenadeLbl.setText("Ammo: "+ getGrenades());
+        moneyLbl.setText("Money: $"+getMoney());
 
         waterSlider.setMax(getWater());
         foodSlider.setMax(getFood());
         ammoSlider.setMax(getAmmo());
+        grenadeSlider.setMax(getGrenades());
 
         waterSlider.setMin(0);
         ammoSlider.setMin(0);
         foodSlider.setMin(0);
+        grenadeSlider.setMin(0);
     }
 }

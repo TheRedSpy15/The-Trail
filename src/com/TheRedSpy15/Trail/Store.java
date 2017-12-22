@@ -25,10 +25,11 @@ import javafx.scene.media.MediaPlayer;
 import java.io.IOException;
 
 import static com.TheRedSpy15.trail.Main.*;
+import static com.TheRedSpy15.trail.Gang.*;
 
 public class Store {
 
-    protected short amountOver;
+    short amountOver;
 
     private Media purchaseSound = new Media(ClassLoader.getSystemResource(
             "com/TheRedSpy15/Trail/Cha_Ching_Register-Muska666-173262285.wav"
@@ -42,15 +43,36 @@ public class Store {
         playPurchaseSound.play();
     }
 
+    void purchaseItem(short price, short quantity, String Item){
+
+        short bonusPoints = price *= quantity;
+
+        setScore(getScore() + bonusPoints);
+
+        setMoney(getMoney() - (price * quantity));
+
+        playPurchaseSound();
+
+        alert.specialPurchase(Item);
+    }
+
     void updateStores() {
 
         // Store
         try {
-            setStorePane(FXMLLoader.load(Main.class.getResource("storeScene.fxml")));
+            setStorePane(FXMLLoader.load(Main.class.getResource("StoreScene.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
         setStoreScene(new Scene(getStorePane()));
+
+        // Sell
+        try {
+            setSellPane(FXMLLoader.load(Main.class.getResource("SellScene.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        setSellScene(new Scene(getSellPane()));
 
         // Dealer ship pane
         try {
@@ -59,13 +81,6 @@ public class Store {
             e.printStackTrace();
         }
         setDealerScene(new Scene(getDealerPane()));
-
-        // Sell scene for Alert box stage
-        try {
-            setMidSellStorePane(FXMLLoader.load(Main.class.getResource("SellScene.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         // Gun store
         try {

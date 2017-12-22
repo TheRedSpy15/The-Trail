@@ -117,6 +117,50 @@ public class AlertBox {
         if (!(getAlertWindow().isShowing())) getAlertWindow().showAndWait();
     }
 
+    protected void cannotSell(String type){
+
+        Button button = new Button("Back");
+        Label label = new Label("You cannot sell your current "+ type);
+        label.setFont(new Font(20));
+        label.setStyle("-fx-text-fill: white;");
+
+        VBox stackPane = new VBox();
+        stackPane.setStyle("-fx-background-color: #cf1020");
+        stackPane.setPadding(new Insets(20,20,20,20));
+        stackPane.getChildren().addAll(label,button);
+
+        Scene scene = new Scene(stackPane);
+
+        button.setOnAction(e -> getAlertWindow().setScene(getSellScene()));
+
+        getAlertWindow().setScene(scene);
+        if (!(getAlertWindow().isShowing())) getAlertWindow().showAndWait();
+    }
+
+    protected void sold(String item, short amount, short profit){
+
+        store.playPurchaseSound();
+
+        setMoney(getMoney() + profit);
+
+        Button button = new Button("Back");
+        Label label = new Label("You sold "+amount+" "+item+" for $"+profit);
+        label.setFont(new Font(20));
+        label.setStyle("-fx-text-fill: white;");
+
+        VBox stackPane = new VBox();
+        stackPane.setStyle("-fx-background-color: #cf1020");
+        stackPane.setPadding(new Insets(20,20,20,20));
+        stackPane.getChildren().addAll(label,button);
+
+        Scene scene = new Scene(stackPane);
+
+        button.setOnAction(e -> getAlertWindow().setScene(getSellScene()));
+
+        getAlertWindow().setScene(scene);
+        if (!(getAlertWindow().isShowing())) getAlertWindow().showAndWait();
+    }
+
     protected void specialPurchase(String item){
 
         Button button = new Button("Ok");
@@ -157,7 +201,7 @@ public class AlertBox {
         }
         setHireScene(new Scene(getHirePane()));
 
-        TravelController.distanceSinceCity = 8;
+        TravelController.distanceSinceCity = 0;
 
         setCityScene(new Scene(getCityPane()));
 
@@ -181,13 +225,10 @@ public class AlertBox {
         // On closure of window, closes main MainWindow also
         getAlertWindow().setOnCloseRequest(e -> getMainWindow().close());
 
-        // makes game over pane a scene and sets the alert window scene to it
         getAlertWindow().setScene(new Scene(gameOverPane));
 
-        // sets alert window title to game over
         getAlertWindow().setTitle("GAME-OVER");
 
-        // shows alert window
         getAlertWindow().showAndWait();
     }
 }

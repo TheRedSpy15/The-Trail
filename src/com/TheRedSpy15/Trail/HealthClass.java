@@ -76,8 +76,6 @@ public class HealthClass {
 
             if (Main.getSickEventChance() > getHealthConditions()){
 
-                setMemberSelect(getGangMembers().size());
-                setMemberSelect(getMemberSelect() - 1);
                 HealthClass.poorHealthEvent();
             }
 
@@ -103,56 +101,54 @@ public class HealthClass {
         Main.setSickEventScene(new Scene(PoorHealthLayout));
         Main.getAlertWindow().setScene(Main.getSickEventScene());
 
-        if (Main.getSickEventChance() <= 10){
+        if (Main.getSickEventChance() <= 10){ // death
 
-            SickEventLbl.setText(getGangMembers().get(getMemberSelect())+" Passed away...");
+            SickEventLbl.setText(getGangMembers().pop()+" Passed away...");
 
             setHealthConditions(getHealthConditions() + 60);
-
-            getGangMembers().remove(getMemberSelect());
 
             Main.getAlertWindow().showAndWait();
         }else{
 
-            switch (Main.getSickEventChance()){
+            switch (Main.getSickEventChance()){ // non deadly
 
                 case 11:
-                    SickEventLbl.setText(getGangMembers().get(getMemberSelect())+" Got a cold");
+                    SickEventLbl.setText(getGangMembers().peek()+" Got a cold");
                     setHealthConditions(getHealthConditions() - 5);
                     Main.getAlertWindow().showAndWait();
                     break;
                 case 12:
-                    SickEventLbl.setText(getGangMembers().get(getMemberSelect())+" Has a Fever");
+                    SickEventLbl.setText(getGangMembers().peek()+" Has a Fever");
                     setHealthConditions(getHealthConditions() - 10);
                     Main.getAlertWindow().showAndWait();
                     break;
                 case 13:
-                    SickEventLbl.setText(getGangMembers().get(getMemberSelect())+" Broke a leg.... at least they got two");
+                    SickEventLbl.setText(getGangMembers().peek()+" Broke a leg.... at least they got two");
                     setHealthConditions(getHealthConditions() - 10);
                     Main.getAlertWindow().showAndWait();
                     break;
                 case 14:
-                    SickEventLbl.setText(getGangMembers().get(getMemberSelect())+" Broke an arm... at least they got two");
+                    SickEventLbl.setText(getGangMembers().peek()+" Broke an arm... at least they got two");
                     setHealthConditions(getHealthConditions() - 10);
                     Main.getAlertWindow().showAndWait();
                     break;
                 case 15:
-                    SickEventLbl.setText(getGangMembers().get(getMemberSelect())+" Threw up... there were some chunks in it too!");
+                    SickEventLbl.setText(getGangMembers().peek()+" Threw up... there were some chunks in it too!");
                     setHealthConditions(getHealthConditions() - 10);
                     Main.getAlertWindow().showAndWait();
                     break;
                 case 16:
-                    SickEventLbl.setText(getGangMembers().get(getMemberSelect())+" Has an infection");
+                    SickEventLbl.setText(getGangMembers().peek()+" Has an infection");
                     setHealthConditions(getHealthConditions() - 15);
                     Main.getAlertWindow().showAndWait();
                     break;
                 case 17:
-                    SickEventLbl.setText(getGangMembers().get(getMemberSelect())+" Has the flu");
+                    SickEventLbl.setText(getGangMembers().peek()+" Has the flu");
                     setHealthConditions(getHealthConditions() - 15);
                     Main.getAlertWindow().showAndWait();
                     break;
                 default:
-                    SickEventLbl.setText(getGangMembers().get(getMemberSelect())+" Is sick... of this game");
+                    SickEventLbl.setText(getGangMembers().peek()+" Is sick... of this game");
                     setHealthConditions(getHealthConditions() - 10);
                     Main.getAlertWindow().showAndWait();
                     break;

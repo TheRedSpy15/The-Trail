@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -30,50 +31,76 @@
                   <Font name="Impact" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="foodLbl" text="Food: 0 ($0.25)" textFill="PURPLE">
+            <Label fx:id="foodLbl" prefHeight="22.0" prefWidth="127.0" text="Food: 0 ($0.25)" textFill="PURPLE">
                <font>
                   <Font name="Impact" size="17.0" />
                </font>
             </Label>
-            <Label fx:id="waterLbl" text="Water:  0 ($0.10)" textFill="PURPLE">
+            <Label fx:id="waterLbl" prefHeight="22.0" prefWidth="129.0" text="Water:  0 ($0.10)" textFill="PURPLE">
                <font>
                   <Font name="Impact" size="17.0" />
                </font>
             </Label>
-            <Label fx:id="ammoLbl" text="Ammo: 0 ($4)" textFill="PURPLE">
+            <Label fx:id="ammoLbl" prefHeight="22.0" prefWidth="123.0" text="Ammo: 0 ($4)" textFill="PURPLE">
+               <font>
+                  <Font name="Impact" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="grenadeLbl" prefHeight="22.0" prefWidth="137.0" text="Grenades: 0 ($50)" textFill="PURPLE">
                <font>
                   <Font name="Impact" size="17.0" />
                </font>
             </Label>
          </children>
       </VBox>
-      <Label layoutX="238.0" layoutY="14.0" prefHeight="52.0" prefWidth="212.0" text="Sell menu" textFill="PURPLE">
+      <Label layoutX="238.0" layoutY="14.0" prefHeight="52.0" prefWidth="212.0" text="SELL MENU" textFill="PURPLE">
          <font>
             <Font name="DejaVu Sans Condensed Bold" size="41.0" />
          </font>
       </Label>
-      <Slider fx:id="waterSlider" layoutX="215.0" layoutY="130.0" majorTickUnit="50.0" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" />
-      <Slider fx:id="foodSlider" layoutX="336.0" layoutY="130.0" majorTickUnit="50.0" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" />
-      <Slider fx:id="ammoSlider" layoutX="442.0" layoutY="130.0" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" />
-      <Label layoutX="198.0" layoutY="75.0" text="Water" textFill="PURPLE">
+      <Slider fx:id="waterSlider" layoutX="14.0" layoutY="200.0" majorTickUnit="50.0" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" />
+      <Slider fx:id="foodSlider" layoutX="81.0" layoutY="200.0" majorTickUnit="50.0" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" />
+      <Slider fx:id="ammoSlider" layoutX="157.0" layoutY="200.0" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" />
+      <Label layoutX="12.0" layoutY="161.0" text="Water" textFill="PURPLE">
          <font>
             <Font name="Impact" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="323.0" layoutY="75.0" text="Food" textFill="PURPLE">
+      <Label layoutX="84.0" layoutY="161.0" text="Food" textFill="PURPLE">
          <font>
             <Font name="Impact" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="422.0" layoutY="75.0" text="Ammo" textFill="PURPLE">
+      <Label layoutX="154.0" layoutY="161.0" text="Ammo" textFill="PURPLE">
          <font>
             <Font name="Impact" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="sellBtn" layoutX="265.0" layoutY="287.0" mnemonicParsing="false" onAction="#sell" prefHeight="85.0" prefWidth="157.0" text="Sell">
+      <Button fx:id="sellBtn" layoutX="407.0" layoutY="312.0" mnemonicParsing="false" onAction="#sell" prefHeight="52.0" prefWidth="179.0" text="Sell / Leave" textFill="GREEN">
          <font>
-            <Font name="Impact" size="45.0" />
+            <Font name="Impact" size="27.0" />
          </font>
       </Button>
+      <Label layoutX="238.0" layoutY="161.0" text="Grenades" textFill="PURPLE">
+         <font>
+            <Font name="Impact" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="sellCarBtn" layoutX="407.0" layoutY="252.0" mnemonicParsing="false" onAction="#setSellCarBtn" prefHeight="52.0" prefWidth="179.0" text="Sell Car" textFill="GREEN">
+         <font>
+            <Font name="Impact" size="27.0" />
+         </font>
+      </Button>
+      <Button fx:id="sellGunBtn" layoutX="407.0" layoutY="192.0" mnemonicParsing="false" onAction="#setSellGunBtn" prefHeight="52.0" prefWidth="179.0" text="Sell Gun" textFill="GREEN">
+         <font>
+            <Font name="Impact" size="27.0" />
+         </font>
+      </Button>
+      <Slider fx:id="grenadeSlider" layoutX="238.0" layoutY="200.0" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" />
+      <Label fx:id="moneyLbl" layoutX="261.0" layoutY="73.0" prefHeight="28.0" prefWidth="179.0" text="Money: $0" textFill="GREEN">
+         <font>
+            <Font name="Impact" size="23.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

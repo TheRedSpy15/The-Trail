@@ -25,35 +25,35 @@ import static com.TheRedSpy15.trail.Gang.*;
 
 public class CareerController extends Main {
 
-    // runs posse setup method, sets money to 1500, and sets scene to posse pane
     @FXML
     private void hitman() {
 
-        setMoney(3500);
+        setMoney(getMoney() + 3500);
         setWage(1000);
         gang.gangSetupMethod();
         getMainWindow().setScene(new Scene(getPossePane()));
+        checkFullScreen();
     }
 
-    // runs posse setup method, sets money to 1000, and sets scene to posse pane
     @FXML
     private void drugDealer() {
 
-        setMoney(2000);
+        setMoney(getMoney() + 2000);
         setScore(getScore() + 10000);
         setWage(500);
         gang.gangSetupMethod();
         getMainWindow().setScene(new Scene(getPossePane()));
+        checkFullScreen();
     }
 
-    // runs posse setup method, sets money to 500, and sets scene to posse pane
     @FXML
     private void thief() {
 
-        setMoney(500);
+        setMoney(getMoney() + 500);
         setScore(getScore() + 15000);
         setWage((int) (Math.random() * 1000) + 250);
         gang.gangSetupMethod();
         getMainWindow().setScene(new Scene(getPossePane()));
+        checkFullScreen();
     }
 }

@@ -27,26 +27,20 @@ import static com.TheRedSpy15.trail.Main.*;
 
 public class GunStoreController extends Store {
 
-    private static short amountOver = 0;
     @FXML private Label moneyLbl;
     @FXML private Slider grenadeSlider;
     @FXML private Slider ammoSlider;
 
-    @FXML private void ak47Btn(){
+    @FXML private void ak47Btn(){ // ak47
 
         if (getMoney() >= 500){
 
-            setMoney(getMoney() - 500);
-
-            setScore(getScore() + 5000);
+            purchaseItem( (short) 500, (short) 1, "AK-47");
 
             setBaseAttackDamage(45);
 
-            playPurchaseSound();
-
-            alert.specialPurchase("AK-47");
             setGunID("AK-47");
-            setGunSpriteURL("com/TheRedSpy15/trail/ff1fbae3c3282a772246605d08225293.png");
+            setGunSpriteURL("com/TheRedSpy15/trail/ak47.png");
 
             moneyLbl.setText("Money: $"+ getMoney());
         }else if (getMoney() < 500){
@@ -57,19 +51,30 @@ public class GunStoreController extends Store {
         }
     }
 
-    @FXML private void grenadeBtn(){
+    @FXML private void setArmorBtn(){ // armor
+
+        if (getMoney() >= 500){
+
+            purchaseItem( (short) 500, (short) 1, "BULLET PROOF VEST");
+
+            setBodyArmor((byte) (getBodyArmor() + 1));
+
+            moneyLbl.setText("Money: $"+ getMoney());
+        }else if (getMoney() < 500){
+
+            amountOver = (short) (getMoney() - 500);
+
+            alert.notEnoughMoney(amountOver);
+        }
+    }
+
+    @FXML private void grenadeBtn(){ // grenade
 
         if (getMoney() >= (1000 * grenadeSlider.getValue())){
 
-            setMoney(getMoney() - (1000 * grenadeSlider.getValue()));
+            purchaseItem( (short) 1000, (short) grenadeSlider.getValue(), "GRENADE ("+(byte)grenadeSlider.getValue()+")");
 
-            setScore(getScore() + (int) (10000 * grenadeSlider.getValue()));
-
-            setGrenades(getGrenades() + (int) grenadeSlider.getValue());
-
-            playPurchaseSound();
-
-            alert.specialPurchase("GRENADE ("+(int)grenadeSlider.getValue()+")");
+            setGrenades(getGrenades() + (byte) grenadeSlider.getValue());
 
             moneyLbl.setText("Money: $"+ getMoney());
         }else if (getMoney() < (1000 * grenadeSlider.getValue())){
@@ -80,19 +85,15 @@ public class GunStoreController extends Store {
         }
     }
 
-    @FXML private void ammoBtn(){
+    @FXML private void ammoBtn(){ // ammo
 
         if (getMoney() >= (25 * ammoSlider.getValue())){
 
-            setMoney(getMoney() - (25 * ammoSlider.getValue()));
+            purchaseItem( (short) 25, (short) ammoSlider.getValue(), "AMMO ("+(short)ammoSlider.getValue()+")");
 
-            setScore(getScore() + (int) (10000 * ammoSlider.getValue()));
-
-            setAmmo(getAmmo() + (int) ammoSlider.getValue());
+            setAmmo(getAmmo() + (short) ammoSlider.getValue());
 
             playPurchaseSound();
-
-            alert.specialPurchase("AMMO ("+(int)ammoSlider.getValue()+")");
 
             moneyLbl.setText("Money: $"+ getMoney());
         }else if (getMoney() < (25 * ammoSlider.getValue())){
@@ -103,7 +104,7 @@ public class GunStoreController extends Store {
         }
     }
 
-    @FXML private void backBtn(){
+    @FXML private void backBtn(){ // back to store
 
         store.updateStores();
 
@@ -112,6 +113,7 @@ public class GunStoreController extends Store {
 
             // setting window scene to travel pane
             getMainWindow().setScene(getStoreScene());
+            checkFullScreen();
         }else{
 
             // Changing alert window scene to settlement scene
@@ -121,6 +123,6 @@ public class GunStoreController extends Store {
 
     @FXML private void initialize(){
 
-        moneyLbl.setText("Your money: $"+(int) getMoney());
+        moneyLbl.setText("Your money: $"+(short) getMoney());
     }
 }

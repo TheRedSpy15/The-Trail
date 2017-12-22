@@ -33,22 +33,16 @@ public class DealerShipController extends Store {
 
         if (getMoney() >= 5000){
 
-            setMoney(getMoney() - 5000);
+            purchaseItem( (short) 5000, (short) 1, "BLUE TRUCK");
 
-            setScore(getScore() + 50000);
-
-            setCarSpriteURL("com/TheRedSpy15/trail/sprite6_0.png");
-
-            alert.specialPurchase("BLUE TRUCK");
-
-            playPurchaseSound();
+            setCarSpriteURL("com/TheRedSpy15/trail/bluetruck.png");
 
             moneyLbl1.setText("Money: $"+ getMoney());
         }else if (getMoney() < 5000){
 
             amountOver = (short) (getMoney() - 5000);
 
-            alert.notEnoughMoney(amountOver);
+            alert.alert("Amount over: ");
         }
     }
 
@@ -66,28 +60,22 @@ public class DealerShipController extends Store {
 
         if (getMoney() >= 3500){
 
-            setMoney(getMoney() - 3500);
+            purchaseItem( (short) 3500, (short) 1, "RALLY CAR");
 
-            setScore(getScore() + 35000);
-
-            setCarSpriteURL("com/TheRedSpy15/trail/spr_rally_0.png");
-
-            alert.specialPurchase("RALLY CAR");
-
-            playPurchaseSound();
+            setCarSpriteURL("com/TheRedSpy15/trail/rallycar.png");
 
             moneyLbl1.setText("Money: $"+ getMoney());
         }else if (getMoney() < 3500){
 
             amountOver = (short) (getMoney() - 3500);
 
-            alert.notEnoughMoney(amountOver);
+            alert.alert("Amount over: "+amountOver);
         }
     }
 
     @FXML private void initialize(){
 
-        moneyLbl1.setText("Your money: $"+(int) getMoney());
-        moneyLbl2.setText("Your money: $"+(int) getMoney());
+        moneyLbl1.setText("Your money: $"+(short) getMoney());
+        moneyLbl2.setText("Your money: $"+(short) getMoney());
     }
 }

@@ -35,26 +35,26 @@ public class GangController extends Main {
     @FXML
     private void confirmNamesMethod(){
 
-        // If statement of any of the text fields not being empty
-        if (!(memberName1.getText().trim().equals("") || memberName2.getText().trim().equals("") || memberName3.getText().trim().equals("") || memberName4.getText().trim().equals("") || memberName5.getText().trim().equals("") || memberName6.getText().trim().equals(""))){
+        if (!(memberName1.getText().trim().equals("") ||
+                memberName2.getText().trim().equals("") ||
+                memberName3.getText().trim().equals("") ||
+                memberName4.getText().trim().equals("") ||
+                memberName5.getText().trim().equals("") ||
+                memberName6.getText().trim().equals(""))){
 
-            // Runs store method
             store.updateStores();
 
-            // Sets the scene to store pane
             getMainWindow().setScene(getStoreScene());
+            checkFullScreen();
 
-            // adds the value of the text fields to the linked list
-            getGangMembers().add(memberName1.getText());
-            getGangMembers().add(memberName2.getText());
-            getGangMembers().add(memberName3.getText());
-            getGangMembers().add(memberName4.getText());
-            getGangMembers().add(memberName5.getText());
-            getGangMembers().add(memberName6.getText());
-        }
-        else {
+            getGangMembers().push(memberName1.getText());
+            getGangMembers().push(memberName2.getText());
+            getGangMembers().push(memberName3.getText());
+            getGangMembers().push(memberName4.getText());
+            getGangMembers().push(memberName5.getText());
+            getGangMembers().push(memberName6.getText());
+        }else {
 
-            // when the if statement is false, run the empty name alert
             alert.alert("Text fields cannot be empty");
         }
     }

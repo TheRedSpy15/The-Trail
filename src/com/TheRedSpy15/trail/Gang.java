@@ -20,30 +20,34 @@ package com.TheRedSpy15.trail;
 
 import javafx.fxml.FXMLLoader;
 import java.io.IOException;
-import java.util.LinkedList;
+import java.util.Stack;
 
 public class Gang {
 
     private static byte HealthConditions = 100;
     private static int Distance = 0;
-    private static String gunSpriteURL = "com/TheRedSpy15/trail/piq_119368_400x400.png";
+    private static String defaultGunSpriteURL = "com/TheRedSpy15/trail/glock.png";
+    private static String gunSpriteURL = getDefaultGunSpriteURL();
     private static long Score = 0;
-    private static String carSpriteURL = "com/TheRedSpy15/trail/spr_car4_0.png";
+    private static String defaultCarURL = "com/TheRedSpy15/trail/greencar.png";
+    private static String carSpriteURL = getDefaultCarURL();
     private static int Days = 0;
     private static short wage = 0;
     private static short Food = 0;
     private static byte Grenades = 0;
-    private static String gunID = "Glock";
-    private static byte baseAttackDamage = 15;
+    private static String defaultGunID = "Glock";
+    private static String gunID = getDefaultGunID();
+    private static byte defaultAttackDMG = 15;
+    private static byte baseAttackDamage = getDefaultAttackDMG();
+    private static byte bodyArmor = 0;
     private static short Ammo = 0;
     private static int Water = 0;
     private static double Money = 0;
     private static byte Pace = 10;
     private static boolean Moving = false;
     private static int capturedThieves = 0;
-    private static byte memberSelect;
     private static byte FoodIntake = 2;
-    private static LinkedList<String> gangMembers = new LinkedList<>();
+    private static Stack <String> gangMembers = new Stack<>();
 
     protected void gangSetupMethod(){
 
@@ -57,20 +61,44 @@ public class Gang {
     }
 
     // Getters and Setters
-    static LinkedList<String> getGangMembers() {
+    static Stack<String> getGangMembers() {
         return gangMembers;
+    }
+    static String getDefaultGunID() {
+        return defaultGunID;
+    }
+    static String getDefaultGunSpriteURL() {
+        return defaultGunSpriteURL;
+    }
+    public static void setDefaultGunSpriteURL(String DefaultGunSpriteURL) {
+        defaultGunSpriteURL = DefaultGunSpriteURL;
+    }
+    public static void setDefaultGunID(String DefaultGunID) {
+        defaultGunID = DefaultGunID;
+    }
+    static byte getDefaultAttackDMG() {
+        return defaultAttackDMG;
+    }
+    public static void setDefaultAttackDMG(byte DefaultAttackDMG) {
+        defaultAttackDMG = DefaultAttackDMG;
     }
     static int getCapturedThieves() {
         return capturedThieves;
     }
+    static String getDefaultCarURL() {
+        return defaultCarURL;
+    }
+    static void setDefaultCarURL(String DefaultCarURL) {
+        defaultCarURL = DefaultCarURL;
+    }
+    public static byte getBodyArmor() {
+        return bodyArmor;
+    }
+    static void setBodyArmor(byte bodyArmor) {
+        Gang.bodyArmor = bodyArmor;
+    }
     static void setCapturedThieves(int CapturedThieves) {
         capturedThieves = CapturedThieves;
-    }
-    static int getMemberSelect() {
-        return memberSelect;
-    }
-    static void setMemberSelect(int MemberSelect) {
-        memberSelect = (byte) MemberSelect;
     }
     static int getDistance() {
         return Distance;

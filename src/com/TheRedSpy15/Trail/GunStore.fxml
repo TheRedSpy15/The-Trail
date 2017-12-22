@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
@@ -29,18 +31,18 @@
             <Font name="Impact" size="23.0" />
          </font>
       </Label>
-      <Separator layoutX="12.0" layoutY="400.0" prefHeight="9.0" prefWidth="577.0" style="-fx-background-color: red;" />
-      <TabPane layoutX="12.0" layoutY="66.0" prefHeight="320.0" prefWidth="577.0" tabClosingPolicy="UNAVAILABLE">
+      <Separator layoutX="12.0" layoutY="400.0" prefHeight="9.0" prefWidth="577.0" style="-fx-background-color: red;" AnchorPane.bottomAnchor="61.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="11.0" />
+      <TabPane layoutX="12.0" layoutY="66.0" prefHeight="320.0" prefWidth="577.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="11.0">
         <tabs>
-          <Tab text="AK47">
+          <Tab closable="false" text="AK47">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Pane prefHeight="292.0" prefWidth="577.0">
                            <children>
-                              <ImageView fitHeight="181.0" fitWidth="247.0" layoutX="165.0" layoutY="41.0" pickOnBounds="true">
+                              <ImageView fitHeight="181.0" fitWidth="247.0" layoutX="166.0" layoutY="45.0" pickOnBounds="true">
                                  <image>
-                                    <Image url="@ff1fbae3c3282a772246605d08225293.png" />
+                                    <Image url="@ak47.png" />
                                  </image>
                               </ImageView>
                               <Button fx:id="ak47Btn" layoutX="235.0" layoutY="195.0" mnemonicParsing="false" onAction="#ak47Btn" prefHeight="55.0" prefWidth="108.0" text="BUY" textFill="RED">
@@ -68,7 +70,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="Grenade">
+          <Tab closable="false" text="Grenade">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -76,7 +78,7 @@
                            <children>
                               <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="224.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@pixel_grenade_by_thedoctor33-d4vigez.png" />
+                                    <Image url="@grenade.png" />
                                  </image>
                               </ImageView>
                               <Button fx:id="grenadeBtn" layoutX="354.0" layoutY="204.0" mnemonicParsing="false" onAction="#grenadeBtn" prefHeight="45.0" prefWidth="150.0" text="BUY" textFill="RED">
@@ -95,7 +97,35 @@
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="Ammo">
+            <Tab closable="false" text="Vest">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="214.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@bodyarmorimage.jpg" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="28.0" layoutY="14.0" prefHeight="61.0" prefWidth="227.0" text="Just may save a life!" textFill="RED">
+                           <font>
+                              <Font name="Impact" size="27.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="28.0" layoutY="75.0" text="\$500" textFill="RED">
+                           <font>
+                              <Font name="Impact" size="27.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="armorBtn" layoutX="32.0" layoutY="146.0" mnemonicParsing="false" onAction="#setArmorBtn" prefHeight="45.0" prefWidth="94.0" text="BUY" textFill="RED">
+                           <font>
+                              <Font name="Impact" size="29.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab closable="false" text="Ammo">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -103,7 +133,7 @@
                            <children>
                               <ImageView fitHeight="176.0" fitWidth="216.0" layoutX="188.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@2190e398f7e8554.png" />
+                                    <Image url="@ammo.png" />
                                  </image>
                               </ImageView>
                               <Label layoutX="240.0" layoutY="14.0" prefHeight="45.0" prefWidth="98.0" text="Ammo" textFill="RED">
@@ -130,13 +160,13 @@
             </Tab>
         </tabs>
       </TabPane>
-      <Label fx:id="moneyLbl" layoutX="375.0" layoutY="14.0" prefHeight="45.0" prefWidth="216.0" text="Money: $0" textFill="GREEN">
+      <Label fx:id="moneyLbl" layoutX="375.0" layoutY="14.0" prefHeight="45.0" prefWidth="216.0" text="Money: $0" textFill="GREEN" AnchorPane.rightAnchor="9.0">
          <font>
             <Font name="Impact" size="23.0" />
          </font>
       </Label>
-      <Separator layoutX="12.0" layoutY="55.0" prefHeight="9.0" prefWidth="577.0" style="-fx-background-color: red;" />
-      <Button fx:id="backBtn" layoutX="24.0" layoutY="417.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="45.0" prefWidth="120.0" text="&lt;-- Back" textFill="RED">
+      <Separator layoutX="12.0" layoutY="55.0" prefHeight="9.0" prefWidth="577.0" style="-fx-background-color: red;" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="11.0" />
+      <Button fx:id="backBtn" layoutX="24.0" layoutY="417.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="45.0" prefWidth="120.0" text="&lt;-- Back" textFill="RED" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="24.0">
          <font>
             <Font name="Impact" size="23.0" />
          </font>

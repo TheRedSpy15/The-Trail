@@ -9,6 +9,7 @@ import static com.TheRedSpy15.trail.Gang.*;
 
 public class InventoryController extends MidGameMenu {
 
+    @FXML private Label armorLbl;
     @FXML private Label foodLbl;
     @FXML private Label waterLbl;
     @FXML private Label ammoLbl;
@@ -23,6 +24,7 @@ public class InventoryController extends MidGameMenu {
     @FXML private void initialize(){
 
         foodLbl.setText("Food: "+ getFood());
+        armorLbl.setText("Armored Vests: "+getBodyArmor());
         waterLbl.setText("Water: "+ getWater());
         ammoLbl.setText("Ammo: "+ getAmmo());
         moneyLbl.setText("Money: "+(int) getMoney());

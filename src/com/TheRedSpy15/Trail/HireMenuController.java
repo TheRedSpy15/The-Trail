@@ -42,7 +42,7 @@ public class HireMenuController extends Store {
             emptyLbl.setText("Text field CANNOT be empty!");
         }else {
 
-            getGangMembers().add(nameField.getText());
+            getGangMembers().push(nameField.getText());
             getAlertWindow().setScene(getCityScene());
         }
     }
@@ -56,5 +56,7 @@ public class HireMenuController extends Store {
 
         emptyLbl.setText("");
         nameField.setText("");
+
+        checkFullScreen();
     }
 }

@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -25,26 +27,22 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: purple;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.TravelController">
    <children>
-      <HBox layoutY="262.0" prefHeight="138.0" prefWidth="310.0">
-         <children>
-            <Button mnemonicParsing="false" onAction="#stopMoving" prefHeight="138.0" prefWidth="110.0" style="-fx-background-color: black;" text="Stop" textFill="WHITE">
-               <font>
-                  <Font name="Impact" size="20.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#menu" prefHeight="138.0" prefWidth="82.0" style="-fx-background-color: Black;" text="Menu" textFill="WHITE">
-               <font>
-                  <Font name="Impact" size="21.0" />
-               </font>
-            </Button>
-            <Button fx:id="setOutBtn" mnemonicParsing="false" onAction="#setOut" prefHeight="138.0" prefWidth="110.0" style="-fx-background-color: Black;" text="Set out" textFill="WHITE">
-               <font>
-                  <Font name="Impact" size="20.0" />
-               </font>
-            </Button>
-         </children>
-      </HBox>
-      <VBox layoutX="301.0" layoutY="261.0" prefHeight="148.0" prefWidth="310.0" style="-fx-background-color: Black;">
+      <Button fx:id="setOutBtn" layoutX="192.0" layoutY="262.0" mnemonicParsing="false" onAction="#setOut" prefHeight="138.0" prefWidth="110.0" style="-fx-background-color: Black;" text="Set out" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="298.0">
+         <font>
+            <Font name="Impact" size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="110.0" layoutY="262.0" mnemonicParsing="false" onAction="#stopMoving" prefHeight="138.0" prefWidth="82.0" style="-fx-background-color: black;" text="Stop" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="408.0">
+         <font>
+            <Font name="Impact" size="20.0" />
+         </font>
+      </Button>
+      <Button layoutY="262.0" mnemonicParsing="false" onAction="#menu" prefHeight="138.0" prefWidth="110.0" style="-fx-background-color: Black;" text="Menu" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="490.0">
+         <font>
+            <Font name="Impact" size="21.0" />
+         </font>
+      </Button>
+      <VBox layoutX="301.0" layoutY="261.0" prefHeight="144.0" prefWidth="301.0" style="-fx-background-color: Black;" AnchorPane.bottomAnchor="-5.0" AnchorPane.rightAnchor="-2.0">
          <children>
             <Label fx:id="distanceLabel" text="Distance: 0 Mi" textFill="WHITE">
                <font>
@@ -72,11 +70,11 @@
             <Label />
          </children>
       </VBox>
-      <AnchorPane fx:id="sprite" layoutX="600.0" layoutY="158.0" prefWidth="244.0">
+      <AnchorPane fx:id="sprite" layoutX="600.0" layoutY="158.0" prefWidth="244.0" AnchorPane.bottomAnchor="138.0" AnchorPane.rightAnchor="-244.0">
          <children>
             <ImageView fx:id="spriteImage" fitHeight="106.0" fitWidth="224.0" layoutX="3.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@spr_car4_0.png" />
+                  <Image url="@greencar.png" />
                </image>
             </ImageView>
          </children>

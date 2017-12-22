@@ -1,0 +1,12 @@
+true true com/TheRedSpy15/trail/ak47.png com/TheRedSpy15/trail/ak47.png MYGUN 55
+
+
+Replace the line above with your mod
+
+Proper mod file example:
+        * true (mod car) true (mod gun) [path to car image] [path to gun image] [name of gun] [gun damage]
+
+        * even if false; enter corresponding type:
+            false (mod car) true (mod gun) String [path to gun image] [name of gun] [gun damage]
+
+        * IMPORTANT: gun damage must be below 127 and above -127

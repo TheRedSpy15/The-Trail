@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.image.*?>
+
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <!--
 
@@ -26,7 +27,7 @@
    <children>
       <ImageView fx:id="gunImage" fitHeight="150.0" fitWidth="200.0" layoutX="324.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@piq_119368_400x400.png" />
+            <Image url="@glock.png" />
          </image>
       </ImageView>
       <Label fx:id="foodLbl" layoutX="14.0" layoutY="77.0" prefHeight="29.0" prefWidth="178.0" text="Food: 0" textFill="WHITE">
@@ -63,7 +64,7 @@
       <Separator layoutX="600.0" layoutY="65.0" prefHeight="3.0" prefWidth="200.0" />
       <ImageView fx:id="carImage" fitHeight="150.0" fitWidth="200.0" layoutX="599.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@spr_car4_0.png" />
+            <Image url="@greencar.png" />
          </image>
       </ImageView>
       <Label layoutX="600.0" layoutY="164.0" prefHeight="50.0" prefWidth="178.0" text="Top Speed: 150 MPH" textFill="WHITE">
@@ -98,6 +99,11 @@
          </font>
       </Button>
       <Label fx:id="grenadeLbl" layoutX="14.0" layoutY="164.0" prefHeight="29.0" prefWidth="178.0" text="Grenades: 0" textFill="WHITE">
+         <font>
+            <Font name="Impact" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="armorLbl" layoutX="14.0" layoutY="193.0" prefHeight="29.0" prefWidth="206.0" text="Armored Vests: 0" textFill="WHITE">
          <font>
             <Font name="Impact" size="24.0" />
          </font>

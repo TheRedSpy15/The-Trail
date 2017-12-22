@@ -23,6 +23,7 @@ package com.TheRedSpy15.trail;
     BUG LIST
 
     * Jar file not working on other PCs
+    * Back button in purchase alert - causing freezes
 
     Exception in thread "JavaFX Application Thread" java.lang.IllegalStateException: Stage already visible
 	at javafx.stage.Stage.showAndWait(Stage.java:460)
@@ -37,33 +38,51 @@ package com.TheRedSpy15.trail;
 	at com.sun.glass.ui.win.WinApplication.lambda$null$148(WinApplication.java:191)
 	at java.lang.Thread.run(Thread.java:748)
 
+	Exception in thread "JavaFX Application Thread" java.lang.IllegalStateException: Stage already visible
+	at javafx.stage.Stage.showAndWait(Stage.java:460)
+	at com.TheRedSpy15.trail.HealthClass.poorHealthEvent(HealthClass.java:128)
+	at com.TheRedSpy15.trail.HealthClass.determineHealthCondition(HealthClass.java:79)
+	at com.TheRedSpy15.trail.TravelController.lambda$null$0(TravelController.java:120)
+	at com.sun.javafx.application.PlatformImpl.lambda$null$173(PlatformImpl.java:295)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$174(PlatformImpl.java:294)
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)
+	at com.sun.glass.ui.win.WinApplication._enterNestedEventLoopImpl(Native Method)
+	at com.sun.glass.ui.win.WinApplication._enterNestedEventLoop(WinApplication.java:218)
+	at com.sun.glass.ui.Application.enterNestedEventLoop(Application.java:511)
+	at com.sun.glass.ui.EventLoop.enter(EventLoop.java:107)
+	at com.sun.javafx.tk.quantum.QuantumToolkit.enterNestedEventLoop(QuantumToolkit.java:583)
+	at javafx.stage.Stage.showAndWait(Stage.java:474)
+	at com.TheRedSpy15.trail.HealthClass.poorHealthEvent(HealthClass.java:128)
+	at com.TheRedSpy15.trail.HealthClass.determineHealthCondition(HealthClass.java:79)
+	at com.TheRedSpy15.trail.TravelController.lambda$null$0(TravelController.java:120)
+	at com.sun.javafx.application.PlatformImpl.lambda$null$173(PlatformImpl.java:295)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$174(PlatformImpl.java:294)
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at com.sun.glass.ui.win.WinApplication.lambda$null$148(WinApplication.java:191)
+	at java.lang.Thread.run(Thread.java:748)
 
-    WORKING ON
 
-    * Gang list changed to a stack
-    * Settings menu in mid game menu
-    * Preventing player from buying items already owned (i.e : car, gun)
-    * selling items (i.e : car, gun)
-    * stop background music in shootout and play shootout music
+    Features
+
+    * A food portion scene with sliders
     * View gang member scene in mid game menu
+    * Add red car to dealer ship
     * Different cars have different specs
-    * Pace refactored to breaking freq. (as cars will have fixed speeds)
-
-
-    Planned
-
-    * Body armour
-    * System time in mid game menu
+    * help scene in mid game menu
     * More cities
+    * Alert box need huge rework
     * Personal armoury (gun inventory for selecting different guns with different traits)
     * More guns
-    * chance to miss shooting at thief
 
     */
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
+
 import javafx.application.Application;
 import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
@@ -89,7 +108,8 @@ public class Main extends Application{
     private static Parent possePane;
     private static Parent travelPane;
     private static Parent cityPane;
-    private static Parent midSellStorePane;
+    private static Parent SellPane;
+    private static Scene SellScene;
     private static Scene cityScene;
     private static Scene storeScene;
     private static Parent dealerPane;
@@ -111,8 +131,9 @@ public class Main extends Application{
     private static Parent hirePane;
 
     // Core Java
-    private static final String trailVersion = "1.5.1";
+    private static final String trailVersion = "1.9.6";
     private static byte SickEventChance;
+    static Boolean fullScreen = false;
     static Random rand = new Random();
     static AlertBox alert = new AlertBox();
     static Store store = new Store();
@@ -155,7 +176,7 @@ public class Main extends Application{
 
         getMainWindow().setResizable(false);
 
-        getMainWindow().setTitle("The trail "+trailVersion);
+        getMainWindow().setTitle("The Trail "+trailVersion);
 
         getMainWindow().setScene(new Scene(mainAnchor));
 
@@ -166,9 +187,17 @@ public class Main extends Application{
 
         if (getFood() < 0) setFood(0);
         if (getWater() < 0) setWater(0);
-        if (getMoney() > 10000) setMoney(10000);
+        if (getMoney() > 10000) setMoney(100000);
         if (getMoney() < 0) setMoney(0);
         if (getHealthConditions() < 0) setHealthConditions(0);
+    }
+
+    static void checkFullScreen(){
+
+        if (fullScreen && !getAlertWindow().isShowing()){
+
+            getMainWindow().setFullScreen(true);
+        }
     }
 
     // Music task
@@ -198,7 +227,12 @@ public class Main extends Application{
     }
 
     // Getters and Setters
-
+    static Scene getSellScene() {
+        return SellScene;
+    }
+    static void setSellScene(Scene midSellStoreScene) {
+        Main.SellScene = midSellStoreScene;
+    }
     static Scene getThiefMenuScene() {
         return thiefMenuScene;
     }
@@ -229,11 +263,11 @@ public class Main extends Application{
     static void setCityPane(Parent cityPane) {
         Main.cityPane = cityPane;
     }
-    static Parent getMidSellStorePane() {
-        return midSellStorePane;
+    static Parent getSellPane() {
+        return SellPane;
     }
-    static void setMidSellStorePane(Parent midSellStorePane) {
-        Main.midSellStorePane = midSellStorePane;
+    static void setSellPane(Parent sellPane) {
+        Main.SellPane = sellPane;
     }
     static Scene getCityScene() {
         return cityScene;

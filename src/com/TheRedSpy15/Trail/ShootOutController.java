@@ -60,34 +60,37 @@ public class ShootOutController extends ThiefMenuController {
         gangAmountLbl.setText("Gang members: "+ getGangMembers().size());
 
         thiefHealth = 100;
-
-        setMemberSelect(getGangMembers().size());
-        setMemberSelect(getMemberSelect() - 1);
     }
 
     @FXML private void setShootBtn(){
 
-        if (getAmmo() >= 1){
+        if (getAmmo() >= 1){ // if ammo
 
-            playGunSound();
+            if (rand.nextBoolean()){
 
-            int damageDealt = (int) (Math.random() * getBaseAttackDamage()) + 10;
+                playGunSound();
 
-            eventText.appendText("you shot at them ("+ damageDealt +" DMG) \n");
-            thiefHealth -= damageDealt;
-            thiefHealthLbl.setText("THIEF HEALTH: "+thiefHealth);
-            setAmmo(getAmmo() - 1);
-            ammoLbl.setText("Ammo: "+ getAmmo());
+                int damageDealt = (int) (Math.random() * getBaseAttackDamage()) + 10;
 
-            if (isThiefDead()){
+                eventText.appendText("you shot at them ("+ damageDealt +" DMG) \n");
+                thiefHealth -= damageDealt;
+                thiefHealthLbl.setText("THIEF HEALTH: "+thiefHealth);
+                setAmmo(getAmmo() - 1);
+                ammoLbl.setText("Ammo: "+ getAmmo());
 
-                deadThief();
-            }else {
+                if (isThiefDead()){
 
-                thiefAttack();
+                    deadThief();
+                }else {
+
+                    thiefAttack();
+                }
+            }else { // miss
+
+                eventText.appendText("You missed!!!");
             }
 
-        }else {
+        }else { // no ammo
 
             eventText.appendText("NO AMMO!!! \n");
         }
@@ -97,7 +100,7 @@ public class ShootOutController extends ThiefMenuController {
 
         int GrenadeDMG = (int) (Math.random() * 75) + 35;
 
-        if (getGrenades() >= 1){
+        if (getGrenades() >= 1){ // grenade
 
             playGrenadeSound();
 
@@ -115,34 +118,36 @@ public class ShootOutController extends ThiefMenuController {
                 thiefAttack();
             }
 
-        }else {
+        }else { // no grenade
 
             eventText.appendText("NO GRENADES!!! \n");
         }
     }
 
-    @FXML private void setLetGoBtn(){
+    @FXML private void setLetGoBtn(){ // let go
 
         alert.alert("You let them go");
     }
 
     private void thiefAttack(){
 
-        if (rand.nextBoolean()){
+        if (rand.nextBoolean()){ // shot and killed
 
-            eventText.appendText("They shot and killed "+ getGangMembers().getLast() + "\n");
-            getGangMembers().remove(getMemberSelect());
+            eventText.appendText("They shot and killed "+ getGangMembers().pop() + "\n");
             gangAmountLbl.setText("Gang members: "+ getGangMembers().size());
 
             if (getGangMembers().size() <= 0){
 
                 AlertBox.gameOver();
             }
-        }else if (rand.nextBoolean()){
+        }else if (Gang.getBodyArmor() >= 1){ // hit body armor
 
-            eventText.appendText("They shot "+ getGangMembers().getLast() + "\n");
+            eventText.appendText("They shot, but hit body-armor");
+        }else if (rand.nextBoolean()){ // shot
+
+            eventText.appendText("They shot "+ getGangMembers().peek() + "\n");
             setHealthConditions(getHealthConditions() + 50);
-        }else {
+        }else { // missed
 
             eventText.appendText("They shot and missed \n");
         }
