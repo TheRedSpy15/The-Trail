@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--
+
+   Copyright [2017] [TheRedSpy15]
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+-->
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.ShootOutController">
+   <children>
+      <HBox layoutX="46.0" layoutY="264.0" prefHeight="100.0" prefWidth="510.0">
+         <children>
+            <Button fx:id="shootBtn" mnemonicParsing="false" onAction="#setShootBtn" prefHeight="101.0" prefWidth="160.0" text="Shoot" textFill="RED">
+               <font>
+                  <Font name="Impact" size="30.0" />
+               </font>
+            </Button>
+            <Button fx:id="letGoBtn" mnemonicParsing="false" onAction="#setLetGoBtn" prefHeight="114.0" prefWidth="217.0" text="Let them go">
+               <font>
+                  <Font name="Impact" size="34.0" />
+               </font>
+            </Button>
+            <Button fx:id="grenadeBtn" mnemonicParsing="false" onAction="#setGrenadeBtn" prefHeight="108.0" prefWidth="160.0" text="Grenade" textFill="RED">
+               <font>
+                  <Font name="Impact" size="30.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <Label fx:id="thiefHealthLbl" layoutX="46.0" layoutY="32.0" prefHeight="47.0" prefWidth="208.0" text="THIEF HEALTH: 100" textFill="RED">
+         <font>
+            <Font name="Impact" size="28.0" />
+         </font>
+      </Label>
+      <Label fx:id="ammoLbl" layoutX="46.0" layoutY="232.0" prefHeight="32.0" prefWidth="113.0" text="Ammo: 0" textFill="RED">
+         <font>
+            <Font name="Impact" size="23.0" />
+         </font>
+      </Label>
+      <Label fx:id="grenadeLbl" layoutX="405.0" layoutY="234.0" text="Grenades: 0" textFill="RED">
+         <font>
+            <Font name="Impact" size="23.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="eventText" editable="false" layoutX="46.0" layoutY="89.0" prefHeight="129.0" prefWidth="510.0" promptText="EVENT">
+         <font>
+            <Font name="Impact" size="26.0" />
+         </font>
+      </TextArea>
+      <Label fx:id="gangAmountLbl" layoutX="348.0" layoutY="32.0" prefHeight="47.0" prefWidth="208.0" text="Gang members: 6" textFill="RED">
+         <font>
+            <Font name="Impact" size="28.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

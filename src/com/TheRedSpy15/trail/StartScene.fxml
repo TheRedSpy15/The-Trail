@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--
+
+   Copyright [2017] [TheRedSpy15]
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+-->
+
+<AnchorPane prefHeight="321.0" prefWidth="300.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.StartController">
+   <children>
+   
+       <Label fx:id="testLbl" layoutX="70.0" layoutY="14.0" prefHeight="56.0" prefWidth="160.0" text="The Trail" textFill="PURPLE">
+         <font>
+            <Font name="Impact" size="45.0" />
+         </font>
+      </Label>
+       <Button fx:id="button" layoutX="73.0" layoutY="75.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleButtonClick" prefHeight="92.0" prefWidth="154.0" text="Start" AnchorPane.bottomAnchor="154.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.0" AnchorPane.topAnchor="75.0">
+         <font>
+            <Font name="Impact" size="22.0" />
+         </font>
+      </Button>
+      <CheckBox fx:id="modCheckBox" layoutX="34.0" layoutY="201.0" mnemonicParsing="false" text="Run with mod file" textFill="WHITE" AnchorPane.bottomAnchor="28.0">
+         <font>
+            <Font name="Impact" size="15.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="fullScreenCheckBox" layoutX="34.0" layoutY="234.0" mnemonicParsing="false" text="Full screen" textFill="WHITE" AnchorPane.bottomAnchor="66.0">
+         <font>
+            <Font name="Impact" size="15.0" />
+         </font>
+      </CheckBox>
+   </children>
+
+</AnchorPane>

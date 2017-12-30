@@ -1,5 +1,5 @@
-Just double click the short cut
+go to out -> artifacts -> TheTrail -> The_Trail_JavaFX.jar
 
-NOTE: JAVA IS REQUIRED TO RUN THE .jar (java version) FILE, NOT FOR THE .EXE (windows version)
+NOTE: JAVA 8 IS REQUIRED, will remove the requirement in the future
 
 The java version is so it runs on ANY computer with java installed on it
