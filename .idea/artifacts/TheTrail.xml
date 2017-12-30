@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="TheTrail">
+    <output-path>$PROJECT_DIR$/out/artifacts/TheTrail</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="com.TheRedSpy15.trail.Main" />
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="title" value="The Trail" />
+        <option name="vendor" value="" />
+        <option name="version" value="" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="The_Trail_JavaFX.jar">
+        <element id="module-output" name="The Trail JavaFX" />
+      </element>
+    </root>
+  </artifact>
+</component>
