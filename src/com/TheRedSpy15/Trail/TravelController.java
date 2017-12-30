@@ -29,15 +29,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
-import static com.TheRedSpy15.trail.Gang.*;
-import static com.TheRedSpy15.trail.Main.checkFullScreen;
-import static com.TheRedSpy15.trail.Main.getMainWindow;
+import java.io.*;
 
-public class TravelController {
+public class TravelController implements Serializable {
 
     private static int payDayCountdown = 0;
     static int animationDuration = 15;
-    public static TranslateTransition transition;
+    public static TranslateTransition drivingTransition;
     @FXML private Button setOutBtn;
     @FXML private Label distanceLabel;
     @FXML private Label conditionsLabel;
@@ -51,8 +49,8 @@ public class TravelController {
     @FXML
     private void stopMoving(){
 
-        setMoving(false);
-        transition.pause();
+        Gang.setMoving(false);
+        drivingTransition.stop();
     }
 
     // when set out button is pressed
@@ -60,8 +58,8 @@ public class TravelController {
     private void setOut(){
 
         updateGUI();
-        transition.play();
-        runBackgroundTask();
+        drivingTransition.play();
+        TravelTask();
     }
 
     // when menu button is pressed
@@ -71,35 +69,40 @@ public class TravelController {
         // Runs mid menu
         MidGameMenu.menuMethod();
 
-        setMoving(false);
+        Gang.setMoving(false);
         Main.getMenuWindow().showAndWait();
     }
 
-    private void runBackgroundTask() {
+    private void TravelTask() {
 
         new Thread(() -> {
 
             // Run your background task(s) here
-            setMoving(true);
+            Gang.setMoving(true);
 
-            while (isMoving()) {
+            while (Gang.isMoving()) {
 
                 Main.setSickEventChance(Main.rand.nextInt(20)+1);
 
-                setScore(getScore() + 25);
+                Gang.setScore(Gang.getScore() + 25);
 
-                distanceSinceCity = (short) (distanceSinceCity + getPace());
+                distanceSinceCity = (short) (distanceSinceCity + Gang.getPace());
 
-                // Payday countdown
                 payDay();
 
-                // resource consumption
-                setDays(getDays() + 1);
-                setDistance(getDistance() + getPace());
-                setFood(getFood() - (getGangMembers().size()* getFoodIntake()));
-                setWater(getWater() - (getGangMembers().size()* getFoodIntake()));
+                try {
+                    saveData();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
-                // checking values, so they aren't negative
+                drive(Main.determineVehicle());
+
+                // resource consumption
+                Gang.setDays(Gang.getDays() + 1);
+                Gang.setFood(Gang.getFood() - (Gang.getGangMembers().size()* Gang.getFoodIntake()));
+                Gang.setWater(Gang.getWater() - (Gang.getGangMembers().size()* Gang.getFoodIntake()));
+
                 Main.checkValues();
 
                 Platform.runLater(() -> {
@@ -109,10 +112,10 @@ public class TravelController {
                     if (distanceSinceCity > 500) Main.alert.cityEvent();
 
                     // updating labels
-                    distanceLabel.setText("Distance: "+ getDistance() +"Mi");
-                    daysLabel.setText("Days: "+ getDays());
+                    distanceLabel.setText("Distance: "+ Gang.getDistance() +"Mi");
+                    daysLabel.setText("Days: "+ Gang.getDays());
                     statusLabel.setText("Status: Moving");
-                    conditionsLabel.setText("Condition: "+ getHealthConditions());
+                    conditionsLabel.setText("Condition: "+ Gang.getHealthConditions());
                     setOutBtn.setText("Speedup");
 
                     //Thief encounter
@@ -122,7 +125,7 @@ public class TravelController {
                     HealthClass.determineHealthCondition();
                 });
 
-                if (!isMoving()) break;
+                if (!Gang.isMoving()) break;
 
                 try {
                     Thread.sleep(2400);
@@ -133,9 +136,8 @@ public class TravelController {
 
             Platform.runLater(() -> {
 
-                statusLabel.setText("Status: Resting");
-                setOutBtn.setText("Set out");
-                transition.pause();
+                updateGUI();
+                drivingTransition.stop();
             });
 
         }).start();
@@ -144,34 +146,40 @@ public class TravelController {
     @FXML
     public void initialize(){
 
-        checkFullScreen();
+        Main.checkFullScreen();
 
-        Main.getAlertWindow().setOnCloseRequest(e -> spriteImage.setImage(new Image(getCarSpriteURL())));
+        Main.getAlertWindow().setOnCloseRequest(e -> spriteImage.setImage(new Image(Gang.getCarSpriteURL())));
 
         // updating labels
-        distanceLabel.setText("To go: "+ getDistance() +"Mi");
-        conditionsLabel.setText("Condition: "+ getHealthConditions());
-        daysLabel.setText("Days: "+ getDays());
+        distanceLabel.setText("To go: "+ Gang.getDistance() +"Mi");
+        conditionsLabel.setText("Condition: "+ Gang.getHealthConditions());
+        daysLabel.setText("Days: "+ Gang.getDays());
         statusLabel.setText("Status: Resting");
 
         // setting up how the animation will work
-        transition = new TranslateTransition();
-        transition.setDuration(Duration.seconds(animationDuration));
-        transition.setToX(Main.getMainWindow().getWidth() - 850);
-        transition.setNode(sprite);
-        transition.setCycleCount(Animation.INDEFINITE);
+        drivingTransition = new TranslateTransition();
+        drivingTransition.setDuration(Duration.seconds(animationDuration));
+        drivingTransition.setToX(Main.getMainWindow().getWidth() - 850);
+        drivingTransition.setNode(sprite);
+        drivingTransition.setCycleCount(Animation.INDEFINITE);
 
         // fixes the bug with thread not ending when stage was closed
-        Main.getMainWindow().setOnCloseRequest(e -> setMoving(false));
+        Main.getMainWindow().setOnCloseRequest(e -> Gang.setMoving(false));
     }
 
+    /**
+     *
+     * Does a countdown to payment, and player(s) receive money when it reaches 30 (30 days),
+     * of which is determine by the wage of the career the player(s) have chosen
+     *
+     */
     private void payDay(){
 
         ++payDayCountdown;
 
         if (payDayCountdown == 30){
 
-            setMoney(getMoney() + getWage());
+            Gang.setMoney(Gang.getMoney() + Gang.getWage());
 
             payDayCountdown = 0;
         }
@@ -180,19 +188,39 @@ public class TravelController {
     @FXML
     private void updateGUI(){
 
-        spriteImage.setImage(new Image(getCarSpriteURL()));
+        spriteImage.setImage(new Image(Gang.getCarSpriteURL()));
 
-        // updating transition
-        transition = new TranslateTransition();
-        transition.setDuration(Duration.seconds(animationDuration));
-        transition.setToX((getMainWindow().getWidth() / -1) - 400);
-        transition.setNode(sprite);
-        transition.setCycleCount(Animation.INDEFINITE);
+        // updating drivingTransition
+        drivingTransition = new TranslateTransition();
+        drivingTransition.setDuration(Duration.seconds(animationDuration));
+        drivingTransition.setToX((Main.getMainWindow().getWidth() / -1) - 400);
+        drivingTransition.setNode(sprite);
+        drivingTransition.setCycleCount(Animation.INDEFINITE);
 
         // updating labels
-        distanceLabel.setText("To go: "+ getDistance() +"Mi");
-        conditionsLabel.setText("Condition: "+ getHealthConditions());
-        daysLabel.setText("Days: "+ getDays());
+        distanceLabel.setText("To go: "+ Gang.getDistance() +"Mi");
+        conditionsLabel.setText("Condition: "+ Gang.getHealthConditions());
+        daysLabel.setText("Days: "+ Gang.getDays());
         statusLabel.setText("Status: Resting");
+    }
+
+    private void drive(Vehicle v){
+
+        v.drive();
+    }
+
+    private void saveData() throws IOException {
+
+        FileOutputStream fileStream = new FileOutputStream("SaveGame.ser");
+
+        ObjectOutputStream outputStream = new ObjectOutputStream(fileStream);
+        ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("SaveGame.ser"));
+
+        System.out.print(inputStream.read());
+
+        outputStream.write(Gang.getFood());
+
+        outputStream.close();
+        fileStream.close();
     }
 }

@@ -27,9 +27,6 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import java.io.IOException;
 
-import static com.TheRedSpy15.trail.Gang.*;
-import static com.TheRedSpy15.trail.Main.*;
-
 public class ShootOutController extends ThiefMenuController {
 
     private Media victorySound = new Media(ClassLoader.getSystemResource(
@@ -54,29 +51,29 @@ public class ShootOutController extends ThiefMenuController {
 
     @FXML private void initialize(){
 
-        ammoLbl.setText("Ammo: "+ getAmmo());
-        grenadeLbl.setText("Grenades: "+ getGrenades());
+        ammoLbl.setText("Ammo: "+ Gang.getAmmo());
+        grenadeLbl.setText("Grenades: "+ Gang.getGrenades());
         thiefHealthLbl.setText("THIEF HEALTH: "+thiefHealth);
-        gangAmountLbl.setText("Gang members: "+ getGangMembers().size());
+        gangAmountLbl.setText("Gang members: "+ Gang.getGangMembers().size());
 
         thiefHealth = 100;
     }
 
     @FXML private void setShootBtn(){
 
-        if (getAmmo() >= 1){ // if ammo
+        if (Gang.getAmmo() >= 1){ // if ammo
 
-            if (rand.nextBoolean()){
+            if (Main.rand.nextBoolean()){
 
                 playGunSound();
 
-                int damageDealt = (int) (Math.random() * getBaseAttackDamage()) + 10;
+                int damageDealt = (int) (Math.random() * Gang.getBaseAttackDamage()) + 10;
 
                 eventText.appendText("you shot at them ("+ damageDealt +" DMG) \n");
                 thiefHealth -= damageDealt;
                 thiefHealthLbl.setText("THIEF HEALTH: "+thiefHealth);
-                setAmmo(getAmmo() - 1);
-                ammoLbl.setText("Ammo: "+ getAmmo());
+                Gang.setAmmo(Gang.getAmmo() - 1);
+                ammoLbl.setText("Ammo: "+ Gang.getAmmo());
 
                 if (isThiefDead()){
 
@@ -100,15 +97,15 @@ public class ShootOutController extends ThiefMenuController {
 
         int GrenadeDMG = (int) (Math.random() * 75) + 35;
 
-        if (getGrenades() >= 1){ // grenade
+        if (Gang.getGrenades() >= 1){ // grenade
 
             playGrenadeSound();
 
             eventText.appendText("you threw a grenade ("+GrenadeDMG+" DMG) \n");
             thiefHealth -= GrenadeDMG;
             thiefHealthLbl.setText("THIEF HEALTH: "+thiefHealth);
-            setGrenades(getGrenades() - 1);
-            grenadeLbl.setText("Grenades: "+ getGrenades());
+            Gang.setGrenades(Gang.getGrenades() - 1);
+            grenadeLbl.setText("Grenades: "+ Gang.getGrenades());
 
             if (isThiefDead()){
 
@@ -126,27 +123,27 @@ public class ShootOutController extends ThiefMenuController {
 
     @FXML private void setLetGoBtn(){ // let go
 
-        alert.alert("You let them go");
+        Main.alert.alert("You let them go");
     }
 
     private void thiefAttack(){
 
-        if (rand.nextBoolean()){ // shot and killed
+        if (Main.rand.nextBoolean()){ // shot and killed
 
-            eventText.appendText("They shot and killed "+ getGangMembers().pop() + "\n");
-            gangAmountLbl.setText("Gang members: "+ getGangMembers().size());
+            eventText.appendText("They shot and killed "+ Gang.getGangMembers().pop() + "\n");
+            gangAmountLbl.setText("Gang members: "+ Gang.getGangMembers().size());
 
-            if (getGangMembers().size() <= 0){
+            if (Gang.getGangMembers().size() <= 0){
 
                 AlertBox.gameOver();
             }
         }else if (Gang.getBodyArmor() >= 1){ // hit body armor
 
             eventText.appendText("They shot, but hit body-armor");
-        }else if (rand.nextBoolean()){ // shot
+        }else if (Main.rand.nextBoolean()){ // shot
 
-            eventText.appendText("They shot "+ getGangMembers().peek() + "\n");
-            setHealthConditions(getHealthConditions() + 50);
+            eventText.appendText("They shot "+ Gang.getGangMembers().peek() + "\n");
+            Gang.setHealthConditions(Gang.getHealthConditions() + 50);
         }else { // missed
 
             eventText.appendText("They shot and missed \n");
@@ -163,15 +160,15 @@ public class ShootOutController extends ThiefMenuController {
         playVictorySound();
 
         try {
-            setDeadThiefPane(FXMLLoader.load(Main.class.getResource("ThiefKilled.fxml")));
+            Main.setDeadThiefPane(FXMLLoader.load(Main.class.getResource("ThiefKilled.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        setDeadThiefScene(new Scene(getDeadThiefPane()));
+        Main.setDeadThiefScene(new Scene(Main.getDeadThiefPane()));
 
-        getAlertWindow().setScene(getDeadThiefScene());
+        Main.getAlertWindow().setScene(Main.getDeadThiefScene());
 
-        setScore(getScore() + 5000);
+        Gang.setScore(Gang.getScore() + 5000);
     }
 
     private void playGunSound(){

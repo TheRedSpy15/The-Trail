@@ -30,18 +30,14 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-import static com.TheRedSpy15.trail.Gang.*;
-
 public class MidGameMenu extends Main {
 
     private static Parent menuPane;
-    protected static Scene menuScene;
+    static Scene menuScene;
 
     protected static void menuMethod(){
 
         // MENU
-
-        // Links menu pane to FXML file
         try {
             menuPane = FXMLLoader.load(Main.class.getResource("MidMenu.fxml"));
         } catch (IOException e) {
@@ -57,113 +53,102 @@ public class MidGameMenu extends Main {
         }
         setInventoryScene(new Scene(getInventoryPane()));
 
-        // Creating new Stage
         setMenuWindow(new Stage());
 
-        // Setting title of stage
         getMenuWindow().setTitle("MENU");
 
         // preventing interaction with other windows
         getMenuWindow().initModality(Modality.APPLICATION_MODAL);
 
-        // Set MenuWindow's scene
         getMenuWindow().setScene(menuScene);
     }
 
+    /**
+     *
+     * Sets the menu stage's scene to the inventory scene
+     *
+     */
     protected static void inventoryMethod(){
 
         getMenuWindow().setScene(getInventoryScene());
     }
 
-    // Used to set food intake
+    /**
+     *
+     * Creates, and sets the scene to one that allows the player(s) to set the food portions
+     *
+     */
     protected static void foodPortionSet(){
 
-        // Object declaration
         Button BuffetDietbtn = new Button("Buffet");
         VBox FoodPortionsLayout = new VBox(10);
         Button ExtremeDietbtn = new Button("Extreme");
         Label label = new Label("Select your meal plan");
         Button ModerateDietbtn = new Button("Moderate");
 
-        // Setting font size of Label and color
         label.setFont(new Font(20));
         label.setStyle("-fx-text-fill: purple;");
-
-        // Setting background color
         FoodPortionsLayout.setStyle("-fx-background-color: black;");
 
-        // Setting food intake value and going back to menu scene
         ExtremeDietbtn.setOnAction(e -> {
-            setFoodIntake(1);
+            Gang.setFoodIntake(1);
             getMenuWindow().setScene(menuScene);
         });
 
-        // Setting food intake value and going back to menu scene
         ModerateDietbtn.setOnAction(e -> {
-            setFoodIntake(2);
+            Gang.setFoodIntake(2);
             getMenuWindow().setScene(menuScene);
         });
 
-        // Setting food intake value and going back to menu scene
         BuffetDietbtn.setOnAction(e -> {
-            setFoodIntake(3);
+            Gang.setFoodIntake(3);
             getMenuWindow().setScene(menuScene);
         });
 
-        // Setting padding to layout
         FoodPortionsLayout.setPadding(new Insets(20,20,20,20));
-
-        // adding objects to layout
         FoodPortionsLayout.getChildren().addAll(label,ExtremeDietbtn,ModerateDietbtn,BuffetDietbtn);
 
-        // initializing scene
         setFoodPortionsScene(new Scene(FoodPortionsLayout,320,200));
     }
 
+    /**
+     *
+     * Creates, and sets the scene to one that allows the player(s) to set the pace
+     *
+     */
     protected static void paceSetterMethod(){
 
-        // Object declaration
         VBox PaceLayout = new VBox(10);
         Label label = new Label("Choose a speed");
         Button Slowbtn = new Button("Slow pace");
         Button ModerateSpeedbtn = new Button("Moderate pace");
         Button Fastbtn = new Button("Fast pace");
 
-        // Setting font size of label and color
         label.setStyle("-fx-text-fill: purple;");
         label.setFont(new Font(20));
-
-        // setting background color
         PaceLayout.setStyle("-fx-background-color: black");
 
-        // Setting pace value and going back to menu scene
         Slowbtn.setOnAction(e -> {
-            setPace(5);
+            Gang.setPace(5);
             TravelController.animationDuration = 30;
             getMenuWindow().setScene(menuScene);
         });
 
-        // Setting pace value and going back to menu scene
         ModerateSpeedbtn.setOnAction(e -> {
-            setPace(10);
+            Gang.setPace(10);
             TravelController.animationDuration = 15;
             getMenuWindow().setScene(menuScene);
         });
 
-        // Setting pace value and going back to menu scene
         Fastbtn.setOnAction(e -> {
-            setPace(15);
+            Gang.setPace(15);
             TravelController.animationDuration = 10;
             getMenuWindow().setScene(menuScene);
         });
 
-        // Setting padding to layout
         PaceLayout.setPadding(new Insets(20,20,20,20));
-
-        // Adding padding to layout
         PaceLayout.getChildren().addAll(label,Slowbtn,ModerateSpeedbtn,Fastbtn);
 
-        // Initializing scene
         setPaceScene(new Scene(PaceLayout,320,200));
     }
 }

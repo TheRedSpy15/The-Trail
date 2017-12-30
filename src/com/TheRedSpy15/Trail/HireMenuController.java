@@ -22,9 +22,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-import static com.TheRedSpy15.trail.Gang.*;
-import static com.TheRedSpy15.trail.Main.*;
-
 public class HireMenuController extends Store {
 
     @FXML private TextField nameField;
@@ -32,24 +29,24 @@ public class HireMenuController extends Store {
 
     @FXML private void setHireBtn(){
 
-        if (getMoney() < 5000){
+        if (Gang.getMoney() < 5000){
 
-            amountOver = (short) (getMoney() - 5000);
+            amountOver = (short) (Gang.getMoney() - 5000);
 
-            alert.notEnoughMoney(amountOver); // Back button support in alert box class needs added
+            Main.alert.notEnoughMoney(amountOver); // Back button support in alert box class needs added
         }else if (nameField.getText().trim().equals("")){
 
             emptyLbl.setText("Text field CANNOT be empty!");
         }else {
 
-            getGangMembers().push(nameField.getText());
-            getAlertWindow().setScene(getCityScene());
+            Gang.getGangMembers().push(nameField.getText());
+            Main.getAlertWindow().setScene(Main.getCityScene());
         }
     }
 
     @FXML private void setBackBtn(){
 
-        getAlertWindow().setScene(getCityScene());
+        Main.getAlertWindow().setScene(Main.getCityScene());
     }
 
     @FXML private void initialize(){
@@ -57,6 +54,6 @@ public class HireMenuController extends Store {
         emptyLbl.setText("");
         nameField.setText("");
 
-        checkFullScreen();
+        Main.checkFullScreen();
     }
 }

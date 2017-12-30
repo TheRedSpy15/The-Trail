@@ -23,13 +23,13 @@ import javafx.scene.Scene;
 
 import java.io.IOException;
 
-public class DescriptionSceneController extends Main {
+public class DescriptionSceneController {
 
     @FXML private void setContinueBtn() throws IOException {
 
-        career.careerPicker();
-        getMainWindow().setScene(new Scene(getCareerAnchor()));
+        Main.career.careerPicker();
+        Main.getMainWindow().setScene(new Scene(Main.getCareerAnchor()));
 
-        checkFullScreen();
+        Main.checkFullScreen();
     }
 }

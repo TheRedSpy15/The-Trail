@@ -23,71 +23,74 @@ import javafx.scene.Scene;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import java.io.IOException;
-
-import static com.TheRedSpy15.trail.Main.*;
-import static com.TheRedSpy15.trail.Gang.*;
+import java.net.URL;
 
 public class Store {
 
     short amountOver;
 
-    private Media purchaseSound = new Media(ClassLoader.getSystemResource(
-            "com/TheRedSpy15/Trail/Cha_Ching_Register-Muska666-173262285.wav"
-    ).toExternalForm());
-
     void playPurchaseSound(){
+        URL url = ClassLoader.getSystemResource(
+                "com/TheRedSpy15/Trail/Cha_Ching_Register-Muska666-173262285.wav"
+        );
 
-        MediaPlayer playPurchaseSound = new MediaPlayer(purchaseSound);
+        if(url != null)
+        {
+            Media purchaseSound = new Media(url.toExternalForm());
 
-        playPurchaseSound.setVolume(0.3f);
-        playPurchaseSound.play();
+            MediaPlayer playPurchaseSound = new MediaPlayer(purchaseSound);
+
+            playPurchaseSound.setVolume(0.3f);
+            playPurchaseSound.play();
+        }
     }
+
 
     void purchaseItem(short price, short quantity, String Item){
 
         short bonusPoints = price *= quantity;
 
-        setScore(getScore() + bonusPoints);
+        Gang.setScore(Gang.getScore() + bonusPoints);
 
-        setMoney(getMoney() - (price * quantity));
+        Gang.setMoney(Gang.getMoney() - (price * quantity));
 
         playPurchaseSound();
 
-        alert.specialPurchase(Item);
+        Main.alert.specialPurchase(Item);
     }
 
     void updateStores() {
 
         // Store
         try {
-            setStorePane(FXMLLoader.load(Main.class.getResource("StoreScene.fxml")));
+            Main.setStorePane(FXMLLoader.load(Main.class.getResource("StoreScene.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        setStoreScene(new Scene(getStorePane()));
+        Main.setStoreScene(new Scene(Main.getStorePane()));
 
         // Sell
         try {
-            setSellPane(FXMLLoader.load(Main.class.getResource("SellScene.fxml")));
+            Main.setSellPane(FXMLLoader.load(Main.class.getResource("SellScene.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        setSellScene(new Scene(getSellPane()));
+        Main.setSellScene(new Scene(Main.getSellPane()));
 
         // Dealer ship pane
         try {
-            setDealerPane(FXMLLoader.load(Main.class.getResource("DealerShip.fxml")));
+            Main.setDealerPane(FXMLLoader.load(Main.class.getResource("DealerShip.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        setDealerScene(new Scene(getDealerPane()));
+        Main.setDealerScene(new Scene(Main.getDealerPane()));
 
         // Gun store
         try {
-            setGunStorePane(FXMLLoader.load(Main.class.getResource("GunStore.fxml")));
+            Main.setGunStorePane(FXMLLoader.load(Main.class.getResource("GunStore.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        setGunStoreScene(new Scene(getGunStorePane()));
+        Main.setGunStoreScene(new Scene(Main.getGunStorePane()));
     }
 }

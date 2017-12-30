@@ -21,13 +21,11 @@ package com.TheRedSpy15.trail;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-import static com.TheRedSpy15.trail.Gang.*;
-
 import java.util.ListIterator;
 
-public class CityMenuController extends Main {
+public class CityMenuController {
 
-    private static ListIterator<String> cityName = cities.listIterator();
+    private static ListIterator<String> cityName = Main.cities.listIterator();
 
     @FXML private Label townLbl;
     @FXML private Label bountyLbl;
@@ -35,30 +33,30 @@ public class CityMenuController extends Main {
     @FXML
     private void store(){
 
-        getAlertWindow().setTitle("Store");
-        store.updateStores();
-        getAlertWindow().setScene(getStoreScene());
+        Main.getAlertWindow().setTitle("Store");
+        Main.store.updateStores();
+        Main.getAlertWindow().setScene(Main.getStoreScene());
     }
 
     @FXML
     private void sell(){
 
-        getAlertWindow().setTitle("Sell");
-        store.updateStores();
-        getAlertWindow().setScene(getSellScene());
+        Main.getAlertWindow().setTitle("Sell");
+        Main.store.updateStores();
+        Main.getAlertWindow().setScene(Main.getSellScene());
     }
 
     @FXML
     private void keepGoing(){
 
-        setDistance(getDistance() - 25);
-        getAlertWindow().close();
+        Gang.setDistance(Gang.getDistance() - 25);
+        Main.getAlertWindow().close();
     }
 
     @FXML
     private void claim(){
 
-        if (getCapturedThieves() > 0){
+        if (Gang.getCapturedThieves() > 0){
 
             bountyMethod();
         }else{
@@ -70,15 +68,15 @@ public class CityMenuController extends Main {
     @FXML
     private void dealerShip(){
 
-        getAlertWindow().setTitle("Dealer Ship");
-        store.updateStores();
-        getAlertWindow().setScene(getDealerScene());
+        Main.getAlertWindow().setTitle("Dealer Ship");
+        Main.store.updateStores();
+        Main.getAlertWindow().setScene(Main.getDealerScene());
     }
 
     @FXML
     private void setHireBtn(){
 
-        getAlertWindow().setScene(getHireScene());
+        Main.getAlertWindow().setScene(Main.getHireScene());
     }
 
     @FXML
@@ -90,7 +88,7 @@ public class CityMenuController extends Main {
         if (!cityName.hasNext()) cityNameLOCAL = cityName.previous();
         else cityNameLOCAL = cityName.next();
 
-        getAlertWindow().setTitle("City");
+        Main.getAlertWindow().setTitle("City");
         townLbl.setText("You have come up to "+ cityNameLOCAL);
     }
 
@@ -98,15 +96,15 @@ public class CityMenuController extends Main {
 
         int MoneyToClaim;
 
-        MoneyToClaim = rand.nextInt(5000)+1000;
-        MoneyToClaim *= getCapturedThieves();
+        MoneyToClaim = Main.rand.nextInt(5000)+1000;
+        MoneyToClaim *= Gang.getCapturedThieves();
 
-        setScore(getScore() + 50000);
+        Gang.setScore(Gang.getScore() + 50000);
 
         bountyLbl.setText("You have Claimed: $"+MoneyToClaim);
 
-        setMoney(getMoney() + MoneyToClaim);
+        Gang.setMoney(Gang.getMoney() + MoneyToClaim);
 
-        setCapturedThieves(0);
+        Gang.setCapturedThieves(0);
     }
 }

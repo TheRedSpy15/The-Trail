@@ -20,9 +20,15 @@ package com.TheRedSpy15.trail;
 
 import javafx.fxml.FXMLLoader;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Stack;
 
-public class Gang {
+/**
+ *
+ * Includes the values of everything relating to the player(s) gang i.e : resources
+ *
+ */
+public class Gang implements Serializable {
 
     private static byte HealthConditions = 100;
     private static int Distance = 0;
@@ -48,6 +54,8 @@ public class Gang {
     private static int capturedThieves = 0;
     private static byte FoodIntake = 2;
     private static Stack <String> gangMembers = new Stack<>();
+    private static vehicleIDs vehicleID = vehicleIDs.GREENCAR;
+    public enum vehicleIDs{GREENCAR, RALLYCAR, BLUETRUCK}
 
     protected void gangSetupMethod(){
 
@@ -63,6 +71,12 @@ public class Gang {
     // Getters and Setters
     static Stack<String> getGangMembers() {
         return gangMembers;
+    }
+    public static vehicleIDs getVehicleID() {
+        return vehicleID;
+    }
+    public static void setVehicleID(vehicleIDs VehicleID) {
+        Gang.vehicleID = VehicleID;
     }
     static String getDefaultGunID() {
         return defaultGunID;

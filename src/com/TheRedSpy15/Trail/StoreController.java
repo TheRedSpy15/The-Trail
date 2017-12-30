@@ -23,9 +23,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 
-import static com.TheRedSpy15.trail.Gang.*;
-import static com.TheRedSpy15.trail.Main.*;
-
 public class StoreController extends Store {
 
     @FXML private Slider waterSlider;
@@ -41,33 +38,33 @@ public class StoreController extends Store {
 
         cartValue = (waterSlider.getValue() * 0.25) + (foodSlider.getValue() * 0.50);
 
-        if (getMoney() >= cartValue){
+        if (Gang.getMoney() >= cartValue){
 
-            setMoney(getMoney() - cartValue);
+            Gang.setMoney(Gang.getMoney() - cartValue);
 
-            setFood(getFood() + (int) foodSlider.getValue());
-            setWater(getWater() + (int) waterSlider.getValue());
+            Gang.setFood(Gang.getFood() + (int) foodSlider.getValue());
+            Gang.setWater(Gang.getWater() + (int) waterSlider.getValue());
 
             TravelClass.travelSetup();
 
             // determines if the scene is being used in alert window or main window and changes depending on that
-            if (getMainWindow().getScene().equals(getStoreScene())){
+            if (Main.getMainWindow().getScene().equals(Main.getStoreScene())){
 
                 // setting window scene to travel pane
-                getMainWindow().setScene(new Scene(getTravelPane()));
-                checkFullScreen();
+                Main.getMainWindow().setScene(new Scene(Main.getTravelPane()));
+                Main.checkFullScreen();
             }else{
 
                 // Changing alert window scene to settlement scene
-                getAlertWindow().setScene(getCityScene());
+                Main.getAlertWindow().setScene(Main.getCityScene());
             }
 
         // show not enough money scene in alert window with the amount over
         }else{
 
-            amountOver = (short) (getMoney() - cartValue);
+            amountOver = (short) (Gang.getMoney() - cartValue);
 
-            alert.notEnoughMoney(amountOver);
+            Main.alert.notEnoughMoney(amountOver);
         }
     }
 
@@ -75,15 +72,15 @@ public class StoreController extends Store {
     private void gunStoreBtn(){
 
         // determines if the scene is being used in alert window or main window and changes depending on that
-        if (!(getAlertWindow().isShowing())){
+        if (!(Main.getAlertWindow().isShowing())){
 
             // setting window scene to travel pane
-            getMainWindow().setScene(getGunStoreScene());
-            checkFullScreen();
+            Main.getMainWindow().setScene(Main.getGunStoreScene());
+            Main.checkFullScreen();
         }else{
 
             // Changing alert window scene to settlement scene
-            getAlertWindow().setScene(getGunStoreScene());
+            Main.getAlertWindow().setScene(Main.getGunStoreScene());
         }
     }
 
@@ -92,9 +89,9 @@ public class StoreController extends Store {
     public void initialize(){
 
         // On starting class, update labels and max value of sliders
-        moneyLabel.setText("Money: $"+(int) getMoney());
-        currentFood.setText("FOOD: "+ getFood());
-        currentWater.setText("WATER: "+ getWater());
+        moneyLabel.setText("Money: $"+(int) Gang.getMoney());
+        currentFood.setText("FOOD: "+ Gang.getFood());
+        currentWater.setText("WATER: "+ Gang.getWater());
 
         // random store inventory
         waterSlider.setMax((int) (Math.random() * 1500) + 1000);

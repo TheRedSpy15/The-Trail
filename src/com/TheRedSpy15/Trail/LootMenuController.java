@@ -21,8 +21,6 @@ package com.TheRedSpy15.trail;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-import static com.TheRedSpy15.trail.Gang.*;
-
 public class LootMenuController extends Main {
 
     @FXML private Label moneyLbl;
@@ -52,10 +50,10 @@ public class LootMenuController extends Main {
     @FXML
     private void setTakeBtn(){
 
-        setMoney(getMoney() + moneyLOOT);
-        setFood(getFood() + foodLOOT);
-        setWater(getWater() + waterLOOT);
-        setAmmo(getAmmo() + ammoLOOT);
+        Gang.setMoney(Gang.getMoney() + moneyLOOT);
+        Gang.setFood(Gang.getFood() + foodLOOT);
+        Gang.setWater(Gang.getWater() + waterLOOT);
+        Gang.setAmmo(Gang.getAmmo() + ammoLOOT);
 
         getAlertWindow().close();
     }

@@ -5,8 +5,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import static com.TheRedSpy15.trail.Gang.*;
-
 public class InventoryController extends MidGameMenu {
 
     @FXML private Label armorLbl;
@@ -23,17 +21,17 @@ public class InventoryController extends MidGameMenu {
 
     @FXML private void initialize(){
 
-        foodLbl.setText("Food: "+ getFood());
-        armorLbl.setText("Armored Vests: "+getBodyArmor());
-        waterLbl.setText("Water: "+ getWater());
-        ammoLbl.setText("Ammo: "+ getAmmo());
-        moneyLbl.setText("Money: "+(int) getMoney());
-        carImage.setImage(new Image(getCarSpriteURL()));
-        scoreLbl.setText("Score: "+ getScore());
-        gunModelLbl.setText("Model: "+ getGunID());
-        damageLbl.setText("Damage: "+ getBaseAttackDamage());
-        gunImage.setImage(new Image(getGunSpriteURL()));
-        grenadeLbl.setText("Grenades: "+ getGrenades());
+        foodLbl.setText("Food: "+ Gang.getFood());
+        armorLbl.setText("Armored Vests: "+ Gang.getBodyArmor());
+        waterLbl.setText("Water: "+ Gang.getWater());
+        ammoLbl.setText("Ammo: "+ Gang.getAmmo());
+        moneyLbl.setText("Money: "+(int) Gang.getMoney());
+        carImage.setImage(new Image(Gang.getCarSpriteURL()));
+        scoreLbl.setText("Score: "+ Gang.getScore());
+        gunModelLbl.setText("Model: "+ Gang.getGunID());
+        damageLbl.setText("Damage: "+ Gang.getBaseAttackDamage());
+        gunImage.setImage(new Image(Gang.getGunSpriteURL()));
+        grenadeLbl.setText("Grenades: "+ Gang.getGrenades());
     }
 
     @FXML private void backBtn(){

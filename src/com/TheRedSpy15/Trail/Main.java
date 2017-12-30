@@ -68,11 +68,11 @@ package com.TheRedSpy15.trail;
     Features
 
     * A food portion scene with sliders
+    * Saving data - serializing
     * View gang member scene in mid game menu
     * Add red car to dealer ship
     * Different cars have different specs
     * help scene in mid game menu
-    * More cities
     * Alert box need huge rework
     * Personal armoury (gun inventory for selecting different guns with different traits)
     * More guns
@@ -94,6 +94,14 @@ import javafx.stage.Stage;
 import static com.TheRedSpy15.trail.Gang.*;
 import static javafx.scene.media.AudioClip.INDEFINITE;
 
+/**
+ *
+ * Serves as the class where the program gets launched.
+ *
+ * It also, provides some methods that are useful utilises designed specifically
+ * for the Trail
+ *
+ */
 public class Main extends Application{
 
     // Javafx - WAY too many variables here
@@ -146,8 +154,13 @@ public class Main extends Application{
         // setting up list of cities
         cities.add("Tallahassee, Florida");
         cities.add("Atlanta, Georgia");
+        cities.add("Nashville, Tennessee");
         cities.add("Frankfort, Kentucky");
+        cities.add("Jefferson City, Missouri");
+        cities.add("Kansas City, Kansas");
         cities.add("Denver, Colorado");
+        cities.add("Salt Lake City, Utah");
+        cities.add("Las Vegas, Nevada");
         cities.add("Salem, Oregon");
 
         // setting up description scene, needs to be moved
@@ -183,21 +196,54 @@ public class Main extends Application{
         getMainWindow().show();
     }
 
+    /**
+     *
+     * Used to limit Food, Water, Money, and Health conditions. It also,
+     * prevents the values from being negative.
+     *
+     */
     static void checkValues(){
 
         if (getFood() < 0) setFood(0);
         if (getWater() < 0) setWater(0);
-        if (getMoney() > 10000) setMoney(100000);
         if (getMoney() < 0) setMoney(0);
         if (getHealthConditions() < 0) setHealthConditions(0);
     }
 
+    /**
+     *
+     * Checks the value of "fullScreen" and sets the Main stage to full screen based upon it's value.
+     *
+     */
     static void checkFullScreen(){
 
-        if (fullScreen && !getAlertWindow().isShowing()){
+        if (fullScreen && !getAlertWindow().isShowing()) getMainWindow().setFullScreen(true);
+    }
 
-            getMainWindow().setFullScreen(true);
+    /**
+     *
+     * It's return object is based upon the value of "vehicleID", NOT "vehicleIDs"
+     *
+     * @return
+     * Objects that implement the vehicle interface :
+     * gCar (GreenCar),
+     * bTruck (BlueTruck),
+     * rCar (RallyCar)
+     */
+    static Vehicle determineVehicle(){
+
+        GreenCar gCar = new GreenCar();
+        BlueTruck bTruck = new BlueTruck();
+        RallyCar rCar = new RallyCar();
+
+        switch (Gang.getVehicleID()){
+            case BLUETRUCK:
+                return bTruck;
+            case RALLYCAR:
+                return rCar;
         }
+
+        return gCar;
     }
 
     // Music task
@@ -218,11 +264,20 @@ public class Main extends Application{
         }
     };
 
+    /**
+     *
+     * Creates a random values between the Max and Min values. If it is equal to Target,
+     * it returns true
+     *
+     * @param max Max range
+     * @param min Min range
+     * @param target Value the random value must be equal to in order to return true
+     * @return True / False
+     */
     static boolean Chance(byte max, byte min, byte target){
 
         int Chance = (int)(Math.random()*max+min);
 
-        // return true if chance is equal to 90
         return Chance == target;
     }
 

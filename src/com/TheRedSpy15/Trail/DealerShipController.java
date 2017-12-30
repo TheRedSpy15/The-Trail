@@ -21,9 +21,6 @@ package com.TheRedSpy15.trail;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-import static com.TheRedSpy15.trail.Gang.*;
-import static com.TheRedSpy15.trail.Main.*;
-
 public class DealerShipController extends Store {
 
     @FXML private Label moneyLbl2;
@@ -31,51 +28,51 @@ public class DealerShipController extends Store {
 
     public void blueTruck(){
 
-        if (getMoney() >= 5000){
+        if (Gang.getMoney() >= 5000){
 
             purchaseItem( (short) 5000, (short) 1, "BLUE TRUCK");
 
-            setCarSpriteURL("com/TheRedSpy15/trail/bluetruck.png");
+            Gang.setCarSpriteURL("com/TheRedSpy15/trail/bluetruck.png");
 
-            moneyLbl1.setText("Money: $"+ getMoney());
-        }else if (getMoney() < 5000){
+            moneyLbl1.setText("Money: $"+ Gang.getMoney());
+        }else if (Gang.getMoney() < 5000){
 
-            amountOver = (short) (getMoney() - 5000);
+            amountOver = (short) (Gang.getMoney() - 5000);
 
-            alert.alert("Amount over: ");
+            Main.alert.alert("Amount over: ");
         }
     }
 
     @FXML private void setBackBtn1(){
 
-        getAlertWindow().setScene(getCityScene());
+        Main.getAlertWindow().setScene(Main.getCityScene());
     }
 
     @FXML private void setBackBtn2(){
 
-        getAlertWindow().setScene(getCityScene());
+        Main.getAlertWindow().setScene(Main.getCityScene());
     }
 
     public void rallyCar(){
 
-        if (getMoney() >= 3500){
+        if (Gang.getMoney() >= 3500){
 
             purchaseItem( (short) 3500, (short) 1, "RALLY CAR");
 
-            setCarSpriteURL("com/TheRedSpy15/trail/rallycar.png");
+            Gang.setCarSpriteURL("com/TheRedSpy15/trail/rallycar.png");
 
-            moneyLbl1.setText("Money: $"+ getMoney());
-        }else if (getMoney() < 3500){
+            moneyLbl1.setText("Money: $"+ Gang.getMoney());
+        }else if (Gang.getMoney() < 3500){
 
-            amountOver = (short) (getMoney() - 3500);
+            amountOver = (short) (Gang.getMoney() - 3500);
 
-            alert.alert("Amount over: "+amountOver);
+            Main.alert.alert("Amount over: "+amountOver);
         }
     }
 
     @FXML private void initialize(){
 
-        moneyLbl1.setText("Your money: $"+(short) getMoney());
-        moneyLbl2.setText("Your money: $"+(short) getMoney());
+        moneyLbl1.setText("Your money: $"+(short) Gang.getMoney());
+        moneyLbl2.setText("Your money: $"+(short) Gang.getMoney());
     }
 }

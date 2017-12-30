@@ -22,9 +22,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 
-import static com.TheRedSpy15.trail.Gang.*;
-import static com.TheRedSpy15.trail.Main.*;
-
 public class GunStoreController extends Store {
 
     @FXML private Label moneyLbl;
@@ -33,96 +30,96 @@ public class GunStoreController extends Store {
 
     @FXML private void ak47Btn(){ // ak47
 
-        if (getMoney() >= 500){
+        if (Gang.getMoney() >= 500){
 
             purchaseItem( (short) 500, (short) 1, "AK-47");
 
-            setBaseAttackDamage(45);
+            Gang.setBaseAttackDamage(45);
 
-            setGunID("AK-47");
-            setGunSpriteURL("com/TheRedSpy15/trail/ak47.png");
+            Gang.setGunID("AK-47");
+            Gang.setGunSpriteURL("com/TheRedSpy15/trail/ak47.png");
 
-            moneyLbl.setText("Money: $"+ getMoney());
-        }else if (getMoney() < 500){
+            moneyLbl.setText("Money: $"+ Gang.getMoney());
+        }else if (Gang.getMoney() < 500){
 
-            amountOver = (short) (getMoney() - 500);
+            amountOver = (short) (Gang.getMoney() - 500);
 
-            alert.notEnoughMoney(amountOver);
+            Main.alert.notEnoughMoney(amountOver);
         }
     }
 
     @FXML private void setArmorBtn(){ // armor
 
-        if (getMoney() >= 500){
+        if (Gang.getMoney() >= 500){
 
             purchaseItem( (short) 500, (short) 1, "BULLET PROOF VEST");
 
-            setBodyArmor((byte) (getBodyArmor() + 1));
+            Gang.setBodyArmor((byte) (Gang.getBodyArmor() + 1));
 
-            moneyLbl.setText("Money: $"+ getMoney());
-        }else if (getMoney() < 500){
+            moneyLbl.setText("Money: $"+ Gang.getMoney());
+        }else if (Gang.getMoney() < 500){
 
-            amountOver = (short) (getMoney() - 500);
+            amountOver = (short) (Gang.getMoney() - 500);
 
-            alert.notEnoughMoney(amountOver);
+            Main.alert.notEnoughMoney(amountOver);
         }
     }
 
     @FXML private void grenadeBtn(){ // grenade
 
-        if (getMoney() >= (1000 * grenadeSlider.getValue())){
+        if (Gang.getMoney() >= (1000 * grenadeSlider.getValue())){
 
             purchaseItem( (short) 1000, (short) grenadeSlider.getValue(), "GRENADE ("+(byte)grenadeSlider.getValue()+")");
 
-            setGrenades(getGrenades() + (byte) grenadeSlider.getValue());
+            Gang.setGrenades(Gang.getGrenades() + (byte) grenadeSlider.getValue());
 
-            moneyLbl.setText("Money: $"+ getMoney());
-        }else if (getMoney() < (1000 * grenadeSlider.getValue())){
+            moneyLbl.setText("Money: $"+ Gang.getMoney());
+        }else if (Gang.getMoney() < (1000 * grenadeSlider.getValue())){
 
-            amountOver = (short) (getMoney() - (1000 * grenadeSlider.getValue()));
+            amountOver = (short) (Gang.getMoney() - (1000 * grenadeSlider.getValue()));
 
-            alert.notEnoughMoney(amountOver);
+            Main.alert.notEnoughMoney(amountOver);
         }
     }
 
     @FXML private void ammoBtn(){ // ammo
 
-        if (getMoney() >= (25 * ammoSlider.getValue())){
+        if (Gang.getMoney() >= (25 * ammoSlider.getValue())){
 
             purchaseItem( (short) 25, (short) ammoSlider.getValue(), "AMMO ("+(short)ammoSlider.getValue()+")");
 
-            setAmmo(getAmmo() + (short) ammoSlider.getValue());
+            Gang.setAmmo(Gang.getAmmo() + (short) ammoSlider.getValue());
 
             playPurchaseSound();
 
-            moneyLbl.setText("Money: $"+ getMoney());
-        }else if (getMoney() < (25 * ammoSlider.getValue())){
+            moneyLbl.setText("Money: $"+ Gang.getMoney());
+        }else if (Gang.getMoney() < (25 * ammoSlider.getValue())){
 
-            amountOver = (short) (getMoney() - (25 * ammoSlider.getValue()));
+            amountOver = (short) (Gang.getMoney() - (25 * ammoSlider.getValue()));
 
-            alert.notEnoughMoney(amountOver);
+            Main.alert.notEnoughMoney(amountOver);
         }
     }
 
     @FXML private void backBtn(){ // back to store
 
-        store.updateStores();
+        Main.store.updateStores();
 
         // determines if the scene is being used in alert window or main window and changes depending on that
-        if (!(getAlertWindow().isShowing())){
+        if (!(Main.getAlertWindow().isShowing())){
 
             // setting window scene to travel pane
-            getMainWindow().setScene(getStoreScene());
-            checkFullScreen();
+            Main.getMainWindow().setScene(Main.getStoreScene());
+            Main.checkFullScreen();
         }else{
 
             // Changing alert window scene to settlement scene
-            getAlertWindow().setScene(getStoreScene());
+            Main.getAlertWindow().setScene(Main.getStoreScene());
         }
     }
 
     @FXML private void initialize(){
 
-        moneyLbl.setText("Your money: $"+(short) getMoney());
+        moneyLbl.setText("Your money: $"+(short) Gang.getMoney());
     }
 }

@@ -29,7 +29,7 @@
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Region prefHeight="100.0" prefWidth="438.0" HBox.hgrow="ALWAYS" />
-            <Label fx:id="moneyLabel" prefHeight="80.0" prefWidth="449.0" text="Money: $0" textFill="GREEN">
+            <Label fx:id="moneyLabel" prefHeight="80.0" prefWidth="449.0" text="Money: $0" textFill="GREEN" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="Impact" size="30.0" />
                </font>
@@ -43,7 +43,7 @@
    <left>
       <VBox prefHeight="300.0" prefWidth="182.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="PURCHASE" textFill="PURPLE">
+            <Label text="PURCHASE" textFill="PURPLE" VBox.vgrow="ALWAYS">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -54,12 +54,12 @@
                   <Font name="Impact" size="24.0" />
                </font>
             </Label>
-            <Slider fx:id="waterSlider" majorTickUnit="75.0" max="500.0" prefHeight="59.0" prefWidth="182.0" showTickLabels="true" showTickMarks="true" snapToTicks="true">
+            <Slider fx:id="waterSlider" majorTickUnit="75.0" max="500.0" prefHeight="59.0" prefWidth="182.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" VBox.vgrow="ALWAYS">
                <padding>
                   <Insets left="20.0" top="20.0" />
                </padding>
             </Slider>
-            <Slider fx:id="foodSlider" majorTickUnit="75.0" max="500.0" prefHeight="107.0" prefWidth="182.0" showTickLabels="true" showTickMarks="true" snapToTicks="true">
+            <Slider fx:id="foodSlider" majorTickUnit="75.0" max="500.0" prefHeight="107.0" prefWidth="182.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" VBox.vgrow="ALWAYS">
                <padding>
                   <Insets left="20.0" top="20.0" />
                </padding>
@@ -70,7 +70,7 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="85.0" prefWidth="135.0" text="Water $0.25" textFill="PURPLE">
+            <Label prefHeight="85.0" prefWidth="135.0" text="Water $0.25" textFill="PURPLE" VBox.vgrow="ALWAYS">
                <padding>
                   <Insets left="10.0" top="30.0" />
                </padding>
@@ -81,7 +81,7 @@
                   <Insets />
                </VBox.margin>
             </Label>
-            <Label prefHeight="85.0" prefWidth="135.0" text="Food $0.50" textFill="PURPLE">
+            <Label prefHeight="85.0" prefWidth="135.0" text="Food $0.50" textFill="PURPLE" VBox.vgrow="ALWAYS">
                <padding>
                   <Insets left="10.0" top="15.0" />
                </padding>
@@ -93,22 +93,28 @@
       </VBox>
    </center>
    <right>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="222.0" prefWidth="140.0" BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="17.0" prefWidth="91.0" text="INVENTORY" textFill="PURPLE">
+            <Label prefHeight="28.0" prefWidth="106.0" text="INVENTORY" textFill="PURPLE" VBox.vgrow="ALWAYS">
                <font>
-                  <Font name="Impact" size="13.0" />
+                  <Font name="Impact" size="23.0" />
                </font>
             </Label>
-            <Label fx:id="currentWater" text="WATER: 0" textFill="PURPLE" />
-            <Label fx:id="currentFood" text="FOOD: 0" textFill="PURPLE" />
+            <Label fx:id="currentWater" prefHeight="27.0" prefWidth="132.0" text="WATER: 0" textFill="BLUE" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label fx:id="currentFood" prefHeight="17.0" prefWidth="127.0" text="FOOD: 0" textFill="BROWN" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
          </children>
       </VBox>
    </right>
    <bottom>
-      <HBox>
+      <AnchorPane>
          <children>
-            <Button fx:id="purchaseBtn" mnemonicParsing="false" onAction="#purchase" prefHeight="78.0" prefWidth="303.0" text="Purchase / Leave" textFill="RED" BorderPane.alignment="CENTER">
+            <Button fx:id="purchaseBtn" mnemonicParsing="false" onAction="#purchase" prefHeight="78.0" prefWidth="303.0" text="Purchase / Leave" textFill="RED" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="CENTER" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="Impact" size="26.0" />
                </font>
@@ -116,12 +122,12 @@
                   <Insets bottom="20.0" />
                </BorderPane.margin>
             </Button>
-            <Button fx:id="gunStoreBtn" mnemonicParsing="false" onAction="#gunStoreBtn" prefHeight="78.0" prefWidth="303.0" text=" Gun store --&gt;" textFill="RED">
+            <Button fx:id="gunStoreBtn" layoutX="300.0" mnemonicParsing="false" onAction="#gunStoreBtn" prefHeight="78.0" prefWidth="303.0" text=" Gun store --&gt;" textFill="RED" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="Impact" size="26.0" />
                </font>
             </Button>
          </children>
-      </HBox>
+      </AnchorPane>
    </bottom>
 </BorderPane>

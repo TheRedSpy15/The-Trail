@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -30,22 +31,22 @@
             <Image url="@glock.png" />
          </image>
       </ImageView>
-      <Label fx:id="foodLbl" layoutX="14.0" layoutY="77.0" prefHeight="29.0" prefWidth="178.0" text="Food: 0" textFill="WHITE">
+      <Label fx:id="foodLbl" layoutX="14.0" layoutY="77.0" prefHeight="29.0" prefWidth="178.0" text="Food: 0" textFill="BROWN">
          <font>
             <Font name="Impact" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="waterLbl" layoutX="14.0" layoutY="106.0" prefHeight="29.0" prefWidth="178.0" text="Water: 0" textFill="WHITE">
+      <Label fx:id="waterLbl" layoutX="14.0" layoutY="106.0" prefHeight="29.0" prefWidth="178.0" text="Water: 0" textFill="BLUE">
          <font>
             <Font name="Impact" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="ammoLbl" layoutX="14.0" layoutY="135.0" prefHeight="29.0" prefWidth="178.0" text="Ammo: 0" textFill="WHITE">
+      <Label fx:id="ammoLbl" layoutX="14.0" layoutY="135.0" prefHeight="29.0" prefWidth="178.0" text="Ammo: 0" textFill="GREY">
          <font>
             <Font name="Impact" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="14.0" prefHeight="46.0" prefWidth="178.0" text="Inventory" textFill="PURPLE">
+      <Label layoutX="14.0" layoutY="14.0" prefHeight="46.0" prefWidth="178.0" text="Inventory" textFill="WHITE">
          <font>
             <Font name="Impact" size="40.0" />
          </font>
@@ -56,7 +57,7 @@
             <Font name="Impact" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="668.0" layoutY="14.0" prefHeight="50.0" prefWidth="61.0" text="Car" textFill="PURPLE">
+      <Label layoutX="668.0" layoutY="14.0" prefHeight="50.0" prefWidth="61.0" text="Car" textFill="WHITE">
          <font>
             <Font name="Impact" size="40.0" />
          </font>
@@ -78,7 +79,7 @@
          </font>
       </Label>
       <Separator layoutX="307.0" layoutY="67.0" prefWidth="200.0" />
-      <Label layoutX="362.0" layoutY="10.0" prefHeight="58.0" prefWidth="74.0" text="Gun" textFill="PURPLE">
+      <Label layoutX="362.0" layoutY="10.0" prefHeight="58.0" prefWidth="74.0" text="Gun" textFill="WHITE">
          <font>
             <Font name="Impact" size="40.0" />
          </font>
@@ -88,22 +89,22 @@
             <Font name="Impact" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="damageLbl" layoutX="314.0" layoutY="296.0" prefHeight="30.0" prefWidth="120.0" text="Damage: 15" textFill="WHITE">
+      <Label fx:id="damageLbl" layoutX="314.0" layoutY="296.0" prefHeight="30.0" prefWidth="120.0" text="Damage: 15" textFill="RED">
          <font>
             <Font name="Impact" size="20.0" />
          </font>
       </Label>
-      <Button fx:id="backBtn" layoutX="658.0" layoutY="321.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="50.0" prefWidth="120.0" text="Back" textFill="RED">
+      <Button fx:id="backBtn" layoutX="658.0" layoutY="321.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: black;" text="Back" textFill="RED">
          <font>
             <Font name="Impact" size="27.0" />
          </font>
       </Button>
-      <Label fx:id="grenadeLbl" layoutX="14.0" layoutY="164.0" prefHeight="29.0" prefWidth="178.0" text="Grenades: 0" textFill="WHITE">
+      <Label fx:id="grenadeLbl" layoutX="14.0" layoutY="164.0" prefHeight="29.0" prefWidth="178.0" text="Grenades: 0" textFill="ORANGE">
          <font>
             <Font name="Impact" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="armorLbl" layoutX="14.0" layoutY="193.0" prefHeight="29.0" prefWidth="206.0" text="Armored Vests: 0" textFill="WHITE">
+      <Label fx:id="armorLbl" layoutX="14.0" layoutY="193.0" prefHeight="29.0" prefWidth="206.0" text="Armored Vests: 0" textFill="#b5a642">
          <font>
             <Font name="Impact" size="24.0" />
          </font>

@@ -21,8 +21,6 @@ package com.TheRedSpy15.trail;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
-import static com.TheRedSpy15.trail.Gang.*;
-
 public class GangController extends Main {
     
     @FXML  private TextField memberName1;
@@ -47,12 +45,12 @@ public class GangController extends Main {
             getMainWindow().setScene(getStoreScene());
             checkFullScreen();
 
-            getGangMembers().push(memberName1.getText());
-            getGangMembers().push(memberName2.getText());
-            getGangMembers().push(memberName3.getText());
-            getGangMembers().push(memberName4.getText());
-            getGangMembers().push(memberName5.getText());
-            getGangMembers().push(memberName6.getText());
+            Gang.getGangMembers().push(memberName1.getText());
+            Gang.getGangMembers().push(memberName2.getText());
+            Gang.getGangMembers().push(memberName3.getText());
+            Gang.getGangMembers().push(memberName4.getText());
+            Gang.getGangMembers().push(memberName5.getText());
+            Gang.getGangMembers().push(memberName6.getText());
         }else {
 
             alert.alert("Text fields cannot be empty");

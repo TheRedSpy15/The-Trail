@@ -21,9 +21,6 @@ package com.TheRedSpy15.trail;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-import static com.TheRedSpy15.trail.Gang.*;
-import static com.TheRedSpy15.trail.Main.*;
-
 public class ThiefMenuController {
 
     @FXML private Label loseLbl;
@@ -33,37 +30,37 @@ public class ThiefMenuController {
 
         amount = (short) (Math.random() * 500);
 
-        if (amount > getMoney()) amount = (short) getMoney();
+        if (amount > Gang.getMoney()) amount = (short) Gang.getMoney();
 
         loseLbl.setText("Would lose: $"+amount);
     }
 
     @FXML public void setIgnoreBtn(){
 
-        setMoney(getMoney() - amount);
+        Gang.setMoney(Gang.getMoney() - amount);
 
-        getAlertWindow().close();
+        Main.getAlertWindow().close();
     }
 
     @FXML public void setCaptureBtn(){
 
         int chance = (int) (Math.random() * 100);
 
-        if (chance >= 50 && getCapturedThieves() == 0) {
+        if (chance >= 50 && Gang.getCapturedThieves() == 0) {
 
-            alert.alert("You have capture the thief, turn them in for a reward");
+            Main.alert.alert("You have capture the thief, turn them in for a reward");
 
-            setCapturedThieves(getCapturedThieves() + 1);
+            Gang.setCapturedThieves(Gang.getCapturedThieves() + 1);
         }else {
 
-            alert.alert("You failed catch them and they got away");
+            Main.alert.alert("You failed catch them and they got away");
 
-            setMoney(getMoney() - amount);
+            Gang.setMoney(Gang.getMoney() - amount);
         }
     }
 
     @FXML public void setAttackBtn(){
 
-        getAlertWindow().setScene(getShootOutScene());
+        Main.getAlertWindow().setScene(Main.getShootOutScene());
     }
 }

@@ -22,8 +22,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 
-import static com.TheRedSpy15.trail.Main.*;
-
 public class SellController extends Gang {
 
     @FXML private Label moneyLbl;
@@ -44,7 +42,7 @@ public class SellController extends Gang {
         setAmmo(getAmmo() - (short) ammoSlider.getValue());
         setGrenades(getGrenades() - (byte) grenadeSlider.getValue());
 
-        store.playPurchaseSound();
+        Main.store.playPurchaseSound();
 
         setMoney(getMoney() +
                 (waterSlider.getValue() * 0.15) +
@@ -53,7 +51,7 @@ public class SellController extends Gang {
                 (grenadeSlider.getValue() * 50)
         );
 
-        getAlertWindow().setScene(getCityScene());
+        Main.getAlertWindow().setScene(Main.getCityScene());
     }
 
     @FXML
@@ -62,7 +60,7 @@ public class SellController extends Gang {
         switch (getCarSpriteURL()) {
             case "com/TheRedSpy15/trail/bluetruck.png":  // Blue truck
 
-                alert.sold("Blue truck", (short) 1, (short) 2500);
+                Main.alert.sold("Blue truck", (short) 1, (short) 2500);
 
                 setCarSpriteURL(getDefaultCarURL());
 
@@ -70,7 +68,7 @@ public class SellController extends Gang {
                 break;
             case "com/TheRedSpy15/trail/rallycar.png":  // Rally car
 
-                alert.sold("Rally car", (short) 1, (short) 1500);
+                Main.alert.sold("Rally car", (short) 1, (short) 1500);
 
                 setCarSpriteURL(getDefaultCarURL());
 
@@ -78,7 +76,7 @@ public class SellController extends Gang {
                 break;
             default:
 
-                alert.cannotSell("car");
+                Main.alert.cannotSell("car");
                 break;
         }
     }
@@ -88,19 +86,19 @@ public class SellController extends Gang {
 
         if (getGunSpriteURL().equals("com/TheRedSpy15/trail/ak47.png")){ // AK-47
 
-            store.playPurchaseSound();
+            Main.store.playPurchaseSound();
 
             setMoney(getMoney() + 350);
             setBaseAttackDamage(getDefaultAttackDMG());
             setGunID(getDefaultGunID());
             setGunSpriteURL(getDefaultGunSpriteURL());
 
-            alert.sold("AK-47", (short) 1, (short) 350);
+            Main.alert.sold("AK-47", (short) 1, (short) 350);
 
             moneyLbl.setText("Money: $"+getMoney());
         }else{
 
-            alert.alert("gun");
+            Main.alert.cannotSell("gun");
         }
     }
 

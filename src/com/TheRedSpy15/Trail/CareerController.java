@@ -21,15 +21,13 @@ package com.TheRedSpy15.trail;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 
-import static com.TheRedSpy15.trail.Gang.*;
-
 public class CareerController extends Main {
 
     @FXML
     private void hitman() {
 
-        setMoney(getMoney() + 3500);
-        setWage(1000);
+        Gang.setMoney(Gang.getMoney() + 3500);
+        Gang.setWage(1000);
         gang.gangSetupMethod();
         getMainWindow().setScene(new Scene(getPossePane()));
         checkFullScreen();
@@ -38,9 +36,9 @@ public class CareerController extends Main {
     @FXML
     private void drugDealer() {
 
-        setMoney(getMoney() + 2000);
-        setScore(getScore() + 10000);
-        setWage(500);
+        Gang.setMoney(Gang.getMoney() + 2000);
+        Gang.setScore(Gang.getScore() + 10000);
+        Gang.setWage(500);
         gang.gangSetupMethod();
         getMainWindow().setScene(new Scene(getPossePane()));
         checkFullScreen();
@@ -49,9 +47,9 @@ public class CareerController extends Main {
     @FXML
     private void thief() {
 
-        setMoney(getMoney() + 500);
-        setScore(getScore() + 15000);
-        setWage((int) (Math.random() * 1000) + 250);
+        Gang.setMoney(Gang.getMoney() + 500);
+        Gang.setScore(Gang.getScore() + 15000);
+        Gang.setWage((int) (Math.random() * 1000) + 250);
         gang.gangSetupMethod();
         getMainWindow().setScene(new Scene(getPossePane()));
         checkFullScreen();
