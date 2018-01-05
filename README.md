@@ -2,7 +2,6 @@
 The remake of Oregon Trail in JavaFX
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/99a9da07e094482d921f1930eaca3a5f)](https://www.codacy.com/app/hjadar15/The-Trail?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=TheRedSpy15/The-Trail&amp;utm_campaign=Badge_Grade)
-[![codecov](https://codecov.io/gh/TheRedSpy15/The-Trail/branch/master/graph/badge.svg)](https://codecov.io/gh/TheRedSpy15/The-Trail)
 [![codebeat badge](https://codebeat.co/badges/887b7850-0e7b-4e5b-8c0f-925ba5d31f99)](https://codebeat.co/projects/github-com-theredspy15-the-trail-pre-update-branch)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
