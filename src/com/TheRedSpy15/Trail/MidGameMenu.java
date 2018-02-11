@@ -2,7 +2,7 @@ package com.TheRedSpy15.trail;
 
 /*
 
-   Copyright [2017] [TheRedSpy15]
+   Copyright 2018 TheRedSpy15
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -30,10 +30,10 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-public class MidGameMenu extends Main {
+public class MidGameMenu {
 
-    private static Parent menuPane;
-    static Scene menuScene;
+    private static Parent menuPane, deceasedListPane, gangListPane;
+    private static Scene menuScene;
 
     protected static void menuMethod(){
 
@@ -47,108 +47,157 @@ public class MidGameMenu extends Main {
 
         // INVENTORY SCENE
         try {
-            setInventoryPane(FXMLLoader.load(Main.class.getResource("Inventory.fxml")));
+            Main.main.setInventoryPane(FXMLLoader.load(Main.class.getResource("Inventory.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        setInventoryScene(new Scene(getInventoryPane()));
+        Main.main.setInventoryScene(new Scene(Main.main.getInventoryPane()));
 
-        setMenuWindow(new Stage());
+        Main.main.setMenuWindow(new Stage());
 
-        getMenuWindow().setTitle("MENU");
+        Main.main.getMenuWindow().setTitle("MENU");
 
         // preventing interaction with other windows
-        getMenuWindow().initModality(Modality.APPLICATION_MODAL);
+        Main.main.getMenuWindow().initModality(Modality.APPLICATION_MODAL);
 
-        getMenuWindow().setScene(menuScene);
+        Main.main.getMenuWindow().setScene(menuScene);
     }
 
     /**
-     *
      * Sets the menu stage's scene to the inventory scene
-     *
      */
-    protected static void inventoryMethod(){
+    static void inventoryMethod(){
 
-        getMenuWindow().setScene(getInventoryScene());
+        Main.main.getMenuWindow().setScene(Main.main.getInventoryScene());
     }
 
     /**
-     *
-     * Creates, and sets the scene to one that allows the player(s) to set the food portions
-     *
+     * Sets the menu stage's scene to the gang list scene,
+     * as well as updating it.
      */
-    protected static void foodPortionSet(){
+    static void gangMethod(){
 
-        Button BuffetDietbtn = new Button("Buffet");
+        // Gang list
+        try {
+            gangListPane = FXMLLoader.load(Main.class.getResource("GangList.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene gangListScene = new Scene(gangListPane);
+
+        Main.main.getMenuWindow().setScene(gangListScene);
+    }
+
+    /**
+     * Sets the menu stage's scene to the deceased list scene,
+     * as well as updating it.
+     */
+    static void deceasedMethod(){
+
+        // Gang list
+        try {
+            deceasedListPane = FXMLLoader.load(Main.class.getResource("DeceasedList.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene deceasedListScene = new Scene(deceasedListPane);
+
+        Main.main.getMenuWindow().setScene(deceasedListScene);
+    }
+
+    /**
+     * Creates, and sets the scene to one that
+     * allows the player(s) to set the food portions
+     */
+    static void foodPortionSet(){
+
+        final byte smallIntake = 1;
+        final byte mediumIntake = 2;
+        final byte largeIntake = 3;
+
+        Button BuffetDietBtn = new Button("Buffet");
         VBox FoodPortionsLayout = new VBox(10);
-        Button ExtremeDietbtn = new Button("Extreme");
+        Button ExtremeDietBtn = new Button("Bugs for dinner");
         Label label = new Label("Select your meal plan");
-        Button ModerateDietbtn = new Button("Moderate");
+        Button ModerateDietBtn = new Button("Weight Watchers");
 
         label.setFont(new Font(20));
         label.setStyle("-fx-text-fill: purple;");
         FoodPortionsLayout.setStyle("-fx-background-color: black;");
 
-        ExtremeDietbtn.setOnAction(e -> {
-            Gang.setFoodIntake(1);
-            getMenuWindow().setScene(menuScene);
+        ExtremeDietBtn.setOnAction(e -> {
+            Main.gang.setFoodIntake(smallIntake);
+            back();
         });
 
-        ModerateDietbtn.setOnAction(e -> {
-            Gang.setFoodIntake(2);
-            getMenuWindow().setScene(menuScene);
+        ModerateDietBtn.setOnAction(e -> {
+            Main.gang.setFoodIntake(mediumIntake);
+            back();
         });
 
-        BuffetDietbtn.setOnAction(e -> {
-            Gang.setFoodIntake(3);
-            getMenuWindow().setScene(menuScene);
+        BuffetDietBtn.setOnAction(e -> {
+            Main.gang.setFoodIntake(largeIntake);
+            back();
         });
 
         FoodPortionsLayout.setPadding(new Insets(20,20,20,20));
-        FoodPortionsLayout.getChildren().addAll(label,ExtremeDietbtn,ModerateDietbtn,BuffetDietbtn);
+        FoodPortionsLayout.getChildren().addAll(label,ExtremeDietBtn,ModerateDietBtn,BuffetDietBtn);
 
-        setFoodPortionsScene(new Scene(FoodPortionsLayout,320,200));
+        Main.main.setFoodPortionsScene(new Scene(FoodPortionsLayout,320,200));
     }
 
     /**
-     *
-     * Creates, and sets the scene to one that allows the player(s) to set the pace
-     *
+     * Creates, and sets the scene to one that
+     * allows the player(s) to set the braking
+     * frequency
      */
-    protected static void paceSetterMethod(){
+    static void brakeFrequencySetterMethod(){
+
+        final byte slowSpeed = 5;
+        final byte moderateSpeed = 10;
+        final byte fastSpeed = 15;
 
         VBox PaceLayout = new VBox(10);
-        Label label = new Label("Choose a speed");
-        Button Slowbtn = new Button("Slow pace");
-        Button ModerateSpeedbtn = new Button("Moderate pace");
-        Button Fastbtn = new Button("Fast pace");
+        Label label = new Label("Choose a brake frequency");
+        Button SlowBtn = new Button("Constantly");
+        Button ModerateSpeedBtn = new Button("Time to time");
+        Button FastBtn = new Button("Rarely");
 
         label.setStyle("-fx-text-fill: purple;");
         label.setFont(new Font(20));
         PaceLayout.setStyle("-fx-background-color: black");
 
-        Slowbtn.setOnAction(e -> {
-            Gang.setPace(5);
+        SlowBtn.setOnAction(e -> {
+            Main.gang.setBrakeFrequency(slowSpeed);
             TravelController.animationDuration = 30;
-            getMenuWindow().setScene(menuScene);
+            back();
         });
 
-        ModerateSpeedbtn.setOnAction(e -> {
-            Gang.setPace(10);
+        ModerateSpeedBtn.setOnAction(e -> {
+            Main.gang.setBrakeFrequency(moderateSpeed);
             TravelController.animationDuration = 15;
-            getMenuWindow().setScene(menuScene);
+            back();
         });
 
-        Fastbtn.setOnAction(e -> {
-            Gang.setPace(15);
+        FastBtn.setOnAction(e -> {
+            Main.gang.setBrakeFrequency(fastSpeed);
             TravelController.animationDuration = 10;
-            getMenuWindow().setScene(menuScene);
+            back();
         });
 
         PaceLayout.setPadding(new Insets(20,20,20,20));
-        PaceLayout.getChildren().addAll(label,Slowbtn,ModerateSpeedbtn,Fastbtn);
+        PaceLayout.getChildren().addAll(label,SlowBtn,ModerateSpeedBtn,FastBtn);
 
-        setPaceScene(new Scene(PaceLayout,320,200));
+        Main.main.setPaceScene(new Scene(PaceLayout,320,200));
+    }
+
+
+    /**
+     * A more simple way for scenes that extend mid game menu,
+     * can go back to the menu itself.
+     */
+    protected static void back(){
+
+        Main.main.getMenuWindow().setScene(menuScene);
     }
 }

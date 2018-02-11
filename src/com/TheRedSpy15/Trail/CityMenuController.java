@@ -2,7 +2,7 @@ package com.TheRedSpy15.trail;
 
 /*
 
-   Copyright [2017] [TheRedSpy15]
+   Copyright 2018 TheRedSpy15
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -27,15 +27,14 @@ public class CityMenuController {
 
     private static ListIterator<String> cityName = Main.cities.listIterator();
 
-    @FXML private Label townLbl;
-    @FXML private Label bountyLbl;
+    @FXML private Label townLbl, bountyLbl;
 
     @FXML
     private void store(){
 
         Main.getAlertWindow().setTitle("Store");
         Main.store.updateStores();
-        Main.getAlertWindow().setScene(Main.getStoreScene());
+        Main.getAlertWindow().setScene(Main.main.getStoreScene());
     }
 
     @FXML
@@ -43,20 +42,20 @@ public class CityMenuController {
 
         Main.getAlertWindow().setTitle("Sell");
         Main.store.updateStores();
-        Main.getAlertWindow().setScene(Main.getSellScene());
+        Main.getAlertWindow().setScene(Main.main.getSellScene());
     }
 
     @FXML
     private void keepGoing(){
 
-        Gang.setDistance(Gang.getDistance() - 25);
+        Main.gang.setDistance(Main.gang.getDistance() - 25);
         Main.getAlertWindow().close();
     }
 
     @FXML
     private void claim(){
 
-        if (Gang.getCapturedThieves() > 0){
+        if (Main.gang.getCapturedThieves() > 0){
 
             bountyMethod();
         }else{
@@ -70,13 +69,13 @@ public class CityMenuController {
 
         Main.getAlertWindow().setTitle("Dealer Ship");
         Main.store.updateStores();
-        Main.getAlertWindow().setScene(Main.getDealerScene());
+        Main.getAlertWindow().setScene(Main.main.getDealerScene());
     }
 
     @FXML
     private void setHireBtn(){
 
-        Main.getAlertWindow().setScene(Main.getHireScene());
+        Main.getAlertWindow().setScene(Main.main.getHireScene());
     }
 
     @FXML
@@ -85,8 +84,11 @@ public class CityMenuController {
         String cityNameLOCAL;
 
         // Some what circular linked list
-        if (!cityName.hasNext()) cityNameLOCAL = cityName.previous();
-        else cityNameLOCAL = cityName.next();
+        if (!cityName.hasNext()) {
+            while (cityName.hasPrevious()) cityName.previous();
+
+            cityNameLOCAL = cityName.next();
+        } else cityNameLOCAL = cityName.next();
 
         Main.getAlertWindow().setTitle("City");
         townLbl.setText("You have come up to "+ cityNameLOCAL);
@@ -96,15 +98,15 @@ public class CityMenuController {
 
         int MoneyToClaim;
 
-        MoneyToClaim = Main.rand.nextInt(5000)+1000;
-        MoneyToClaim *= Gang.getCapturedThieves();
+        MoneyToClaim = (int) (Math.random() * 5000) + 1000;
+        MoneyToClaim *= Main.gang.getCapturedThieves();
 
-        Gang.setScore(Gang.getScore() + 50000);
+        Main.gang.setScore(Main.gang.getScore() + 50000);
 
         bountyLbl.setText("You have Claimed: $"+MoneyToClaim);
 
-        Gang.setMoney(Gang.getMoney() + MoneyToClaim);
+        Main.gang.setMoney(Main.gang.getMoney() + MoneyToClaim);
 
-        Gang.setCapturedThieves(0);
+        Main.gang.setCapturedThieves(0);
     }
 }

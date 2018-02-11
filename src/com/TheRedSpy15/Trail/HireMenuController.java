@@ -2,7 +2,7 @@ package com.TheRedSpy15.trail;
 
 /*
 
-   Copyright [2017] [TheRedSpy15]
+   Copyright 2018 TheRedSpy15
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -29,9 +29,11 @@ public class HireMenuController extends Store {
 
     @FXML private void setHireBtn(){
 
-        if (Gang.getMoney() < 5000){
+        final short hireCost = 5000;
 
-            amountOver = (short) (Gang.getMoney() - 5000);
+        if (Main.gang.getMoney() < hireCost){
+
+            amountOver = (short) (Main.gang.getMoney() - hireCost);
 
             Main.alert.notEnoughMoney(amountOver); // Back button support in alert box class needs added
         }else if (nameField.getText().trim().equals("")){
@@ -39,21 +41,19 @@ public class HireMenuController extends Store {
             emptyLbl.setText("Text field CANNOT be empty!");
         }else {
 
-            Gang.getGangMembers().push(nameField.getText());
-            Main.getAlertWindow().setScene(Main.getCityScene());
+            Main.gang.getGangMembers().push(nameField.getText());
+            Main.getAlertWindow().setScene(Main.main.getCityScene());
         }
     }
 
     @FXML private void setBackBtn(){
 
-        Main.getAlertWindow().setScene(Main.getCityScene());
+        Main.getAlertWindow().setScene(Main.main.getCityScene());
     }
 
     @FXML private void initialize(){
 
         emptyLbl.setText("");
         nameField.setText("");
-
-        Main.checkFullScreen();
     }
 }

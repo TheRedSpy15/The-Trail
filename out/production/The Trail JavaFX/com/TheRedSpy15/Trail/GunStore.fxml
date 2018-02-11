@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
@@ -8,7 +9,7 @@
 
 <!--
 
-   Copyright [2017] [TheRedSpy15]
+   Copyright 2018 TheRedSpy15
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -24,7 +25,7 @@
 
 -->
 
-<AnchorPane prefHeight="470.0" prefWidth="600.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.GunStoreController">
+<AnchorPane cache="true" cacheHint="SPEED" prefHeight="470.0" prefWidth="600.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.GunStoreController">
    <children>
       <Label layoutX="14.0" layoutY="14.0" prefHeight="45.0" prefWidth="216.0" text="BoomSticks  &amp; Beyond" textFill="RED">
          <font>
@@ -32,24 +33,30 @@
          </font>
       </Label>
       <Separator layoutX="12.0" layoutY="400.0" prefHeight="9.0" prefWidth="577.0" style="-fx-background-color: red;" AnchorPane.bottomAnchor="61.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="11.0" />
-      <TabPane layoutX="12.0" layoutY="66.0" prefHeight="320.0" prefWidth="577.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="11.0">
-        <tabs>
-          <Tab closable="false" text="AK47">
+      <Label fx:id="moneyLbl" layoutX="375.0" layoutY="14.0" prefHeight="45.0" prefWidth="216.0" text="Money: $0" textFill="GREEN" AnchorPane.rightAnchor="9.0">
+         <font>
+            <Font name="Impact" size="23.0" />
+         </font>
+      </Label>
+      <Separator layoutX="12.0" layoutY="55.0" prefHeight="9.0" prefWidth="577.0" style="-fx-background-color: red;" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="11.0" />
+      <Button fx:id="backBtn" layoutX="24.0" layoutY="417.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: black;" text="Back" textFill="RED" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="24.0">
+         <font>
+            <Font name="Impact" size="23.0" />
+         </font>
+      </Button>
+      <JFXTabPane layoutX="14.0" layoutY="64.0" prefHeight="333.0" prefWidth="577.0" side="BOTTOM" style="-fx-background-color: black;">
+         <tabs>
+          <Tab closable="false" style="-fx-background-color: black;" text="AK47">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Pane prefHeight="292.0" prefWidth="577.0">
                            <children>
-                              <ImageView fitHeight="181.0" fitWidth="247.0" layoutX="166.0" layoutY="45.0" pickOnBounds="true">
+                              <ImageView fitHeight="203.0" fitWidth="332.0" layoutX="123.0" layoutY="46.0" pickOnBounds="true">
                                  <image>
                                     <Image url="@ak47.png" />
                                  </image>
                               </ImageView>
-                              <Button fx:id="ak47Btn" layoutX="235.0" layoutY="195.0" mnemonicParsing="false" onAction="#ak47Btn" prefHeight="55.0" prefWidth="108.0" text="BUY" textFill="RED">
-                                 <font>
-                                    <Font name="Impact" size="34.0" />
-                                 </font>
-                              </Button>
                               <Label layoutX="244.0" layoutY="29.0" prefHeight="48.0" prefWidth="89.0" text="AK-47" textFill="RED">
                                  <font>
                                     <Font name="Impact" size="38.0" />
@@ -65,39 +72,91 @@
                                     <Font name="Impact" size="20.0" />
                                  </font>
                               </Label>
+                              <JFXButton fx:id="ak47Btn" layoutX="237.0" layoutY="209.0" onAction="#ak47Btn" prefHeight="68.0" prefWidth="106.0" style="-fx-background-color: white;" text="BUY" textFill="RED">
+                                 <font>
+                                    <Font name="Impact" size="36.0" />
+                                 </font>
+                              </JFXButton>
                            </children></Pane>
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab closable="false" text="Grenade">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <Tab closable="false" style="-fx-background-color: black;" text="Double Barrel">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Pane prefHeight="292.0" prefWidth="577.0">
                            <children>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="224.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="181.0" fitWidth="328.0" layoutX="124.0" layoutY="33.0" pickOnBounds="true">
                                  <image>
-                                    <Image url="@grenade.png" />
+                                    <Image url="@DoubleBarrel.png" />
                                  </image>
                               </ImageView>
-                              <Button fx:id="grenadeBtn" layoutX="354.0" layoutY="204.0" mnemonicParsing="false" onAction="#grenadeBtn" prefHeight="45.0" prefWidth="150.0" text="BUY" textFill="RED">
+                              <Label layoutX="181.0" layoutY="21.0" text="Double Barrel" textFill="RED">
                                  <font>
-                                    <Font name="Impact" size="25.0" />
-                                 </font>
-                              </Button>
-                              <Slider fx:id="grenadeSlider" blockIncrement="1.0" layoutX="48.0" layoutY="208.0" majorTickUnit="1.0" max="20.0" minorTickCount="1" prefHeight="45.0" prefWidth="267.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
-                              <Label layoutX="20.0" layoutY="52.0" prefHeight="45.0" prefWidth="133.0" text="Price: $1000" textFill="WHITE">
-                                 <font>
-                                    <Font name="Impact" size="25.0" />
+                                    <Font name="Impact" size="38.0" />
                                  </font>
                               </Label>
-                           </children></Pane>
+                              <Label layoutX="14.0" layoutY="69.0" text="Damage: 85" textFill="WHITE">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="123.0" text="Price: $1500" textFill="WHITE">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <JFXButton fx:id="doubleBarrelBtn" layoutX="237.0" layoutY="209.0" onAction="#doubleBarrelBtn" prefHeight="68.0" prefWidth="106.0" style="-fx-background-color: white;" text="BUY" textFill="RED">
+                                 <font>
+                                    <Font name="Impact" size="36.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </Pane>
                      </children>
                   </AnchorPane>
-            </content>
-          </Tab>
-            <Tab closable="false" text="Vest">
+               </content>
+            </Tab>
+            <Tab style="-fx-background-color: black;" text="Uzi">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="292.0" prefWidth="577.0">
+                           <children>
+                              <ImageView fitHeight="181.0" fitWidth="328.0" layoutX="200.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@uzi.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="266.0" layoutY="14.0" text="Uzi" textFill="RED">
+                                 <font>
+                                    <Font name="Impact" size="38.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="69.0" text="Damage: 25" textFill="WHITE">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="123.0" text="Price: $350" textFill="WHITE">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <JFXButton fx:id="uziBtn" layoutX="237.0" layoutY="209.0" onAction="#uziBtn" prefHeight="68.0" prefWidth="106.0" style="-fx-background-color: white;" text="BUY" textFill="RED">
+                                 <font>
+                                    <Font name="Impact" size="36.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab closable="false" style="-fx-background-color: black;" text="Vest">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -116,16 +175,58 @@
                               <Font name="Impact" size="27.0" />
                            </font>
                         </Label>
-                        <Button fx:id="armorBtn" layoutX="32.0" layoutY="146.0" mnemonicParsing="false" onAction="#setArmorBtn" prefHeight="45.0" prefWidth="94.0" text="BUY" textFill="RED">
+                        <JFXButton fx:id="armorBtn" layoutX="28.0" layoutY="149.0" onAction="#armorBtn" prefHeight="68.0" prefWidth="106.0" style="-fx-background-color: white;" text="BUY" textFill="RED">
                            <font>
-                              <Font name="Impact" size="29.0" />
+                              <Font name="Impact" size="36.0" />
                            </font>
-                        </Button>
+                        </JFXButton>
+                        <Label fx:id="vestLbl" layoutX="364.0" layoutY="22.0" prefHeight="45.0" prefWidth="133.0" text="Own: 0" textFill="WHITE">
+                           <font>
+                              <Font name="Impact" size="25.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
               </content>
             </Tab>
-            <Tab closable="false" text="Ammo">
+          <Tab closable="false" style="-fx-background-color: black;" text="Grenade">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="292.0" prefWidth="577.0">
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="224.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@grenade.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="20.0" layoutY="52.0" prefHeight="45.0" prefWidth="133.0" text="Price: $1000" textFill="WHITE">
+                                 <font>
+                                    <Font name="Impact" size="25.0" />
+                                 </font>
+                              </Label>
+                              <JFXSlider fx:id="grenadeSlider" layoutX="51.0" layoutY="213.0" prefHeight="33.0" prefWidth="259.0" showTickMarks="true" snapToTicks="true" />
+                              <JFXButton fx:id="grenadeBtn" layoutX="353.0" layoutY="195.0" onAction="#grenadeBtn" prefHeight="68.0" prefWidth="106.0" style="-fx-background-color: white;" text="BUY" textFill="RED">
+                                 <font>
+                                    <Font name="Impact" size="36.0" />
+                                 </font>
+                              </JFXButton>
+                              <Label layoutX="406.0" layoutY="44.0" prefHeight="45.0" prefWidth="120.0" text="KA-BOOM!" textFill="RED">
+                                 <font>
+                                    <Font name="Impact" size="29.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="grenadeLbl" layoutX="20.0" layoutY="86.0" prefHeight="45.0" prefWidth="133.0" text="Own: 0" textFill="WHITE">
+                                 <font>
+                                    <Font name="Impact" size="25.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab closable="false" style="-fx-background-color: black;" text="Ammo">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -141,13 +242,18 @@
                                     <Font name="Impact" size="36.0" />
                                  </font>
                               </Label>
-                              <Slider fx:id="ammoSlider" layoutX="62.0" layoutY="233.0" prefHeight="45.0" prefWidth="216.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
-                              <Button fx:id="ammoBtn" layoutX="297.0" layoutY="230.0" mnemonicParsing="false" onAction="#ammoBtn" prefHeight="45.0" prefWidth="124.0" text="BUY" textFill="RED">
+                              <Label layoutX="14.0" layoutY="46.0" prefHeight="45.0" prefWidth="142.0" text="Price: $50 r/d" textFill="WHITE">
                                  <font>
                                     <Font name="Impact" size="25.0" />
                                  </font>
-                              </Button>
-                              <Label layoutX="14.0" layoutY="46.0" prefHeight="45.0" prefWidth="142.0" text="Price: $50 r/d" textFill="WHITE">
+                              </Label>
+                              <JFXSlider fx:id="ammoSlider" layoutX="44.0" layoutY="241.0" prefHeight="28.0" prefWidth="301.0" showTickMarks="true" snapToTicks="true" />
+                              <JFXButton fx:id="ammoBtn" layoutX="388.0" layoutY="207.0" onAction="#ammoBtn" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: white;" text="BUY" textFill="RED">
+                                 <font>
+                                    <Font name="Impact" size="36.0" />
+                                 </font>
+                              </JFXButton>
+                              <Label fx:id="ammoLbl" layoutX="14.0" layoutY="84.0" prefHeight="45.0" prefWidth="142.0" text="Own: 0" textFill="WHITE">
                                  <font>
                                     <Font name="Impact" size="25.0" />
                                  </font>
@@ -158,18 +264,7 @@
                   </AnchorPane>
               </content>
             </Tab>
-        </tabs>
-      </TabPane>
-      <Label fx:id="moneyLbl" layoutX="375.0" layoutY="14.0" prefHeight="45.0" prefWidth="216.0" text="Money: $0" textFill="GREEN" AnchorPane.rightAnchor="9.0">
-         <font>
-            <Font name="Impact" size="23.0" />
-         </font>
-      </Label>
-      <Separator layoutX="12.0" layoutY="55.0" prefHeight="9.0" prefWidth="577.0" style="-fx-background-color: red;" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="11.0" />
-      <Button fx:id="backBtn" layoutX="24.0" layoutY="417.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="45.0" prefWidth="120.0" text="&lt;-- Back" textFill="RED" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="24.0">
-         <font>
-            <Font name="Impact" size="23.0" />
-         </font>
-      </Button>
+         </tabs>
+      </JFXTabPane>
    </children>
 </AnchorPane>

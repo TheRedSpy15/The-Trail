@@ -2,7 +2,7 @@ package com.TheRedSpy15.trail;
 
 /*
 
-   Copyright [2017] [TheRedSpy15]
+   Copyright 2018 TheRedSpy15
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -18,61 +18,74 @@ package com.TheRedSpy15.trail;
 
  */
 
+import com.jfoenix.controls.JFXSlider;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
 
-public class SellController extends Gang {
+public class SellController {
 
-    @FXML private Label moneyLbl;
-    @FXML private Label grenadeLbl;
-    @FXML private Slider grenadeSlider;
-    @FXML private Label foodLbl;
-    @FXML private Label waterLbl;
-    @FXML private Label ammoLbl;
-    @FXML private Slider waterSlider;
-    @FXML private Slider foodSlider;
-    @FXML private Slider ammoSlider;
+    @FXML private Label moneyLbl, grenadeLbl, foodLbl, waterLbl, ammoLbl;
+    @FXML private JFXSlider grenadeSlider, waterSlider, foodSlider, ammoSlider;
 
     @FXML
     private void sell(){
 
-        setFood(getFood() - (short) foodSlider.getValue());
-        setWater(getWater() - (short) waterSlider.getValue());
-        setAmmo(getAmmo() - (short) ammoSlider.getValue());
-        setGrenades(getGrenades() - (byte) grenadeSlider.getValue());
+        Main.gang.setFood(Main.gang.getFood() - (short) foodSlider.getValue());
+        Main.gang.setWater(Main.gang.getWater() - (short) waterSlider.getValue());
+        Main.gang.setAmmo(Main.gang.getAmmo() - (short) ammoSlider.getValue());
+        Main.gang.setGrenades(Main.gang.getGrenades() - (byte) grenadeSlider.getValue());
 
         Main.store.playPurchaseSound();
 
-        setMoney(getMoney() +
-                (waterSlider.getValue() * 0.15) +
-                (foodSlider.getValue() * 0.30) +
-                (ammoSlider.getValue() * 20) +
-                (grenadeSlider.getValue() * 50)
+        final double waterValue = 0.15;
+        final double foodValue = 0.30;
+        final byte grenadeValue = 50;
+        final byte ammoValue = 20;
+
+        Main.gang.setMoney(Main.gang.getMoney() +
+                (waterSlider.getValue() * waterValue) +
+                (foodSlider.getValue() * foodValue) +
+                (ammoSlider.getValue() * ammoValue) +
+                (grenadeSlider.getValue() * grenadeValue)
         );
 
-        Main.getAlertWindow().setScene(Main.getCityScene());
+        Main.getAlertWindow().setScene(Main.main.getCityScene());
     }
 
     @FXML
     private void setSellCarBtn(){ // sell car
 
-        switch (getCarSpriteURL()) {
+        final short rallyCarValue = 1500;
+        final short monsterTruckValue = 2500;
+        final short speedDemonValue = 5000;
+
+        switch (Main.gang.getCarSpriteURL()) {
             case "com/TheRedSpy15/trail/bluetruck.png":  // Blue truck
 
-                Main.alert.sold("Blue truck", (short) 1, (short) 2500);
+                Main.alert.sold("Monster Truck", (short) 1, monsterTruckValue);
 
-                setCarSpriteURL(getDefaultCarURL());
+                Main.gang.setCarSpriteURL(Main.gang.getDefaultCarURL());
+                Main.gang.setVehicleID("Starter Car");
 
-                moneyLbl.setText("Money: $" + getMoney());
+                moneyLbl.setText("Money: $" + Main.gang.getMoney());
                 break;
             case "com/TheRedSpy15/trail/rallycar.png":  // Rally car
 
-                Main.alert.sold("Rally car", (short) 1, (short) 1500);
+                Main.alert.sold("Rally car", (short) 1, rallyCarValue);
 
-                setCarSpriteURL(getDefaultCarURL());
+                Main.gang.setCarSpriteURL(Main.gang.getDefaultCarURL());
+                Main.gang.setVehicleID("Starter Car");
 
-                moneyLbl.setText("Money: $" + getMoney());
+                moneyLbl.setText("Money: $" + Main.gang.getMoney());
+                break;
+            case "com/TheRedSpy15/trail/redcar.png":
+
+                Main.alert.sold("Speed Demon", (short) 1, speedDemonValue);
+
+                Main.gang.setCarSpriteURL(Main.gang.getDefaultCarURL());
+                Main.gang.setVehicleID("Starter Car");
+
+                moneyLbl.setText("Money: $" + Main.gang.getMoney());
                 break;
             default:
 
@@ -84,37 +97,60 @@ public class SellController extends Gang {
     @FXML
     private void setSellGunBtn(){ // sell gun
 
-        if (getGunSpriteURL().equals("com/TheRedSpy15/trail/ak47.png")){ // AK-47
+        final short ak47Value = 350;
+        final short doubleBarrelValue = 850;
+        final short uziValue = 100;
 
-            Main.store.playPurchaseSound();
+        switch (Main.gang.getGunSpriteURL()) {
+            case "com/TheRedSpy15/trail/ak47.png":  // AK-47
 
-            setMoney(getMoney() + 350);
-            setBaseAttackDamage(getDefaultAttackDMG());
-            setGunID(getDefaultGunID());
-            setGunSpriteURL(getDefaultGunSpriteURL());
+                Main.alert.sold("AK-47", (short) 1, ak47Value);
 
-            Main.alert.sold("AK-47", (short) 1, (short) 350);
+                Main.gang.setBaseAttackDamage(Main.gang.getDefaultAttackDMG());
+                Main.gang.setGunID(Main.gang.getDefaultGunID());
+                Main.gang.setGunSpriteURL(Main.gang.getDefaultGunSpriteURL());
 
-            moneyLbl.setText("Money: $"+getMoney());
-        }else{
+                moneyLbl.setText("Money: $" + Main.gang.getMoney());
+                break;
+            case "com/TheRedSpy15/trail/DoubleBarrel.png":
 
-            Main.alert.cannotSell("gun");
+                Main.alert.sold("Double-Barrel", (short) 1, doubleBarrelValue);
+
+                Main.gang.setBaseAttackDamage(Main.gang.getDefaultAttackDMG());
+                Main.gang.setGunID(Main.gang.getDefaultGunID());
+                Main.gang.setGunSpriteURL(Main.gang.getDefaultGunSpriteURL());
+
+                moneyLbl.setText("Money: $" + Main.gang.getMoney());
+                break;
+            case "com/TheRedSpy15/trail/uzi.png":
+
+                Main.alert.sold("Uzi", (short) 1, uziValue);
+
+                Main.gang.setBaseAttackDamage(Main.gang.getDefaultAttackDMG());
+                Main.gang.setGunID(Main.gang.getDefaultGunID());
+                Main.gang.setGunSpriteURL(Main.gang.getDefaultGunSpriteURL());
+
+                moneyLbl.setText("Money: $" + Main.gang.getMoney());
+                break;
+            default:
+                Main.alert.cannotSell("gun");
+                break;
         }
     }
 
     @FXML
-    public void initialize(){
+    private void initialize(){
 
-        foodLbl.setText("Food: "+ getFood());
-        waterLbl.setText("Water: "+ getWater());
-        ammoLbl.setText("Ammo: "+ getAmmo());
-        grenadeLbl.setText("Ammo: "+ getGrenades());
-        moneyLbl.setText("Money: $"+getMoney());
+        foodLbl.setText("Food: "+ Main.gang.getFood());
+        waterLbl.setText("Water: "+ Main.gang.getWater());
+        ammoLbl.setText("Ammo: "+ Main.gang.getAmmo());
+        grenadeLbl.setText("Ammo: "+ Main.gang.getGrenades());
+        moneyLbl.setText("Money: $"+ Main.gang.getMoney());
 
-        waterSlider.setMax(getWater());
-        foodSlider.setMax(getFood());
-        ammoSlider.setMax(getAmmo());
-        grenadeSlider.setMax(getGrenades());
+        waterSlider.setMax(Main.gang.getWater());
+        foodSlider.setMax(Main.gang.getFood());
+        ammoSlider.setMax(Main.gang.getAmmo());
+        grenadeSlider.setMax(Main.gang.getGrenades());
 
         waterSlider.setMin(0);
         ammoSlider.setMin(0);

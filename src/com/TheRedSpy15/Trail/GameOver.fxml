@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <!--
 
-   Copyright [2017] [TheRedSpy15]
+   Copyright 2018 TheRedSpy15
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -21,14 +23,19 @@
 
 -->
 
-<AnchorPane prefHeight="400.0" fx:controller="com.TheRedSpy15.trail.GameOverController" prefWidth="600.0" style="-fx-background-color: black" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane cache="true" cacheHint="SPEED" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.GameOverController">
    <children>
       <Label layoutX="209.0" layoutY="161.0" prefHeight="78.0" prefWidth="182.0" text="GAME OVER......." textFill="RED">
          <font>
             <Font name="Impact" size="32.0" />
          </font>
       </Label>
-      <Label fx:id="scoreLbl" layoutX="195.0" layoutY="231.0" text="Score: 0" textFill="WHITE">
+      <Label fx:id="scoreLbl" layoutX="195.0" layoutY="231.0" text="Score: 0" textFill="GOLD">
+         <font>
+            <Font name="Impact" size="27.0" />
+         </font>
+      </Label>
+      <Label fx:id="rankLbl" layoutX="195.0" layoutY="265.0" text="Rank: F" textFill="WHITE">
          <font>
             <Font name="Impact" size="27.0" />
          </font>

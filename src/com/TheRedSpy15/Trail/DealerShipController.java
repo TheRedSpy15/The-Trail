@@ -2,7 +2,7 @@ package com.TheRedSpy15.trail;
 
 /*
 
-   Copyright [2017] [TheRedSpy15]
+   Copyright 2018 TheRedSpy15
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -23,56 +23,87 @@ import javafx.scene.control.Label;
 
 public class DealerShipController extends Store {
 
-    @FXML private Label moneyLbl2;
-    @FXML private Label moneyLbl1;
+    @FXML private Label monsterTruckMoneyLbl, rallyCarMoneyLbl, speedDemonMoneyLbl;
 
-    public void blueTruck(){
+    @FXML private void backBtn1(){
 
-        if (Gang.getMoney() >= 5000){
+        Main.getAlertWindow().setScene(Main.main.getCityScene());
+    }
 
-            purchaseItem( (short) 5000, (short) 1, "BLUE TRUCK");
+    @FXML private void backBtn2(){
 
-            Gang.setCarSpriteURL("com/TheRedSpy15/trail/bluetruck.png");
+        Main.getAlertWindow().setScene(Main.main.getCityScene());
+    }
 
-            moneyLbl1.setText("Money: $"+ Gang.getMoney());
-        }else if (Gang.getMoney() < 5000){
+    @FXML private void backBtn3(){
 
-            amountOver = (short) (Gang.getMoney() - 5000);
+        Main.getAlertWindow().setScene(Main.main.getCityScene());
+    }
 
-            Main.alert.alert("Amount over: ");
+    @FXML private void speedDemon(){
+
+        final short speedDemonPrice = 15000;
+        if (Main.gang.getMoney() >= speedDemonPrice){
+
+            purchaseItem(speedDemonPrice, (short) 1, "Speed Demon");
+
+            Main.gang.setCarSpriteURL("com/TheRedSpy15/trail/redcar.png");
+            Main.gang.setVehicleID("Speed Demon");
+            Main.gang.setCarSpeed((short) 175);
+
+            speedDemonMoneyLbl.setText("Money: $"+ Main.gang.getMoney());
+        }else if (Main.gang.getMoney() < speedDemonPrice){
+
+            amountOver = (short) (Main.gang.getMoney() - speedDemonPrice);
+
+            Main.alert.alert("Amount over: " + amountOver);
         }
     }
 
-    @FXML private void setBackBtn1(){
+    @FXML private void monsterTruck(){
 
-        Main.getAlertWindow().setScene(Main.getCityScene());
+        final short monsterTruckPrice = 5000;
+        if (Main.gang.getMoney() >= monsterTruckPrice){
+
+            purchaseItem(monsterTruckPrice, (short) 1, "Monster Truck");
+
+            Main.gang.setCarSpriteURL("com/TheRedSpy15/trail/bluetruck.png");
+            Main.gang.setVehicleID("Monster Truck");
+            Main.gang.setCarSpeed((short) 100);
+
+            monsterTruckMoneyLbl.setText("Money: $"+ Main.gang.getMoney());
+        }else if (Main.gang.getMoney() < monsterTruckPrice){
+
+            amountOver = (short) (Main.gang.getMoney() - monsterTruckPrice);
+
+            Main.alert.alert("Amount over: " + amountOver);
+        }
     }
 
-    @FXML private void setBackBtn2(){
+    @FXML private void rallyCar(){
 
-        Main.getAlertWindow().setScene(Main.getCityScene());
-    }
+        final short rallyCarPrice = 3500;
+        if (Main.gang.getMoney() >= rallyCarPrice){
 
-    public void rallyCar(){
+            purchaseItem(rallyCarPrice, (short) 1, "RALLY CAR");
 
-        if (Gang.getMoney() >= 3500){
+            Main.gang.setCarSpriteURL("com/TheRedSpy15/trail/rallycar.png");
+            Main.gang.setVehicleID("Rally Car");
+            Main.gang.setCarSpeed((short) 200);
 
-            purchaseItem( (short) 3500, (short) 1, "RALLY CAR");
+            rallyCarMoneyLbl.setText("Money: $"+ Main.gang.getMoney());
+        }else if (Main.gang.getMoney() < rallyCarPrice){
 
-            Gang.setCarSpriteURL("com/TheRedSpy15/trail/rallycar.png");
+            amountOver = (short) (Main.gang.getMoney() - rallyCarPrice);
 
-            moneyLbl1.setText("Money: $"+ Gang.getMoney());
-        }else if (Gang.getMoney() < 3500){
-
-            amountOver = (short) (Gang.getMoney() - 3500);
-
-            Main.alert.alert("Amount over: "+amountOver);
+            Main.alert.alert("Amount over: "+ amountOver);
         }
     }
 
     @FXML private void initialize(){
 
-        moneyLbl1.setText("Your money: $"+(short) Gang.getMoney());
-        moneyLbl2.setText("Your money: $"+(short) Gang.getMoney());
+        monsterTruckMoneyLbl.setText("Your money: $"+(short) Main.gang.getMoney());
+        rallyCarMoneyLbl.setText("Your money: $"+(short) Main.gang.getMoney());
+        speedDemonMoneyLbl.setText("Your money: $"+(short) Main.gang.getMoney());
     }
 }

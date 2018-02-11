@@ -1,0 +1,7 @@
+com/TheRedSpy15/trail/grenade.png BLAHNAME 9000
+
+        * Proper mod file example:
+        *
+        * [path to gun image] [name of gun] [gun damage]
+        *
+        * String [path to gun image] String [name of gun] int [gun damage]

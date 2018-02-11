@@ -2,7 +2,7 @@ package com.TheRedSpy15.trail;
 
 /*
 
-   Copyright [2017] [TheRedSpy15]
+   Copyright 2018 TheRedSpy15
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -19,201 +19,245 @@ package com.TheRedSpy15.trail;
  */
 
 import javafx.fxml.FXMLLoader;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Stack;
 
 /**
- *
- * Includes the values of everything relating to the player(s) gang i.e : resources
- *
+ * Includes the values of everything relating
+ * to the player(s)' gang i.e : resources
  */
 public class Gang implements Serializable {
 
-    private static byte HealthConditions = 100;
-    private static int Distance = 0;
-    private static String defaultGunSpriteURL = "com/TheRedSpy15/trail/glock.png";
-    private static String gunSpriteURL = getDefaultGunSpriteURL();
-    private static long Score = 0;
-    private static String defaultCarURL = "com/TheRedSpy15/trail/greencar.png";
-    private static String carSpriteURL = getDefaultCarURL();
-    private static int Days = 0;
-    private static short wage = 0;
-    private static short Food = 0;
-    private static byte Grenades = 0;
-    private static String defaultGunID = "Glock";
-    private static String gunID = getDefaultGunID();
-    private static byte defaultAttackDMG = 15;
-    private static byte baseAttackDamage = getDefaultAttackDMG();
-    private static byte bodyArmor = 0;
-    private static short Ammo = 0;
-    private static int Water = 0;
-    private static double Money = 0;
-    private static byte Pace = 10;
-    private static boolean Moving = false;
-    private static int capturedThieves = 0;
-    private static byte FoodIntake = 2;
-    private static Stack <String> gangMembers = new Stack<>();
-    private static vehicleIDs vehicleID = vehicleIDs.GREENCAR;
-    public enum vehicleIDs{GREENCAR, RALLYCAR, BLUETRUCK}
+    private byte HealthConditions = 100;
+    private byte defaultAttackDMG = 15;
+    private byte brakeFrequency = 10;
+    private byte capturedThieves = 0;
+    private byte Grenades = 0;
+    private byte FoodIntake = 2;
+    private byte baseAttackDamage = getDefaultAttackDMG();
+    private byte bodyArmor = 0;
+    private short Ammo = 0;
+    private short Water = 0;
+    private short carSpeed = 150;
+    private short distanceSinceCity = 0;
+    private short wage = 0;
+    private short Food = 0;
+    private int Distance = 0;
+    private int Days = 0;
+    private long Score = 0;
+    private double Money = 0;
+    private String defaultGunSpriteURL = "com/TheRedSpy15/trail/glock.png";
+    private String gunSpriteURL = getDefaultGunSpriteURL();
+    private String vehicleID = "Starter Car";
+    private String defaultCarURL = "com/TheRedSpy15/trail/greencar.png";
+    private String carSpriteURL = getDefaultCarURL();
+    private String defaultGunID = "Glock";
+    private String gunID = getDefaultGunID();
+    private Stack <String> gangMembers = new Stack<>();
+    private Stack <String> deceased = new Stack<>();
+    private volatile boolean Moving = false;
 
     protected void gangSetupMethod(){
 
         // Posse scene
         try {
             // assigns posse scene fxml file to posse pane object
-            Main.setPossePane(FXMLLoader.load(getClass().getResource("GangScene.fxml")));
+            Main.main.setPossePane(FXMLLoader.load(getClass().getResource("GangScene.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    static void saveData() throws IOException {
+
+        FileOutputStream fileOutputStream = new FileOutputStream("SaveGame.ser");
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+        objectOutputStream.writeObject(Main.gang);
+        objectOutputStream.writeObject(Main.gang.gangMembers);
+        objectOutputStream.writeObject(Main.gang.deceased);
+
+        objectOutputStream.close();
+        fileOutputStream.close();
+    }
+
+    static void loadData() throws IOException, ClassNotFoundException {
+
+        FileInputStream fileInputStream = new FileInputStream("SaveGame.ser");
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+
+        Main.gang = (Gang) objectInputStream.readObject();
+        Main.gang.gangMembers = (Stack<String>) objectInputStream.readObject();
+        Main.gang.deceased = (Stack<String>) objectInputStream.readObject();
+
+        fileInputStream.close();
+        objectInputStream.close();
+    }
+
     // Getters and Setters
-    static Stack<String> getGangMembers() {
+    Stack<String> getGangMembers() {
         return gangMembers;
     }
-    public static vehicleIDs getVehicleID() {
-        return vehicleID;
+    public Stack<String> getDeceased() {
+        return deceased;
     }
-    public static void setVehicleID(vehicleIDs VehicleID) {
-        Gang.vehicleID = VehicleID;
+    public short getCarSpeed() {
+        return carSpeed;
     }
-    static String getDefaultGunID() {
+    public short getDistanceSinceCity() {
+        return distanceSinceCity;
+    }
+    public void setDistanceSinceCity(short DistanceSinceCity) {
+        distanceSinceCity = DistanceSinceCity;
+    }
+    public void setCarSpeed(short CarSpeed) {
+        carSpeed = CarSpeed;
+    }
+    String getDefaultGunID() {
         return defaultGunID;
     }
-    static String getDefaultGunSpriteURL() {
+    String getDefaultGunSpriteURL() {
         return defaultGunSpriteURL;
     }
-    public static void setDefaultGunSpriteURL(String DefaultGunSpriteURL) {
+    public void setDefaultGunSpriteURL(String DefaultGunSpriteURL) {
         defaultGunSpriteURL = DefaultGunSpriteURL;
     }
-    public static void setDefaultGunID(String DefaultGunID) {
+    public void setDefaultGunID(String DefaultGunID) {
         defaultGunID = DefaultGunID;
     }
-    static byte getDefaultAttackDMG() {
+    byte getDefaultAttackDMG() {
         return defaultAttackDMG;
     }
-    public static void setDefaultAttackDMG(byte DefaultAttackDMG) {
+    public void setDefaultAttackDMG(byte DefaultAttackDMG) {
         defaultAttackDMG = DefaultAttackDMG;
     }
-    static int getCapturedThieves() {
+    int getCapturedThieves() {
         return capturedThieves;
     }
-    static String getDefaultCarURL() {
+    String getDefaultCarURL() {
         return defaultCarURL;
     }
-    static void setDefaultCarURL(String DefaultCarURL) {
-        defaultCarURL = DefaultCarURL;
-    }
-    public static byte getBodyArmor() {
+    public byte getBodyArmor() {
         return bodyArmor;
     }
-    static void setBodyArmor(byte bodyArmor) {
-        Gang.bodyArmor = bodyArmor;
+    void setBodyArmor(byte BodyArmor) {
+        bodyArmor = BodyArmor;
     }
-    static void setCapturedThieves(int CapturedThieves) {
-        capturedThieves = CapturedThieves;
+    void setCapturedThieves(int CapturedThieves) {
+        capturedThieves = (byte) CapturedThieves;
     }
-    static int getDistance() {
+    int getDistance() {
         return Distance;
     }
-    static void setDistance(int distance) {
+    void setDistance(int distance) {
         Distance = distance;
     }
-    static long getScore() {
+    long getScore() {
         return Score;
     }
-    static void setScore(long score) {
+    void setScore(long score) {
         Score = score;
     }
-    static int getDays() {
+    int getDays() {
         return Days;
     }
-    static void setDays(int days) {
+    void setDays(int days) {
         Days = days;
     }
-    static int getWage() {
+    int getWage() {
         return wage;
     }
-    static void setWage(int Wage) {
+    void setWage(int Wage) {
         wage = (short) Wage;
     }
-    public static int getFood() {
+    int getFood() {
         return Food;
     }
-    public static void setFood(int food) {
+    void setFood(int food) {
         Food = (short) food;
     }
-    static int getGrenades() {
+    int getGrenades() {
         return Grenades;
     }
-    static void setGrenades(int grenades) {
+    void setGrenades(int grenades) {
         Grenades = (byte) grenades;
     }
-    public static int getAmmo() {
+    public int getAmmo() {
         return Ammo;
     }
-    public static void setAmmo(int ammo) {
+    public void setAmmo(int ammo) {
         Ammo = (short) ammo;
     }
-    static int getWater() {
+    int getWater() {
         return Water;
     }
-    static void setWater(int water) {
-        Water = water;
+    void setWater(int water) {
+        Water = (short) water;
     }
-    public static double getMoney() {
+    public double getMoney() {
         return Money;
     }
-    public static void setMoney(double money) {
+    public void setMoney(double money) {
         Money = money;
     }
-    static int getPace() {
-        return Pace;
+    int getBrakeFrequency() {
+        return brakeFrequency;
     }
-    static void setPace(int pace) {
-        Pace = (byte) pace;
+    void setBrakeFrequency(int BrakeFrequency) {
+        brakeFrequency = (byte) BrakeFrequency;
     }
-    static int getFoodIntake() {
+    int getFoodIntake() {
         return FoodIntake;
     }
-    static void setFoodIntake(int foodIntake) {
+    void setFoodIntake(int foodIntake) {
         FoodIntake = (byte) foodIntake;
     }
-    static boolean isMoving() {
+    boolean isMoving() {
         return Moving;
     }
-    static void setMoving(boolean moving) {
+    void setMoving(boolean moving) {
         Moving = moving;
     }
-    static int getHealthConditions() {
+    int getHealthConditions() {
         return HealthConditions;
     }
-    static void setHealthConditions(int healthConditions) {
+    void setHealthConditions(int healthConditions) {
         HealthConditions = (byte) healthConditions;
     }
-    static String getGunSpriteURL() {
+    String getGunSpriteURL() {
         return gunSpriteURL;
     }
-    static void setGunSpriteURL(String GunSpriteURL) {
+    void setGunSpriteURL(String GunSpriteURL) {
         gunSpriteURL = GunSpriteURL;
     }
-    static String getCarSpriteURL() {
+    String getCarSpriteURL() {
         return carSpriteURL;
     }
-    static void setCarSpriteURL(String CarSpriteURL) {
+    void setCarSpriteURL(String CarSpriteURL) {
         carSpriteURL = CarSpriteURL;
     }
-    static String getGunID() {
+    String getGunID() {
         return gunID;
     }
-    static void setGunID(String GunID) {
+    void setGunID(String GunID) {
         gunID = GunID;
     }
-    static int getBaseAttackDamage() {
+    int getBaseAttackDamage() {
         return baseAttackDamage;
     }
-    static void setBaseAttackDamage(int BaseAttackDamage) {
+    void setBaseAttackDamage(int BaseAttackDamage) {
         baseAttackDamage = (byte) BaseAttackDamage;
+    }
+    String getVehicleID() {
+        return vehicleID;
+    }
+    void setVehicleID(String vehicleID) {
+        this.vehicleID = vehicleID;
     }
 }

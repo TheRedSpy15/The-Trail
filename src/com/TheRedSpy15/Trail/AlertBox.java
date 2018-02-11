@@ -2,7 +2,7 @@ package com.TheRedSpy15.trail;
 
 /*
 
-   Copyright [2017] [TheRedSpy15]
+   Copyright 2018 TheRedSpy15
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -32,11 +32,11 @@ import javafx.stage.Modality;
 import java.io.IOException;
 
 /**
+ * Contains multiple methods / scenes, that are
+ * modal, and are used to alert / notify the user
  *
- * Contains multiple methods / scenes, that are modal, and are used to alert / notify the user
- *
- * NOTE: this class WILL see MAJOR changes in the near future, it is quite buggy
- *
+ * NOTE: this class WILL see MAJOR changes
+ * in the near future, it is quite buggy
  */
 public class AlertBox {
 
@@ -55,31 +55,30 @@ public class AlertBox {
 
     protected void thiefEncounter(){
 
-        Gang.setMoving(false);
+        Main.gang.setMoving(false);
         Main.getAlertWindow().setTitle("Thief");
 
         // shoot out pane
         try {
-            Main.setShootOutPane(FXMLLoader.load(Main.class.getResource("ShootOut.fxml")));
+            Main.main.setShootOutPane(FXMLLoader.load(Main.class.getResource("ShootOut.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Main.setShootOutScene(new Scene(Main.getShootOutPane()));
+        Main.main.setShootOutScene(new Scene(Main.main.getShootOutPane()));
 
         // Thief menu pane
         try {
-            Main.setThiefMenuPane(FXMLLoader.load(Main.class.getResource("ThiefMenu.fxml")));
+            Main.main.setThiefMenuPane(FXMLLoader.load(Main.class.getResource("ThiefMenu.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Main.setThiefMenuScene(new Scene(Main.getThiefMenuPane()));
+        Main.main.setThiefMenuScene(new Scene(Main.main.getThiefMenuPane()));
 
-        Main.getAlertWindow().setScene(Main.getThiefMenuScene());
+        Main.getAlertWindow().setScene(Main.main.getThiefMenuScene());
         Main.getAlertWindow().showAndWait();
     }
 
     /**
-     *
      * Creates a scene, that has a label with a message, and is modal
      *
      * @param alertMSG String to be turned into a label
@@ -118,9 +117,15 @@ public class AlertBox {
 
         // Determining what scene to go back too
         if (!(Main.getAlertWindow().isShowing())) button.setOnAction(e -> Main.getAlertWindow().close());
-        else if (Main.getAlertWindow().getScene() == Main.getDealerScene()) button.setOnAction(e -> Main.getAlertWindow().setScene(Main.getDealerScene()));
-        else if (Main.getAlertWindow().getScene() == Main.getGunStoreScene()) button.setOnAction(e -> Main.getAlertWindow().setScene(Main.getGunStoreScene()));
-        else if (Main.getAlertWindow().getScene() == Main.getHireScene()) button.setOnAction(e -> Main.getAlertWindow().setScene(Main.getHireScene()));
+
+        else if (Main.getAlertWindow().getScene() == Main.main.getDealerScene()) button.setOnAction(e ->
+                Main.getAlertWindow().setScene(Main.main.getDealerScene()));
+
+        else if (Main.getAlertWindow().getScene() == Main.main.getGunStoreScene()) button.setOnAction(e ->
+                Main.getAlertWindow().setScene(Main.main.getGunStoreScene()));
+
+        else if (Main.getAlertWindow().getScene() == Main.main.getHireScene()) button.setOnAction(e ->
+                Main.getAlertWindow().setScene(Main.main.getHireScene()));
 
         Main.getAlertWindow().setScene(scene);
         Main.getAlertWindow().setTitle("Not enough money");
@@ -141,7 +146,7 @@ public class AlertBox {
 
         Scene scene = new Scene(stackPane);
 
-        button.setOnAction(e -> Main.getAlertWindow().setScene(Main.getSellScene()));
+        button.setOnAction(e -> Main.getAlertWindow().setScene(Main.main.getSellScene()));
 
         Main.getAlertWindow().setScene(scene);
         if (!(Main.getAlertWindow().isShowing())) Main.getAlertWindow().showAndWait();
@@ -151,7 +156,7 @@ public class AlertBox {
 
         Main.store.playPurchaseSound();
 
-        Gang.setMoney(Gang.getMoney() + profit);
+        Main.gang.setMoney(Main.gang.getMoney() + profit);
 
         Button button = new Button("Back");
         Label label = new Label("You sold "+amount+" "+item+" for $"+profit);
@@ -165,7 +170,7 @@ public class AlertBox {
 
         Scene scene = new Scene(stackPane);
 
-        button.setOnAction(e -> Main.getAlertWindow().setScene(Main.getSellScene()));
+        button.setOnAction(e -> Main.getAlertWindow().setScene(Main.main.getSellScene()));
 
         Main.getAlertWindow().setScene(scene);
         if (!(Main.getAlertWindow().isShowing())) Main.getAlertWindow().showAndWait();
@@ -187,8 +192,12 @@ public class AlertBox {
 
         // Determining what scene to go back too
         if (!(Main.getAlertWindow().isShowing())) button.setOnAction(e -> Main.getAlertWindow().close());
-        else if (Main.getAlertWindow().getScene() == Main.getDealerScene()) button.setOnAction(e -> Main.getAlertWindow().setScene(Main.getDealerScene()));
-        else if (Main.getAlertWindow().getScene() == Main.getGunStoreScene()) button.setOnAction(e -> Main.getAlertWindow().setScene(Main.getGunStoreScene()));
+
+        else if (Main.getAlertWindow().getScene() == Main.main.getDealerScene()) button.setOnAction(e ->
+                Main.getAlertWindow().setScene(Main.main.getDealerScene()));
+
+        else if (Main.getAlertWindow().getScene() == Main.main.getGunStoreScene()) button.setOnAction(e ->
+                Main.getAlertWindow().setScene(Main.main.getGunStoreScene()));
 
         Main.getAlertWindow().setScene(scene);
         Main.getAlertWindow().setTitle("PURCHASED");
@@ -196,42 +205,40 @@ public class AlertBox {
     }
 
     /**
-     *
-     * Updates the city scene and sets the alert stage to it
-     *
+     * Updates the city scene and
+     * sets the alert stage to it
      */
     protected void cityEvent() {
 
         // Settlement menu pane
         try {
-            Main.setCityPane(FXMLLoader.load(Main.class.getResource("CityMenu.fxml")));
+            Main.main.setCityPane(FXMLLoader.load(Main.class.getResource("CityMenu.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         try {
-            Main.setHirePane(FXMLLoader.load(Main.class.getResource("HireMenu.fxml")));
+            Main.main.setHirePane(FXMLLoader.load(Main.class.getResource("HireMenu.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Main.setHireScene(new Scene(Main.getHirePane()));
+        Main.main.setHireScene(new Scene(Main.main.getHirePane()));
 
-        TravelController.distanceSinceCity = 0;
+        Main.gang.setDistanceSinceCity((short) 0);
 
-        Main.setCityScene(new Scene(Main.getCityPane()));
+        Main.main.setCityScene(new Scene(Main.main.getCityPane()));
 
         //Stop moving
-        Gang.setMoving(false);
+        Main.gang.setMoving(false);
 
         Main.getAlertWindow().setTitle("City");
-        Main.getAlertWindow().setScene(Main.getCityScene());
+        Main.getAlertWindow().setScene(Main.main.getCityScene());
         Main.getAlertWindow().show();
     }
 
     /**
-     *
-     * Sets the scene to the game over scene, and will close the whole program on exit
-     *
+     * Sets the scene to the game over scene, and
+     * will close the whole program on exit
      */
     protected static void gameOver(){
 
@@ -243,16 +250,12 @@ public class AlertBox {
         }
 
         // On closure of window, closes main MainWindow also
-        Main.getAlertWindow().setOnCloseRequest(e -> {
-
-            Gang.setMoving(false);
-            Main.getMainWindow().close();
-        });
+        Main.getAlertWindow().setOnCloseRequest(e -> Main.main.endGame());
 
         Main.getAlertWindow().setScene(new Scene(gameOverPane));
 
         Main.getAlertWindow().setTitle("GAME-OVER");
 
-        Main.getAlertWindow().showAndWait();
+        if (!Main.getAlertWindow().isShowing()) Main.getAlertWindow().showAndWait();
     }
 }

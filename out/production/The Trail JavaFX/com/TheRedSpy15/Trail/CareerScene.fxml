@@ -7,7 +7,7 @@
 
 <!--
 
-   Copyright [2017] [TheRedSpy15]
+   Copyright 2018 TheRedSpy15
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@
 
 -->
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.CareerController">
+<AnchorPane cacheHint="SPEED" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.CareerController">
    <children>
       <Label layoutX="177.0" layoutY="30.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="57.0" prefWidth="246.0" text="Pick a career" textFill="PURPLE">
          <font>

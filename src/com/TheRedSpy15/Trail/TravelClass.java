@@ -2,7 +2,7 @@ package com.TheRedSpy15.trail;
 
 /*
 
-   Copyright [2017] [TheRedSpy15]
+   Copyright 2018 TheRedSpy15
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ public class TravelClass extends Main {
 
         // Links travel pane to FXML file
         try {
-            setTravelPane(FXMLLoader.load(Main.class.getResource("TravelScene.fxml")));
+            main.setTravelPane(FXMLLoader.load(Main.class.getResource("TravelScene.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }

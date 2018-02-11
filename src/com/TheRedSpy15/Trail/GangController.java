@@ -2,7 +2,7 @@ package com.TheRedSpy15.trail;
 
 /*
 
-   Copyright [2017] [TheRedSpy15]
+   Copyright 2018 TheRedSpy15
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -21,14 +21,11 @@ package com.TheRedSpy15.trail;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
-public class GangController extends Main {
+import java.util.Collections;
+
+public class GangController extends Gang {
     
-    @FXML  private TextField memberName1;
-    @FXML  private TextField memberName2;
-    @FXML  private TextField memberName3;
-    @FXML  private TextField memberName4;
-    @FXML  private TextField memberName5;
-    @FXML  private TextField memberName6;
+    @FXML private TextField memberName1, memberName2, memberName3, memberName4, memberName5, memberName6;
 
     @FXML
     private void confirmNamesMethod(){
@@ -40,20 +37,21 @@ public class GangController extends Main {
                 memberName5.getText().trim().equals("") ||
                 memberName6.getText().trim().equals(""))){
 
-            store.updateStores();
+            Main.store.updateStores();
 
-            getMainWindow().setScene(getStoreScene());
-            checkFullScreen();
+            Main.main.getMainWindow().setScene(Main.main.getStoreScene());
 
-            Gang.getGangMembers().push(memberName1.getText());
-            Gang.getGangMembers().push(memberName2.getText());
-            Gang.getGangMembers().push(memberName3.getText());
-            Gang.getGangMembers().push(memberName4.getText());
-            Gang.getGangMembers().push(memberName5.getText());
-            Gang.getGangMembers().push(memberName6.getText());
+            Main.gang.getGangMembers().push(memberName1.getText());
+            Main.gang.getGangMembers().push(memberName2.getText());
+            Main.gang.getGangMembers().push(memberName3.getText());
+            Main.gang.getGangMembers().push(memberName4.getText());
+            Main.gang.getGangMembers().push(memberName5.getText());
+            Main.gang.getGangMembers().push(memberName6.getText());
+
+            Collections.shuffle(Main.gang.getGangMembers());
         }else {
 
-            alert.alert("Text fields cannot be empty");
+            Main.alert.alert("Text fields cannot be empty");
         }
     }
 }

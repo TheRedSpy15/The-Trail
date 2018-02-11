@@ -2,7 +2,7 @@ package com.TheRedSpy15.trail;
 
 /*
 
-   Copyright [2017] [TheRedSpy15]
+   Copyright 2018 TheRedSpy15
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -29,103 +29,113 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
-import java.io.*;
+import java.io.Serializable;
 
+/**
+ * Where all the magic happens in
+ * the travel pane
+ */
 public class TravelController implements Serializable {
 
-    private static int payDayCountdown = 0;
     static int animationDuration = 15;
-    public static TranslateTransition drivingTransition;
+    public volatile static TranslateTransition drivingTransition;
     @FXML private Button setOutBtn;
-    @FXML private Label distanceLabel;
-    @FXML private Label conditionsLabel;
-    @FXML private Label daysLabel;
-    @FXML private Label statusLabel;
+    @FXML private Label statusLabel, daysLabel, conditionsLabel, distanceLabel;
     @FXML private AnchorPane sprite;
     @FXML private ImageView spriteImage;
-    public static short distanceSinceCity = 0;
 
-    // when stop button is pressed
+
+    /**
+     * sets Gang.isMoving() to false,
+     * and stops the driving animation
+     */
     @FXML
     private void stopMoving(){
 
-        Gang.setMoving(false);
+        Main.gang.setMoving(false);
         drivingTransition.stop();
+        updateGUI();
     }
 
-    // when set out button is pressed
+
+    /**
+     * runs the updateGUI() method, starts
+     * the driving animation, sets
+     * Gang.isMoving() to true, and
+     * starts the TravelTask()
+     */
     @FXML
     private void setOut(){
 
         updateGUI();
         drivingTransition.play();
-        TravelTask();
+        Main.gang.setMoving(true);
+
+        HealthClass.checkGameOver();
+
+        if (Runtime.getRuntime().availableProcessors() + Main.main.startingThreads > Thread.activeCount()) TravelTask();
     }
 
-    // when menu button is pressed
+
+    /**
+     * runs the method that creates a menu scene,
+     * sets Gang.isMoving() to false, and displays
+     * the menu that was created
+     */
     @FXML
     private void menu(){
 
         // Runs mid menu
         MidGameMenu.menuMethod();
 
-        Gang.setMoving(false);
-        Main.getMenuWindow().showAndWait();
+        Main.gang.setMoving(false);
+        Main.main.getMenuWindow().showAndWait();
     }
 
+    /**
+     * The thread where everything happens
+     * per day, and while run for as long as
+     * Gang.isMoving() is true
+     */
     private void TravelTask() {
 
         new Thread(() -> {
 
-            // Run your background task(s) here
-            Gang.setMoving(true);
+            // Run background task(s) here
+            while (Main.gang.isMoving()) {
 
-            while (Gang.isMoving()) {
+                final byte sickEventChanceMaxValue = 20;
+                final short distanceBetweenCities = 750;
 
-                Main.setSickEventChance(Main.rand.nextInt(20)+1);
+                // Setting values
+                Career.payDay();
 
-                Gang.setScore(Gang.getScore() + 25);
+                Main.main.setSickEventChance(Main.rand.nextInt(sickEventChanceMaxValue)+1);
+                Main.gang.setScore(Main.gang.getScore() + 25);
+                Main.gang.setDistanceSinceCity((short) (Main.gang.getDistanceSinceCity() + drive(Main.main.determineVehicle())));
+                Main.gang.setDays(Main.gang.getDays() + 1);
 
-                distanceSinceCity = (short) (distanceSinceCity + Gang.getPace());
+                consumeResources();
+                Main.main.checkValues();
 
-                payDay();
-
-                try {
-                    saveData();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                drive(Main.determineVehicle());
-
-                // resource consumption
-                Gang.setDays(Gang.getDays() + 1);
-                Gang.setFood(Gang.getFood() - (Gang.getGangMembers().size()* Gang.getFoodIntake()));
-                Gang.setWater(Gang.getWater() - (Gang.getGangMembers().size()* Gang.getFoodIntake()));
-
-                Main.checkValues();
+                Main.main.saveGameState();
 
                 Platform.runLater(() -> {
                     // update the JavaFX UI Thread here when the task(s) above are done
 
                     // city count down
-                    if (distanceSinceCity > 500) Main.alert.cityEvent();
-
-                    // updating labels
-                    distanceLabel.setText("Distance: "+ Gang.getDistance() +"Mi");
-                    daysLabel.setText("Days: "+ Gang.getDays());
-                    statusLabel.setText("Status: Moving");
-                    conditionsLabel.setText("Condition: "+ Gang.getHealthConditions());
-                    setOutBtn.setText("Speedup");
+                    if (Main.gang.getDistanceSinceCity() >= distanceBetweenCities) Main.alert.cityEvent();
 
                     //Thief encounter
-                    if (Main.Chance((byte)100,(byte)1,(byte)90)) Main.alert.thiefEncounter();
+                    if (Main.Chance((byte)50,(byte)0,(byte)25)) Main.alert.thiefEncounter();
 
                     // health events
                     HealthClass.determineHealthCondition();
+
+                    updateGUI();
                 });
 
-                if (!Gang.isMoving()) break;
+                if (!Main.gang.isMoving()) break;
 
                 try {
                     Thread.sleep(2400);
@@ -140,87 +150,81 @@ public class TravelController implements Serializable {
                 drivingTransition.stop();
             });
 
+            Main.main.saveGameState();
+
         }).start();
     }
 
     @FXML
     public void initialize(){
 
-        Main.checkFullScreen();
-
-        Main.getAlertWindow().setOnCloseRequest(e -> spriteImage.setImage(new Image(Gang.getCarSpriteURL())));
+        Main.getAlertWindow().setOnCloseRequest(e -> spriteImage.setImage(new Image(Main.gang.getCarSpriteURL())));
 
         // updating labels
-        distanceLabel.setText("To go: "+ Gang.getDistance() +"Mi");
-        conditionsLabel.setText("Condition: "+ Gang.getHealthConditions());
-        daysLabel.setText("Days: "+ Gang.getDays());
+        distanceLabel.setText("Travelled: "+ Main.gang.getDistance() +"Mi");
+        conditionsLabel.setText("Health Cond: "+ Main.gang.getHealthConditions());
+        daysLabel.setText("Days: "+ Main.gang.getDays());
         statusLabel.setText("Status: Resting");
 
         // setting up how the animation will work
         drivingTransition = new TranslateTransition();
         drivingTransition.setDuration(Duration.seconds(animationDuration));
-        drivingTransition.setToX(Main.getMainWindow().getWidth() - 850);
+        drivingTransition.setToX(Main.main.getMainWindow().getWidth() - 850);
         drivingTransition.setNode(sprite);
         drivingTransition.setCycleCount(Animation.INDEFINITE);
-
-        // fixes the bug with thread not ending when stage was closed
-        Main.getMainWindow().setOnCloseRequest(e -> Gang.setMoving(false));
     }
 
     /**
-     *
-     * Does a countdown to payment, and player(s) receive money when it reaches 30 (30 days),
-     * of which is determine by the wage of the career the player(s) have chosen
-     *
+     * Updates all labels, and the
+     * transition in the Travel scene
      */
-    private void payDay(){
-
-        ++payDayCountdown;
-
-        if (payDayCountdown == 30){
-
-            Gang.setMoney(Gang.getMoney() + Gang.getWage());
-
-            payDayCountdown = 0;
-        }
-    }
-
     @FXML
     private void updateGUI(){
 
-        spriteImage.setImage(new Image(Gang.getCarSpriteURL()));
-
-        // updating drivingTransition
-        drivingTransition = new TranslateTransition();
-        drivingTransition.setDuration(Duration.seconds(animationDuration));
-        drivingTransition.setToX((Main.getMainWindow().getWidth() / -1) - 400);
-        drivingTransition.setNode(sprite);
-        drivingTransition.setCycleCount(Animation.INDEFINITE);
+        spriteImage.setImage(new Image(Main.gang.getCarSpriteURL()));
 
         // updating labels
-        distanceLabel.setText("To go: "+ Gang.getDistance() +"Mi");
-        conditionsLabel.setText("Condition: "+ Gang.getHealthConditions());
-        daysLabel.setText("Days: "+ Gang.getDays());
-        statusLabel.setText("Status: Resting");
+        distanceLabel.setText("Travelled: "+ Main.gang.getDistance() +"Mi");
+        conditionsLabel.setText("Health Cond: "+ Main.gang.getHealthConditions());
+        daysLabel.setText("Days: "+ Main.gang.getDays());
+
+        if (Main.gang.isMoving()) {
+            setOutBtn.setText("Speedup");
+            statusLabel.setText("Status: Moving");
+        } else {
+            setOutBtn.setText("Set out");
+            statusLabel.setText("Status: Resting");
+        }
     }
 
-    private void drive(Vehicle v){
+    /**
+     * It takes an object that implements
+     * the Vehicle interface and runs the
+     * drive method
+     *
+     * @param v Is the object that
+     *          implements the vehicle
+     *          interface
+     *
+     * @return the value returned by
+     * the object's drive method. This
+     * is the speed of the vehicle that
+     * is used to add to the current
+     * distance
+     */
+    private byte drive(Vehicle v){
 
-        v.drive();
+        return v.drive();
     }
 
-    private void saveData() throws IOException {
+    /**
+     * Subtracts Food and water, by the size
+     * of the gang multiplied by
+     * food intake value
+     */
+    private void consumeResources(){
 
-        FileOutputStream fileStream = new FileOutputStream("SaveGame.ser");
-
-        ObjectOutputStream outputStream = new ObjectOutputStream(fileStream);
-        ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("SaveGame.ser"));
-
-        System.out.print(inputStream.read());
-
-        outputStream.write(Gang.getFood());
-
-        outputStream.close();
-        fileStream.close();
+        Main.gang.setFood(Main.gang.getFood() - (Main.gang.getGangMembers().size() * Main.gang.getFoodIntake()));
+        Main.gang.setWater(Main.gang.getWater() - (Main.gang.getGangMembers().size() * Main.gang.getFoodIntake()));
     }
 }

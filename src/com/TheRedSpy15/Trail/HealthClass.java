@@ -2,7 +2,7 @@ package com.TheRedSpy15.trail;
 
 /*
 
-   Copyright [2017] [TheRedSpy15]
+   Copyright 2018 TheRedSpy15
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -24,55 +24,63 @@ import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
 import javafx.scene.text.Font;
 
+import java.util.Collections;
+
 public class HealthClass {
 
-    private static byte healthEventCoolDown = 10;
+    private static byte healthEventCoolDown = 0;
 
     // Used to determine health condition based upon tiredness, pace, and intake
     protected static void determineHealthCondition(){
 
-        switch (Gang.getPace()){
+        final byte highBrakeFrequency = 15;
+        final byte lowBrakeFrequency = 5;
 
-            case 15:
-                Gang.setHealthConditions(Gang.getHealthConditions() - 3);
-                break;
-            case 10:
-                Gang.setHealthConditions(Gang.getHealthConditions() + 1);
-                break;
-            case 1:
-                Gang.setHealthConditions(Gang.getHealthConditions() + 2);
-                break;
-        }
+        final byte highFoodIntake = 15;
+        final byte lowFoodIntake = 5;
 
-        switch (Gang.getFoodIntake()){
+        switch (Main.gang.getBrakeFrequency()){
 
-            case 1:
-                if (Gang.getFood() != 0) Gang.setHealthConditions(Gang.getHealthConditions() - 5);
+            case highBrakeFrequency:
+                Main.gang.setHealthConditions(Main.gang.getHealthConditions() - 3);
                 break;
-            case 2:
-                if (Gang.getFood() != 0) Gang.setHealthConditions(Gang.getHealthConditions() + 1);
+            case lowBrakeFrequency:
+                Main.gang.setHealthConditions(Main.gang.getHealthConditions() + 2);
                 break;
-            case 3:
-                if (Gang.getFood() != 0) Gang.setHealthConditions(Gang.getHealthConditions() + 5);
+            default:
+                Main.gang.setHealthConditions(Main.gang.getHealthConditions() + 1);
                 break;
         }
 
-        if (Gang.getFood() == 0){
+        switch (Main.gang.getFoodIntake()){
 
-            if (Gang.getWater() == 0){
-
-                Gang.setHealthConditions(Gang.getHealthConditions() - 10);
-            }
-
-            Gang.setHealthConditions(Gang.getHealthConditions() - 10);
+            case lowFoodIntake:
+                if (Main.gang.getFood() != 0) Main.gang.setHealthConditions(Main.gang.getHealthConditions() - 5);
+                break;
+            case highFoodIntake:
+                if (Main.gang.getFood() != 0) Main.gang.setHealthConditions(Main.gang.getHealthConditions() + 5);
+                break;
+            default:
+                if (Main.gang.getFood() != 0) Main.gang.setHealthConditions(Main.gang.getHealthConditions() + 1);
+                break;
         }
 
-        if (Gang.getHealthConditions() > 100) Gang.setHealthConditions(100);
-        if (Gang.getHealthConditions() < 0) Gang.setHealthConditions(0);
+        if (Main.gang.getFood() <= 0){
 
-        if (healthEventCoolDown >= 10){
+            Main.gang.setHealthConditions(Main.gang.getHealthConditions() - 10);
+        }
 
-            if (Main.getSickEventChance() > Gang.getHealthConditions()){
+        if (Main.gang.getWater() <= 0){
+
+            Main.gang.setHealthConditions(Main.gang.getHealthConditions() - 10);
+        }
+
+        Main.main.checkValues();
+
+        byte healthEventCoolDownDuration = 10;
+        if (healthEventCoolDown >= healthEventCoolDownDuration){
+
+            if (Main.main.getSickEventChance() > Main.gang.getHealthConditions()){
 
                 HealthClass.poorHealthEvent();
             }
@@ -82,9 +90,15 @@ public class HealthClass {
     }
 
     // Events to happen with poor health conditions
-    protected static void poorHealthEvent(){
+    private static void poorHealthEvent(){
 
-        Gang.setMoving(false);
+        Collections.shuffle(Main.gang.getGangMembers());
+
+        final byte deathChance = 30;
+        final byte healthBonus = 60;
+        final byte healthLoss = 15;
+
+        Main.gang.setMoving(false);
         TravelController.drivingTransition.pause();
 
         VBox PoorHealthLayout = new VBox(10);
@@ -96,70 +110,63 @@ public class HealthClass {
 
         PoorHealthLayout.setStyle("-fx-background-color: RED;");
         PoorHealthLayout.getChildren().add(SickEventLbl);
-        Main.setSickEventScene(new Scene(PoorHealthLayout));
-        Main.getAlertWindow().setScene(Main.getSickEventScene());
+        Main.main.setSickEventScene(new Scene(PoorHealthLayout));
+        Main.getAlertWindow().setScene(Main.main.getSickEventScene());
 
-        if (Main.getSickEventChance() <= 10){ // death
+        if (Main.main.getSickEventChance() <= deathChance){ // death
 
-            SickEventLbl.setText(Gang.getGangMembers().pop()+" Passed away...");
+            SickEventLbl.setText(death()+" Passed away...");
 
-            Gang.setHealthConditions(Gang.getHealthConditions() + 60);
+            Main.gang.setHealthConditions(Main.gang.getHealthConditions() + healthBonus);
+
+            alertSyncShowWait();
+        }else{ // non-death messages
+
+            String[] healthResponses = {
+                    "got a cold","has a fever","broke a leg",
+                    "broke an arm","threw up","has an infection",
+                    "has the flu","is sick"
+            };
+
+            SickEventLbl.setText(Main.gang.getGangMembers().peek()+" "+healthResponses[(byte) (Math.random() * healthResponses.length)]);
+
+            Main.gang.setHealthConditions(Main.gang.getHealthConditions() - healthLoss);
+            Main.main.checkValues();
 
             Main.getAlertWindow().showAndWait();
-        }else{
-
-            switch (Main.getSickEventChance()){ // non deadly
-
-                case 11:
-                    SickEventLbl.setText(Gang.getGangMembers().peek()+" Got a cold");
-                    Gang.setHealthConditions(Gang.getHealthConditions() - 5);
-                    Main.getAlertWindow().showAndWait();
-                    break;
-                case 12:
-                    SickEventLbl.setText(Gang.getGangMembers().peek()+" Has a Fever");
-                    Gang.setHealthConditions(Gang.getHealthConditions() - 10);
-                    Main.getAlertWindow().showAndWait();
-                    break;
-                case 13:
-                    SickEventLbl.setText(Gang.getGangMembers().peek()+" Broke a leg.... at least they got two");
-                    Gang.setHealthConditions(Gang.getHealthConditions() - 10);
-                    Main.getAlertWindow().showAndWait();
-                    break;
-                case 14:
-                    SickEventLbl.setText(Gang.getGangMembers().peek()+" Broke an arm... at least they got two");
-                    Gang.setHealthConditions(Gang.getHealthConditions() - 10);
-                    Main.getAlertWindow().showAndWait();
-                    break;
-                case 15:
-                    SickEventLbl.setText(Gang.getGangMembers().peek()+" Threw up... there were some chunks in it too!");
-                    Gang.setHealthConditions(Gang.getHealthConditions() - 10);
-                    Main.getAlertWindow().showAndWait();
-                    break;
-                case 16:
-                    SickEventLbl.setText(Gang.getGangMembers().peek()+" Has an infection");
-                    Gang.setHealthConditions(Gang.getHealthConditions() - 15);
-                    Main.getAlertWindow().showAndWait();
-                    break;
-                case 17:
-                    SickEventLbl.setText(Gang.getGangMembers().peek()+" Has the flu");
-                    Gang.setHealthConditions(Gang.getHealthConditions() - 15);
-                    Main.getAlertWindow().showAndWait();
-                    break;
-                default:
-                    SickEventLbl.setText(Gang.getGangMembers().peek()+" Is sick... of this game");
-                    Gang.setHealthConditions(Gang.getHealthConditions() - 10);
-                    Main.getAlertWindow().showAndWait();
-                    break;
-            }
         }
+    }
 
-        // making sure values are not negative
-        Main.checkValues();
+    /**
+     * Removes a member from the gang stack,
+     * and returns it
+     *
+     * also, it shuffles the gang stack, as
+     * well as adding that name to the
+     * deceased list
+     *
+     * @return name of member that was killed
+     */
+    static String death(){
+
+        Collections.shuffle(Main.gang.getGangMembers());
+
+        Main.gang.getDeceased().push(Main.gang.getGangMembers().peek());
+
+        return Main.gang.getGangMembers().pop();
+    }
+
+    private static synchronized void alertSyncShowWait(){
+
+        Main.getAlertWindow().showAndWait();
+    }
+
+    static void checkGameOver(){
 
         // Game over condition
-        if (Gang.getGangMembers().size() <= 0){
+        if (Main.gang.getGangMembers().size() <= 0){
 
-            Gang.setMoving(false);
+            Main.gang.setMoving(false);
 
             AlertBox.gameOver();
         }
