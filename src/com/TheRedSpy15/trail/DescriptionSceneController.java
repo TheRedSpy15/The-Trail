@@ -2,7 +2,7 @@ package com.TheRedSpy15.trail;
 
 /*
 
-   Copyright [2017] [TheRedSpy15]
+   Copyright 2018 TheRedSpy15
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -28,8 +28,6 @@ public class DescriptionSceneController {
     @FXML private void setContinueBtn() throws IOException {
 
         Main.career.careerPicker();
-        Main.getMainWindow().setScene(new Scene(Main.getCareerAnchor()));
-
-        Main.checkFullScreen();
+        Main.main.getMainWindow().setScene(new Scene(Main.main.getCareerAnchor()));
     }
 }

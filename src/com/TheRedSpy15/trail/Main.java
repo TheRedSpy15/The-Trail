@@ -2,7 +2,7 @@ package com.TheRedSpy15.trail;
 
 /*
 
-   Copyright [2017] [TheRedSpy15]
+   Copyright 2018 TheRedSpy15
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -22,64 +22,13 @@ package com.TheRedSpy15.trail;
 
     BUG LIST
 
-    * Jar file not working on other PCs
     * Back button in purchase alert - causing freezes
-
-    Exception in thread "JavaFX Application Thread" java.lang.IllegalStateException: Stage already visible
-	at javafx.stage.Stage.showAndWait(Stage.java:460)
-	at com.TheRedSpy15.trail.HealthClass.poorHealthEvent(HealthClass.java:111)
-	at com.TheRedSpy15.trail.HealthClass.determineHealthCondition(HealthClass.java:79)
-	at com.TheRedSpy15.trail.TravelController.lambda$null$0(TravelController.java:119)
-	at com.sun.javafx.application.PlatformImpl.lambda$null$173(PlatformImpl.java:295)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$174(PlatformImpl.java:294)
-	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)
-	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
-	at com.sun.glass.ui.win.WinApplication.lambda$null$148(WinApplication.java:191)
-	at java.lang.Thread.run(Thread.java:748)
-
-	Exception in thread "JavaFX Application Thread" java.lang.IllegalStateException: Stage already visible
-	at javafx.stage.Stage.showAndWait(Stage.java:460)
-	at com.TheRedSpy15.trail.HealthClass.poorHealthEvent(HealthClass.java:128)
-	at com.TheRedSpy15.trail.HealthClass.determineHealthCondition(HealthClass.java:79)
-	at com.TheRedSpy15.trail.TravelController.lambda$null$0(TravelController.java:120)
-	at com.sun.javafx.application.PlatformImpl.lambda$null$173(PlatformImpl.java:295)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$174(PlatformImpl.java:294)
-	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)
-	at com.sun.glass.ui.win.WinApplication._enterNestedEventLoopImpl(Native Method)
-	at com.sun.glass.ui.win.WinApplication._enterNestedEventLoop(WinApplication.java:218)
-	at com.sun.glass.ui.Application.enterNestedEventLoop(Application.java:511)
-	at com.sun.glass.ui.EventLoop.enter(EventLoop.java:107)
-	at com.sun.javafx.tk.quantum.QuantumToolkit.enterNestedEventLoop(QuantumToolkit.java:583)
-	at javafx.stage.Stage.showAndWait(Stage.java:474)
-	at com.TheRedSpy15.trail.HealthClass.poorHealthEvent(HealthClass.java:128)
-	at com.TheRedSpy15.trail.HealthClass.determineHealthCondition(HealthClass.java:79)
-	at com.TheRedSpy15.trail.TravelController.lambda$null$0(TravelController.java:120)
-	at com.sun.javafx.application.PlatformImpl.lambda$null$173(PlatformImpl.java:295)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$174(PlatformImpl.java:294)
-	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)
-	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
-	at com.sun.glass.ui.win.WinApplication.lambda$null$148(WinApplication.java:191)
-	at java.lang.Thread.run(Thread.java:748)
-
-
-    Features
-
-    * A food portion scene with sliders
-    * Saving data - serializing
-    * View gang member scene in mid game menu
-    * Add red car to dealer ship
-    * Different cars have different specs
-    * help scene in mid game menu
-    * Alert box need huge rework
-    * Personal armoury (gun inventory for selecting different guns with different traits)
-    * More guns
 
     */
 
-import java.io.IOException;
+import java.io.*;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -91,20 +40,18 @@ import javafx.scene.Scene;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
-import static com.TheRedSpy15.trail.Gang.*;
 import static javafx.scene.media.AudioClip.INDEFINITE;
 
 /**
- *
  * Serves as the class where the program gets launched.
  *
- * It also, provides some methods that are useful utilises designed specifically
+ * It also, provides some methods that
+ * are useful utilises designed specifically
  * for the Trail
- *
  */
-public class Main extends Application{
+public class Main extends Application implements Serializable{
 
-    // Javafx - WAY too many variables here
+    // JavaFX - WAY too many variables here
     private static Stage MainWindow;
     private static Scene FoodPortionsScene;
     private static Stage MenuWindow;
@@ -139,36 +86,33 @@ public class Main extends Application{
     private static Parent hirePane;
 
     // Core Java
-    private static final String trailVersion = "1.9.6";
+    private static final String trailVersion = "2.4.2";
     private static byte SickEventChance;
-    static Boolean fullScreen = false;
     static Random rand = new Random();
     static AlertBox alert = new AlertBox();
     static Store store = new Store();
     static Career career = new Career();
     static Gang gang = new Gang();
+    static Main main = new Main();
     static ArrayList<String> cities = new ArrayList<>();
+
+    byte startingThreads = 6;
+    boolean autoSave = true;
 
     public static void main(String args[]) {
 
-        // setting up list of cities
-        cities.add("Tallahassee, Florida");
-        cities.add("Atlanta, Georgia");
-        cities.add("Nashville, Tennessee");
-        cities.add("Frankfort, Kentucky");
-        cities.add("Jefferson City, Missouri");
-        cities.add("Kansas City, Kansas");
-        cities.add("Denver, Colorado");
-        cities.add("Salt Lake City, Utah");
-        cities.add("Las Vegas, Nevada");
-        cities.add("Salem, Oregon");
+        /*
+            - Next update -
+        FIX THE THIEF KILLED SCENE!!!
+        add more javaDocs
+        button in deceased list scene to delete list AFTER -
+        making a dedicated deceased file
+        properly implement storage methods of vehicles
+        */
 
-        // setting up description scene, needs to be moved
-        try {
-            setDescriptionPane(FXMLLoader.load(Main.class.getResource("DescriptionScene.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        main.startingThreads += Thread.activeCount();
+
+        main.setupCities();
 
         // Music
         Thread backGroundMusicThread = new Thread(backGroundMusicTask);
@@ -189,64 +133,150 @@ public class Main extends Application{
 
         getMainWindow().setResizable(false);
 
-        getMainWindow().setTitle("The Trail "+trailVersion);
+        getMainWindow().setTitle("The Trail " + trailVersion);
 
         getMainWindow().setScene(new Scene(mainAnchor));
 
         getMainWindow().show();
+
+        getMainWindow().setOnCloseRequest(e -> {
+            endGame();
+
+            if (Main.gang.getGangMembers().size() > 0) saveGameState();
+        });
+
+        //Thread serverThread = new Thread(Main::setUpSever);
+        //Thread clientThread = new Thread(Main::setUpNetworking);
+        //serverThread.start();
+        //clientThread.start();
     }
 
     /**
-     *
-     * Used to limit Food, Water, Money, and Health conditions. It also,
+     * Used to save game progress, NOT game
+     * state (despite name). As in it will not
+     * save that the player was fighting a thief,
+     * just their inventory etc.
+     */
+    void saveGameState(){
+
+        if (autoSave){
+
+            try {
+                Gang.saveData();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * For a secret upcoming feature
+     */
+    private static void setUpNetworking(){
+
+        try {
+            Socket sock = new Socket("127.0.0.1", 4242);
+            InputStreamReader inputStreamReader = new InputStreamReader(sock.getInputStream());
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            System.out.print("Connected - " + bufferedReader.readLine());
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * For a secret upcoming feature
+     */
+    static private void setUpSever(){
+
+        ServerSocket serverSocket = null;
+        try {
+            serverSocket = new ServerSocket(4242);
+
+            while (true){
+
+                Socket socket = serverSocket.accept();
+
+                PrintWriter writer = new PrintWriter(socket.getOutputStream());
+                writer.print("Bananas");
+                writer.close();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Used to limit Food, Water, Money, and
+     * Health conditions. It also,
      * prevents the values from being negative.
-     *
      */
-    static void checkValues(){
+    void checkValues(){
 
-        if (getFood() < 0) setFood(0);
-        if (getWater() < 0) setWater(0);
-        if (getMoney() < 0) setMoney(0);
-        if (getHealthConditions() < 0) setHealthConditions(0);
+        if (gang.getFood() < 0) gang.setFood(0);
+        if (gang.getWater() < 0) gang.setWater(0);
+        if (gang.getMoney() < 0) gang.setMoney(0);
+        if (gang.getHealthConditions() < 0) gang.setHealthConditions(0);
+        if (gang.getHealthConditions() > 100) gang.setHealthConditions(100);
     }
 
     /**
-     *
-     * Checks the value of "fullScreen" and sets the Main stage to full screen based upon it's value.
-     *
+     * Adds all cities in the game,
+     * to the Cities array list
      */
-    static void checkFullScreen(){
+    private void setupCities(){
 
-        if (fullScreen && !getAlertWindow().isShowing()) getMainWindow().setFullScreen(true);
+        cities.add("Tallahassee, Florida");
+        cities.add("Atlanta, Georgia");
+        cities.add("Nashville, Tennessee");
+        cities.add("Frankfort, Kentucky");
+        cities.add("Jefferson City, Missouri");
+        cities.add("Kansas City, Kansas");
+        cities.add("Denver, Colorado");
+        cities.add("Salt Lake City, Utah");
+        cities.add("Las Vegas, Nevada");
+        cities.add("Salem, Oregon");
     }
 
     /**
-     *
-     * It's return object is based upon the value of "vehicleID", NOT "vehicleIDs"
+     * Ends the game
+     */
+    void endGame(){
+
+        System.exit(0);
+    }
+
+    /**
+     * It's return object is based upon the
+     * value of "vehicleID", NOT to be
+     * mistaken with "vehicleIDs"
      *
      * @return
      * Objects that implement the vehicle interface :
-     * gCar (GreenCar),
-     * bTruck (BlueTruck),
+     * gCar (StarterCar),
+     * bTruck (MonsterTruck),
      * rCar (RallyCar)
      */
-    static Vehicle determineVehicle(){
+    Vehicle determineVehicle(){
 
-        GreenCar gCar = new GreenCar();
-        BlueTruck bTruck = new BlueTruck();
-        RallyCar rCar = new RallyCar();
+        StarterCar starterCar = new StarterCar();
+        MonsterTruck monsterTruck = new MonsterTruck();
+        RallyCar rallyCar = new RallyCar();
+        SpeedDemon speedDemon = new SpeedDemon();
 
-        switch (Gang.getVehicleID()){
-            case BLUETRUCK:
-                return bTruck;
-            case RALLYCAR:
-                return rCar;
+        switch (Main.gang.getVehicleID()){
+            case "Monster Truck": return monsterTruck;
+            case "Rally Car": return rallyCar;
+            case "Speed Demon": return speedDemon;
+            default: return starterCar;
         }
-
-        return gCar;
     }
 
-    // Music task
+    /**
+     * Where the game's background
+     * music is configured
+     */
     private static final Task backGroundMusicTask = new Task() {
 
         @Override
@@ -265,13 +295,14 @@ public class Main extends Application{
     };
 
     /**
-     *
-     * Creates a random values between the Max and Min values. If it is equal to Target,
+     * Creates a random values between
+     * the Max and Min values. If it is equal to Target,
      * it returns true
      *
      * @param max Max range
      * @param min Min range
-     * @param target Value the random value must be equal to in order to return true
+     * @param target Value the random value must be
+     *              equal to in order to return true
      * @return True / False
      */
     static boolean Chance(byte max, byte min, byte target){
@@ -282,199 +313,199 @@ public class Main extends Application{
     }
 
     // Getters and Setters
-    static Scene getSellScene() {
+    Scene getSellScene() {
         return SellScene;
     }
-    static void setSellScene(Scene midSellStoreScene) {
+    void setSellScene(Scene midSellStoreScene) {
         Main.SellScene = midSellStoreScene;
     }
-    static Scene getThiefMenuScene() {
+    Scene getThiefMenuScene() {
         return thiefMenuScene;
     }
-    static void setThiefMenuScene(Scene thiefMenuScene) {
+    void setThiefMenuScene(Scene thiefMenuScene) {
         Main.thiefMenuScene = thiefMenuScene;
     }
-    static Stage getMenuWindow() {
+    Stage getMenuWindow() {
         return MenuWindow;
     }
-    static void setMenuWindow(Stage menuWindow) {
+    void setMenuWindow(Stage menuWindow) {
         MenuWindow = menuWindow;
     }
-    static Scene getSickEventScene() {
+    Scene getSickEventScene() {
         return SickEventScene;
     }
-    static void setSickEventScene(Scene sickEventScene) {
+    void setSickEventScene(Scene sickEventScene) {
         SickEventScene = sickEventScene;
     }
-    static Parent getTravelPane() {
+    Parent getTravelPane() {
         return travelPane;
     }
-    static void setTravelPane(Parent travelPane) {
+    void setTravelPane(Parent travelPane) {
         Main.travelPane = travelPane;
     }
-    static Parent getCityPane() {
+    Parent getCityPane() {
         return cityPane;
     }
-    static void setCityPane(Parent cityPane) {
+    void setCityPane(Parent cityPane) {
         Main.cityPane = cityPane;
     }
-    static Parent getSellPane() {
+    Parent getSellPane() {
         return SellPane;
     }
-    static void setSellPane(Parent sellPane) {
+    void setSellPane(Parent sellPane) {
         Main.SellPane = sellPane;
     }
-    static Scene getCityScene() {
+    Scene getCityScene() {
         return cityScene;
     }
-    static void setCityScene(Scene cityScene) {
+    void setCityScene(Scene cityScene) {
         Main.cityScene = cityScene;
     }
-    static Parent getDealerPane() {
+    Parent getDealerPane() {
         return dealerPane;
     }
-    static void setDealerPane(Parent dealerPane) {
+    void setDealerPane(Parent dealerPane) {
         Main.dealerPane = dealerPane;
     }
-    static Scene getDealerScene() {
+    Scene getDealerScene() {
         return dealerScene;
     }
-    static void setDealerScene(Scene dealerScene) {
+    void setDealerScene(Scene dealerScene) {
         Main.dealerScene = dealerScene;
     }
-    static Parent getInventoryPane() {
+    Parent getInventoryPane() {
         return inventoryPane;
     }
-    static void setInventoryPane(Parent inventoryPane) {
+    void setInventoryPane(Parent inventoryPane) {
         Main.inventoryPane = inventoryPane;
     }
-    static Scene getInventoryScene() {
+    Scene getInventoryScene() {
         return inventoryScene;
     }
-    static void setInventoryScene(Scene inventoryScene) {
+    void setInventoryScene(Scene inventoryScene) {
         Main.inventoryScene = inventoryScene;
     }
-    static Parent getShootOutPane() {
+    Parent getShootOutPane() {
         return shootOutPane;
     }
-    static void setShootOutPane(Parent shootOutPane) {
+    void setShootOutPane(Parent shootOutPane) {
         Main.shootOutPane = shootOutPane;
     }
-    static Scene getShootOutScene() {
+    Scene getShootOutScene() {
         return shootOutScene;
     }
-    static void setShootOutScene(Scene shootOutScene) {
+    void setShootOutScene(Scene shootOutScene) {
         Main.shootOutScene = shootOutScene;
     }
-    static Parent getThiefMenuPane() {
+    Parent getThiefMenuPane() {
         return thiefMenuPane;
     }
-    static void setThiefMenuPane(Parent thiefMenuPane) {
+    void setThiefMenuPane(Parent thiefMenuPane) {
         Main.thiefMenuPane = thiefMenuPane;
     }
-    static Scene getLootScene() {
+    Scene getLootScene() {
         return lootScene;
     }
-    static void setLootScene(Scene lootScene) {
+    void setLootScene(Scene lootScene) {
         Main.lootScene = lootScene;
     }
-    static Parent getLootPane() {
+    Parent getLootPane() {
         return lootPane;
     }
-    static void setLootPane(Parent lootPane) {
+    void setLootPane(Parent lootPane) {
         Main.lootPane = lootPane;
     }
-    static Scene getDeadThiefScene() {
+    Scene getDeadThiefScene() {
         return deadThiefScene;
     }
-    static void setDeadThiefScene(Scene deadThiefScene) {
-        Main.deadThiefScene = deadThiefScene;
+    void setDeadThiefScene(Scene DeadThiefScene) {
+        deadThiefScene = DeadThiefScene;
     }
-    static Parent getDeadThiefPane() {
+    Parent getDeadThiefPane() {
         return deadThiefPane;
     }
-    static void setDeadThiefPane(Parent deadThiefPane) {
-        Main.deadThiefPane = deadThiefPane;
+    void setDeadThiefPane(Parent DeadThiefPane) {
+        deadThiefPane = DeadThiefPane;
     }
-    static Scene getHireScene() {
+    Scene getHireScene() {
         return hireScene;
     }
-    static void setHireScene(Scene hireScene) {
+    void setHireScene(Scene hireScene) {
         Main.hireScene = hireScene;
     }
-    static Parent getHirePane() {
+    Parent getHirePane() {
         return hirePane;
     }
-    static void setHirePane(Parent hirePane) {
+    void setHirePane(Parent hirePane) {
         Main.hirePane = hirePane;
     }
-    static Scene getFoodPortionsScene() {
+    Scene getFoodPortionsScene() {
         return FoodPortionsScene;
     }
-    static void setFoodPortionsScene(Scene foodPortionsScene) {
+    void setFoodPortionsScene(Scene foodPortionsScene) {
         FoodPortionsScene = foodPortionsScene;
     }
-    static Scene getPaceScene() {
+    Scene getPaceScene() {
         return PaceScene;
     }
-    static void setPaceScene(Scene paceScene) {
+    void setPaceScene(Scene paceScene) {
         PaceScene = paceScene;
     }
-    static int getSickEventChance() {
+    int getSickEventChance() {
         return SickEventChance;
     }
-    static void setSickEventChance(int sickEventChance) {
+    void setSickEventChance(int sickEventChance) {
         SickEventChance = (byte) sickEventChance;
     }
-    static Stage getMainWindow() {
+    Stage getMainWindow() {
         return MainWindow;
     }
-    private static void setMainWindow(Stage mainWindow) {
+    private void setMainWindow(Stage mainWindow) {
         MainWindow = mainWindow;
     }
-    static Parent getCareerAnchor() {
+    Parent getCareerAnchor() {
         return careerAnchor;
     }
-    static void setCareerAnchor(Parent careerAnchor) {
+    void setCareerAnchor(Parent careerAnchor) {
         Main.careerAnchor = careerAnchor;
     }
-    static Parent getPossePane() {
+    Parent getPossePane() {
         return possePane;
     }
-    static void setPossePane(Parent possePane) {
+    void setPossePane(Parent possePane) {
         Main.possePane = possePane;
     }
-    static Scene getStoreScene() {
+    Scene getStoreScene() {
         return storeScene;
     }
-    static void setStoreScene(Scene storeScene) {
+    void setStoreScene(Scene storeScene) {
         Main.storeScene = storeScene;
     }
-    static Parent getGunStorePane() {
+    Parent getGunStorePane() {
         return gunStorePane;
     }
-    static void setGunStorePane(Parent gunStorePane) {
+    void setGunStorePane(Parent gunStorePane) {
         Main.gunStorePane = gunStorePane;
     }
-    static Scene getGunStoreScene() {
+    Scene getGunStoreScene() {
         return gunStoreScene;
     }
-    static void setGunStoreScene(Scene gunStoreScene) {
+    void setGunStoreScene(Scene gunStoreScene) {
         Main.gunStoreScene = gunStoreScene;
     }
-    public static Stage getAlertWindow() {
+    static Stage getAlertWindow() {
         return AlertWindow;
     }
-    static Parent getStorePane() {
+    Parent getStorePane() {
         return storePane;
     }
-    static void setStorePane(Parent storePane) {
+    void setStorePane(Parent storePane) {
         Main.storePane = storePane;
     }
-    static Parent getDescriptionPane() {
+    Parent getDescriptionPane() {
         return descriptionPane;
     }
-    private static void setDescriptionPane(Parent descriptionPane) {
+    void setDescriptionPane(Parent descriptionPane) {
         Main.descriptionPane = descriptionPane;
     }
 }

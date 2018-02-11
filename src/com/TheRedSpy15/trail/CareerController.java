@@ -2,7 +2,7 @@ package com.TheRedSpy15.trail;
 
 /*
 
-   Copyright [2017] [TheRedSpy15]
+   Copyright 2018 TheRedSpy15
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -21,37 +21,47 @@ package com.TheRedSpy15.trail;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 
-public class CareerController extends Main {
+public class CareerController extends Career{
 
     @FXML
     private void hitman() {
 
-        Gang.setMoney(Gang.getMoney() + 3500);
-        Gang.setWage(1000);
-        gang.gangSetupMethod();
-        getMainWindow().setScene(new Scene(getPossePane()));
-        checkFullScreen();
+        final short hitmanStartingMoney = 3_500;
+        final short hitmanWage = 1_000;
+
+        Main.gang.setMoney(Main.gang.getMoney() + hitmanStartingMoney);
+        Main.gang.setWage(hitmanWage);
+        Main.gang.gangSetupMethod();
+        Main.main.getMainWindow().setScene(new Scene(Main.main.getPossePane()));
     }
 
     @FXML
     private void drugDealer() {
 
-        Gang.setMoney(Gang.getMoney() + 2000);
-        Gang.setScore(Gang.getScore() + 10000);
-        Gang.setWage(500);
-        gang.gangSetupMethod();
-        getMainWindow().setScene(new Scene(getPossePane()));
-        checkFullScreen();
+        final short drugDealerStartingMoney = 2_000;
+        final short drugDealerBonus = 10_000;
+        final short drugDealerWage = 500;
+
+        Main.gang.setMoney(Main.gang.getMoney() + drugDealerStartingMoney);
+        Main.gang.setScore(Main.gang.getScore() + drugDealerBonus);
+        Main.gang.setWage(drugDealerWage);
+        Main.gang.gangSetupMethod();
+        Main.main.getMainWindow().setScene(new Scene(Main.main.getPossePane()));
     }
 
     @FXML
     private void thief() {
 
-        Gang.setMoney(Gang.getMoney() + 500);
-        Gang.setScore(Gang.getScore() + 15000);
-        Gang.setWage((int) (Math.random() * 1000) + 250);
-        gang.gangSetupMethod();
-        getMainWindow().setScene(new Scene(getPossePane()));
-        checkFullScreen();
+        final short thiefStartingMoneyMAX = 1_000;
+        final short thiefStartingMoneyMIN = 250;
+        final short thiefBonus = 15_000;
+        final short thiefWageMAX = 1_000;
+        final short thiefWageMIN = 250;
+
+        Main.gang.setMoney(Main.gang.getMoney() + (int) (Math.random() * thiefStartingMoneyMAX) + thiefStartingMoneyMIN);
+        Main.gang.setScore(Main.gang.getScore() + thiefBonus);
+        Main.gang.setWage((int) (Math.random() * thiefWageMAX) + thiefWageMIN);
+        Main.gang.gangSetupMethod();
+        Main.main.getMainWindow().setScene(new Scene(Main.main.getPossePane()));
     }
 }

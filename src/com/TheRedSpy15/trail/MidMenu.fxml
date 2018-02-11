@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <!--
 
-   Copyright [2017] [TheRedSpy15]
+   Copyright 2018 TheRedSpy15
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -21,27 +23,37 @@
 
 -->
 
-<AnchorPane prefHeight="279.0" prefWidth="328.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.MidMenuController">
+<AnchorPane cache="true" cacheHint="SPEED" prefHeight="400.0" prefWidth="328.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.MidMenuController">
    <children>
       <Label layoutX="20.0" layoutY="14.0" prefHeight="76.0" prefWidth="126.0" text="Menu" textFill="PURPLE">
          <font>
             <Font name="Impact" size="44.0" />
          </font>
       </Label>
-      <Separator layoutX="144.0" layoutY="14.0" orientation="VERTICAL" prefHeight="237.0" prefWidth="0.0" />
-      <Button fx:id="paceBtn" layoutX="168.0" layoutY="27.0" mnemonicParsing="false" onAction="#paceBtn" prefHeight="43.0" prefWidth="95.0" text="Pace">
+      <Separator layoutX="144.0" layoutY="14.0" orientation="VERTICAL" prefHeight="364.0" prefWidth="5.0" />
+      <Button fx:id="paceBtn" layoutX="168.0" layoutY="24.0" mnemonicParsing="false" onAction="#paceBtn" prefHeight="56.0" prefWidth="126.0" text="Pace">
          <font>
             <Font name="Impact" size="21.0" />
          </font>
       </Button>
-      <Button fx:id="dietBtn" layoutX="168.0" layoutY="81.0" mnemonicParsing="false" onAction="#dietBtn" prefHeight="43.0" prefWidth="95.0" text="Diet">
+      <Button fx:id="dietBtn" layoutX="168.0" layoutY="90.0" mnemonicParsing="false" onAction="#dietBtn" prefHeight="56.0" prefWidth="126.0" text="Diet">
          <font>
             <Font name="Impact" size="21.0" />
          </font>
       </Button>
-      <Button fx:id="inventoryBtn" layoutX="168.0" layoutY="135.0" mnemonicParsing="false" onAction="#inventoryBtn" prefHeight="43.0" prefWidth="95.0" text="Inventory">
+      <Button fx:id="inventoryBtn" layoutX="168.0" layoutY="157.0" mnemonicParsing="false" onAction="#inventoryBtn" prefHeight="56.0" prefWidth="126.0" text="Inventory">
          <font>
-            <Font name="Impact" size="17.0" />
+            <Font name="Impact" size="21.0" />
+         </font>
+      </Button>
+      <Button fx:id="deceasedBtn" layoutX="168.0" layoutY="287.0" mnemonicParsing="false" onAction="#deceasedBtn" prefHeight="56.0" prefWidth="126.0" text="Deceased">
+         <font>
+            <Font name="Impact" size="21.0" />
+         </font>
+      </Button>
+      <Button fx:id="gangBtn" layoutX="168.0" layoutY="223.0" mnemonicParsing="false" onAction="#gangBtn" prefHeight="56.0" prefWidth="126.0" text="Gang">
+         <font>
+            <Font name="Impact" size="21.0" />
          </font>
       </Button>
    </children>

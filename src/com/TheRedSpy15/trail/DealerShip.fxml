@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
@@ -8,7 +9,7 @@
 
 <!--
 
-   Copyright [2017] [TheRedSpy15]
+   Copyright 2018 TheRedSpy15
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -24,59 +25,13 @@
 
 -->
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.DealerShipController">
-  <tabs>
-    <Tab closable="false" text="Car 1">
+<JFXTabPane prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.DealerShipController">
+   <tabs>
+    <Tab fx:id="monsterTruck" closable="false" text="Monster Truck">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: Purple;">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: black;">
                <children>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="82.0" prefWidth="200.0" style="-fx-background-color: purple;">
-                     <children>
-                        <Button fx:id="rallyCar" layoutX="220.0" layoutY="276.0" mnemonicParsing="false" onAction="#rallyCar" prefHeight="73.0" prefWidth="160.0" text="BUY!" textFill="RED">
-                           <font>
-                              <Font name="Impact" size="36.0" />
-                           </font>
-                        </Button>
-                        <Label layoutX="14.0" layoutY="14.0" prefHeight="61.0" prefWidth="218.0" text="Price: $3500" textFill="GREEN">
-                           <font>
-                              <Font name="Impact" size="30.0" />
-                           </font>
-                        </Label>
-                        <ImageView fitHeight="152.0" fitWidth="306.0" layoutX="147.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@rallycar.png" />
-                           </image>
-                        </ImageView>
-                        <Label layoutX="14.0" layoutY="289.0" prefHeight="50.0" prefWidth="160.0" text="Top speed: 150 MPH">
-                           <font>
-                              <Font name="Impact" size="20.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-                  <Label layoutX="14.0" layoutY="247.0" prefHeight="50.0" prefWidth="160.0" text="Bonus points: +500" textFill="WHITE">
-                     <font>
-                        <Font name="Impact" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="moneyLbl1" layoutX="174.0" layoutY="25.0" prefHeight="33.0" prefWidth="256.0" text="Your money: $0" textFill="#f6ff00">
-                     <font>
-                        <Font name="Impact" size="20.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="backBtn2" layoutX="479.0" layoutY="316.0" mnemonicParsing="false" onAction="#setBackBtn2" prefHeight="38.0" prefWidth="107.0" text="Back">
-                     <font>
-                        <Font name="Impact" size="21.0" />
-                     </font>
-                  </Button>
-               </children></AnchorPane>
-      </content>
-    </Tab>
-    <Tab fx:id="blueTruck" closable="false" text="Car 2">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: purple;">
-               <children>
-                  <Button layoutX="220.0" layoutY="276.0" mnemonicParsing="false" onAction="#blueTruck" prefHeight="73.0" prefWidth="160.0" text="BUY!" textFill="RED">
+                  <Button layoutX="220.0" layoutY="276.0" mnemonicParsing="false" onAction="#monsterTruck" prefHeight="73.0" prefWidth="160.0" text="BUY!" textFill="RED">
                      <font>
                         <Font name="Impact" size="36.0" />
                      </font>
@@ -91,28 +46,115 @@
                         <Image url="@bluetruck.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="14.0" layoutY="289.0" prefHeight="48.0" prefWidth="155.0" text="Top speed: 150 MPH">
-                     <font>
-                        <Font name="Impact" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="12.0" layoutY="251.0" prefHeight="50.0" prefWidth="188.0" text="Bonus points: +1000" textFill="WHITE">
+                  <Label layoutX="14.0" layoutY="289.0" prefHeight="48.0" prefWidth="163.0" text="Top speed: 100 MPH" textFill="WHITE">
                      <font>
                         <Font name="Impact" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="moneyLbl2" layoutX="172.0" layoutY="21.0" prefHeight="33.0" prefWidth="256.0" text="Your money: $0" textFill="#f6ff00">
+                  <Label layoutX="12.0" layoutY="251.0" prefHeight="50.0" prefWidth="188.0" text="Bonus points: +10,000" textFill="WHITE">
                      <font>
                         <Font name="Impact" size="20.0" />
                      </font>
                   </Label>
-                  <Button fx:id="backBtn1" layoutX="479.0" layoutY="317.0" mnemonicParsing="false" onAction="#setBackBtn1" prefHeight="38.0" prefWidth="107.0" text="Back">
+                  <Label fx:id="monsterTruckMoneyLbl" layoutX="315.0" layoutY="28.0" prefHeight="33.0" prefWidth="256.0" text="Your money: $0" textFill="#f6ff00">
                      <font>
-                        <Font name="Impact" size="21.0" />
+                        <Font name="Impact" size="20.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="backBtn1" layoutX="471.0" layoutY="301.0" mnemonicParsing="false" onAction="#backBtn1" prefHeight="52.0" prefWidth="121.0" style="-fx-background-color: black;" text="Back" textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="29.0" />
                      </font>
                   </Button>
-               </children></AnchorPane>
+               </children>
+            </AnchorPane>
       </content>
     </Tab>
-  </tabs>
-</TabPane>
+    <Tab closable="false" text="Rally Car">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: black;">
+               <children>
+                  <ImageView fitHeight="152.0" fitWidth="306.0" layoutX="147.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@rallycar.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="rallyCar" layoutX="220.0" layoutY="276.0" mnemonicParsing="false" onAction="#rallyCar" prefHeight="73.0" prefWidth="160.0" text="BUY!" textFill="RED">
+                     <font>
+                        <Font name="Impact" size="36.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="14.0" layoutY="289.0" prefHeight="50.0" prefWidth="168.0" text="Top speed: 120 MPH" textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="14.0" prefHeight="61.0" prefWidth="218.0" text="Price: $3500" textFill="GREEN">
+                     <font>
+                        <Font name="Impact" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="247.0" prefHeight="50.0" prefWidth="168.0" text="Bonus points: +7000" textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="rallyCarMoneyLbl" layoutX="277.0" layoutY="25.0" prefHeight="33.0" prefWidth="256.0" text="Your money: $0" textFill="#f6ff00">
+                     <font>
+                        <Font name="Impact" size="20.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="backBtn2" layoutX="480.0" layoutY="300.0" mnemonicParsing="false" onAction="#backBtn2" prefHeight="38.0" prefWidth="107.0" style="-fx-background-color: black;" text="Back" textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="29.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+      </content>
+    </Tab>
+      <Tab fx:id="blueTruck1" closable="false" text="Speed Demon">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: black;">
+               <children>
+                  <Button layoutX="220.0" layoutY="276.0" mnemonicParsing="false" onAction="#speedDemon" prefHeight="73.0" prefWidth="160.0" text="BUY!" textFill="RED">
+                     <font>
+                        <Font name="Impact" size="36.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="14.0" layoutY="14.0" prefHeight="61.0" prefWidth="171.0" text="Price: $15000" textFill="GREEN">
+                     <font>
+                        <Font name="Impact" size="30.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="152.0" fitWidth="306.0" layoutX="181.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@redcar.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="14.0" layoutY="289.0" prefHeight="48.0" prefWidth="163.0" text="Top speed: 175 MPH" textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="12.0" layoutY="251.0" prefHeight="50.0" prefWidth="188.0" text="Bonus points: +30,000" textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="speedDemonMoneyLbl" layoutX="315.0" layoutY="28.0" prefHeight="33.0" prefWidth="256.0" text="Your money: $0" textFill="#f6ff00">
+                     <font>
+                        <Font name="Impact" size="20.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="backBtn3" layoutX="471.0" layoutY="301.0" mnemonicParsing="false" onAction="#backBtn3" prefHeight="52.0" prefWidth="121.0" style="-fx-background-color: black;" text="Back" textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="29.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+   </tabs>
+</JFXTabPane>

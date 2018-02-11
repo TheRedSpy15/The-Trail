@@ -2,7 +2,7 @@ package com.TheRedSpy15.trail;
 
 /*
 
-   Copyright [2017] [TheRedSpy15]
+   Copyright 2018 TheRedSpy15
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -30,14 +30,14 @@ public class ThiefMenuController {
 
         amount = (short) (Math.random() * 500);
 
-        if (amount > Gang.getMoney()) amount = (short) Gang.getMoney();
+        if (amount > Main.gang.getMoney()) amount = (short) Main.gang.getMoney();
 
         loseLbl.setText("Would lose: $"+amount);
     }
 
     @FXML public void setIgnoreBtn(){
 
-        Gang.setMoney(Gang.getMoney() - amount);
+        Main.gang.setMoney(Main.gang.getMoney() - amount);
 
         Main.getAlertWindow().close();
     }
@@ -46,21 +46,21 @@ public class ThiefMenuController {
 
         int chance = (int) (Math.random() * 100);
 
-        if (chance >= 50 && Gang.getCapturedThieves() == 0) {
+        if (chance >= 50 && Main.gang.getCapturedThieves() == 0) {
 
             Main.alert.alert("You have capture the thief, turn them in for a reward");
 
-            Gang.setCapturedThieves(Gang.getCapturedThieves() + 1);
+            Main.gang.setCapturedThieves(Main.gang.getCapturedThieves() + 1);
         }else {
 
             Main.alert.alert("You failed catch them and they got away");
 
-            Gang.setMoney(Gang.getMoney() - amount);
+            Main.gang.setMoney(Main.gang.getMoney() - amount);
         }
     }
 
     @FXML public void setAttackBtn(){
 
-        Main.getAlertWindow().setScene(Main.getShootOutScene());
+        Main.getAlertWindow().setScene(Main.main.getShootOutScene());
     }
 }

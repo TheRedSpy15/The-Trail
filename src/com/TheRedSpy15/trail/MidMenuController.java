@@ -2,7 +2,7 @@ package com.TheRedSpy15.trail;
 
 /*
 
-   Copyright [2017] [TheRedSpy15]
+   Copyright 2018 TheRedSpy15
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -25,21 +25,33 @@ public class MidMenuController extends MidGameMenu {
     @FXML
     private void paceBtn(){
 
-        paceSetterMethod();
-        getMenuWindow().setScene(getPaceScene());
+        brakeFrequencySetterMethod();
+        Main.main.getMenuWindow().setScene(Main.main.getPaceScene());
     }
 
     @FXML
     private void inventoryBtn(){
 
         inventoryMethod();
-        getMenuWindow().setScene(getInventoryScene());
+        Main.main.getMenuWindow().setScene(Main.main.getInventoryScene());
     }
 
     @FXML
     private void dietBtn(){
 
         foodPortionSet();
-        getMenuWindow().setScene(getFoodPortionsScene());
+        Main.main.getMenuWindow().setScene(Main.main.getFoodPortionsScene());
+    }
+
+    @FXML
+    private void gangBtn(){
+
+        gangMethod();
+    }
+
+    @FXML
+    private void deceasedBtn(){
+
+        deceasedMethod();
     }
 }

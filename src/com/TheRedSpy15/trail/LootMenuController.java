@@ -2,7 +2,7 @@ package com.TheRedSpy15.trail;
 
 /*
 
-   Copyright [2017] [TheRedSpy15]
+   Copyright 2018 TheRedSpy15
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -23,23 +23,22 @@ import javafx.scene.control.Label;
 
 public class LootMenuController extends Main {
 
-    @FXML private Label moneyLbl;
-    @FXML private Label foodLbl;
-    @FXML private Label waterLbl;
-    @FXML private Label ammoLbl;
+    @FXML private Label moneyLbl, foodLbl, waterLbl, ammoLbl;
 
-    private int moneyLOOT;
-    private int foodLOOT;
-    private int waterLOOT;
-    private int ammoLOOT;
+    private short moneyLOOT, foodLOOT, waterLOOT, ammoLOOT;
 
     @FXML
     private void initialize(){
 
-        moneyLOOT = (int) (Math.random() * 1500) + 50;
-        foodLOOT = (int) (Math.random() * 500) + 50;
-        waterLOOT = (int) (Math.random() * 500) + 50;
-        ammoLOOT = (int) (Math.random() * 100) + 5;
+        final short maxMoneyLOOT = 1500;
+        final short maxFoodLOOT = 500;
+        final short maxWaterLOOT = 500;
+        final short maxAmmoLOOT = 100;
+
+        moneyLOOT = (short) ((Math.random() * maxMoneyLOOT) + 0);
+        foodLOOT = (short) ((Math.random() * maxFoodLOOT) + 0);
+        waterLOOT = (short) ((Math.random() * maxWaterLOOT) + 0);
+        ammoLOOT = (short) ((Math.random() * maxAmmoLOOT) + 0);
 
         moneyLbl.setText("Money: $"+ moneyLOOT);
         foodLbl.setText("Food: "+foodLOOT);
@@ -50,10 +49,10 @@ public class LootMenuController extends Main {
     @FXML
     private void setTakeBtn(){
 
-        Gang.setMoney(Gang.getMoney() + moneyLOOT);
-        Gang.setFood(Gang.getFood() + foodLOOT);
-        Gang.setWater(Gang.getWater() + waterLOOT);
-        Gang.setAmmo(Gang.getAmmo() + ammoLOOT);
+        Main.gang.setMoney(Main.gang.getMoney() + moneyLOOT);
+        Main.gang.setFood(Main.gang.getFood() + foodLOOT);
+        Main.gang.setWater(Main.gang.getWater() + waterLOOT);
+        Main.gang.setAmmo(Main.gang.getAmmo() + ammoLOOT);
 
         getAlertWindow().close();
     }

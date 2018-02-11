@@ -2,7 +2,7 @@ package com.TheRedSpy15.trail;
 
 /*
 
-   Copyright [2017] [TheRedSpy15]
+   Copyright 2018 TheRedSpy15
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -18,32 +18,55 @@ package com.TheRedSpy15.trail;
 
  */
 
+import com.jfoenix.controls.JFXCheckBox;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static com.TheRedSpy15.trail.Gang.*;
-
 public class StartController extends Main{
 
-    @FXML private CheckBox fullScreenCheckBox;
-    @FXML private CheckBox modCheckBox;
+    @FXML private JFXCheckBox modCheckBox, loadCheckBox, autoSaveCheckBox;
 
     @FXML
     private void handleButtonClick() throws IOException {
 
         if (modCheckBox.isSelected()) runModFile();
 
-        if (fullScreenCheckBox.isSelected()) fullScreen = true;
+        autoSave = autoSaveCheckBox.isSelected();
 
-        career.careerPicker();
-        getMainWindow().setScene(new Scene(getDescriptionPane()));
-        checkFullScreen();
+        if (loadCheckBox.isSelected()){
+
+            try {
+                Gang.loadData();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            TravelClass.travelSetup();
+
+            getMainWindow().setScene(new Scene(getTravelPane()));
+        }else{
+
+            // setting up description scene
+            try {
+                setDescriptionPane(FXMLLoader.load(Main.class.getResource("DescriptionScene.fxml")));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            getMainWindow().setScene(new Scene(getDescriptionPane()));
+        }
+    }
+
+    @FXML
+    private void GitHubLink(){
+
+        getHostServices().showDocument("https://github.com/TheRedSpy15/The-Trail");
     }
 
     private void runModFile(){
@@ -52,45 +75,35 @@ public class StartController extends Main{
         *
         * Proper mod file example:
         *
-        * true (mod car) true (mod gun) [path to car image] [path to gun image] [name of gun] [gun damage]
+        * [path to gun image] [name of gun] [gun damage]
         *
-        * even if false; enter corresponding type:
-        *
-        * false (mod car) true (mod gun) String [path to gun image] [name of gun] [gun damage]
+        * String [path to gun image] String [name of gun] int [gun damage]
         *
         * */
 
-        // Path should be relative
-        File modFile = new File("C:\\Users\\Hunter\\IdeaProjects\\The Trail JavaFX\\src\\com\\TheRedSpy15\\trail\\ModFile.txt");
+        // NEEDS TESTING !!!
+        File modFile = new File("ModFile.txt");
 
         try {
             Scanner sc = new Scanner(modFile);
 
-            Boolean modCar = sc.nextBoolean();
-            Boolean modGun = sc.nextBoolean();
-
-            String pathVehicle = sc.next();
             String pathGun = sc.next();
             String pathGID = sc.next();
             int pathDMG = sc.nextInt();
 
-            if (modCar){
+            Main.gang.setGunSpriteURL(pathGun);
+            Main.gang.setDefaultGunSpriteURL(pathGun);
+            Main.gang.setBaseAttackDamage(pathDMG);
+            Main.gang.setDefaultAttackDMG((byte) pathDMG);
+            Main.gang.setGunID(pathGID);
+            Main.gang.setDefaultGunID(pathGID);
 
-                setDefaultCarURL(pathVehicle);
-                setCarSpriteURL(pathVehicle);
-            }
-
-            if (modGun){
-
-                setGunSpriteURL(pathGun);
-                setDefaultGunSpriteURL(pathGun);
-                setBaseAttackDamage(pathDMG);
-                setDefaultAttackDMG((byte) pathDMG);
-                setGunID(pathGID);
-                setDefaultGunID(pathGID);
-            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            alert.alert("Mod file not found!");
+        } catch (Exception e){
+
+            alert.alert("ERROR READING MOD FILE - might not be setup correctly");
         }
     }
 }

@@ -2,7 +2,7 @@ package com.TheRedSpy15.trail;
 
 /*
 
-   Copyright [2017] [TheRedSpy15]
+   Copyright 2018 TheRedSpy15
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -30,12 +30,12 @@ public class ThiefKilledController extends ShootOutController {
     private void setLootBtn(){
 
         try {
-            Main.setLootPane(FXMLLoader.load(Main.class.getResource("LootMenu.fxml")));
+            Main.main.setLootPane(FXMLLoader.load(Main.class.getResource("LootMenu.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Main.setLootScene(new Scene(Main.getLootPane()));
+        Main.main.setLootScene(new Scene(Main.main.getLootPane()));
 
-        Main.getAlertWindow().setScene(Main.getLootScene());
+        Main.getAlertWindow().setScene(Main.main.getLootScene());
     }
 }

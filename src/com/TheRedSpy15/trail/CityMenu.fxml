@@ -5,7 +5,7 @@
 
 <!--
 
-   Copyright [2017] [TheRedSpy15]
+   Copyright 2018 TheRedSpy15
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@
 
 -->
 
-<AnchorPane prefHeight="319.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.CityMenuController">
+<AnchorPane cacheHint="SPEED" cache="true" prefHeight="319.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.CityMenuController">
    <children>
       <Label fx:id="townLbl" layoutX="13.0" layoutY="28.0" prefHeight="58.0" prefWidth="552.0" text="You have come up to the town of: " textFill="PURPLE">
          <font>

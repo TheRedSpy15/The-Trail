@@ -2,7 +2,7 @@ package com.TheRedSpy15.trail;
 
 /*
 
-   Copyright [2017] [TheRedSpy15]
+   Copyright 2018 TheRedSpy15
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -24,10 +24,35 @@ import java.io.IOException;
 
 public class Career {
 
+    private static int payDayCountdown = 0;
+
     protected void careerPicker() throws IOException {
 
         // Career scene
         // assigns career scene fxml file to career anchor object
-        Main.setCareerAnchor(FXMLLoader.load(getClass().getResource("CareerScene.fxml")));
+        Main.main.setCareerAnchor(FXMLLoader.load(getClass().getResource("CareerScene.fxml")));
+    }
+
+    /**
+     *
+     * Does an +1 increment to payment countdown,
+     * and player(s) receive
+     * money when it reaches 30 (30 days),
+     * of which is determine by the wage of the
+     * career the player(s) have chosen
+     *
+     */
+    static void payDay(){
+
+        final byte countdownDuration = 30;
+
+        ++payDayCountdown;
+
+        if (payDayCountdown == countdownDuration){
+
+            Main.gang.setMoney(Main.gang.getMoney() + Main.gang.getWage());
+
+            payDayCountdown = 0;
+        }
     }
 }

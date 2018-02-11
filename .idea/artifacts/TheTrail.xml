@@ -14,6 +14,7 @@
     <root id="root">
       <element id="archive" name="The_Trail_JavaFX.jar">
         <element id="module-output" name="The Trail JavaFX" />
+        <element id="library" level="application" name="jfoenix-8.0.1" />
       </element>
     </root>
   </artifact>
