@@ -24,7 +24,7 @@ The game features many different things (with much more to come)
 - open source!
 - Much more
 
-# Upcoming planned features:
+Upcoming planned features:
 https://github.com/TheRedSpy15/The-Trail/projects 
 
 # Screen-Shots
@@ -48,7 +48,7 @@ Just make a pull request, and that's it!
 
 I make updates first to the "Pre-Update" branch and then to the Main branch when I feel the update is ready to go on the stable branch (Main)
 
-Have a suggestion or found a bug? report it here: https://github.com/TheRedSpy15/The-Trail/issues
+Have a **suggestion** or found a **bug?** report it here: https://github.com/TheRedSpy15/The-Trail/issues
 
 # NOTE
 
