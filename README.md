@@ -48,6 +48,8 @@ Just make a pull request, and that's it!
 
 I make updates first to the "Pre-Update" branch and then to the Main branch when I feel the update is ready to go on the stable branch (Main)
 
+Have a suggestion or found a bug? report it here: https://github.com/TheRedSpy15/The-Trail/issues
+
 # NOTE
 
 The .jar file REQUIRES Java to be installed. A .exe will come for Windows users without Java.
