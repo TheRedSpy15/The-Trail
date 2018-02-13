@@ -29,13 +29,14 @@ https://github.com/TheRedSpy15/The-Trail/projects
 
 # Screen-Shots
 
-### Intro - Outdated
+
+### Inventory
+
+![Image of inventory](https://s13.postimg.org/o9rn1ghtj/inventoryscene.jpg)
+
+### Dealership
 
 ![Image of Dealership](https://s13.postimg.org/muq2cq1av/dealershipscene.jpg)
-
-### Picking a Career - Outdated
-
-![alt text](https://s8.postimg.org/6xc2uv3ud/careerscene.jpg "Career")
 
 ### Gun Store - Outdated
 
