@@ -74,7 +74,7 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: black;">
                <children>
-                  <ImageView fitHeight="152.0" fitWidth="306.0" layoutX="147.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="152.0" fitWidth="306.0" layoutX="147.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@rallycar.png" />
                      </image>
@@ -127,7 +127,7 @@
                         <Font name="Impact" size="30.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="152.0" fitWidth="306.0" layoutX="181.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="152.0" fitWidth="306.0" layoutX="147.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@redcar.png" />
                      </image>

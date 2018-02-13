@@ -1,14 +1,17 @@
 # The-Trail
 The remake of Oregon Trail in JavaFX
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/99a9da07e094482d921f1930eaca3a5f)](https://www.codacy.com/app/hjadar15/The-Trail?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=TheRedSpy15/The-Trail&amp;utm_campaign=Badge_Grade)
-[![codebeat badge](https://codebeat.co/badges/887b7850-0e7b-4e5b-8c0f-925ba5d31f99)](https://codebeat.co/projects/github-com-theredspy15-the-trail-pre-update-branch)
-
-
 This is my first Java project made in JavaFX to serve as a learning experience.
 The Trail is basically a sci-fi-ish themed version of Oregon Trail, and written in Java instead.
 
-# [Download](https://github.com/TheRedSpy15/The-Trail/releases)
+***Reviews***
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/99a9da07e094482d921f1930eaca3a5f)](https://www.codacy.com/app/hjadar15/The-Trail?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=TheRedSpy15/The-Trail&amp;utm_campaign=Badge_Grade)
+[![codebeat badge](https://codebeat.co/badges/887b7850-0e7b-4e5b-8c0f-925ba5d31f99)](https://codebeat.co/projects/github-com-theredspy15-the-trail-pre-update-branch)
+[![BCH compliance](https://bettercodehub.com/edge/badge/TheRedSpy15/The-Trail?branch=master)](https://bettercodehub.com/)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
+<a class="github-button" href="https://github.com/TheRedSpy15/The-Trail/archive/master.zip" data-icon="octicon-cloud-download" data-size="large" aria-label="Download TheRedSpy15/The-Trail on GitHub">Download</a>
 
 # Features
 
@@ -21,17 +24,21 @@ The game features many different things (with much more to come)
 - open source!
 - Much more
 
+Upcoming planned features:
+https://github.com/TheRedSpy15/The-Trail/projects 
+
 # Screen-Shots
 
-### Intro
 
-![alt text](https://s8.postimg.org/k1hn7kbbp/startscene.jpg "Intro")
+### Inventory
 
-### Picking a Career
+![Image of inventory](https://s13.postimg.org/o9rn1ghtj/inventoryscene.jpg)
 
-![alt text](https://s8.postimg.org/6xc2uv3ud/careerscene.jpg "Career")
+### Dealership
 
-### Gun Store
+![Image of Dealership](https://s13.postimg.org/muq2cq1av/dealershipscene.jpg)
+
+### Gun Store - Outdated
 
 ![alt text](https://s8.postimg.org/6kkoootad/gunstorescene.jpg "GunStore")
 
@@ -41,6 +48,8 @@ The game features many different things (with much more to come)
 Just make a pull request, and that's it!
 
 I make updates first to the "Pre-Update" branch and then to the Main branch when I feel the update is ready to go on the stable branch (Main)
+
+Have a **suggestion** or found a **bug?** report it here: https://github.com/TheRedSpy15/The-Trail/issues
 
 # NOTE
 
