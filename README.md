@@ -1,6 +1,8 @@
 # The-Trail
 The remake of Oregon Trail in JavaFX
 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
 This is my first Java project made in JavaFX to serve as a learning experience.
 The Trail is basically a sci-fi-ish themed version of Oregon Trail, and written in Java instead.
 
@@ -9,7 +11,6 @@ The Trail is basically a sci-fi-ish themed version of Oregon Trail, and written 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/99a9da07e094482d921f1930eaca3a5f)](https://www.codacy.com/app/hjadar15/The-Trail?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=TheRedSpy15/The-Trail&amp;utm_campaign=Badge_Grade)
 [![codebeat badge](https://codebeat.co/badges/887b7850-0e7b-4e5b-8c0f-925ba5d31f99)](https://codebeat.co/projects/github-com-theredspy15-the-trail-pre-update-branch)
 [![BCH compliance](https://bettercodehub.com/edge/badge/TheRedSpy15/The-Trail?branch=master)](https://bettercodehub.com/)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 <a class="github-button" href="https://github.com/TheRedSpy15/The-Trail/archive/master.zip" data-icon="octicon-cloud-download" data-size="large" aria-label="Download TheRedSpy15/The-Trail on GitHub">Download</a>
 
