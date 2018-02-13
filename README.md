@@ -31,7 +31,7 @@ https://github.com/TheRedSpy15/The-Trail/projects
 
 ### Intro - Outdated
 
-![alt text](https://s8.postimg.org/k1hn7kbbp/startscene.jpg "Intro")
+![DealerShip screenshot]([url=https://postimg.org/image/t8f5fz66r/][img]https://s13.postimg.org/t8f5fz66r/dealershipscene.jpg[/img][/url] "Dealership")
 
 ### Picking a Career - Outdated
 
