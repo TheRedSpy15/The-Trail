@@ -23,8 +23,6 @@ import javafx.scene.control.Label;
 
 public class GameOverController extends Main {
 
-    private String[] ranks = {"Dummy","Meh","Introvert","Loner","CHEATER!!!"};
-
     @FXML
     private Label scoreLbl, rankLbl;
 
@@ -32,20 +30,6 @@ public class GameOverController extends Main {
 
         scoreLbl.setText("Score: "+ Main.gang.getScore());
 
-        rankLbl.setText("Rank: "+determineRank());
-    }
-
-    private String determineRank(){
-
-        int rank4 = 500_000;
-        int rank3 = 100_000;
-        int rank2 = 50_000;
-        int rank1 = 25_000;
-
-        if (Main.gang.getScore() >= rank4) return ranks[4];
-        else if (Main.gang.getScore() >= rank3) return ranks[3];
-        else if (Main.gang.getScore() >= rank2) return ranks[2];
-        else if (Main.gang.getScore() >= rank1) return ranks[1];
-        else return ranks[0];
+        rankLbl.setText("Rank: "+Gang.determineRank());
     }
 }

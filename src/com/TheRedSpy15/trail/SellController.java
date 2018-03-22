@@ -22,10 +22,15 @@ import com.jfoenix.controls.JFXSlider;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class SellController {
+public class SellController extends Store {
 
     @FXML private Label moneyLbl, grenadeLbl, foodLbl, waterLbl, ammoLbl;
     @FXML private JFXSlider grenadeSlider, waterSlider, foodSlider, ammoSlider;
+
+    private final double waterValue = 0.15;
+    private final double foodValue = 0.30;
+    private final byte grenadeValue = 50;
+    private final byte ammoValue = 20;
 
     @FXML
     private void sell(){
@@ -36,11 +41,6 @@ public class SellController {
         Main.gang.setGrenades(Main.gang.getGrenades() - (byte) grenadeSlider.getValue());
 
         Main.store.playPurchaseSound();
-
-        final double waterValue = 0.15;
-        final double foodValue = 0.30;
-        final byte grenadeValue = 50;
-        final byte ammoValue = 20;
 
         Main.gang.setMoney(Main.gang.getMoney() +
                 (waterSlider.getValue() * waterValue) +
@@ -55,9 +55,9 @@ public class SellController {
     @FXML
     private void setSellCarBtn(){ // sell car
 
-        final short rallyCarValue = 1500;
-        final short monsterTruckValue = 2500;
-        final short speedDemonValue = 5000;
+        final short rallyCarValue = 1_500;
+        final short monsterTruckValue = 2_500;
+        final short speedDemonValue = 5_000;
 
         switch (Main.gang.getCarSpriteURL()) {
             case "com/TheRedSpy15/trail/bluetruck.png":  // Blue truck
@@ -139,12 +139,20 @@ public class SellController {
     }
 
     @FXML
+    private void back(){
+
+        updateStores();
+
+        Main.main.getMainWindow().setScene(Main.main.getCityScene());
+    }
+
+    @FXML
     private void initialize(){
 
-        foodLbl.setText("Food: "+ Main.gang.getFood());
-        waterLbl.setText("Water: "+ Main.gang.getWater());
-        ammoLbl.setText("Ammo: "+ Main.gang.getAmmo());
-        grenadeLbl.setText("Ammo: "+ Main.gang.getGrenades());
+        foodLbl.setText("Food: "+ Main.gang.getFood()+ " ($"+ foodValue+ ")");
+        waterLbl.setText("Water: "+ Main.gang.getWater()+ " ($"+ waterValue+ ")");
+        ammoLbl.setText("Ammo: "+ Main.gang.getAmmo()+ " ($"+ ammoValue+ ")");
+        grenadeLbl.setText("Grenades: "+ Main.gang.getGrenades()+ " ($"+ grenadeValue+ ")");
         moneyLbl.setText("Money: $"+ Main.gang.getMoney());
 
         waterSlider.setMax(Main.gang.getWater());

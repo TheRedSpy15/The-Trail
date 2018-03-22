@@ -18,15 +18,11 @@ package com.TheRedSpy15.trail;
 
     */
 
-/* - TODO
-
-    BUG LIST
-
-    * Back button in purchase alert - causing freezes
-
-    */
-
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.io.Serializable;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -35,9 +31,16 @@ import java.util.Random;
 import javafx.application.Application;
 import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
+import javafx.scene.text.Font;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import static javafx.scene.media.AudioClip.INDEFINITE;
@@ -60,7 +63,7 @@ public class Main extends Application implements Serializable{
     private static Scene PaceScene;
     private static Parent careerAnchor;
     private static Parent storePane;
-    private static Parent possePane;
+    private static Parent gangPane;
     private static Parent travelPane;
     private static Parent cityPane;
     private static Parent SellPane;
@@ -86,7 +89,7 @@ public class Main extends Application implements Serializable{
     private static Parent hirePane;
 
     // Core Java
-    private static final String trailVersion = "2.4.2";
+    private static final String trailVersion = "2.4.7";
     private static byte SickEventChance;
     static Random rand = new Random();
     static AlertBox alert = new AlertBox();
@@ -96,21 +99,27 @@ public class Main extends Application implements Serializable{
     static Main main = new Main();
     static ArrayList<String> cities = new ArrayList<>();
 
-    byte startingThreads = 6;
+    byte startingThreads = 6; // 6 because it is safe
     boolean autoSave = true;
 
     public static void main(String args[]) {
 
         /*
-            - Next update -
+            - REALLY WANT DONE -
+
         FIX THE THIEF KILLED SCENE!!!
-        add more javaDocs
-        button in deceased list scene to delete list AFTER -
-        making a dedicated deceased file
-        properly implement storage methods of vehicles
+        Purchase alerts need auditing
+        Move thief encounter to main window
+        Jfoenix tab pane blue fix in gun store
+
+
+        BUG LIST
+
+        *
+
         */
 
-        main.startingThreads += Thread.activeCount();
+        main.startingThreads += Thread.activeCount(); // used to limit travel threads to a safe and reasonable limit
 
         main.setupCities();
 
@@ -140,7 +149,8 @@ public class Main extends Application implements Serializable{
         getMainWindow().show();
 
         getMainWindow().setOnCloseRequest(e -> {
-            endGame();
+            e.consume();
+            quitGame();
 
             if (Main.gang.getGangMembers().size() > 0) saveGameState();
         });
@@ -152,14 +162,15 @@ public class Main extends Application implements Serializable{
     }
 
     /**
-     * Used to save game progress, NOT game
-     * state (despite name). As in it will not
-     * save that the player was fighting a thief,
+     * Used to save game progress ONLY if
+     * auto save is true. NOTE: game progress,
+     * not game state (despite name). As in it will not
+     * save that the player was i.e fighting a thief,
      * just their inventory etc.
      */
     void saveGameState(){
 
-        if (autoSave){
+        if (autoSave && Main.gang.isPassedSetup()){
 
             try {
                 Gang.saveData();
@@ -214,11 +225,13 @@ public class Main extends Application implements Serializable{
      */
     void checkValues(){
 
+        byte maxHealthConditions = 100;
+
         if (gang.getFood() < 0) gang.setFood(0);
         if (gang.getWater() < 0) gang.setWater(0);
         if (gang.getMoney() < 0) gang.setMoney(0);
         if (gang.getHealthConditions() < 0) gang.setHealthConditions(0);
-        if (gang.getHealthConditions() > 100) gang.setHealthConditions(100);
+        if (gang.getHealthConditions() > maxHealthConditions) gang.setHealthConditions(100);
     }
 
     /**
@@ -237,26 +250,67 @@ public class Main extends Application implements Serializable{
         cities.add("Salt Lake City, Utah");
         cities.add("Las Vegas, Nevada");
         cities.add("Salem, Oregon");
+        cities.add("Sacramento, California");
+        cities.add("Los Angeles, California");
+        cities.add("Tucson, Arizona");
+        cities.add("Albuquerque, New Mexico");
+        cities.add("Oklahoma City, Oklahoma");
+        cities.add("Dallas, Texas");
+        cities.add("Jackson, Mississippi");
+        cities.add("Tuscaloosa, Alabama");
     }
 
     /**
-     * Ends the game
+     * Creates a window and scene that
+     * asks the user if they wish to quit.
+     *
+     * And, will save on quit, IF auto-save
+     * is true.
      */
-    void endGame(){
+    private void quitGame(){
 
-        System.exit(0);
+        HBox buttonLayout = new HBox(20);
+        VBox layout = new VBox(20);
+        Label exitLbl = new Label("Are you sure you want to quit?");
+        Button yesBtn = new Button("Yes, I'm bored to death");
+        Button noBtn = new Button("NO! THIS GAME IS SO FUN!");
+        Stage exitWindow = new Stage();
+
+        yesBtn.setOnAction(e -> {
+            saveGameState();
+            System.exit(0);
+        });
+
+        noBtn.setOnAction(e -> exitWindow.close());
+
+        exitLbl.setStyle("-fx-text-fill: white;");
+        exitLbl.setFont(new Font(20));
+
+        noBtn.setStyle("-fx-text-fill: Black;");
+        noBtn.setFont(new Font(20));
+
+        yesBtn.setStyle("-fx-text-fill: Black;");
+        yesBtn.setFont(new Font(20));
+
+        buttonLayout.getChildren().addAll(yesBtn,noBtn);
+        layout.getChildren().addAll(exitLbl,buttonLayout);
+        layout.setStyle("-fx-background-color: #cf1020");
+        layout.setPadding(new Insets(20,20,20,20));
+
+        Scene exitScene = new Scene(layout);
+
+        exitWindow.initModality(Modality.APPLICATION_MODAL);
+        exitWindow.setTitle("Quit?");
+        exitWindow.setScene(exitScene);
+        exitWindow.showAndWait();
     }
 
     /**
      * It's return object is based upon the
-     * value of "vehicleID", NOT to be
-     * mistaken with "vehicleIDs"
+     * value of "vehicleID"
      *
      * @return
-     * Objects that implement the vehicle interface :
-     * gCar (StarterCar),
-     * bTruck (MonsterTruck),
-     * rCar (RallyCar)
+     * Objects that implement the vehicle interface
      */
     Vehicle determineVehicle(){
 
@@ -280,12 +334,14 @@ public class Main extends Application implements Serializable{
     private static final Task backGroundMusicTask = new Task() {
 
         @Override
-        protected Object call() throws Exception {
+        protected Object call() {
+
+            float volume = 0.3f;
 
             // audio file NEEDS to be .wav
             AudioClip audio = new AudioClip(getClass().getResource("In_Seoul_Retro_80.wav").toExternalForm());
 
-            audio.setVolume(0.3f);
+            audio.setVolume(volume);
 
             audio.setCycleCount(INDEFINITE);
 
@@ -338,6 +394,7 @@ public class Main extends Application implements Serializable{
         SickEventScene = sickEventScene;
     }
     Parent getTravelPane() {
+        Travel.travelSceneSetup();
         return travelPane;
     }
     void setTravelPane(Parent travelPane) {
@@ -469,11 +526,11 @@ public class Main extends Application implements Serializable{
     void setCareerAnchor(Parent careerAnchor) {
         Main.careerAnchor = careerAnchor;
     }
-    Parent getPossePane() {
-        return possePane;
+    Parent getGangPane() {
+        return gangPane;
     }
-    void setPossePane(Parent possePane) {
-        Main.possePane = possePane;
+    void setGangPane(Parent possePane) {
+        Main.gangPane = possePane;
     }
     Scene getStoreScene() {
         return storeScene;

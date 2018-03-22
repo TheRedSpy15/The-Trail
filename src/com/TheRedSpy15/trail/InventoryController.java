@@ -29,7 +29,7 @@ public class InventoryController extends MidGameMenu {
             armorLbl, foodLbl, waterLbl,
             ammoLbl, moneyLbl, scoreLbl,
             gunModelLbl, damageLbl, grenadeLbl,
-            speedLbl, vehicleIDLabel;
+            speedLbl, vehicleIDLabel, rankLbl;
 
     @FXML private ImageView carImage, gunImage;
 
@@ -48,6 +48,7 @@ public class InventoryController extends MidGameMenu {
         gunImage.setImage(new Image(Main.gang.getGunSpriteURL()));
         grenadeLbl.setText("Grenades: "+ Main.gang.getGrenades());
         speedLbl.setText("TOP SPEED: " + Main.gang.getCarSpeed() + " MPH");
+        rankLbl.setText("Rank: "+ Gang.determineRank());
     }
 
     @FXML private void backBtn(){

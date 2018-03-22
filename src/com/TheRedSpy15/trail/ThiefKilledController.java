@@ -27,7 +27,7 @@ import java.io.IOException;
 public class ThiefKilledController extends ShootOutController {
 
     @FXML
-    private void setLootBtn(){
+    private void loot(){
 
         try {
             Main.main.setLootPane(FXMLLoader.load(Main.class.getResource("LootMenu.fxml")));

@@ -105,13 +105,15 @@ public class TravelController implements Serializable {
             while (Main.gang.isMoving()) {
 
                 final byte sickEventChanceMaxValue = 20;
-                final short distanceBetweenCities = 750;
+                final short distanceBetweenCities = 350;
+                final byte scorePerDay = 25;
+                final short dayLength = 2_400;
 
                 // Setting values
                 Career.payDay();
 
                 Main.main.setSickEventChance(Main.rand.nextInt(sickEventChanceMaxValue)+1);
-                Main.gang.setScore(Main.gang.getScore() + 25);
+                Main.gang.setScore(Main.gang.getScore() + scorePerDay);
                 Main.gang.setDistanceSinceCity((short) (Main.gang.getDistanceSinceCity() + drive(Main.main.determineVehicle())));
                 Main.gang.setDays(Main.gang.getDays() + 1);
 
@@ -138,7 +140,7 @@ public class TravelController implements Serializable {
                 if (!Main.gang.isMoving()) break;
 
                 try {
-                    Thread.sleep(2400);
+                    Thread.sleep(dayLength);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

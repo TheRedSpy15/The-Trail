@@ -59,7 +59,7 @@ public class ShootOutController extends ThiefMenuController {
         resetShootOut();
     }
 
-    @FXML private void setShootBtn(){
+    @FXML private void shoot(){
 
         if (Main.gang.getAmmo() >= 1){ // if ammo
 
@@ -97,7 +97,7 @@ public class ShootOutController extends ThiefMenuController {
         }
     }
 
-    @FXML private void setGrenadeBtn(){
+    @FXML private void grenade(){
 
         int GrenadeDMG = (int) (Math.random() * 75) + 35;
 
@@ -127,7 +127,7 @@ public class ShootOutController extends ThiefMenuController {
         }
     }
 
-    @FXML private void setLetGoBtn(){ // let go
+    @FXML private void letGo(){ // let go
 
         Main.alert.alert("You let them go");
     }
@@ -136,7 +136,7 @@ public class ShootOutController extends ThiefMenuController {
 
         Collections.shuffle(Main.gang.getGangMembers());
 
-        if (Main.rand.nextBoolean()){ // shot and killed
+        if (Main.Chance((byte)3,(byte)1,(byte)2)){ // shot and killed
 
             eventText.appendText("They shot and killed "+ HealthClass.death() + "\n");
             gangAmountLbl.setText("Gang members: "+ Main.gang.getGangMembers().size());
@@ -176,7 +176,9 @@ public class ShootOutController extends ThiefMenuController {
 
     private void deadThief(){
 
-        Main.gang.setScore(Main.gang.getScore() + 5000);
+        short bonusPoints = 5000;
+
+        Main.gang.setScore(Main.gang.getScore() + bonusPoints);
 
         disableButtons();
 
@@ -194,27 +196,33 @@ public class ShootOutController extends ThiefMenuController {
 
     private void playGunSound(){
 
+        float volume = 0.3f;
+
         MediaPlayer playSoundGun = new MediaPlayer(gunSound);
 
-        playSoundGun.setVolume(0.3f);
+        playSoundGun.setVolume(volume);
 
         playSoundGun.play();
     }
 
     private void playGrenadeSound(){
 
+        float volume = 0.3f;
+
         MediaPlayer playSoundGrenade = new MediaPlayer(grenadeSound);
 
-        playSoundGrenade.setVolume(0.3f);
+        playSoundGrenade.setVolume(volume);
 
         playSoundGrenade.play();
     }
 
     private void playVictorySound(){
 
+        float volume = 0.3f;
+
         MediaPlayer playSoundVictory = new MediaPlayer(victorySound);
 
-        playSoundVictory.setVolume(0.3f);
+        playSoundVictory.setVolume(volume);
 
         playSoundVictory.play();
     }

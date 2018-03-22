@@ -45,6 +45,20 @@ public class Store {
         }
     }
 
+    /**
+     * Multiplies price and quantity by 2, then doubles
+     * that to get bonus points.
+     *
+     * subtracting appropiate amount of money is done
+     * by this method.
+     *
+     * HOWEVER: it assumes that the user has enough
+     * money
+     *
+     * @param price value of item
+     * @param quantity amount of item to purchase
+     * @param Item name of item to be used to notify user
+     */
     void purchaseItem(short price, short quantity, String Item){
 
         int bonusPoints = ((price * quantity) * 2);
@@ -58,6 +72,11 @@ public class Store {
         Main.alert.specialPurchase(Item);
     }
 
+    /**
+     * Loads/Reloads all store scenes,
+     * such as: store, gun store, dealership,
+     * and sell
+     */
     protected void updateStores() {
 
         // Store

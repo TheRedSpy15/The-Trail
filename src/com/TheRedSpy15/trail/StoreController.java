@@ -28,6 +28,9 @@ public class StoreController extends Store {
     @FXML private Label currentWater, currentFood, moneyLbl;
     @FXML private JFXSlider waterSlider, foodSlider;
 
+    short foodStock;
+    short waterStock;
+
     @FXML
     private void purchase(){
 
@@ -51,27 +54,20 @@ public class StoreController extends Store {
 
             amountOver = (short) (Main.gang.getMoney() - cartValue);
 
-            Main.alert.notEnoughMoney(amountOver);
+            Main.alert.amountOver(amountOver);
         }
 
-        updateGUI();
+        updateLabels();
     }
 
     @FXML
     private void leave(){
 
-        TravelClass.travelSetup();
-
-        // determines if the scene is being used in alert window or main window and changes depending on that
-        if (Main.main.getMainWindow().getScene().equals(Main.main.getStoreScene())){
-
-            // setting window scene to travel pane
+        if (!Main.gang.isPassedSetup()) {
+            Travel.travelSceneSetup();
             Main.main.getMainWindow().setScene(new Scene(Main.main.getTravelPane()));
-        }else{
-
-            // Changing alert window scene to settlement scene
-            Main.getAlertWindow().setScene(Main.main.getCityScene());
-        }
+            Main.gang.setPassedSetup(true);
+        } else Main.main.getMainWindow().setScene(Main.main.getCityScene());
     }
 
 
@@ -80,36 +76,24 @@ public class StoreController extends Store {
 
         updateStores();
 
-        // determines if the scene is being used in alert window or main window and changes depending on that
-        if (!(Main.getAlertWindow().isShowing())){
-
-            // setting window scene to travel pane
-            Main.main.getMainWindow().setScene(Main.main.getGunStoreScene());
-        }else{
-
-            // Changing alert window scene to settlement scene
-            Main.getAlertWindow().setScene(Main.main.getGunStoreScene());
-        }
+        Main.main.getMainWindow().setScene(Main.main.getGunStoreScene());
     }
 
-    // code run on initialization of scene
     @FXML
     public void initialize(){
 
-        final short storageMAX  = 1500;
-        final short storageMIN = 1000;
-
-        // On starting class, update labels and max value of sliders
-        moneyLbl.setText("Money: $"+(int) Main.gang.getMoney());
-        currentFood.setText("FOOD: "+ Main.gang.getFood());
-        currentWater.setText("WATER: "+ Main.gang.getWater());
+        final short storageMAX = 3_000;
+        final short storageMIN = 1_500;
 
         // random store inventory
-        waterSlider.setMax((int) (Math.random() * storageMAX) + storageMIN);
-        foodSlider.setMax((int) (Math.random() * storageMAX) + storageMIN);
+        waterStock = (short) ((Math.random() * storageMAX) + storageMIN);
+        foodStock = (short) ((Math.random() * storageMAX) + storageMIN);
+
+        updateSliders();
+        updateLabels();
     }
 
-    private void updateGUI(){
+    private void updateLabels(){
 
         moneyLbl.setText("Money: $"+(int) Main.gang.getMoney());
         currentFood.setText("FOOD: "+ Main.gang.getFood());
@@ -118,7 +102,7 @@ public class StoreController extends Store {
 
     private void updateSliders(){
 
-        foodSlider.setMax(foodSlider.getMax() - foodSlider.getValue());
-        waterSlider.setMax(waterSlider.getMax() - waterSlider.getValue());
+        foodSlider.setMax(foodStock);
+        waterSlider.setMax(waterStock);
     }
 }

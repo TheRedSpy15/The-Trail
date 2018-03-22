@@ -44,7 +44,7 @@ public class Gang implements Serializable {
     private byte bodyArmor = 0;
     private short Ammo = 0;
     private short Water = 0;
-    private short carSpeed = 150;
+    private short carSpeed = 150; // Used only in inventory scene
     private short distanceSinceCity = 0;
     private short wage = 0;
     private short Food = 0;
@@ -59,21 +59,43 @@ public class Gang implements Serializable {
     private String carSpriteURL = getDefaultCarURL();
     private String defaultGunID = "Glock";
     private String gunID = getDefaultGunID();
+    private String gangLeader; // need way to handle leader death
     private Stack <String> gangMembers = new Stack<>();
     private Stack <String> deceased = new Stack<>();
     private volatile boolean Moving = false;
+    private boolean passedSetup = false;
 
-    protected void gangSetupMethod(){
+    static String determineRank(){ // need more tanks
+
+        int rank4 = 500_000;
+        int rank3 = 100_000;
+        int rank2 = 50_000;
+        int rank1 = 25_000;
+
+        if (Main.gang.getScore() >= rank4) return "CHEATER!!!";
+        else if (Main.gang.getScore() >= rank3) return "Loner...";
+        else if (Main.gang.getScore() >= rank2) return "Introvert...";
+        else if (Main.gang.getScore() >= rank1) return "meh...";
+        else return "Dummy";
+    }
+
+    protected void gangSceneSetup(){
 
         // Posse scene
         try {
             // assigns posse scene fxml file to posse pane object
-            Main.main.setPossePane(FXMLLoader.load(getClass().getResource("GangScene.fxml")));
+            Main.main.setGangPane(FXMLLoader.load(getClass().getResource("GangScene.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * saves the [all] variables of Main.gang,
+     * to SaveGame.ser
+     *
+     * @throws IOException
+     */
     static void saveData() throws IOException {
 
         FileOutputStream fileOutputStream = new FileOutputStream("SaveGame.ser");
@@ -87,6 +109,18 @@ public class Gang implements Serializable {
         fileOutputStream.close();
     }
 
+    /**
+     * Loads data from SaveGame.ser,
+     * and assigns it to variables in
+     * Main.gang.
+     *
+     * Errors normally arise from a save file,
+     * being saved to from a different version
+     * of the game
+     *
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     static void loadData() throws IOException, ClassNotFoundException {
 
         FileInputStream fileInputStream = new FileInputStream("SaveGame.ser");
@@ -259,5 +293,17 @@ public class Gang implements Serializable {
     }
     void setVehicleID(String vehicleID) {
         this.vehicleID = vehicleID;
+    }
+    public String getGangLeader() {
+        return gangLeader;
+    }
+    public void setGangLeader(String gangLeader) {
+        this.gangLeader = gangLeader;
+    }
+    public boolean isPassedSetup() {
+        return passedSetup;
+    }
+    public void setPassedSetup(boolean passedSetup) {
+        this.passedSetup = passedSetup;
     }
 }

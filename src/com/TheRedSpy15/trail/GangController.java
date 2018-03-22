@@ -48,6 +48,8 @@ public class GangController extends Gang {
             Main.gang.getGangMembers().push(memberName5.getText());
             Main.gang.getGangMembers().push(memberName6.getText());
 
+            Main.gang.setGangLeader(memberName1.getText());
+
             Collections.shuffle(Main.gang.getGangMembers());
         }else {
 

@@ -19,6 +19,7 @@ package com.TheRedSpy15.trail;
  */
 
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 
 import java.util.ListIterator;
@@ -32,24 +33,25 @@ public class CityMenuController {
     @FXML
     private void store(){
 
-        Main.getAlertWindow().setTitle("Store");
+        Main.main.getMainWindow().setTitle("Store");
         Main.store.updateStores();
-        Main.getAlertWindow().setScene(Main.main.getStoreScene());
+        Main.main.getMainWindow().setScene(Main.main.getStoreScene());
     }
 
     @FXML
     private void sell(){
 
-        Main.getAlertWindow().setTitle("Sell");
+        Main.main.getMainWindow().setTitle("Sell");
         Main.store.updateStores();
-        Main.getAlertWindow().setScene(Main.main.getSellScene());
+        Main.main.getMainWindow().setScene(Main.main.getSellScene());
     }
 
     @FXML
-    private void keepGoing(){
+    private void leave(){
 
         Main.gang.setDistance(Main.gang.getDistance() - 25);
-        Main.getAlertWindow().close();
+        Main.main.getMainWindow().setScene(new Scene(Main.main.getTravelPane()));
+        Main.main.getMainWindow().setTitle("The Trail");
     }
 
     @FXML
@@ -67,15 +69,15 @@ public class CityMenuController {
     @FXML
     private void dealerShip(){
 
-        Main.getAlertWindow().setTitle("Dealer Ship");
+        Main.main.getMainWindow().setTitle("Dealer Ship");
         Main.store.updateStores();
-        Main.getAlertWindow().setScene(Main.main.getDealerScene());
+        Main.main.getMainWindow().setScene(Main.main.getDealerScene());
     }
 
     @FXML
     private void setHireBtn(){
 
-        Main.getAlertWindow().setScene(Main.main.getHireScene());
+        Main.main.getMainWindow().setScene(Main.main.getHireScene());
     }
 
     @FXML
@@ -83,29 +85,32 @@ public class CityMenuController {
 
         String cityNameLOCAL;
 
-        // Some what circular linked list
+        // circular linked list
         if (!cityName.hasNext()) {
             while (cityName.hasPrevious()) cityName.previous();
 
             cityNameLOCAL = cityName.next();
         } else cityNameLOCAL = cityName.next();
 
-        Main.getAlertWindow().setTitle("City");
+        Main.main.getMainWindow().setTitle("City");
         townLbl.setText("You have come up to "+ cityNameLOCAL);
     }
 
     protected void bountyMethod(){
 
-        int MoneyToClaim;
+        short moneyToClaim;
+        short maxClaim = 5_000;
+        short minClaim = 500;
+        short scoreBonus = 10_000;
 
-        MoneyToClaim = (int) (Math.random() * 5000) + 1000;
-        MoneyToClaim *= Main.gang.getCapturedThieves();
+        moneyToClaim = (short) ((Math.random() * maxClaim) + minClaim);
+        moneyToClaim *= Main.gang.getCapturedThieves();
 
-        Main.gang.setScore(Main.gang.getScore() + 50000);
+        Main.gang.setScore(Main.gang.getScore() + scoreBonus);
 
-        bountyLbl.setText("You have Claimed: $"+MoneyToClaim);
+        bountyLbl.setText("You have Claimed: $"+moneyToClaim);
 
-        Main.gang.setMoney(Main.gang.getMoney() + MoneyToClaim);
+        Main.gang.setMoney(Main.gang.getMoney() + moneyToClaim);
 
         Main.gang.setCapturedThieves(0);
     }

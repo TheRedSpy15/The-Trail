@@ -47,7 +47,7 @@ public class StartController extends Main{
                 e.printStackTrace();
             }
 
-            TravelClass.travelSetup();
+            Travel.travelSceneSetup();
 
             getMainWindow().setScene(new Scene(getTravelPane()));
         }else{

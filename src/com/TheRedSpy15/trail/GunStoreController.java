@@ -45,7 +45,7 @@ public class GunStoreController extends Store {
 
             amountOver = (short) (Main.gang.getMoney() - price);
 
-            Main.alert.notEnoughMoney(amountOver);
+            Main.alert.amountOver(amountOver);
         }
     }
 
@@ -67,7 +67,7 @@ public class GunStoreController extends Store {
 
             amountOver = (short) (Main.gang.getMoney() - price);
 
-            Main.alert.notEnoughMoney(amountOver);
+            Main.alert.amountOver(amountOver);
         }
     }
 
@@ -89,7 +89,7 @@ public class GunStoreController extends Store {
 
             amountOver = (short) (Main.gang.getMoney() - price);
 
-            Main.alert.notEnoughMoney(amountOver);
+            Main.alert.amountOver(amountOver);
         }
     }
 
@@ -107,7 +107,7 @@ public class GunStoreController extends Store {
 
             amountOver = (short) (Main.gang.getMoney() - price);
 
-            Main.alert.notEnoughMoney(amountOver);
+            Main.alert.amountOver(amountOver);
         }
 
         initialize();
@@ -127,7 +127,7 @@ public class GunStoreController extends Store {
 
             amountOver = (short) (Main.gang.getMoney() - (price * grenadeSlider.getValue()));
 
-            Main.alert.notEnoughMoney(amountOver);
+            Main.alert.amountOver(amountOver);
         }
 
         initialize();
@@ -147,7 +147,7 @@ public class GunStoreController extends Store {
 
             amountOver = (short) (Main.gang.getMoney() - (price * ammoSlider.getValue()));
 
-            Main.alert.notEnoughMoney(amountOver);
+            Main.alert.amountOver(amountOver);
         }
 
         initialize();

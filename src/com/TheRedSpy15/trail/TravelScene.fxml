@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -25,8 +26,13 @@
 
 -->
 
-<AnchorPane cacheHint="SPEED" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: purple;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.TravelController">
+<AnchorPane cacheHint="SPEED" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.TravelController">
    <children>
+      <ImageView fitHeight="272.0" fitWidth="606.0" layoutX="-2.0" layoutY="-5.0">
+         <image>
+            <Image url="@pixelcity.png" />
+         </image>
+      </ImageView>
       <Button fx:id="setOutBtn" layoutX="192.0" layoutY="262.0" mnemonicParsing="false" onAction="#setOut" prefHeight="138.0" prefWidth="110.0" style="-fx-background-color: Black;" text="Set out" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="298.0">
          <font>
             <Font name="Impact" size="20.0" />

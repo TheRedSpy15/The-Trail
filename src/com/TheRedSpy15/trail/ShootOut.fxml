@@ -25,17 +25,17 @@
    <children>
       <HBox layoutX="46.0" layoutY="264.0" prefHeight="100.0" prefWidth="510.0">
          <children>
-            <Button fx:id="shootBtn" mnemonicParsing="false" onAction="#setShootBtn" prefHeight="101.0" prefWidth="160.0" text="Shoot" textFill="RED">
+            <Button fx:id="shootBtn" mnemonicParsing="false" onAction="#shoot" prefHeight="101.0" prefWidth="160.0" text="Shoot" textFill="RED">
                <font>
                   <Font name="Impact" size="30.0" />
                </font>
             </Button>
-            <Button fx:id="letGoBtn" mnemonicParsing="false" onAction="#setLetGoBtn" prefHeight="114.0" prefWidth="217.0" text="Let them go">
+            <Button fx:id="letGoBtn" mnemonicParsing="false" onAction="#letGo" prefHeight="114.0" prefWidth="217.0" text="Let them go">
                <font>
                   <Font name="Impact" size="34.0" />
                </font>
             </Button>
-            <Button fx:id="grenadeBtn" mnemonicParsing="false" onAction="#setGrenadeBtn" prefHeight="108.0" prefWidth="160.0" text="Grenade" textFill="RED">
+            <Button fx:id="grenadeBtn" mnemonicParsing="false" onAction="#grenade" prefHeight="108.0" prefWidth="160.0" text="Grenade" textFill="RED">
                <font>
                   <Font name="Impact" size="30.0" />
                </font>

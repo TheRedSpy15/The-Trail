@@ -44,7 +44,7 @@ public class AlertBox {
 
     protected static void alertMenuStart(){
 
-        Main.getAlertWindow().setOnCloseRequest(e -> TravelClass.travelSetup());
+        Main.getAlertWindow().setOnCloseRequest(e -> Travel.travelSceneSetup());
 
         //Block events to other windows
         Main.getAlertWindow().initModality(Modality.APPLICATION_MODAL);
@@ -53,6 +53,9 @@ public class AlertBox {
 
     AlertBox() { Main.getAlertWindow().setTitle("Alert"); }
 
+    /**
+     * launches the thief encounter event
+     */
     protected void thiefEncounter(){
 
         Main.gang.setMoving(false);
@@ -88,7 +91,6 @@ public class AlertBox {
         Label label = new Label(alertMSG);
         label.setFont(new Font(20));
         label.setStyle("-fx-text-fill: white;");
-        label.setFont(new Font(20));
 
         StackPane stackPane = new StackPane();
         stackPane.setStyle("-fx-background-color: #cf1020");
@@ -101,7 +103,7 @@ public class AlertBox {
         if (!(Main.getAlertWindow().isShowing())) Main.getAlertWindow().showAndWait();
     }
 
-    protected void notEnoughMoney(int amount){
+    protected void amountOver(int amount){
 
         Button button = new Button("Back");
         Label label = new Label("Amount over: "+ amount);
@@ -132,10 +134,10 @@ public class AlertBox {
         if (!(Main.getAlertWindow().isShowing())) Main.getAlertWindow().showAndWait();
     }
 
-    protected void cannotSell(String type){
+    protected void cannotSell(String item){
 
         Button button = new Button("Back");
-        Label label = new Label("You cannot sell your current "+ type);
+        Label label = new Label("You cannot sell your current "+ item);
         label.setFont(new Font(20));
         label.setStyle("-fx-text-fill: white;");
 
@@ -152,14 +154,14 @@ public class AlertBox {
         if (!(Main.getAlertWindow().isShowing())) Main.getAlertWindow().showAndWait();
     }
 
-    protected void sold(String item, short amount, short profit){
+    protected void sold(String item, short amount, short value){
 
         Main.store.playPurchaseSound();
 
-        Main.gang.setMoney(Main.gang.getMoney() + profit);
+        Main.gang.setMoney(Main.gang.getMoney() + value);
 
         Button button = new Button("Back");
-        Label label = new Label("You sold "+amount+" "+item+" for $"+profit);
+        Label label = new Label("You sold "+amount+" "+item+" for $"+value);
         label.setFont(new Font(20));
         label.setStyle("-fx-text-fill: white;");
 
@@ -176,6 +178,16 @@ public class AlertBox {
         if (!(Main.getAlertWindow().isShowing())) Main.getAlertWindow().showAndWait();
     }
 
+    /**
+     * Similar to alert(), except,
+     * it uses the string in the parameter
+     * to properly notify user of purchase.
+     *
+     * Different from store.purchase(), as that
+     * uses this method for notification.
+     *
+     * @param item name of item purchased
+     */
     protected void specialPurchase(String item){
 
         Button button = new Button("Ok");
@@ -231,9 +243,8 @@ public class AlertBox {
         //Stop moving
         Main.gang.setMoving(false);
 
-        Main.getAlertWindow().setTitle("City");
-        Main.getAlertWindow().setScene(Main.main.getCityScene());
-        Main.getAlertWindow().show();
+        Main.main.getMainWindow().setTitle("City");
+        Main.main.getMainWindow().setScene(Main.main.getCityScene());
     }
 
     /**
@@ -250,7 +261,7 @@ public class AlertBox {
         }
 
         // On closure of window, closes main MainWindow also
-        Main.getAlertWindow().setOnCloseRequest(e -> Main.main.endGame());
+        Main.getAlertWindow().setOnCloseRequest(e -> System.exit(0));
 
         Main.getAlertWindow().setScene(new Scene(gameOverPane));
 

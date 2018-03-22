@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXSlider?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <!--
 
@@ -24,7 +25,7 @@
 
 -->
 
-<Pane cache="true" cacheHint="SPEED" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.SellController">
+<Pane cache="true" cacheHint="SPEED" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.151" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.SellController">
    <children>
       <VBox layoutX="14.0" layoutY="14.0" prefHeight="104.0" prefWidth="140.0">
          <children>
@@ -75,7 +76,7 @@
             <Font name="Impact" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="sellBtn" layoutX="407.0" layoutY="312.0" mnemonicParsing="false" onAction="#sell" prefHeight="52.0" prefWidth="179.0" text="Sell / Leave" textFill="RED">
+      <Button fx:id="sellBtn" layoutX="407.0" layoutY="312.0" mnemonicParsing="false" onAction="#sell" prefHeight="52.0" prefWidth="179.0" text="Sell Items" textFill="RED">
          <font>
             <Font name="Impact" size="27.0" />
          </font>
@@ -104,5 +105,10 @@
       <JFXSlider fx:id="waterSlider" indicatorPosition="RIGHT" layoutX="22.0" layoutY="200.0" orientation="VERTICAL" showTickMarks="true" snapToTicks="true" />
       <JFXSlider fx:id="ammoSlider" indicatorPosition="RIGHT" layoutX="165.0" layoutY="200.0" orientation="VERTICAL" showTickMarks="true" snapToTicks="true" />
       <JFXSlider fx:id="grenadeSlider" indicatorPosition="RIGHT" layoutX="238.0" layoutY="200.0" orientation="VERTICAL" showTickMarks="true" snapToTicks="true" />
+      <Button fx:id="leaveBtn" layoutX="407.0" layoutY="131.0" mnemonicParsing="false" onAction="#back" prefHeight="52.0" prefWidth="179.0" text="Leave" textFill="RED">
+         <font>
+            <Font name="Impact" size="27.0" />
+         </font>
+      </Button>
    </children>
 </Pane>

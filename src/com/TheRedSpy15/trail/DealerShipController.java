@@ -27,34 +27,35 @@ public class DealerShipController extends Store {
 
     @FXML private void backBtn1(){
 
-        Main.getAlertWindow().setScene(Main.main.getCityScene());
+        Main.main.getMainWindow().setScene(Main.main.getCityScene());
     }
 
     @FXML private void backBtn2(){
 
-        Main.getAlertWindow().setScene(Main.main.getCityScene());
+        Main.main.getMainWindow().setScene(Main.main.getCityScene());
     }
 
     @FXML private void backBtn3(){
 
-        Main.getAlertWindow().setScene(Main.main.getCityScene());
+        Main.main.getMainWindow().setScene(Main.main.getCityScene());
     }
 
     @FXML private void speedDemon(){
 
-        final short speedDemonPrice = 15000;
-        if (Main.gang.getMoney() >= speedDemonPrice){
+        final short speed = 15000;
+        final short price = 175;
+        if (Main.gang.getMoney() >= speed){
 
-            purchaseItem(speedDemonPrice, (short) 1, "Speed Demon");
+            purchaseItem(speed, (short) 1, "Speed Demon");
 
             Main.gang.setCarSpriteURL("com/TheRedSpy15/trail/redcar.png");
             Main.gang.setVehicleID("Speed Demon");
-            Main.gang.setCarSpeed((short) 175);
+            Main.gang.setCarSpeed(price);
 
             speedDemonMoneyLbl.setText("Money: $"+ Main.gang.getMoney());
-        }else if (Main.gang.getMoney() < speedDemonPrice){
+        }else if (Main.gang.getMoney() < speed){
 
-            amountOver = (short) (Main.gang.getMoney() - speedDemonPrice);
+            amountOver = (short) (Main.gang.getMoney() - speed);
 
             Main.alert.alert("Amount over: " + amountOver);
         }
@@ -62,19 +63,20 @@ public class DealerShipController extends Store {
 
     @FXML private void monsterTruck(){
 
-        final short monsterTruckPrice = 5000;
-        if (Main.gang.getMoney() >= monsterTruckPrice){
+        final short price = 5000;
+        final short speed = 100;
+        if (Main.gang.getMoney() >= price){
 
-            purchaseItem(monsterTruckPrice, (short) 1, "Monster Truck");
+            purchaseItem(price, (short) 1, "Monster Truck");
 
             Main.gang.setCarSpriteURL("com/TheRedSpy15/trail/bluetruck.png");
             Main.gang.setVehicleID("Monster Truck");
-            Main.gang.setCarSpeed((short) 100);
+            Main.gang.setCarSpeed(speed);
 
             monsterTruckMoneyLbl.setText("Money: $"+ Main.gang.getMoney());
-        }else if (Main.gang.getMoney() < monsterTruckPrice){
+        }else if (Main.gang.getMoney() < price){
 
-            amountOver = (short) (Main.gang.getMoney() - monsterTruckPrice);
+            amountOver = (short) (Main.gang.getMoney() - price);
 
             Main.alert.alert("Amount over: " + amountOver);
         }
@@ -82,19 +84,20 @@ public class DealerShipController extends Store {
 
     @FXML private void rallyCar(){
 
-        final short rallyCarPrice = 3500;
-        if (Main.gang.getMoney() >= rallyCarPrice){
+        final short price = 3500;
+        final short speed = 120;
+        if (Main.gang.getMoney() >= price){
 
-            purchaseItem(rallyCarPrice, (short) 1, "RALLY CAR");
+            purchaseItem(price, (short) 1, "RALLY CAR");
 
             Main.gang.setCarSpriteURL("com/TheRedSpy15/trail/rallycar.png");
             Main.gang.setVehicleID("Rally Car");
-            Main.gang.setCarSpeed((short) 200);
+            Main.gang.setCarSpeed(speed);
 
             rallyCarMoneyLbl.setText("Money: $"+ Main.gang.getMoney());
-        }else if (Main.gang.getMoney() < rallyCarPrice){
+        }else if (Main.gang.getMoney() < price){
 
-            amountOver = (short) (Main.gang.getMoney() - rallyCarPrice);
+            amountOver = (short) (Main.gang.getMoney() - price);
 
             Main.alert.alert("Amount over: "+ amountOver);
         }

@@ -31,8 +31,8 @@ public class CareerController extends Career{
 
         Main.gang.setMoney(Main.gang.getMoney() + hitmanStartingMoney);
         Main.gang.setWage(hitmanWage);
-        Main.gang.gangSetupMethod();
-        Main.main.getMainWindow().setScene(new Scene(Main.main.getPossePane()));
+        Main.gang.gangSceneSetup();
+        Main.main.getMainWindow().setScene(new Scene(Main.main.getGangPane()));
     }
 
     @FXML
@@ -45,8 +45,8 @@ public class CareerController extends Career{
         Main.gang.setMoney(Main.gang.getMoney() + drugDealerStartingMoney);
         Main.gang.setScore(Main.gang.getScore() + drugDealerBonus);
         Main.gang.setWage(drugDealerWage);
-        Main.gang.gangSetupMethod();
-        Main.main.getMainWindow().setScene(new Scene(Main.main.getPossePane()));
+        Main.gang.gangSceneSetup();
+        Main.main.getMainWindow().setScene(new Scene(Main.main.getGangPane()));
     }
 
     @FXML
@@ -61,7 +61,7 @@ public class CareerController extends Career{
         Main.gang.setMoney(Main.gang.getMoney() + (int) (Math.random() * thiefStartingMoneyMAX) + thiefStartingMoneyMIN);
         Main.gang.setScore(Main.gang.getScore() + thiefBonus);
         Main.gang.setWage((int) (Math.random() * thiefWageMAX) + thiefWageMIN);
-        Main.gang.gangSetupMethod();
-        Main.main.getMainWindow().setScene(new Scene(Main.main.getPossePane()));
+        Main.gang.gangSceneSetup();
+        Main.main.getMainWindow().setScene(new Scene(Main.main.getGangPane()));
     }
 }

@@ -31,15 +31,15 @@ public class HireMenuController extends Store {
 
         final short hireCost = 5000;
 
-        if (Main.gang.getMoney() < hireCost){
+        if (Main.gang.getMoney() < hireCost){ // not enough money
 
             amountOver = (short) (Main.gang.getMoney() - hireCost);
 
-            Main.alert.notEnoughMoney(amountOver); // Back button support in alert box class needs added
-        }else if (nameField.getText().trim().equals("")){
+            Main.alert.amountOver(amountOver); // Back button support in alert box class needs added
+        }else if (nameField.getText().trim().equals("")){ // no name
 
             emptyLbl.setText("Text field CANNOT be empty!");
-        }else {
+        }else { // hire
 
             Main.gang.getGangMembers().push(nameField.getText());
             Main.getAlertWindow().setScene(Main.main.getCityScene());
@@ -48,7 +48,7 @@ public class HireMenuController extends Store {
 
     @FXML private void setBackBtn(){
 
-        Main.getAlertWindow().setScene(Main.main.getCityScene());
+        Main.main.getMainWindow().setScene(Main.main.getCityScene());
     }
 
     @FXML private void initialize(){

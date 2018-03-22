@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -21,7 +23,7 @@
 
 -->
 
-<AnchorPane cacheHint="SPEED" cache="true" prefHeight="319.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.CityMenuController">
+<AnchorPane cache="true" cacheHint="SPEED" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.CityMenuController">
    <children>
       <Label fx:id="townLbl" layoutX="13.0" layoutY="28.0" prefHeight="58.0" prefWidth="552.0" text="You have come up to the town of: " textFill="PURPLE">
          <font>
@@ -34,7 +36,7 @@
             <Font name="Impact" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="passBtn" layoutX="216.0" layoutY="107.0" mnemonicParsing="false" onAction="#keepGoing" prefHeight="76.0" prefWidth="168.0" text="Leave">
+      <Button fx:id="passBtn" layoutX="216.0" layoutY="107.0" mnemonicParsing="false" onAction="#leave" prefHeight="76.0" prefWidth="168.0" text="Leave">
          <font>
             <Font name="Impact" size="24.0" />
          </font>
@@ -59,7 +61,7 @@
             <Font name="Impact" size="17.0" />
          </font>
       </Button>
-      <Button fx:id="hireBtn" onAction="#setHireBtn" layoutX="216.0" layoutY="212.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="168.0" text="Hire gang members">
+      <Button fx:id="hireBtn" layoutX="216.0" layoutY="212.0" mnemonicParsing="false" onAction="#setHireBtn" prefHeight="45.0" prefWidth="168.0" text="Hire gang members">
          <font>
             <Font name="Impact" size="17.0" />
          </font>
