@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<!--
+
+   Copyright 2018 TheRedSpy15
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+-->
+
+<AnchorPane cache="true" cacheHint="SPEED" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.CityMenuController">
+   <children>
+      <Label fx:id="townLbl" layoutX="13.0" layoutY="28.0" prefHeight="58.0" prefWidth="552.0" text="You have come up to the town of: " textFill="PURPLE">
+         <font>
+            <Font name="Impact" size="24.0" />
+         </font>
+      </Label>
+      <Separator layoutX="7.0" layoutY="83.0" prefHeight="3.0" prefWidth="588.0" />
+      <Button fx:id="storeBtn" layoutX="30.0" layoutY="107.0" mnemonicParsing="false" onAction="#store" prefHeight="76.0" prefWidth="168.0" text="Use store">
+         <font>
+            <Font name="Impact" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="passBtn" layoutX="216.0" layoutY="107.0" mnemonicParsing="false" onAction="#leave" prefHeight="76.0" prefWidth="168.0" text="Leave">
+         <font>
+            <Font name="Impact" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="sellBtn" layoutX="403.0" layoutY="107.0" mnemonicParsing="false" onAction="#sell" prefHeight="76.0" prefWidth="168.0" text="Sell items">
+         <font>
+            <Font name="Impact" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="bountyBtn" layoutX="78.0" layoutY="212.0" mnemonicParsing="false" onAction="#claim" prefHeight="45.0" prefWidth="120.0" text="Claim bounty">
+         <font>
+            <Font name="Impact" size="17.0" />
+         </font>
+      </Button>
+      <Label fx:id="bountyLbl" layoutX="81.0" layoutY="268.0" prefHeight="30.0" prefWidth="442.0" textFill="RED">
+         <font>
+            <Font name="Impact" size="17.0" />
+         </font>
+      </Label>
+      <Button fx:id="dealerBtn" layoutX="403.0" layoutY="212.0" mnemonicParsing="false" onAction="#dealerShip" prefHeight="45.0" prefWidth="120.0" text="Car Dealer">
+         <font>
+            <Font name="Impact" size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="hireBtn" layoutX="216.0" layoutY="212.0" mnemonicParsing="false" onAction="#setHireBtn" prefHeight="45.0" prefWidth="168.0" text="Hire gang members">
+         <font>
+            <Font name="Impact" size="17.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

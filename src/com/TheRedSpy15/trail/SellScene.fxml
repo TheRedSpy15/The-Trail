@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXSlider?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<!--
+
+   Copyright 2018 TheRedSpy15
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+-->
+
+<Pane cache="true" cacheHint="SPEED" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.151" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.SellController">
+   <children>
+      <VBox layoutX="14.0" layoutY="14.0" prefHeight="104.0" prefWidth="140.0">
+         <children>
+            <Label text="INVENTORY" textFill="WHITE">
+               <font>
+                  <Font name="Impact" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="foodLbl" prefHeight="22.0" prefWidth="127.0" text="Food: 0 ($0.25)" textFill="BROWN">
+               <font>
+                  <Font name="Impact" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="waterLbl" prefHeight="22.0" prefWidth="129.0" text="Water:  0 ($0.10)" textFill="BLUE">
+               <font>
+                  <Font name="Impact" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="ammoLbl" prefHeight="22.0" prefWidth="123.0" text="Ammo: 0 ($4)" textFill="GREY">
+               <font>
+                  <Font name="Impact" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="grenadeLbl" prefHeight="22.0" prefWidth="137.0" text="Grenades: 0 ($50)" textFill="ORANGE">
+               <font>
+                  <Font name="Impact" size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Label layoutX="238.0" layoutY="14.0" prefHeight="52.0" prefWidth="241.0" text="SELL MENU" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Sans Condensed Bold" size="41.0" />
+         </font>
+      </Label>
+      <Label layoutX="12.0" layoutY="161.0" text="Water" textFill="BLUE">
+         <font>
+            <Font name="Impact" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="84.0" layoutY="161.0" text="Food" textFill="BROWN">
+         <font>
+            <Font name="Impact" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="154.0" layoutY="161.0" text="Ammo" textFill="GREY">
+         <font>
+            <Font name="Impact" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="sellBtn" layoutX="407.0" layoutY="312.0" mnemonicParsing="false" onAction="#sell" prefHeight="52.0" prefWidth="179.0" text="Sell Items" textFill="RED">
+         <font>
+            <Font name="Impact" size="27.0" />
+         </font>
+      </Button>
+      <Label layoutX="238.0" layoutY="161.0" text="Grenades" textFill="ORANGE">
+         <font>
+            <Font name="Impact" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="sellCarBtn" layoutX="407.0" layoutY="252.0" mnemonicParsing="false" onAction="#setSellCarBtn" prefHeight="52.0" prefWidth="179.0" text="Sell Car" textFill="RED">
+         <font>
+            <Font name="Impact" size="27.0" />
+         </font>
+      </Button>
+      <Button fx:id="sellGunBtn" layoutX="407.0" layoutY="192.0" mnemonicParsing="false" onAction="#setSellGunBtn" prefHeight="52.0" prefWidth="179.0" text="Sell Gun" textFill="RED">
+         <font>
+            <Font name="Impact" size="27.0" />
+         </font>
+      </Button>
+      <Label fx:id="moneyLbl" layoutX="261.0" layoutY="73.0" prefHeight="28.0" prefWidth="179.0" text="Money: $0" textFill="GREEN">
+         <font>
+            <Font name="Impact" size="23.0" />
+         </font>
+      </Label>
+      <JFXSlider fx:id="foodSlider" indicatorPosition="RIGHT" layoutX="89.0" layoutY="200.0" orientation="VERTICAL" showTickMarks="true" snapToTicks="true" />
+      <JFXSlider fx:id="waterSlider" indicatorPosition="RIGHT" layoutX="22.0" layoutY="200.0" orientation="VERTICAL" showTickMarks="true" snapToTicks="true" />
+      <JFXSlider fx:id="ammoSlider" indicatorPosition="RIGHT" layoutX="165.0" layoutY="200.0" orientation="VERTICAL" showTickMarks="true" snapToTicks="true" />
+      <JFXSlider fx:id="grenadeSlider" indicatorPosition="RIGHT" layoutX="238.0" layoutY="200.0" orientation="VERTICAL" showTickMarks="true" snapToTicks="true" />
+      <Button fx:id="leaveBtn" layoutX="407.0" layoutY="131.0" mnemonicParsing="false" onAction="#back" prefHeight="52.0" prefWidth="179.0" text="Leave" textFill="RED">
+         <font>
+            <Font name="Impact" size="27.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>

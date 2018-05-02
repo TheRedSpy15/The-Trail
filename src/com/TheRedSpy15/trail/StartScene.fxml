@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--
+
+   Copyright 2018 TheRedSpy15
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+-->
+
+<AnchorPane cacheHint="SPEED" prefHeight="371.0" prefWidth="300.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TheRedSpy15.trail.StartController">
+   <children>
+   
+       <Label fx:id="testLbl" layoutX="65.0" layoutY="14.0" prefHeight="56.0" prefWidth="160.0" text="The Trail" textFill="WHITE">
+         <font>
+            <Font name="Impact" size="45.0" />
+         </font>
+      </Label>
+      <Hyperlink fx:id="githubLink" layoutX="175.0" layoutY="323.0" onAction="#GitHubLink" prefHeight="21.0" prefWidth="111.0" text="GitHub Page" textFill="GOLD" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0">
+         <font>
+            <Font name="Impact" size="20.0" />
+         </font>
+      </Hyperlink>
+      <JFXButton fx:id="button" layoutX="70.0" layoutY="96.0" onAction="#handleButtonClick" prefHeight="90.0" prefWidth="160.0" style="-fx-background-color: white;" text="Start">
+         <font>
+            <Font name="Impact" size="37.0" />
+         </font>
+      </JFXButton>
+      <JFXCheckBox fx:id="loadCheckBox" checkedColor="BLACK" layoutX="32.0" layoutY="213.0" text="Load last game" textFill="WHITE" unCheckedColor="WHITE">
+         <font>
+            <Font name="Impact" size="18.0" />
+         </font>
+      </JFXCheckBox>
+      <JFXCheckBox fx:id="modCheckBox" checkedColor="BLACK" layoutX="32.0" layoutY="252.0" text="Run with mod file [BETA]" textFill="WHITE" unCheckedColor="WHITE">
+         <font>
+            <Font name="Impact" size="18.0" />
+         </font>
+      </JFXCheckBox>
+      <JFXCheckBox fx:id="autoSaveCheckBox" checkedColor="BLACK" layoutX="32.0" layoutY="290.0" selected="true" text="Auto Save" textFill="WHITE" unCheckedColor="WHITE">
+         <font>
+            <Font name="Impact" size="18.0" />
+         </font>
+      </JFXCheckBox>
+   </children>
+
+</AnchorPane>
