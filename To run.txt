@@ -1,5 +1,0 @@
-go to out -> artifacts -> TheTrail -> The_Trail_JavaFX.jar
-
-NOTE: JAVA 8 IS REQUIRED, will remove the requirement in the future
-
-The java version is so it runs on ANY computer with java installed on it
